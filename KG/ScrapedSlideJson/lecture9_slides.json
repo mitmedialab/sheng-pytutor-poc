@@ -1,0 +1,89 @@
+[
+    {
+        "slide 0": "LAMBDA FUNCTIONS, \nTUPLES and LISTS\n(download slides and . pyfiles to follow along)\n6.100L Lecture 9\nAna Bell"
+    },
+    {
+        "slide 1": "FROM LAST TIME\ndefapply(criteria,n):\n\"\"\" \n* criteria: function that takes in a number and returns a bool* n: an int\nReturns how many ints from 0 to n (inclusive) match the \ncriteria (i.e. return True when run with criteria) \"\"\"\ncount = 0foriinrange(n+1):\nifcriteria(i ):\ncount += 1\nreturncount\ndefis_even(x):returnx%2==0\nprint(apply(is_even,10))\n6.100L Lecture 9"
+    },
+    {
+        "slide 2": "FROM LAST TIME\ndefapply(criteria,n):\n\"\"\" \n* criteria: function that takes in a number and returns a bool* n: an int\nReturns how many ints from 0 to n (inclusive) match the \ncriteria (i.e. return True when run with criteria) \"\"\"\ncount = 0foriinrange(n+1):\nifcriteria(i ):\ncount += 1\nreturncount\ndefis_even(x):returnx%2==0\nprint(apply(is_even,10))\n6.100L Lecture 9"
+    },
+    {
+        "slide 3": "ANONYMOUS FUNCTIONS\n\uf0a7Sometimes don\u2019t want to name functions, especially simple \nones. This function is a good example:\ndefis_even(x):\nreturnx%2==0\n\uf0a7Can use an anonymous procedure by using lambda\n\uf0a7lambda creates a procedure/function object, but simply does \nnot bind a name to it\n6.100L Lecture 9lambdax: x%2 == 0\nparameterBody of lambda\nNote no return keyword"
+    },
+    {
+        "slide 4": "ANONYMOUS FUNCTIONS\n\uf0a7Function call with a named function:\n\uf0a7Function call with an anonymous function as parameter:\n\uf0a7lambda function is one -time use . It can\u2019t be reused because it \nhas no name!\n6.100L Lecture 9apply( lambdax: x%2 == 0 , 10 )apply( is_even , 10 )"
+    },
+    {
+        "slide 5": "YOU TRY IT!\n\uf0a7What does this print?\ndef do_twice(n, fn):\nreturn fn(fn(n))\nprint(do_twice(3, lambda x: x**2))\n6.100L Lecture 9"
+    },
+    {
+        "slide 6": "YOU TRY IT!\n\uf0a7What does this print?\ndef do_twice(n, fn):\nreturn fn(fn(n))\nprint(do_twice(3, lambda x: x**2))\n6.100L Lecture 9Global environment\ndo_twice function object"
+    },
+    {
+        "slide 7": "YOU TRY IT!\ndo_twice environment\nn 3\nfnlambda x: x**2\uf0a7What does this print?\ndef do_twice(n, fn):\nreturn fn(fn(n))\nprint(do_twice(3, lambda x: x**2))\n6.100L Lecture 9Global environment\ndo_twice function object"
+    },
+    {
+        "slide 8": "YOU TRY IT!\n\uf0a7What does this print?\ndef do_twice(n, fn):\nreturn fn(fn(n))\nprint(do_twice(3, lambda x: x**2))\n6.100L Lecture 9Global environment\ndo_twice function objectdo_twice environment\nn 3\nfnlambda x: x**2lambda x: x**2\nenvironment\nx ???"
+    },
+    {
+        "slide 9": "YOU TRY IT!\n\uf0a7What does this print?\ndef do_twice(n, fn):\nreturn fn(fn(n))\nprint(do_twice(3, lambda x: x**2))\n6.100L Lecture 9Global environment\ndo_twice function objectdo_twice environment\nn 3\nfnlambda x: x**2lambda x: x**2\nenvironment\nx ???\nlambda x: x**2\nenvironment\nx 3"
+    },
+    {
+        "slide 10": "YOU TRY IT!\n\uf0a7What does this print?\ndef do_twice(n, fn):\nreturn fn(fn(n))\nprint(do_twice(3, lambda x: x**2))\n6.100L Lecture 9Global environment\ndo_twice function objectdo_twice environment\nn 3\nfnlambda x: x**2lambda x: x**2\nenvironment\nx ???\nlambda x: x**2\nenvironment\nx 3Returns 999"
+    },
+    {
+        "slide 11": "YOU TRY IT!\n\uf0a7What does this print?\ndef do_twice(n, fn):\nreturn fn(fn(n))\nprint(do_twice(3, lambda x: x**2))\n6.100L Lecture 9Global environment\ndo_twice function objectdo_twice environment\nn 3\nfnlambda x: x**2lambda x: x**2\nenvironment\nx 9\nReturns 81981"
+    },
+    {
+        "slide 12": "YOU TRY IT!\n\uf0a7What does this print?\ndef do_twice(n, fn):\nreturn fn(fn(n))\nprint(do_twice(3, lambda x: x**2))\n6.100L Lecture 9Global environment\ndo_twice function object\nPRINTS 81do_twice environment\nn 3\nfnlambda x: x**2\nReturns 8181"
+    },
+    {
+        "slide 13": "TUPLES\n6.100L Lecture 9"
+    },
+    {
+        "slide 14": "A NEW DATA TYPE\n\uf0a7Have seen scalar types: int,float,bool\n\uf0a7Have seen one compound type: string\n\uf0a7Want to introduce more general compound data types\n\uf0a7Indexed sequences of elements, which could themselves be compound \nstructures\n\uf0a7Tuples \u2013immutable \n\uf0a7Lists \u2013mutable \n\uf0a7Next lecture, will explore ideas of\n\uf0a7Mutability\n\uf0a7Aliasing\n\uf0a7Cloning\n6.100L Lecture 9"
+    },
+    {
+        "slide 15": "TUPLES\n\uf0a7Indexable ordered sequence of objects\n\uf0a7Objects can be any type \u2013int, string, tuple, tuple of tuples, \u2026\n\uf0a7Cannot change element values, immutable\nte= ()\nts= (2,)\nt = (2, \" mit\", 3)\nt[0] \uf0e0evaluates to 2\n(2,\"mit\",3) + (5,6) \uf0e0evaluates to a new tuple (2,\"mit\",3,5,6)\nt[1:2] \uf0e0slice tuple, evaluates to (\"mit\",)\nt[1:3] \uf0e0slice tuple, evaluates to (\"mit\",3)\nlen(t) \uf0e0evaluates to 3\nmax((3,5,0)) \uf0e0evaluates 5\nt[1] = 4 \uf0e0gives error, can\u2019t modify object\n6.100L Lecture 9"
+    },
+    {
+        "slide 16": "INDICES AND SLICING\nseq= (2,'a',4,(1,2))\nprint(len(seq)) \uf0e04\nprint(seq[3]) \uf0e0(1,2)\nprint(seq[-1]) \uf0e0(1,2)\nprint(seq[3][0]) \uf0e01\nprint(seq[4]) \uf0e0error\nprint(seq[1]) \uf0e0'a'\nprint(seq[-2:] \uf0e0(4,(1,2))\nprint(seq[1:4:2] \uf0e0('a',(1,2))\nprint(seq[:-1]) \uf0e0(2,'a',4)\nprint(seq[1:3]) \uf0e0('a',4)\nfore inseq: \uf0e02\nprint(e) a\n4\n(1,2)\n6.100L Lecture 9index:    0      1      2        3"
+    },
+    {
+        "slide 17": "TUPLES\n\uf0a7Conveniently used to swap variable values\nx = 1           x = 1           x = 1\ny = 2           y = 2           y = 2\nx = y temp= x (x, y) = (y, x)\ny = x x = y\ny = temp\n6.100L Lecture 9\n"
+    },
+    {
+        "slide 18": "TUPLES\n\uf0a7Used to return more than one value from a function\ndefquotient_and_remainder(x, y):\nq = x // y\nr = x % yreturn(q, r)\nboth= quotient_and_remainder(10,3)\n(quot, rem) = quotient_and_remainder(5,2)\n6.100L Lecture 9\n"
+    },
+    {
+        "slide 19": "BIG  IDEA\nReturning \none object (a tuple) \nallows you to return multiple values\n(tuple elements)\n6.100L Lecture 9"
+    },
+    {
+        "slide 20": "YOU TRY IT!\n\uf0a7Write a function that meets these specs:\n\uf0a7Hint: remember how to check if a character is in a string? \ndef char_counts(s):\n\"\"\" s is a string of lowercase chars \nReturn a tuple where the first element is the number of vowels in s and the second element \nis the number of consonants in s \"\"\"\n6.100L Lecture 9"
+    },
+    {
+        "slide 21": "VARIABLE NUMBER of \nARGUMENTS\n\uf0a7Python has some built- in functions that take variable number \nof arguments, e.g , min\n\uf0a7Python allows a programmer to have same capability, \nusing * notation\ndefmean(*args ):\ntot = 0fora inargs: \ntot += a\nreturntot/len(args ) \n\uf0a7numbers is bound to a tuple of the supplied values\n\uf0a7Example:\n\uf0a7mean(1,2,3,4,5,6)\n6.100L Lecture 9\n"
+    },
+    {
+        "slide 22": "LISTS\n6.100L Lecture 9"
+    },
+    {
+        "slide 23": "LISTS\n\uf0a7Indexable ordered sequence of objects\n\u2022Usually homogeneous (i.e., all integers, all strings, all lists)\n\u2022But can contain mixed types (not common)\n\uf0a7Denoted by square brackets , []\n\uf0a7Mutable , this means you can change values of specific \nelements of list\n6.100L Lecture 9\n"
+    },
+    {
+        "slide 24": "INDICES and ORDERING\na_list= []\nL = [2, 'a', 4, [1,2]]\n[1,2]+[3,4] \uf0e0evaluates to [1,2,3,4] \nlen(L) \uf0e0evaluates to 4\nL[0] \uf0e0evaluates to 2\nL[2]+1 \uf0e0evaluates to 5\nL[3] \uf0e0evaluates to [1,2], another list!\nL[4] \uf0e0gives an error \ni= 2\nL[i-1] \uf0e0evaluates to 'a' since L[1]='a'\nmax([3,5,0]) \uf0e0evaluates 5 \n6.100L Lecture 9"
+    },
+    {
+        "slide 25": "ITERATING OVER a LIST\n6.100L Lecture 9\uf0a7Compute the sum of elements of a list\n\uf0a7Common pattern\n\uf0a7Function call list_sum2([8,3,5])\n\uf0a7Loop variable itakes on values in the list in order! 8 then 3 then 5\n\uf0a7To help you write code and debug, comment on what the loop var \nvalues are so you don\u2019t get confused!deflist_sum1(L):\ntotal = 0 foriinrange(len(L)): \ntotal += L[i ] \nreturn totaldeflist_sum2(L):total = 0 foriinL: \ntotal += i\nreturn total\n# iis 8 then 3 then 5"
+    },
+    {
+        "slide 26": "LISTS SUPPORT ITERATION\n\uf0a7Because lists are ordered sequences of elements, they naturally \ninterface with iterative functions\nAdd the elements of a list Add the length of elements of a list\n6.100L Lecture 9deflist_sum(L):\ntotal = 0 fore inL: \ntotal += e \nreturn(total)\nlist_sum([8,3,5]) \uf0e016deflen_sum(L):total = 0 fors inL: \ntotal += len(s) \nreturn(total)\nlen_sum([ 'ab', 'def', 'g']) \uf0e06\n"
+    },
+    {
+        "slide 27": "YOU TRY IT!\n\uf0a7Write a function that meets these specs:\ndef sum_and_prod (L):\n\"\"\" L is a list of numbers \nReturn a tuple where the first value is the sum of all elements in L and the second value is the product of all elements in L \"\"\"\n6.100L Lecture 9"
+    },
+    {
+        "slide 28": "SUMMARY\n\uf0a7Lambda functions are useful when you need a simple function \nonce, and whose body can be written in one line\n\uf0a7Tuples are indexable sequences of objects\n\uf0a7Can\u2019t change its elements, for ex. can\u2019t add more objects to a tuple\n\uf0a7Syntax is to use ()\n\uf0a7Lists are indexable sequences of objects\n\uf0a7Can change its elements. Will see this next time!\n\uf0a7Syntax is to use []\n\uf0a7Lists and tuples are very similar to strings in terms of \n\uf0a7Indexing, \n\uf0a7Slicing, \n\uf0a7Looping over elements\n6.100L Lecture 9"
+    }
+]

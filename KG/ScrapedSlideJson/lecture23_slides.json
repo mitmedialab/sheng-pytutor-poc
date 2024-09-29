@@ -1,0 +1,206 @@
+[
+    {
+        "slide 0": "COMPLEXITY CLASSES \nEXAMPLES\n(download slides and . pyfiles to follow along)\n6.100L Lecture 23\nAna Bell"
+    },
+    {
+        "slide 1": "THETA\n\uf0a7Theta \u0398is how we denote the asymptotic complexity\n\uf0a7We look at the input term that dominates the function\n\uf0a7Drop other pieces that don\u2019t have the fastest growth\n\uf0a7Drop additive constants\n\uf0a7Drop multiplicative constants\n\uf0a7End up with only a few classes of algorithms\n\uf0a7We will look at code that lands in each of these classes today\n6.100L Lecture 23"
+    },
+    {
+        "slide 2": "WHERE DOES THE FUNCTION \nCOME FROM?\n\uf0a7Given code, start with the input parameters. What are they?\n\uf0a7Come up with the equation relating input to number of ops.\n\uf0a7f = 1 + len(L1)*5 + 1 + len(L2)*5 + 2 = 5*len(L1) + 5*len(L2) + 3\n\uf0a7If lengths are the same, f = 10*len(L) + 3\n\uf0a7\u0398(f)= \u0398 (10*len(L) + 3) = \u0398(len(L))\n6.100L Lecture 23deff(L, L1, L2):\ninL1 = False\nforiinrange(len (L1)):\nifL[i] == L1[i]:\ninL1 = True\ninL2 = False\nforiinrange(len (L2)):\nifL[i] == L2[i]:\ninL2 = True\nreturninL1 andinL2"
+    },
+    {
+        "slide 3": "WHERE DOES THE FUNCTION \nCOME FROM?\n\uf0a7A quicker way: no need to come up with the exact formula. \nLook for loops and anything that repeats wrt the input \nparameters. Everything else is constant.\n6.100L Lecture 23deff(L, L1, L2):\ninL1 = False\nforiinrange(len (L1)):\nifL[i] == L1[i]:\ninL1 = True\ninL2 = False\nforiinrange(len (L2)):\nifL[i] == L2[i]:\ninL2 = True\nreturninL1 andinL2"
+    },
+    {
+        "slide 4": "6.0001 LECTURE 8\nCOMPLEXITY CLASSES\nn is the input\nWe want to design algorithms that are as \nclose to top of this hierarchy as possible\n6.100L Lecture 23\uf0a7\u0398(1) denotes constant running time\n\uf0a7\u0398(log n) denotes logarithmic running time\n\uf0a7\u0398(n) denotes linear running time\n\uf0a7\u0398(n log n) denotes log-linear running time\n\uf0a7\u0398(nc) denotes polynomial running time \n(c is a constant)\n\uf0a7\u0398(cn) denotes exponential running time \n(c is a constant raised to a power based on input size)"
+    },
+    {
+        "slide 5": "CONSTANT COMPLEXITY"
+    },
+    {
+        "slide 6": "CONSTANT COMPLEXITY\n\uf0a7Complexity independent of inputs\n\uf0a7Very few interesting algorithms in this class, but can often have \npieces that fit this class\n\uf0a7Can have loops or recursive calls , but number of iterations or \ncalls independent of size of input\n\uf0a7Some built -in operations to a language are constant\n\uf0a7Python indexing into a list L[i]\n\uf0a7Python list append L.append()\n\uf0a7Python dictionary lookup d[key]\n6.100L Lecture 23"
+    },
+    {
+        "slide 7": "CONSTANT COMPLEXITY: \nEXAMPLE 1\ndefadd(x, y):\nreturn x+y\n\uf0a7Complexity in terms of either x or y: \u0398(1)\n6.100L Lecture 23"
+    },
+    {
+        "slide 8": "6.0001 LECTURE 9CONSTANT COMPLEXITY: EXAMPLE 2\ndefconvert_to_km(m):\nreturnm*1.609\n\uf0a7Complexity in terms of m: \u0398(1) \n6.100L Lecture 23\n"
+    },
+    {
+        "slide 9": "CONSTANT COMPLEXITY: EXAMPLE 3\ndefloop(x):\ny = 100\ntotal = 0foriinrange(y):\ntotal += x\nreturntotal\n\uf0a7Complexity in terms of x (the input parameter): \u0398(1)\n6.100L Lecture 23"
+    },
+    {
+        "slide 10": "LINEAR COMPLEXITY"
+    },
+    {
+        "slide 11": "LINEAR COMPLEXITY\n\uf0a7Simple iterative loop algorithms\n\uf0a7Loops must be a function of input \n\uf0a7Linear search a list to see if an element is present\n\uf0a7Recursive functions with one recursive call and constant \noverhead for call\n\uf0a7Some built -in operations are linear\n\uf0a7e inL\n\uf0a7Subset of list: e.g. L[:len(L)//2 ]\n\uf0a7L1 == L2\n\uf0a7del(L[5])\n6.100L Lecture 23"
+    },
+    {
+        "slide 12": "6.0001 LECTURE 9COMPLEXITY EXAMPLE 0 \n(with a twist)\n\uf0a7Multiply x by y\ndef mul(x, y):\ntot = 0foriinrange(y):\ntot += x\nreturntot\n\uf0a7Complexity in terms of y: \u0398(y)\n\uf0a7Complexity in terms of x: \u0398(1)\n6.100L Lecture 23"
+    },
+    {
+        "slide 13": "BIG  IDEA\nBe careful about what \nthe inputs are.\n6.100L Lecture 23"
+    },
+    {
+        "slide 14": "LINEAR COMPLEXITY: EXAMPLE 1\n\uf0a7Add characters of a string, assumed to be composed of \ndecimal digits\ndefadd_digits(s):\nval= 0\nforcins:\nval+= int(c)\nreturnval\n\uf0a7\u0398(len(s))\n\uf0a7\u0398(n) where n is len (s)\n6.100L Lecture 23"
+    },
+    {
+        "slide 15": "LINEAR COMPLEXITY: EXAMPLE 2\n\uf0a7Loop to find the factorial of a number >=2\ndeffact_iter(n):\nprod = 1\nforiinrange(2, n+1):\nprod *= i\nreturnprod\n\uf0a7Number of times around loop is n- 1\n\uf0a7Number of operations inside loop is a constant\n\uf0a7Independent of n\n\uf0a7Overall just \u0398(n)\n6.100L Lecture 23\n"
+    },
+    {
+        "slide 16": "6.0001 LECTURE 9FUNNY THING ABOUT FACTORIAL \nAND PYTHON\n\uf0a7Eventually grows faster than linear\n\uf0a7Because Python increases the size of integers, which \nyields more costly operations\n\uf0a7For this class: ignore such effects\n6.100L Lecture 23\n"
+    },
+    {
+        "slide 17": "6.0001 LECTURE 10LINEAR COMPLEXITY: EXAMPLE 3\ndeffact_recur (n):\n\"\"\" assume n >= 0 \"\"\"\nifn <= 1: \nreturn 1\nelse: \nreturnn*fact_recur (n \u20131)\n\uf0a7Computes factorial recursively \n\uf0a7If you time it, notice that it runs a bit slower than iterative \nversion due to function calls\n\uf0a7\u0398(n) because the number of function calls is linear in n\n\uf0a7Iterative and recursive factorial implementations are the \nsame order of growth\n6.100L Lecture 23"
+    },
+    {
+        "slide 18": "defcompound(invest, interest, n_months):\ntotal=0foriinrange(n_months):\ntotal = total * interest + invest\nreturntotal\n6.0001 LECTURE 9LINEAR COMPLEXITY : EXAMPLE 4\n\uf0a7\u0398(1)*\u0398(n_months) = \u0398(n_months)\n\u0398(n) where n=n_months\n\uf0a7If I was being thorough, then need to account for assignment \nand return statements:\n\uf0a7\u0398(1) + 4*\u0398(n) + \u0398(1) = \u0398(1 + 4*n + 1) = \u0398(n) where n=n_months\u0398(1)\u0398(n_months )\n6.100L Lecture 23"
+    },
+    {
+        "slide 19": "COMPLEXITY OF \nITERATIVE FIBONACCI\ndeffib_iter (n):\nifn == 0:\nreturn0\nelifn == 1:\nreturn1\nelse:\nfib_i= 0\nfib_ii= 1\nforiinrange(n-1):\ntmp= fib_i\nfib_i= fib_ii\nfib_ii= tmp+ fib_ii\nreturnfib_ii\u0398(1)+\u0398(1)+\u0398(n)*\u0398 (1)+\u0398(1)\n\uf0e8\u0398(n)\n6.100L Lecture 23\n"
+    },
+    {
+        "slide 20": "POLYNOMIAL \nCOMPLEXITY"
+    },
+    {
+        "slide 21": "POLYNOMIAL COMPLEXITY\n(OFTEN QUADRATIC)\n\uf0a7Most common polynomial algorithms are quadratic, i.e., \ncomplexity grows with square of size of input\n\uf0a7Commonly occurs when we have nested loops or recursive \nfunction calls\n6.100L Lecture 23"
+    },
+    {
+        "slide 22": "QUADRATIC COMPLEXITY: \nEXAMPLE 1\ndefg(n):\n\"\"\" assume n >= 0 \"\"\"\nx = 0\nforiinrange(n):\nforj inrange(n):\nx += 1\nreturnx\n\uf0a7Computes n2very inefficiently\n\uf0a7Look at the loops. Are they in terms of the input ?\n\uf0a7Nested loops\n\uf0a7Look at the ranges\n\uf0a7Each iterating n times\n\uf0a7\u0398(n) * \u0398(n) * \u0398(1) = \u0398(n2)\n6.100L Lecture 23\n"
+    },
+    {
+        "slide 23": "6.0001 LECTURE 9QUADRATIC \nCOMPLEXITY: EXAMPLE 2\n\uf0a7Decide if L1 is a subset of L2: are all elements of L1 in L2?\nYes: No:\nL1 = [3, 5, 2] L1 = [3, 5, 2]\nL2 = [2, 3, 5, 9] L2 = [2, 5, 9]\ndef is_subset(L1, L2):\nfore1 inL1:\nmatched = False\nfore2 inL2:\nife1 == e2:\nmatched = True\nbreak\nifnotmatched:\nreturnFalse\nreturnTrue\n6.100L Lecture 23\n"
+    },
+    {
+        "slide 24": "6.0001 LECTURE 9QUADRATIC \nCOMPLEXITY: EXAMPLE 2\ndef is_subset(L1 , L2):\nfore1 inL1:\nmatched = False\nfore2 inL2:\nife1 == e2:\nmatched = True\nbreak\nifnotmatched:\nreturn False\nreturnTrueOuter loop executed \nlen(L1) times\nEach iteration will execute \ninner loop up to len (L2) \ntimes\n\u0398(len(L1)* len(L2))\nIf L1 and L2 same length\nand none of elements of L1 \nin L2\n\u0398(len(L1)2)\n6.100L Lecture 23\n"
+    },
+    {
+        "slide 25": "6.0001 LECTURE 9QUADRATIC COMPLEXITY: EXAMPLE 3\n\uf0a7Find intersection of two lists, return a list with each element \nappearing only once\nExample:\nL1 = [3, 5, 2] L1 = [7, 7, 7]\nL2 = [2, 3, 5, 9] L2 = [7, 7, 7]\nreturns [2,3,5] returns [7]\ndefintersect(L1, L2):\ntmp= []\nfore1 inL1:\nfore2 inL2:\nife1 == e2:\ntmp.append(e1)\nunique = []\nfore intmp:\nifnot(e inunique):\nunique.append (e)\nreturnunique\n6.100L Lecture 23\n"
+    },
+    {
+        "slide 26": "6.0001 LECTURE 9QUADRATIC \nCOMPLEXITY: EXAMPLE 3\ndef intersect(L1, L2):\ntmp= []\nfore1 inL1:\nfore2 inL2:\nife1 == e2:\ntmp.append(e1)\nunique = []fore in tmp:\nifnot(e inunique):\nunique.append(e)\nreturnuniqueFirst nested loop takes \n\u0398(len(L1)* len(L2)) steps.\nSecond loop takes at most \n\u0398(len(L1)* len(L2)) steps. \nTypically not this bad.\n\u2022E.g: [7,7,7] and [7,7,7] makes\ntmp=[7,7,7,7,7,7,7,7,7]\nOverall \u0398(len(L1)* len(L2))\n6.100L Lecture 23\n"
+    },
+    {
+        "slide 27": "defdiameter(L):\nfarthest_dist = 0\nforiinrange(len(L)):\nforj inrange(i+1, len(L)):\np1 = L[i ]\np2 = L[j]\ndist= math.sqrt( (p1[0]- p2[0])**2 + (p1[1]- p2[1])**2 )\nifdist> farthest_dist:\nfarthest_dist = dist\nreturnfarthest_dist\n6.0001 LECTURE 9DIAMETER COMPLEXITY\nlen(L) * len(L)/2 iterations = len(L)2/ 2\n\u0398(len(L)2)\n6.100L Lecture 23"
+    },
+    {
+        "slide 28": "YOU TRY IT!\ndefall_digits( nums):\n\"\"\" numsis a list of numbers \"\"\"\ndigits = [0,1,2,3,4,5,6,7,8,9]\nforiinnums:\nisin= False\nforj indigits:\nifi== j:\nisin= True\nbreak\nifnotisin:\nreturnFalse\nreturnTrue\n6.100L Lecture 23ANSWER:\nWhat \u2019s the input?\nOuter for loop is \u0398( len(nums )).\nInner for loop is \u0398(1).\nOverall: \u0398(len(nums ))"
+    },
+    {
+        "slide 29": "YOU TRY IT!\n\uf0a7Asymptotic complexity of f? And if L1,L2,L3 are same length?\ndeff(L1, L2, L3):\nfore1 inL1:\nfore2 inL2:\nife1 inL3 ande2 inL3 :\nreturnTrue\nreturnFalse\n6.100L Lecture 23ANSWER:\n\u0398(len(L1))* \u0398(len(L2))* \u0398(len(L3)+len(L3))\nOverall: \u0398(len(L1)*len(L2)*len(L3))\nOverall if lists equal length: \u0398(len(L1)** 3)"
+    },
+    {
+        "slide 30": "EXPONENTIAL \nCOMPLEXITY"
+    },
+    {
+        "slide 31": "EXPONENTIAL COMPLEXITY\n\uf0a7Recursive functions \nwhere have more than one recursive call for each size of problem\n\uf0a7Fibonacci\n\uf0a7Many important problems are inherently exponential\n\uf0a7Unfortunate, as cost can \nbe high\n\uf0a7Will lead us to consider approximate solutions \nmore quickly\n6.100L Lecture 23\n230~= 1 million\n2100> # cycles than all the computers \nin the world working for all of recorded history\ncould complete\n"
+    },
+    {
+        "slide 32": "COMPLEXITY OF \nRECURSIVE FIBONACCI\ndeffib_recur(n):\n\"\"\" assumes n an int >= 0 \"\"\"\nifn == 0:\nreturn0\nelifn == 1:\nreturn1\nelse:\nreturnfib_recur(n- 1) + fib_recur(n- 2)\n\uf0a7Worst case:\n\u0398(2n)\n6.100L Lecture 23\n"
+    },
+    {
+        "slide 33": "COMPLEXITY OF RECURSIVE \nFIBONACCI\n\uf0a7Can do a bit better than 2nsince tree thins out to the \nright\n\uf0a7But complexity is still order exponential \n6.100L Lecture 23Fib(6)\nFib(5) Fib(4)\nFib(4) Fib(3) Fib(2)\nFib(3) Fib(2)Fib(3)\nFib(2) Fib(1)Fib(2)Fib(1)Fib(2)Fib(1)"
+    },
+    {
+        "slide 34": "EXPONENTIAL COMPLEXITY: GENERATE SUBSETS\ndefgen_subsets(L):\niflen(L) == 0 :\nreturn[[]]\nextra = L[- 1:]\nsmaller = gen_subsets(L[:- 1]) \nnew = []\nforsmall insmaller:\nnew.append( small+extra) \nreturnsmaller+new\n6.100L Lecture 23\uf0a7Input is [1, 2, 3]\n\uf0a7Output is all combinations of elements of all lengths\n[[],[1],[2],[3],[1,2],[1,3],[2,3],[1,2,3]]"
+    },
+    {
+        "slide 35": "VISUALIZING the ALGORITHM\n6.100L Lecture 23[1,2,3]\n[1,2]\n[1]\n[]defgen_subsets(L):\niflen(L) == 0:\nreturn[[]]\nextra = L[-1:]smaller = gen_subsets(L[: -1]) \nnew = []forsmall insmaller:\nnew.append(small+extra) \nreturnsmaller+new"
+    },
+    {
+        "slide 36": "VISUALIZING the ALGORITHM\n6.100L Lecture 23[1,2,3]\n[1,2]\n[1]\n[][[]]defgen_subsets(L):\niflen(L) == 0:\nreturn[[]]\nextra = L[-1:]smaller = gen_subsets(L[: -1]) \nnew = []forsmall insmaller:\nnew.append(small+extra) \nreturnsmaller+new"
+    },
+    {
+        "slide 37": "VISUALIZING the ALGORITHM\n6.100L Lecture 23[1,2,3]\n[1,2]\n[1]\n[][[]][[],[1]]\ndefgen_subsets(L):\niflen(L) == 0:\nreturn[[]]\nextra = L[-1:]smaller = gen_subsets(L[: -1]) \nnew = []forsmall insmaller:\nnew.append(small+extra) \nreturnsmaller+new"
+    },
+    {
+        "slide 38": "VISUALIZING the ALGORITHM\n6.100L Lecture 23[1,2,3]\n[1,2]\n[1]\n[][[]][[],[1]][[],[1],[2],[1,2]]\ndefgen_subsets(L):\niflen(L) == 0:\nreturn[[]]\nextra = L[-1:]smaller = gen_subsets(L[: -1]) \nnew = []forsmall insmaller:\nnew.append(small+extra) \nreturnsmaller+new"
+    },
+    {
+        "slide 39": "VISUALIZING the ALGORITHM\n6.100L Lecture 23[1,2,3]\n[1,2]\n[1]\n[][[]][[],[1]][[],[1],[2],[1,2]][[],[1],[ 2],[1,2],[3],[1,3],[2,3],[1,2,3 ]]\ndefgen_subsets(L):\niflen(L) == 0:\nreturn[[]]\nextra = L[-1:]smaller = gen_subsets(L[: -1]) \nnew = []forsmall insmaller:\nnew.append(small+extra) \nreturnsmaller+new"
+    },
+    {
+        "slide 40": "VISUALIZING the ALGORITHM\n6.100L Lecture 23[1,2,3]\n[1,2]\n[1]\n[][[]][[],[1]][[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]\ndefgen_subsets(L):\niflen(L) == 0:\nreturn[[]]\nextra = L[-1:]smaller = gen_subsets(L[: -1]) \nnew = []forsmall insmaller:\nnew.append(small+extra) \nreturnsmaller+new"
+    },
+    {
+        "slide 41": "EXPONENTIAL COMPLEXITY\nGENERATE SUBSETS\n6.100L Lecture 23defgen_subsets(L):\niflen(L) == 0:\nreturn[[]] \nextra = L[-1:]smaller = gen_subsets(L[: -1])\nnew = []\nforsmall insmaller:\nnew.append( small+extra)\nreturnsmaller+new\uf0a7Assuming append is \nconstant time\n\uf0a7Time to make sublists\nincludes time to solve \nsmaller problem, and time needed to make a \ncopy of all elements in \nsmaller problem"
+    },
+    {
+        "slide 42": "EXPONENTIAL COMPLEXITY\nGENERATE SUBSETS\n6.100L Lecture 23\uf0a7Think about size of smaller\n\uf0a7For a set of size k there are 2k\ncases, doubling the size every \ncall\n\uf0a7So to solve need 2n-1+ 2n-2+ \u2026 \n+20steps = \u0398(2n) \n\uf0a7Time to make a copy of \nsmaller\n\uf0a7Concatenation isn\u2019t constant \n\uf0a7\u0398(n) \n\uf0a7Overall complexity is\u0398(n*2\nn) where n= len(L)defgen_subsets(L):\niflen(L) == 0:\nreturn[[]] \nextra = L[-1:]smaller = gen_subsets(L[: -1])\nnew = []\nforsmall insmaller:\nnew.append( small+extra)\nreturnsmaller+new\n"
+    },
+    {
+        "slide 43": "LOGARITHMIC \nCOMPLEXITY"
+    },
+    {
+        "slide 44": "defdigit_add (n):\n\"\"\" assume n an int >= 0 \"\"\"\nanswer = 0\ns = str(n)\nforc ins[::-1]:\nanswer += int(c)\nreturnanswerTRICKY COMPLEXITY\n\uf0a7Adds digits of a number together\n\uf0a7n = 83, but the loop only iterates 2 times. Relationship?\n\uf0a7n = 4271, but the loop only iterates 4 times! Relationship??\n6.100L Lecture 234271 1"
+    },
+    {
+        "slide 45": "defdigit_add (n):\n\"\"\" assume n an int >= 0 \"\"\"\nanswer = 0\ns = str(n)\nforc ins[::-1]:\nanswer += int(c)\nreturnanswerTRICKY COMPLEXITY\n\uf0a7Adds digits of a number together\n\uf0a7n = 83, but the loop only iterates 2 times. Relationship?\n\uf0a7n = 4271, but the loop only iterates 4 times! Relationship??\n6.100L Lecture 23427 1 7"
+    },
+    {
+        "slide 46": "defdigit_add (n):\n\"\"\" assume n an int >= 0 \"\"\"\nanswer = 0s = str(n)\nforc ins[::-1]:\nanswer += int(c)\nreturnanswerTRICKY COMPLEXITY\n\uf0a7Adds digits of a number together\n\uf0a7n = 83, but the loop only iterates 2 times. Relationship?\n\uf0a7n = 4271, but the loop only iterates 4 times! Relationship??\n6.100L Lecture 2342 1 7 2"
+    },
+    {
+        "slide 47": "defdigit_add (n):\n\"\"\" assume n an int >= 0 \"\"\"\nanswer = 0s = str(n)\nforc ins[::-1]:\nanswer += int(c)\nreturnanswerTRICKY COMPLEXITY\n\uf0a7Adds digits of a number together\n\uf0a7n = 83, but the loop only iterates 2 times. Relationship?\n\uf0a7n = 4271, but the loop only iterates 4 times! Relationship??\n6.100L Lecture 234 1 7 2 4"
+    },
+    {
+        "slide 48": "defdigit_add (n):\n\"\"\" assume n an int >= 0 \"\"\"\nanswer = 0s = str(n)\nforc ins[::-1]:\nanswer += int(c)\nreturnanswerTRICKY COMPLEXITY\n\uf0a7Adds digits of a number together\n\uf0a7Tricky part: iterate over length of string , not magnitude of n\n\u2022Think of it like dividing n by 10 each iteration\n\u2022n/10len(s) = 1 (i.e. divide by 10 until there is 1 element left to add)\n\u2022len(s) = log(n)\n\uf0a7\u0398(log n) \u2013base doesn\u2019t matter\n6.100L Lecture 23"
+    },
+    {
+        "slide 49": "LOGARITHMIC COMPLEXITY\n\uf0a7Complexity grows as log of size of one of its inputs\n\uf0a7Example algorithm: binary search of a list\n\uf0a7Example we \u2019ll see in a few slides: one bisection search \nimplementation\n6.100L Lecture 23\n"
+    },
+    {
+        "slide 50": "LIST AND DICTIONARIES\n\uf0a7Must be careful when using built- in functions!\n6.100L Lecture 23Dictionaries \u2013n is len (d)\n\u2022index \u0398(1)\n\u2022store \u0398(1)\n\u2022length \u0398(1)\n\u2022delete \u0398(1)\n\u2022.keys \u0398(n)\n\u2022.values \u0398(n)\n\u2022iteration      \u0398 (n) Lists \u2013n is len(L)\n\u2022index \u0398(1)\n\u2022store \u0398(1)\n\u2022length \u0398(1)\n\u2022append \u0398(1)\n\u2022== \u0398(n)\n\u2022remove \u0398(n)\n\u2022copy \u0398(n)\n\u2022reverse \u0398(n)\n\u2022iteration \u0398(n)\n\u2022in list \u0398(n)"
+    },
+    {
+        "slide 51": "SEARCHING \nALGORITHMS"
+    },
+    {
+        "slide 52": "SEARCHING ALGORITHMS\n\uf0a7Linear search\n\u2022Brute force search\n\u2022List does not have to be sorted\n\u2022Binary search\n\u2022List MUST be sorted to give correct answer\n\u2022Will see two different implementations of the algorithm\n6.100L Lecture 23\n"
+    },
+    {
+        "slide 53": "LINEAR SEARCH \nON UNSORTED LIST\ndeflinear_search (L, e):\nfound = False\nforiinrange(len(L)):\nife == L[i ]:\nfound = True\nreturnfound\n\uf0a7Must look through all elements to decide it\u2019s not there\n\uf0a7\u0398(len(L)) for the loop * \u0398 (1)to test if e == L[ i]\n\uf0a7Overall complexity is \u0398(n) where n is len (L) \n\uf0a7\u0398(len(L))\n6.100L Lecture 23"
+    },
+    {
+        "slide 54": "LINEAR SEARCH \nON UNSORTED LIST\ndeflinear_search (L, e):\nforiinrange(len(L)):\nife == L[i ]:\nreturnTrue\nreturnFalse\n\uf0a7Must look through all elements to decide it \u2019s not there\n\uf0a7\u0398(len(L)) for the loop * \u0398 (1)to test if e == L[ i]\n\uf0a7Overall complexity is \u0398(n) where n is len (L) \n\uf0a7\u0398(len(L))\n6.100L Lecture 23\n"
+    },
+    {
+        "slide 55": "LINEAR SEARCH \nON SORTED LIST\ndefsearch(L, e):\nforiinL:\nifi== e:\nreturnTrue\nifi> e:\nreturnFalse\nreturnFalse\n\uf0a7Must only look until reach a number greater than e\n\uf0a7\u0398(len(L)) for the loop * \u0398 (1)to test if i == e or i > e\n\uf0a7Overall complexity is \u0398(len(L)) \n\u0398(n) where n is len (L)\n6.100L Lecture 23\n"
+    },
+    {
+        "slide 56": "BISECTION SEARCH FOR AN \nELEMENT IN A SORTED LIST\n1) Pick an index, i, that divides list in half\n2) Ask if L[i] == e\n3) If not, ask if L[i] is larger or smaller than e\n4) Depending on answer, search left or right half of Lfor e\n\uf0a7A new version of divide -and- conquer: recursion!\n\uf0a7Break into smaller versions of problem (smaller list), plus \nsimple operations\n\uf0a7Answer to smaller version is answer to original version\n6.100L Lecture 23"
+    },
+    {
+        "slide 57": "BISECTION SEARCH COMPLEXITY \nANALYSIS\n\uf0a7Finish looking \nthrough list when \n1 = n/2i\n\uf0a7So\u2026 relationship between original length of list and how many times we divide the list:i= log n\n\uf0a7Complexity is \u0398(log n) where n \nis len(L)\u2026\n\u2026\n6.100L Lecture 23"
+    },
+    {
+        "slide 58": "BIG  IDEA\nTwo different \nimplementations have two different \u0398 values.\n6.100L Lecture 23"
+    },
+    {
+        "slide 59": "BISECTION SEARCH \nIMPLEMENTATION 1\ndefbisect_search 1(L, e):\nifL == []:\nreturnFalse\neliflen(L) == 1:\nreturnL[0] == e\nelse:\nhalf = len (L)//2\nifL[half] > e:\nreturnbisect_search 1( L[:half], e)\nelse:\nreturnbisect_search 1( L[half:], e)\n6.100L Lecture 23"
+    },
+    {
+        "slide 60": "COMPLEXITY OF bisect_search1\n(where n is len(L))\n\uf0a7\u0398(log n) bisection search calls\n\uf0a7Each recursive call cuts range to search in half\n\uf0a7Worst case to reach range of size 1 from n is  when \nn/2k= 1 or when k = log n\n\uf0a7We do this to get an expression relating k to n\n\uf0a7\u0398(n) for each bisection search call to copy list \n\uf0a7Cost to set up recursive call at each level of recursion\n\uf0a7\u0398(log n) * \u0398(n) = \u0398(n log n) where n = len(L)\n^ this is the answer in this class\n\uf0a7If careful, notice list is also halved on each recursive call\n\uf0a7Infinite series (don \u2019t worry about this in this class)\n\uf0a7\u0398(n) is a tighter bound because copying list dominates log n\n6.100L Lecture 23"
+    },
+    {
+        "slide 61": "BISECTION SEARCH ALTERNATE \nIMPLEMENTATION\n6.100L Lecture 23\uf0a7Reduce size of \nproblem by factor \nof 2 each step \n\uf0a7Keep track of low \nand high indices to search list\n\uf0a7Avoid copying list\n\uf0a7Complexity of \nrecursion is \u0398(log n) where n \nis len(L)\u2026\n\u2026"
+    },
+    {
+        "slide 62": "defbisect_search2 (L, e):\ndefbisect_search_helper(L, e, low, high):\nifhigh == low:\nreturnL[low] == e\nmid = (low + high)//2\nifL[mid] == e:\nreturnTrue\nelifL[mid] > e:\niflow == mid: #nothing left to search\nreturnFalse\nelse:\nreturnbisect_search_helper (L, e, low, mid - 1)\nelse:returnbisect_search_helper(L, e, mid + 1 , high)\niflen(L) == 0 :\nreturnFalse\nelse:\nreturnbisect_search_helper(L, e, 0 , len(L) -1)BISECTION SEARCH \nIMPLEMENTATION 2\n6.100L Lecture 23"
+    },
+    {
+        "slide 63": "COMPLEXITY OF bisect_search2 \nand helper (where n is len(L))\n\uf0a7\u0398(log n) bisection search calls\n\uf0a7Each recursive call cuts range to search in half\n\uf0a7Worst case to reach range of size 1 from n is  when \nn/2k= 1 or when k = log n\n\uf0a7We do this to get an expression relating k to n\n\uf0a7Pass list and indices as parameters\n\uf0a7List never copied, just re -passed\n\uf0a7\u0398(1) on each recursive call\n\uf0a7\u0398 (log n) * \u0398(1) = \u0398(log n) where n is len (L)\n6.100L Lecture 23"
+    },
+    {
+        "slide 64": "WHEN TO SORT FIRST \nAND THEN SEARCH?\n6.100L Lecture 23"
+    },
+    {
+        "slide 65": "SEARCHING A SORTED LIST\n--n is len(L)\n\uf0a7Using linear search , search for an element is \u0398(n)\n\uf0a7Using binary search , can search for an element in \u0398(log n)\n\u2022Assumes the list is sorted !\n\uf0a7When does it make sense to sort first then search?\n\u2022SORT  +  \u0398(log n)  <  \u0398(n)\nimplies that SORT < \u0398(n) \u2013\u0398(log n)\n\u2022When is sorting is less than \u0398(n)??!!?\n\uf0e0Never true because you\u2019d at least have to look at each element!\n6.100L Lecture 23\n"
+    },
+    {
+        "slide 66": "AMORTIZED COST\n--n is len(L)\n\uf0a7Why bother sorting first?\n\uf0a7Sort a list once then do many searches\n\uf0a7AMORTIZE cost of the sort over many searches\n\uf0a7SORT + K *\u0398(log n)  <  K * \u0398(n) \nimplies that for large K, SORT time becomes irrelevant\n6.100L Lecture 23\n"
+    },
+    {
+        "slide 67": "6.0001 LECTURE 9COMPLEXITY CLASSES SUMMARY\n\uf0a7Compare efficiency of algorithms\n\uf0a7Lower order of growth\n\uf0a7Using \u0398for an upper and lower (\u201ctight\u201d) bound\n\uf0a7Given a function f:\n\uf0a7Only look at items in terms of the input\n\uf0a7Look at loops\n\uf0a7Are they in terms of the input to f?\n\uf0a7Are there nested loops?\n\uf0a7Look at recursive calls\n\uf0a7How deep does the function call stack go?\n\uf0a7Look at built -in functions\n\uf0a7Any of them depend on the input?\n9/28/20 6.100L Lecture 23"
+    }
+]

@@ -1,0 +1,155 @@
+[
+    {
+        "slide 0": "LIST COMPREHENSION, \nFUNCTIONS AS OBJECTS, \nTESTING, DEBUGGING\n(download slides and . pyfiles to follow along)\n6.100L Lecture 12\nAna Bell"
+    },
+    {
+        "slide 1": "LIST COMPREHENSIONS\n6.100L Lecture 12"
+    },
+    {
+        "slide 2": "LIST COMPREHENSIONS\n\uf0a7Applying a function to every element of a sequence, then \ncreating a new list with these values is a common concept\n\uf0a7Example: \ndeff(L):\nLnew= []\nfore inL:\nLnew.append(e**2)\nreturnLnew\n\uf0a7Python provides a concise one -liner way to do this, called a list \ncomprehension\n\uf0a7Creates a new list \n\uf0a7Applies a function to every element of another iterable\n\uf0a7Optional, only apply to elements that satisfy a test\n[expression for eleminiterable iftest]\n6.100L Lecture 12"
+    },
+    {
+        "slide 3": "LIST COMPREHENSIONS\n\uf0a7Create a new list, by applying a function to every element of \nanother iterable that satisfies a test\n6.100L Lecture 12deff(L):\nLnew= []\nfore inL:\nLnew.append(e**2)\nreturnLnewLnew= [e**2 fore inL]"
+    },
+    {
+        "slide 4": "LIST COMPREHENSIONS\n\uf0a7Create a new list, by applying a function to every element of \nanother iterable that satisfies a test\n6.100L Lecture 12deff(L):\nLnew= []\nfore inL:\nLnew.append(e**2)\nreturnLnew\ndeff(L):\nLnew= []\nfore in L:\nife%2==0:\nLnew.append(e**2)\nreturnLnewLnew= [e**2 fore inL]"
+    },
+    {
+        "slide 5": "LIST COMPREHENSIONS\n\uf0a7Create a new list, by applying a function to every element of \nanother iterable that satisfies a test\n6.100L Lecture 12deff(L):\nLnew= []\nfore inL:\nLnew.append(e**2)\nreturnLnew\ndeff(L):\nLnew= []\nfore in L:\nife%2==0:\nLnew.append(e**2)\nreturnLnewLnew= [e**2 fore inL ife%2==0]Lnew= [e**2 fore inL]"
+    },
+    {
+        "slide 6": "LIST COMPREHENSIONS\n\uf0a7Create a new list, by applying a function to every element of \nanother iterable that satisfies a test\n6.100L Lecture 12deff(L):\nLnew= []\nfore inL:\nLnew.append(e**2)\nreturnLnew\ndeff(L):\nLnew= []\nfore in L:\nife%2==0:\nLnew.append(e**2)\nreturnLnewLnew= [e**2 fore inL ife%2==0]Lnew= [e**2 fore inL]"
+    },
+    {
+        "slide 7": "LIST COMPREHENSIONS\n\uf0a7Create a new list, by applying a function to every element of \nanother iterable that satisfies a test\n6.100L Lecture 12deff(L):\nLnew= []\nfore inL:\nLnew.append(e**2)\nreturnLnew\ndeff(L):\nLnew= []\nfore in L:\nife%2==0:\nLnew.append(e**2)\nreturnLnewLnew= [e**2 fore inL ife%2==0]Lnew= [e**2 fore inL]"
+    },
+    {
+        "slide 8": "LIST COMPREHENSIONS \nGENERALIZED\n[expression for eleminiterable iftest]\n\uf0a7This is equivalent to invoking this function (where expression is \na function that computes that expression)\ndeff(expr, old_list, test = lambdax: True):\nnew_list = []\nfore inold_list :\niftest(e):\nnew_list.append(expr(e))\nreturnnew_list\n6.100L Lecture 12"
+    },
+    {
+        "slide 9": "PRACTICALLY SPEAKING....\n\uf0a7Step1: what are all values in the sequence\n\uf0a7Step2: which subset of values does the condition filter out?\n\uf0a7Step3: apply the function to those values\n6.100L Lecture 12[e**2 fore inrange(6)] \uf0e0[0, 1, 4, 9, 16, 25]\n[e**2 fore inrange(8) ife%2 == 0] \uf0e0[0, 4, 16, 36]\n[[e,e**2] fore inrange(4) ife%2 != 0] \uf0e0[[1,1], [3,9]]"
+    },
+    {
+        "slide 10": "YOU TRY IT!\n\uf0a7What is the value returned by this expression?\n\uf0a7Step1: what are all values in the sequence\n\uf0a7Step2: which subset of values does the condition filter out?\n\uf0a7Step3: apply the function to those values\n[len(x) forx in['xy', 'abcd', 7, '4.0'] iftype(x) == str] \n6.100L Lecture 12"
+    },
+    {
+        "slide 11": "FUNCTIONS: DEFAULT \nPARAMETERS\n6.100L Lecture 12"
+    },
+    {
+        "slide 12": "SQUARE ROOT with BISECTION\ndefbisection_root(x):\nepsilon = 0.01\nlow = 0\nhigh = xguess = (high + low)/2.0\nwhileabs(guess**2 -x) >= epsilon:\nifguess**2 < x: \nlow = guess\nelse: \nhigh = guess\nguess = (high + low)/2.0\nreturnguess\nprint(bisection_root(123))\n6.100L Lecture 12\n"
+    },
+    {
+        "slide 13": "ANOTHER PARAMETER\n\uf0a7Motivation: want a more accurate answer\ndefbisection_root(x)can be improved\n\uf0a7Options? \n\uf0a7Change epsilon inside function (all function calls are affected)\n\uf0a7Use an epsilon outside function (global variables are bad)\n\uf0a7Add epsilon as an argument to the function\n6.100L Lecture 12\n"
+    },
+    {
+        "slide 14": "epsilon as a PARAMETER\ndefbisection_root(x, epsilon):\nlow = 0\nhigh = x\nguess = (high + low)/2.0\nwhileabs(guess**2 -x) >= epsilon:\nifguess**2 < x: \nlow = guess\nelse: \nhigh = guess\nguess = (high + low)/2.0\nreturnguess\nprint(bisection_root(123, 0.01))\n6.100L Lecture 12\n"
+    },
+    {
+        "slide 15": "KEYWORD PARAMETERS & \nDEFAULT VALUES\ndefbisection_root(x, epsilon)can be improved\n\uf0a7We added epsilon as an argument to the function\n\uf0a7Most of the time we want some standard value , 0.01\n\uf0a7Sometimes , we may want to use some other value\n\uf0a7Use a keyword parameter aka a default parameter\n6.100L Lecture 12\n"
+    },
+    {
+        "slide 16": "Epsilon as a KEYWORD \nPARAMETER\ndefbisection_root(x, epsilon=0.01):\nlow = 0\nhigh = x\nguess = (high + low)/2.0\nwhileabs(guess**2 -x) >= epsilon:\nifguess**2 < x: \nlow = guess\nelse: \nhigh = guess\nguess = (high + low)/2.0\nreturnguess\nprint(bisection_root(123))\nprint(bisection_root(123, 0.5))\n6.100L Lecture 12\n"
+    },
+    {
+        "slide 17": "RULES for KEYWORD PARAMETERS\n\uf0a7In the function definition:\n\uf0a7Default parameters must go at the end\n\uf0a7These are ok for calling a function :\n\uf0a7bisection_root_new(123)\n\uf0a7bisection_root_new(123, 0.001)\n\uf0a7bisection_root_new(123, epsilon=0.001)\n\uf0a7bisection_root_new(x=123, epsilon=0.1)\n\uf0a7bisection_root_new(epsilon=0.1, x=123)\n\uf0a7These are not ok for calling a function:\n\uf0a7bisection_root_new(epsilon=0.001, 123) #error\n\uf0a7bisection_root_new(0.001, 123) #no error but wrong\n6.100L Lecture 12\n"
+    },
+    {
+        "slide 18": "FUNCTIONS RETURNING \nFUNCTIONS\n6.100L Lecture 12"
+    },
+    {
+        "slide 19": "OBJECTS IN A PROGRAM\n6.100L Lecture 12defis_even( i):\nreturn i%2 == 0\nr = 2\npi = 22/7\nmy_func = is_even\na = is_even(3)b = my_func(4)pifunction \nobject \nnamed \nis_even\nint object 2\nfloat object \n3.14285714is_even\nrmy_func\na False\nb True"
+    },
+    {
+        "slide 20": "FUNCTIONS CAN RETURN \nFUNCTIONS\ndefmake_prod(a):\ndefg(b):\nreturna*b\nreturng\n6.100L Lecture 12val= make_prod(2)(3)\nprint(val)doubler = make_prod(2)\nval= doubler(3)\nprint(val)\n"
+    },
+    {
+        "slide 21": "SCOPE DETAILS FOR WAY 1\n6.100L Lecture 12defmake_prod(a):\ndefg(b):returna*b\nreturng\nval= make_prod(2)(3)\nprint(val )"
+    },
+    {
+        "slide 22": "SCOPE DETAILS FOR WAY 1\n6.100L Lecture 12Global scope\nmake_prodSome \ncodedefmake_prod(a):\ndefg(b):\nreturn a*b\nreturn g\nval= make_prod(2)(3)\nprint(val)"
+    },
+    {
+        "slide 23": "SCOPE DETAILS FOR WAY 1\nmake_prod\nscope\na\nSome \ncode2\n6.100L Lecture 12Global scopemake_prod\nSome \ncodedefmake_prod(a):\ndefg(b):\nreturn a*b\nreturn g\nval= make_prod(2)(3)\nprint(val)gNOTE: definition \nof g is done within scope of \nmake_prod, so \nbinding of g is within that frame/scope\nSince g is bound in this frame, cannot access it by evaluation in  global frame\ng can only be accessed within call to \nmake_prod, and \neach call will create a new, internal g"
+    },
+    {
+        "slide 24": "SCOPE DETAILS FOR WAY 1\nmake_prod\nscope\na\nSome \ncode2\n6.100L Lecture 12Global scopemake_prod\nSome \ncodedefmake_prod(a):\ndefg(b):\nreturn a*b\nreturn g\nval= make_prod(2)(3)\nprint(val)\nReturns pointer \nto  g codegg\u2019s \ncode!\nEvaluating make_prod(2) has \nreturned an anonymous procedure"
+    },
+    {
+        "slide 25": "SCOPE DETAILS FOR WAY 1\nmake_prod\nscope\na\ngSome \ncode2\n6.100L Lecture 12Global scope\nmake_prodSome \ncodedefmake_prod(a):\ndefg(b):\nreturn a*b\nreturn g\nval= make_prod(2)(3)\nprint(val)g scope\nb\n3\ng\u2019s \ncode!"
+    },
+    {
+        "slide 26": "SCOPE DETAILS FOR WAY 1\nmake_prod\nscope\na\ngSome \ncode2\n6.100L Lecture 12Global scope\nmake_prodSome \ncodedefmake_prod(a):\ndefg(b):\nreturn a*b\nreturn g\nval= make_prod(2)(3)\nprint(val)g scope\nb\n3\n6\n6 valg\u2019s \ncode!\nHow does g get value for a?\nInterpreter can move up hierarchy of frames to see both b and a valuesInternal procedure only accessible within scope from parent procedure\u2019s call"
+    },
+    {
+        "slide 27": "SCOPE DETAILS FOR WAY 2\n6.100L Lecture 12defmake_prod(a):\ndefg(b):returna*b\nreturng\ndoubler = make_prod (2)\nval= doubler(3)\nprint(val )"
+    },
+    {
+        "slide 28": "make_prod\nscope\na\nSome \ncode2\n6.100L Lecture 12Global scopemake_prod\nSome \ncodedefmake_prod(a):\ndefg(b):\nreturn a*b\nreturn g\ndoubler = make_prod(2)\nval= doubler(3)\nprint(val)g\u2019s \ncode!g doublerSCOPE DETAILS FOR WAY 2"
+    },
+    {
+        "slide 29": "make_prod\nscope\na\nSome \ncode2\n6.100L Lecture 12Global scopemake_prod\nSome \ncodedefmake_prod(a):\ndefg(b):\nreturn a*b\nreturn g\ndoubler = make_prod(2)\nval= doubler(3)\nprint(val)g\u2019s \ncode!g doublerSCOPE DETAILS FOR WAY 2"
+    },
+    {
+        "slide 30": "SCOPE DETAILS FOR WAY 2\nmake_prod\nscope\na\ngSome \ncode2\n6.100L Lecture 12Global scope\nmake_prod\ndoublervalSome \ncodedefmake_prod(a):\ndefg(b):\nreturn a*b\nreturn g\ndoubler = make_prod(2)\nval= doubler(3)\nprint(val)g\u2019s \ncode!doubler scope\nb 3\n6\nReturns value6"
+    },
+    {
+        "slide 31": "WHY BOTHER RETURNING \nFUNCTIONS?\n\uf0a7Code can be rewritten without returning function objects\n\uf0a7Good software design\n\uf0a7Embracing ideas of decomposition , abstraction\n\uf0a7Another tool to structure code\n\uf0a7Interrupting execution\n\uf0a7Example of control flow\n\uf0a7A way to achieve partial execution and use result somewhere else \nbefore finishing the full evaluation\n6.100L Lecture 12"
+    },
+    {
+        "slide 32": "TESTING and \nDEBUGGING\n6.100L Lecture 12"
+    },
+    {
+        "slide 33": "PROGRAMMING SO FAR\u2026\u2026\nWhat you want the program to do What the program actually doesEXPECTATION REALITY\n6.100L Lecture 12"
+    },
+    {
+        "slide 34": "DEFENSIVE PROGRAMMING\n\u2022Write specifications for functions\n\u2022Modularize programs\n\u2022Check conditions on inputs/outputs\nTESTING/VALIDATION\n\u2022Compare input/output \npairs to specification\n\u2022\u201cIt\u2019s not working!\u201d\n\u2022\u201cHow can I break my \nprogram?\u201dDEBUGGING\n\u2022Study events leading up \nto an error\n\u2022\u201cWhy is it not working?\u201d\n\u2022\u201cHow can I fix my program?\u201d\n6.100L Lecture 12\n"
+    },
+    {
+        "slide 35": "SET YOURSELF UP FOR EASY \nTESTING AND DEBUGGING\n\uf0a7From the start , design code to ease this part\n\uf0a7Break program up into modules that can be tested and \ndebugged individually\n\uf0a7Write a little code at a time to prevent many bugs from being \nintroduced\n\uf0a7Document constraints on modules\n\u2022What do you expect the input to be?\n\u2022What do you expect the output to be?\n\uf0a7Document assumptions behind code design\n6.100L Lecture 12\n"
+    },
+    {
+        "slide 36": "WHEN ARE YOU READY TO TEST?\n\uf0a7Ensure code runs\n\u2022Remove syntax errors\n\u2022Remove static semantic errors\n\u2022Python interpreter can usually find these for you\n\uf0a7Have a set of expected results\n\u2022An input set\n\u2022For each input, the expected output\n6.100L Lecture 12\n"
+    },
+    {
+        "slide 37": "CLASSES OF TESTS\n\uf0a7Unit testing\n\u2022Validate each piece of program\n\u2022Testing each function separately\n\uf0a7Regression testing\n\u2022Add test for bugs as you find them\n\u2022Catch reintroduced errors that were previously \nfixed\n\uf0a7Integration testing\n\u2022Does overall program work?\n\u2022Tend to rush to do this\n6.100L Lecture 12\n"
+    },
+    {
+        "slide 38": "TESTING APPROACHES\n\uf0a7Intuition about natural boundaries to the problem\ndefis_bigger(x, y):\n\"\"\" Assumes x and y are ints\nReturns True if y is less than x, else False \"\"\"\n\u2022can you come up with some natural partitions?\n\uf0a7If no natural partitions, might do random testing\n\u2022Probability that code is correct increases with more tests\n\u2022Better options below\n\uf0a7Black box testing\n\u2022Explore paths through specification\n\uf0a7Glass box testing\n\u2022Explore paths through code\n6.100L Lecture 12\n"
+    },
+    {
+        "slide 39": "defsqrt(x, eps):\n\"\"\" Assumes x, eps floats, x >= 0, eps > 0\nReturns res such that x- eps <= res*res <= x+eps\"\"\"\n\uf0a7Designed without looking at the code\n\uf0a7Can be done by someone other than the implementer to \navoid some implementer biases\n\uf0a7Testing can be reused if implementation changes\n\uf0a7Paths through specification \n\u2022Build test cases in different natural space partitions\n\u2022Also consider boundary conditions (empty lists, singleton list, large \nnumbers, small numbers)BLACK BOX TESTING\n6.100L Lecture 12"
+    },
+    {
+        "slide 40": "defsqrt(x, eps):\n\"\"\" Assumes x, eps floats, x >= 0, eps > 0\nReturns res such that x- eps <= res*res <= x+eps\"\"\"BLACK BOX TESTING\nCASE x eps\nboundary 0 0.0001\nperfect square 25 0.0001\nless than 1 0.05 0.0001\nirrational square root 2 0.0001\nextremes 2 1.0/2.0**64.0\nextremes 1.0/2.0**64.0 1.0/2.0**64.0\nextremes 2.0**64.0     1.0/2.0**64.0\nextremes 1.0/2.0**64.0 2.0**64.0\nextremes 2.0**64.0     2.0**64.0\n6.100L Lecture 12"
+    },
+    {
+        "slide 41": "GLASS BOX TESTING\n\uf0a7Use code directly to guide design of test cases \n\uf0a7Called path- complete if every potential path through \ncode is tested at least once\n\uf0a7What are some drawbacks of this type of testing?\n\u2022Can go through loops arbitrarily many times\n\u2022Missing paths\n\uf0a7Guidelines \n\u2022Branches\n\u2022For loops\n\u2022While loops\n6.100L Lecture 12"
+    },
+    {
+        "slide 42": "GLASS BOX TESTING\ndefabs(x):\n\"\"\" Assumes x is an int\nReturns x if x>=0 and \u2013 x otherwise \"\"\"\nifx < -1:\nreturn\u2013x\nelse:\nreturnx\n\uf0a7Aa path- complete test suite could miss a bug\n\uf0a7Path -complete test suite: 2 and -2\n\uf0a7But abs( -1) incorrectly returns - 1\n\uf0a7Should still test boundary cases\n6.100L Lecture 12"
+    },
+    {
+        "slide 43": "6.100L Lecture 12\n"
+    },
+    {
+        "slide 44": "DEBUGGING\n\uf0a7Once you have discovered that your code does not run \nproperly, you want to:\n\uf0a7Isolate the bug(s)\n\uf0a7Eradicate the bug(s)\n\uf0a7Retest until code runs correctly for all cases\n\uf0a7Steep learning curve\n\uf0a7Goal is to have a bug -free program\n\uf0a7Tools\n\u2022Built in to IDLE and Anaconda\n\u2022Python Tutor\n\u2022print statement\n\u2022Use your brain, be systematic in your hunt\n6.100L Lecture 12\n"
+    },
+    {
+        "slide 45": "ERROR MESSAGES \u2013EASY\n\uf0a7Trying to access beyond the limits of a list\ntest = [1,2,3] then      test[4] \uf0e0IndexError\n\uf0a7Trying to convert an inappropriate type\nint(test) \uf0e0TypeError\n\uf0a7Referencing a non- existent variable \na \uf0e0NameError\n\uf0a7Mixing data types without appropriate coercion\n'3'/4 \uf0e0TypeError\n\uf0a7Forgetting to close parenthesis, quotation, etc. \na = len([1,2,3]\nprint(a) \uf0e0SyntaxError\n6.100L Lecture 12\n"
+    },
+    {
+        "slide 46": "LOGIC ERRORS - HARD\n\uf0a7think before writing new code\n\uf0a7draw pictures, take a break\n\uf0a7explain the code to \n\u2022someone else\n\u2022a rubber ducky\n6.100L Lecture 12"
+    },
+    {
+        "slide 47": "DEBUGGING STEPS\n\uf0a7Study program code\n\u2022Don\u2019t ask what is wrong\n\u2022Ask how did I get the unexpected result \n\u2022Is it part of a family?\n\uf0a7Scientific method\n\u2022Study available data\n\u2022Form hypothesis\n\u2022Repeatable experiments\n\u2022Pick simplest input to test with\n6.100L Lecture 12\n"
+    },
+    {
+        "slide 48": "PRINT STATEMENTS\n\uf0a7Good way to test hypothesis\n\uf0a7When to print\n\u2022Enter function\n\u2022Parameters\n\u2022Function results\n\uf0a7Use bisection method\n\u2022Put print halfway in code\n\u2022Decide where bug may be depending on values\n6.100L Lecture 12\n"
+    },
+    {
+        "slide 49": "LET\u2019S DEBUG TOGETHER\n6.100L Lecture 12"
+    },
+    {
+        "slide 50": "BUGGY WORDLE PY FILE INCLUDED\nTRY DEBUGGING IT YOURSELF!\n6.100L Lecture 12\n"
+    }
+]

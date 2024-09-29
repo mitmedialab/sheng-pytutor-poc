@@ -1,0 +1,119 @@
+[
+    {
+        "slide 0": "DICTIONARIES\n(download slides and . pyfiles to follow along)\n6.100L Lecture 14\nAna Bell"
+    },
+    {
+        "slide 1": "HOW TO STORE \nSTUDENT INFO\n\uf0a7Suppose we want to store and use grade information for \na set of students\n\uf0a7Could store using separate lists for each kind of information\nnames =  ['Ana', 'John', 'Matt', 'Katy']\ngrades = ['A+' ,  'B'  ,   'A' ,   'A' ]microquizzes = ...\npsets= ...\n\uf0a7Info stored across lists at same index , each index refers to \ninformation for a different person\n\uf0a7Indirectly access information by finding location in lists \ncorresponding to a person, then extract\n6.100L Lecture 14\n"
+    },
+    {
+        "slide 2": "HOW TO ACCESS \nSTUDENT INFO\ndefget_grade(student, name_list, grade_list):\ni= name_list.index (student)\ngrade = grade_list[ i]\nreturn(student, grade)\n\uf0a7Messy if have a lot of different info of which to keep track, \ne.g., a separate list for microquiz scores, for pset scores, etc.\n\uf0a7Must maintain many lists and pass them as arguments\n\uf0a7Must always index using integers\n\uf0a7Must remember to change multiple lists, when adding or \nupdating information\n6.100L Lecture 14\n"
+    },
+    {
+        "slide 3": "HOW TO STORE AND \nACCESS STUDENT INFO\n\uf0a7Alternative might be to use a list of lists\neric = ['eric', [' ps', [8, 4, 5]], [ 'mq', [6, 7]]]\nana = ['ana', [' ps', [10, 10, 10]], [' mq', [9, 10]]]\njohn = ['john', [' ps', [7, 6, 5]], [' mq', [8, 5]]]\ngrades = [eric, ana, john]\n\uf0a7Then could access by searching lists, but code is still messy\ndefget_grades(who, what, data):\nforstud indata:\nifstud[0] == who:\nforinfo instud[1:]:\nifinfo[0] == what:\nreturnwho, info\nprint(get_grades( 'eric', 'mq', grades))\nprint(get_grades( 'ana', 'ps', grades))\n6.100L Lecture 14\n"
+    },
+    {
+        "slide 4": "A BETTER AND CLEANER WAY \u2013\nA DICTIONARY\n\uf0a7Nice to use one data structure , no separate lists\n\uf0a7Nice to index item of interest directly\n\uf0a7A Python dictionary has entries that map a key:value\nA list A dictionary\nElem 1\nElem 2\nElem 3\nElem 4\n\u2026Key 1\nKey 2\nKey 3\nKey 4\n\u2026Val 1\nVal 2\nVal 3\nVal 4\n\u20260\n1\n2\n3\n\u2026\n6.100L Lecture 14"
+    },
+    {
+        "slide 5": "BIG  IDEA\nDict value refers to the \nvalue associated with a \nkey. \nThis terminology is may sometimes be confused with the regular value of some variable. \n6.100L Lecture 14"
+    },
+    {
+        "slide 6": "A PYTHON DICTIONARY\n\uf0a7Store pairs of data as an entry\n\u2022key (any immutable object)\n\u2022str, int, float, bool, tuple, etc\n\u2022value (any data object)\n\u2022Any above plus lists and other dicts !\nmy_dict = {}\nd = {4:16}\ngrades = {'Ana':'B', 'Matt':'A ', 'John':'B', ' Katy':'A '}Key 1\nKey 2\nKey 3\n\u2026Val 1\nVal 2\nVal 3\n\u2026\nkey1    val1\n6.100L Lecture 14key2      val2 key3     val3 key4      val4'Ana'\n'Matt'\n'John'\n'Katy''B'\n'A'\n'B'\n'A'"
+    },
+    {
+        "slide 7": "DICTIONARY LOOKUP\n\uf0a7Similar to indexing into a list\n\uf0a7Looks up the key\n\uf0a7Returns the value associated with \nthe key\n\uf0a7If key isn\u2019t found, get an error\n\uf0a7There is no simple expression to \nget a key back given some value !\n6.100L Lecture 14grades = {'Ana':'B', 'Matt':'A ', 'John':'B', ' Katy':'A '}\ngrades['John'] \uf0e0evaluates to 'B'\ngrades['Grace'] \uf0e0gives a KeyErrorKey 1\nKey 2\nKey 3\n\u2026Val 1\nVal 2\nVal 3\n\u2026'Ana'\n'Matt'\n'John'\n'Katy''B'\n'A'\n'B'\n'A'Key \n'John'\nValue associated with key 'John'"
+    },
+    {
+        "slide 8": "YOU TRY IT!\n\uf0a7Write a function according to this spec\ndef find_grades(grades, students):\n\"\"\" grades is a dictmapping student names (str) to grades (str)\nstudents is a list of student names \nReturns a list containing the grades for students (in same order) \"\"\"\n# for example\nd = {'Ana':'B', 'Matt':'C', 'John':'B', 'Katy':'A'}\nprint(find_grades (d, ['Matt', 'Katy'])) # returns ['C', 'A']\n6.100L Lecture 14"
+    },
+    {
+        "slide 9": "BIG  IDEA\nGetting a dict value is \njust a matter of indexing \nwith a key.\nNo. Need. To. Loop\n6.100L Lecture 14"
+    },
+    {
+        "slide 10": "DICTIONARY \nOPERATIONS\ngrades = {'Ana':'B', 'Matt':'A ', 'John':'B', ' Katy':'A '}\n\uf0a7Add an entry\ngrades['Grace'] = 'A' \n\uf0a7Change entry\ngrades['Grace'] = 'C' \n\uf0a7Delete entry\ndel(grades['Ana'])\n6.100L Lecture 14'Grace' 'A''Ana'\n'Matt'\n'John'\n'Katy''B'\n'A'\n'B'\n'A'\n'C'"
+    },
+    {
+        "slide 11": "DICTIONARY \nOPERATIONS\ngrades = {'Ana':'B', 'Matt':'A ', 'John':'B', ' Katy':'A '}\n\uf0a7Test if key in dictionary\n'John' ingrades \uf0e0returnsTrue\n'Daniel' ingrades \uf0e0returnsFalse\n'B' ingrades \uf0e0returnsFalse\n6.100L Lecture 14'Ana'\n'Matt'\n'John'\n'Katy''B'\n'A'\n'B'\n'A'"
+    },
+    {
+        "slide 12": "YOU TRY IT!\n\uf0a7Write a function according to these specs\ndef find_in_L( Ld, k):\n\"\"\" Ldis a list of dicts\nk is an int\nReturns True if k is a key in any dicts of Ldand False otherwise \"\"\"\n# for example\nd1 = {1:2, 3:4, 5:6}\nd2 = {2:4, 4:6}\nd3 = {1:1, 3:9, 4:16, 5:25}\nprint(find_in_L([d1, d2, d3], 2)  # returns True\nprint(find_in_L([d1, d2, d3], 25)  # returns False\n6.100L Lecture 14"
+    },
+    {
+        "slide 13": "DICTIONARY \nOPERATIONS\n\uf0a7Can iterate over dictionaries but \nassume there is no guaranteed order\ngrades = {'Ana':'B', 'Matt':'A ', 'John':'B', ' Katy':'A '}\n\uf0a7Get an iterable that acts like a tuple of all keys\ngrades.keys()   \uf0e0returns dict_keys(['Ana', 'Matt', 'John', 'Katy'])\nlist(grades.keys()) \uf0e0returns ['Ana', 'Matt', 'John', 'Katy']\n\uf0a7Get an iterable that acts like a tuple of all dict values \ngrades.values() \uf0e0returns dict_values(['B', 'A', 'B', 'A'])\nlist(grades.values()) \uf0e0returns ['B', 'A', 'B', 'A']\n6.100L Lecture 14'Ana'\n'Matt'\n'John'\n'Katy''B'\n'A'\n'B'\n'A'"
+    },
+    {
+        "slide 14": "DICTIONARY OPERATIONS\nmost useful way to iterate over \ndict entries (both keys and vals!)\n\uf0a7Can iterate over dictionaries but\nassume there is no guaranteed order\ngrades = {'Ana':'B', 'Matt':'A ', 'John':'B', ' Katy':'A '}\n\uf0a7Get an iterable that acts like a tuple of all items\ngrades.items() \n\uf0e0returns dict_items([('Ana', 'B'), ('Matt', 'A'), ('John', 'B'), ('Katy', 'A')])\nlist(grades.items ())\n\uf0e0returns [('Ana', 'B'), ('Matt', 'A'), ('John', 'B'), ('Katy', 'A')]\n\uf0a7Typical use is to iterate over key,value tuple\nfork,vingrades.items():\nprint(f\"key{k} has value {v}\")\n6.100L Lecture 14'Ana'\n'Matt'\n'John'\n'Katy''B'\n'A'\n'B'\n'A'"
+    },
+    {
+        "slide 15": "YOU TRY IT!\n\uf0a7Write a function that meets this spec\ndef count_matches(d):\n\"\"\" d is a dict\nReturns how many entries in d have the key equal to its value \"\"\"\n# for exampled = {1:2, 3:4, 5:6}\nprint(count_matches(d))   # prints 0\nd = {1:2, 'a':'a', 5:5}\nprint(count_matches(d))   # prints 2\n6.100L Lecture 14"
+    },
+    {
+        "slide 16": "DICTIONARY KEYS & VALUES\n\uf0a7Dictionaries are mutable objects (aliasing/cloning rules apply)\n\uf0a7Use = sign to make an alias\n\uf0a7Use d.copy () to make a copy\n\uf0a7Assume there is no order to keys or values!\n\uf0a7Dict values \n\u2022Any type (immutable and mutable )\n\u2022Dictionary values can be lists, even other dictionaries!\n\u2022Can be duplicates\n\uf0a7Keys\n\u2022Must be unique \n\u2022Immutable type (int, float, string, tuple,bool)\n\u2022Actually need an object that is hashable , but think of as immutable as all \nimmutable types are hashable\n\u2022Be careful using float type as a key\n6.100L Lecture 14\n"
+    },
+    {
+        "slide 17": "WHY IMMUTABLE/HASHABLE \nKEYS?\n\uf0a7A dictionary is stored in memory in a special way\n\uf0a7Next slides show an example\n\uf0a7Step 1: A function is run on the dict key \n\uf0a7The function maps any object to an int\nE.g. map \u201ca\u201d to 1, \u201cb\u201d to 2, etc , so \u201cab\u201d could map to 3\n\uf0a7The int corresponds to a position in a block of memory addresses\n\uf0a7Step 2: At that memory address, store the dict value\n\uf0a7To do a lookup using a key, run the same function\n\uf0a7If the object is immutable/ hashable then you get the same int back\n\uf0a7If the object is changed then the function gives back a different int!\n6.100L Lecture 14\n"
+    },
+    {
+        "slide 18": "A n a\nE r ic\nJ o h nC\nA\nB1 + 14 + 1 = 16\n16%16 = 0\n5 + 18 + 9 + 3 = 3535%16 = 3\n10 + 15 + 8 + 14 = 4747%16 = 15Memory block (like a list)\n0\n1\n2\n3Ana:C\nEric:A\nJohn :B\n6.100L Lecture 14Hash function:\n1) Sum the letters\n2) Take mod 16 (to fit in a memory block with 16 entries)\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15[K, a, t, e] B11 + 1 + 20 + 5 = 37\n37%16 = 5[K,a,t,e ]:B"
+    },
+    {
+        "slide 19": "Memory block (like a list)\n0\n1\n2\n3Ana:C\nEric:A\n6.100L Lecture 14Hash function:\n1) Sum the letters\n2) Take mod 16 (to fit in a memory block with 16 entries)\nKate changes her name to Cate. Same \nperson, different name. Look up her \ngrade?\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15[C, a, t, e]3 + 1 + 20 + 5 = 29\n29%16 = 13[K,a,t,e ]:B\n\uf0df??? Not here!\nJohn :B\n"
+    },
+    {
+        "slide 20": "Key 2 Val 2A PYTHON DICTIONARY for \nSTUDENT GRADES\n\uf0a7Separate students are \nseparate dict entries\n\uf0a7Entries are separated using a commaKey 1 Val 1\n6.100L Lecture 14grades = { 'Ana':{'mq':[5,4,4], ' ps': [10,9,9], 'fin': 'B'},\n'Bob':{'mq':[6,7,8], ' ps': [8,9,10], 'fin': 'A'}}"
+    },
+    {
+        "slide 21": "Key 2 Val 2 'Bob' 'mq'[6,7,8]\n'ps'[8,9,10]\n'fin''A'A PYTHON DICTIONARY for \nSTUDENT GRADES\n\uf0a7Each dict entry maps a key \nto a value\n\uf0a7The mapping is done with \na : character\n\uf0a7grades maps str:dictKey 1 Val 1\n6.100L Lecture 14'Ana'\ngrades = { 'Ana':{'mq':[5,4,4], ' ps': [10,9,9], 'fin': 'B'},\n'Bob':{'mq':[6,7,8], ' ps': [8,9,10], 'fin': 'A'}}'mq'[5,4,4]\n'ps'[10,9,9]\n'fin''B'"
+    },
+    {
+        "slide 22": "Key 1 Val 1 'Bob' 'mq'[6,7,8]\n'ps'[8,9,10]\n'fin''A'A PYTHON DICTIONARY for \nSTUDENT GRADES\n\uf0a7The values of grades are \ndicts\n\uf0a7Each value maps a \n\uf0a7str:list\n\uf0a7str:strKey 1 Val 1\n6.100L Lecture 14'Ana'\ngrades = { 'Ana':{'mq':[5,4,4], ' ps': [10,9,9], 'fin': 'B'},\n'Bob':{'mq':[6,7,8], ' ps': [8,9,10], 'fin': 'A'}}'mq'[5,4,4]\n'ps'[10,9,9]\n'fin''B'"
+    },
+    {
+        "slide 23": "Key 1 Val 1 'Bob' 'mq'[6,7,8]\n'ps'[8,9,10]\n'fin''A'A PYTHON DICTIONARY for \nSTUDENT GRADES\n\uf0a7The values of grades are \ndicts\n\uf0a7Each value maps a \n\uf0a7str:list\n\uf0a7str:strKey 1\n6.100L Lecture 14'Ana'\ngrades = { 'Ana':{'mq':[5,4,4], ' ps': [10,9,9], 'fin': 'B'},\n'Bob':{'mq':[6,7,8], ' ps': [8,9,10], 'fin': 'A'}}'mq'[5,4,4]\n'ps'[10,9,9]\n'fin''B'\ngrades['Ana' ]['mq'][0] returns5"
+    },
+    {
+        "slide 24": "YOU TRY IT!\nmy_d={'Ana':{'mq':[10], 'ps':[10,10]}, \n'Bob':{'ps':[7,8], 'mq':[8]},\n'Eric':{' mq':[3], 'ps':[0]}      }\ndefget_average(data, what):\nall_data = []\nforstud indata.keys():\nINSERT LINE HERE\nreturnsum(all_data)/ len(all_data)\n6.100L Lecture 14Given the dictmy_d, and the outline of a function to compute an average, which line should \nbe inserted where indicated so that get_average( my_d, 'mq') computes average \nfor all ' mq' entries? i.e. find average of all mqscores for all students.\nA)all_data = all_data + data[stud][what]\nB)all_data.append(data[stud][what])\nC)all_data = all_data + data[stud[what]]\nD)all_data.append(data[stud[what]])"
+    },
+    {
+        "slide 25": "list vs dict\n6.100L Lecture 14\uf0a7Ordered sequence of \nelements\n\uf0a7Look up elements by an \ninteger index\n\uf0a7Indices have an order\n\uf0a7Index is an integer\n\uf0a7Value can be any type\uf0a7Matches \u201ckeys\u201d to \n\u201cvalues\u201d\n\uf0a7Look up one item by \nanother item\n\uf0a7No order is guaranteed\n\uf0a7Key can be any \nimmutable type\n\uf0a7Value can be any type"
+    },
+    {
+        "slide 26": "EXAMPLE: FIND MOST COMMON \nWORDS IN A SONG\u2019S LYRICS\n1) Create a frequency dictionary mapping str:int\n2) Find word that occurs most often and how many times\n\u2022Use a list, in case more than one word with same number\n\u2022Return a tuple (list,int) for (words_list , highest_freq )\n3) Find the words that occur at least X times\n\u2022Let user choose \u201cat least X times\u201d, so allow as parameter\n\u2022Return a list of tuples, each tuple is a (list, int) containing the \nlist of words ordered by their frequency\n\u2022IDEA: From song dictionary, find most frequent word. Delete most \ncommon word. Repeat. It works because you are mutating the song \ndictionary.\n6.100L Lecture 14\n"
+    },
+    {
+        "slide 27": "CREATING A DICTIONARY\nPython Tutor LINK\nsong = \"RAH RAHAH AHAHROM MAH RO MAH MAH\"\ndefgenerate_word_dict(song):\nsong_words = song.lower()\nwords_list = song_words.split ()\nword_dict = {}\nforw inwords_list :\nifw inword_dict:\nword_dict [w] += 1\nelse:\nword_dict [w] = 1\nreturnword_dict\n6.100L Lecture 14"
+    },
+    {
+        "slide 28": "USING THE DICTIONARY\nPython Tutor LINK\nword_dict = {'rah':2, 'ah':3, 'rom':1, 'mah':3, 'ro':1}\ndeffind_frequent_word( word_dict):\nwords = []\nhighest = max(word_dict.values ())\nfork,vinword_dict.items ():\nifv == highest:\nwords.append(k)\nreturn(words, highest)\n6.100L Lecture 14"
+    },
+    {
+        "slide 29": "FIND WORDS WITH FREQUENCY \nGREATER THAN x=1\n\uf0a7Repeat the next few steps as long as the highest frequency is \ngreater than x \n\uf0a7Find highest frequency\n6.100L Lecture 14word_dict = {'rah':2, 'ah':3, 'rom':1, 'mah':3, 'ro':1}\n"
+    },
+    {
+        "slide 30": "FIND WORDS WITH FREQUENCY \nGREATER THAN x=1\n\uf0a7Use function find_frequent_word to get words with the \nbiggest frequency\n6.100L Lecture 14word_dict = {'rah':2, 'ah':3, 'rom':1, 'mah':3, 'ro':1}\n"
+    },
+    {
+        "slide 31": "FIND WORDS WITH FREQUENCY \nGREATER THAN x=1\n\uf0a7Remove the entries corresponding to these words from \ndictionary by mutation\n\uf0a7Save them in the result\n6.100L Lecture 14word_dict = {'rah':2,         'rom':1,          'ro':1}\nfreq_list = [(['ah',' mah'],3)]\n"
+    },
+    {
+        "slide 32": "FIND WORDS WITH FREQUENCY \nGREATER THAN x=1\n\uf0a7Find highest frequency in the mutated dict\n\uf0a7The result so far\u2026\n6.100L Lecture 14word_dict = {'rah':2,         'rom':1,          'ro':1}\nfreq_list = [(['ah',' mah'],3)]\n"
+    },
+    {
+        "slide 33": "FIND WORDS WITH FREQUENCY \nGREATER THAN x=1\n\uf0a7Use function find_frequent_word to get words with that \nfrequency\n\uf0a7The result so far\u2026\n6.100L Lecture 14word_dict = {'rah':2,         'rom':1,          'ro':1}\nfreq_list = [(['ah',' mah'],3)]\n"
+    },
+    {
+        "slide 34": "FIND WORDS WITH FREQUENCY \nGREATER THAN x=1\n\uf0a7Remove the entries corresponding to these words from \ndictionary by mutation\n\uf0a7Add them to the result so far\n6.100L Lecture 14word_dict = {                 'rom':1,          'ro':1}\nfreq_list = [(['ah',' mah'],3), (['rah'],2)]\n"
+    },
+    {
+        "slide 35": "FIND WORDS WITH FREQUENCY \nGREATER THAN x=1\n\uf0a7The highest frequency is now smaller than x=2, so stop\n\uf0a7The final result\n6.100L Lecture 14word_dict = {                 'rom':1,          'ro':1}\nfreq_list = [(['ah',' mah'],3), (['rah'],2)]\n"
+    },
+    {
+        "slide 36": "LEVERAGING DICT PROPERTIES\nPython Tutor LINK\nword_dict = {'rah':2, 'ah':3, 'rom':1, 'mah':3, 'ro':1}\ndefoccurs_often (word_dict , x):\nfreq_list = []\nword_freq_tuple = find_frequent_word (word_dict )\nwhileword_freq_tuple[1] > x:\nfreq_list.append(word_freq_tuple )\nforword inword_freq_tuple [0]:\ndel(word_dict[word])\nword_freq_tuple = find_frequent_word( word_dict)\nreturnfreq_list\n6.100L Lecture 14"
+    },
+    {
+        "slide 37": "SOME OBSERVATIONS\n\uf0a7Conversion of string into list of words enables use of list \nmethods\n\uf0a7Used words_list = song_words.split()\n\uf0a7Iteration over list naturally follows from structure of lists\n\uf0a7Used for w in words_list:\n\uf0a7Dictionary stored the same data in a more appropriate way\n\uf0a7Ability to access all values and all keys of dictionary allows \nnatural looping methods\n\uf0a7Used   for k,vin word_dict.items():\n\uf0a7Mutability of dictionary enables iterative processing \n\uf0a7Used   del(word_dict[word])\n\uf0a7Reused functions we already wrote!\n6.100L Lecture 14\n"
+    },
+    {
+        "slide 38": "SUMMARY\n\uf0a7Dictionaries have entries that map a key to a value\n\uf0a7Keys are immutable/ hashable and unique objects\n\uf0a7Values can be any object\n\uf0a7Dictionaries can make code efficient\n\uf0a7Implementation -wise\n\uf0a7Runtime -wise\n6.100L Lecture 14"
+    }
+]

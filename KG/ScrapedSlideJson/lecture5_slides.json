@@ -1,0 +1,116 @@
+[
+    {
+        "slide 0": "FLOATS and \nAPPROXIMATION \nMETHODS\n(download slides and . pyfiles to follow along)\n6.100L Lecture 5\nAna Bell"
+    },
+    {
+        "slide 1": "OUR MOTIVATION FROM LAST \nLECTURE\nx = 0\nforiinrange(10):\nx += 0.1\nprint(x == 1)print(x, '==', 10*0.1)\n6.100L Lecture 5\n"
+    },
+    {
+        "slide 2": "CONVERTING DECIMAL INTEGER \nTO BINARY\n\uf0a7We input integers in decimal, computer needs to convert to \nbinary\n\uf0a7Consider example of\n\uf0a7x = 1910 = 1*24+ 0*23+ 0*22+ 1*21+ 1*20= 10011\n\uf0a7If we take remainder of x relative to 2 (x%2), that gives us \nthe last binary bit\n\uf0a7If we then integer divide x by 2 (x//2), all the bits get \nshifted right\n\uf0a7x//2 = 1*23+ 0*22+ 0*21+ 1*20= 1001\n\uf0a7Keep doing successive divisions ; now remainder gets next bit, \nand so on\n\uf0a7Let\u2019s convert to binary form\n6.100L Lecture 4"
+    },
+    {
+        "slide 3": "DOING THIS in PYTHON for \nPOSITIVE NUMBERS\nresult = ''\nifnum == 0:\nresult = '0'\nwhilenum > 0:\nresult = str(num% 2) + result\nnum = num//2\n6.100L Lecture 4Python Tutor LINK"
+    },
+    {
+        "slide 4": "INTEGERS\n\uf0a7Integers have straightforward representations in binary\n\uf0a7The code is simple (and can add a piece to deal with negative \nnumbers)\nifnum < 0:\nis_neg= True\nnum = abs(num)\nelse:\nis_neg= False\nresult = ''\nifnum == 0:\nresult = '0'\nwhilenum > 0:\nresult = str(num% 2) + result\nnum = num//2\nifis_neg:\nresult = '-' + result\n6.100L Lecture 4"
+    },
+    {
+        "slide 5": "FRACTIONS\n6.100L Lecture 5"
+    },
+    {
+        "slide 6": "FRACTIONS\n\uf0a7What does the decimal fraction 0.abc mean?\n\uf0a7a*10-1+ b*10-2+ c*10-3\n\uf0a7For binary representation, we use the same idea\n\uf0a7a*2-1+ b*2-2+ c*2-3\n\uf0a7Or to put this in simpler terms, the binary representation of a \ndecimal fraction f would require finding the values of a, b, c, etc. such that\n\uf0a7f = 0.5a + 0.25b + 0.125c + 0.0625d + 0.03125e + \u2026\n6.100L Lecture 5\n"
+    },
+    {
+        "slide 7": "WHAT ABOUT FRACTIONS?\n\uf0a7How might we find that representation?\n\uf0a7In decimal form: 3/8 = 0.375 = 3*10-1+ 7*10-2+ 5*10-3\n\uf0a7Recipe idea : if we can multiply by a power of 2 big enough to \nturn into a whole number, can convert to binary, and then \ndivide by the same power of 2 to restore\n\uf0a70.375 * (2**3) = 310\n\uf0a7Convert 3 to binary (now 112)\n\uf0a7Divide by 2**3 (shift right three spots) to get 0.0112\n6.100L Lecture 5\n"
+    },
+    {
+        "slide 8": "BUT\u2026\n\uf0a7If there is no integer p such that x*(2p) is a whole number , \nthen internal representation is always an approximation\n\uf0a7And I am assuming that the representation for the decimal \nfraction I provided as input is completely accurate and not already an approximation as a result of number being read into Python\n\uf0a7Floating point conversion works:\n\uf0a7Precisely for numbers like 3/8\n\uf0a7But not for 1/10\n\uf0a7One has a power of 2 that converts to whole number, the other \ndoesn\u2019t\n6.100L Lecture 5\n"
+    },
+    {
+        "slide 9": "TRACE THROUGH THIS ON YOUR OWN\nPython Tutor LINK\nx =0.625\np = 0\nwhile((2**p)*x)%1 != 0:\nprint('Remainder = ' + str((2**p)*x -int((2**p)*x)))\np += 1\nnum = int(x*(2 **p))\nresult = ''\nifnum == 0:\nresult = '0'\nwhilenum > 0:\nresult = str(num%2 ) + result\nnum = num//2\nforiinrange(p -len(result)):\nresult = '0' + result\nresult = result[0 :-p] + '.' + result[- p:]\nprint('The binary representation of the decimal ' + str(x) + ' is ' + str(result))\n6.100L Lecture 4"
+    },
+    {
+        "slide 10": "WHY is this a PROBLEM?\n\uf0a7What does the decimal representation 0.125 mean\n\uf0a71*10-1+ 2*10-2+ 5*10-3\n\uf0a7Suppose we want to represent it in binary?\n\uf0a71*2-3\n\uf0a7How how about the decimal representation 0.1\n\uf0a7In base 10: 1 * 10-1\n\uf0a7In base 2: ? \n6.100L Lecture 5"
+    },
+    {
+        "slide 11": "THE POINT?\n\uf0a7If everything ultimately is represented in terms of bits , \nwe need to think about how to use binary representation \nto capture numbers\n\uf0a7Integers are straightforward\n\uf0a7But real numbers (things with digits after the decimal point) are a problem\n\uf0a7The idea was to try and convert a real number to an int by \nmultiplying the real with some multiple of 2 to get an int\n\uf0a7Sometimes there is no such power of 2!\n\uf0a7Have to somehow approximate the potentially infinite binary \nsequence of bits needed to represent them\n6.100L Lecture 5\n"
+    },
+    {
+        "slide 12": "FLOATS\n6.100L Lecture 5"
+    },
+    {
+        "slide 13": "STORING FLOATING POINT NUMBERS\n#.#\n\uf0a7Floating point is a pair of integers\n\uf0a7Significant digits and base 2 exponent\n\uf0a7(1, 1) \uf0e0 1*21\uf0e0102\uf0e02.0\n\uf0a7(1, -1) \uf0e01*2-1\uf0e00.12\uf0e00.5\n\uf0a7(125, -2) \uf0e0125*2-2\uf0e011111.012\uf0e031.25\n6.100L Lecture 5125 is 1111101 then move the decimal point over 2"
+    },
+    {
+        "slide 14": "USE A FINITE SET OF BITS TO REPRESENT A \nPOTENTIALLY INFINITE SET OF BITS\n\uf0a7The maximum number of significant digits governs the \nprecision with which numbers can be represented\n\uf0a7Most modern computers use 32 bits to represent significant \ndigits\n\uf0a7If a number is represented with more than 32 bits in binary, the number will be rounded\n\uf0a7Error will be at the 32ndbit\n\uf0a7Error will only be on order of 2*10-10\n6.100L Lecture 5"
+    },
+    {
+        "slide 15": "SURPRISING RESULTS!\n6.100L Lecture 5x = 0\nforiinrange(10):\nx += 0.125\nprint(x == 1.25)x = 0foriinrange(10):\nx += 0.1\nprint(x == 1)\nprint(x, '==', 10*0.1)"
+    },
+    {
+        "slide 16": "MORAL of the STORY\n\uf0a7Never use == to test floats\n\uf0a7Instead test whether they are within small amount of each other\n\uf0a7What gets printed isn\u2019t always what is in memory\n\uf0a7Need to be careful in designing algorithms that use floats\n6.100L Lecture 5\n"
+    },
+    {
+        "slide 17": "APPROXIMATION \nMETHODS\n6.100L Lecture 5"
+    },
+    {
+        "slide 18": "LAST LECTURE\n\uf0a7Guess- and- check provides a simple algorithm for solving \nproblems\n\uf0a7When set of potential solutions is enumerable , exhaustive \nenumeration guaranteed to work (eventually)\n\uf0a7It\u2019s a limiting way to solve problems\n\uf0a7Increment is usually an integer but not always. i.e. we just need some \npattern to give us a finite set of enumerable values\n\uf0a7Can\u2019t give us an approximate solution to varying degrees\n6.100L Lecture 5\n"
+    },
+    {
+        "slide 19": "BETTER than GUESS -and- CHECK\n\uf0a7Want to find an approximation to an answer\n\uf0a7Not just the correct answer, like guess -and-check\n\uf0a7And not just that we did not find the answer, like guess -and-check\n6.100L Lecture 5\n"
+    },
+    {
+        "slide 20": "EFFECT of APPROXIMATION on \nour ALGORITHMS?\n\uf0a7Exact answer may not be accessible\n\uf0a7Need to find ways to get \u201cgood enough\u201d answer\n\uf0a7Our answer is \u201cclose enough\u201d to ideal answer\n\uf0a7Need ways to deal with fact that exhaustive enumeration can\u2019t \ntest every possible value, since set of possible answers is in principle infinite\n\uf0a7Floating point approximation errors are important to this \nmethod\n\uf0a7Can\u2019t rely on equality!\n6.100L Lecture 5\n"
+    },
+    {
+        "slide 21": "APPROXIMATE sqrt(x)\n6.100L Lecture 5-2          -1           0            1             2           3            4            5             6           7           8 xguess?Good \nenough"
+    },
+    {
+        "slide 22": "FINDING ROOTS\n\uf0a7Last lecture we looked at using exhaustive enumeration/guess \nand check methods to find the roots of perfect squares\n\uf0a7Suppose we want to find the square root of any positive integer, or any positive number\n\uf0a7Question: What does it mean to find the square root of x?\n\uf0a7Find an r such that r*r = x ?\n\uf0a7If x is not a perfect square, then not possible in general to find an exact \nr that satisfies this relationship; and exhaustive search is infinite\n6.100L Lecture 5\n"
+    },
+    {
+        "slide 23": "APPROXIMATION\n\uf0a7Find an answer that is \u201cgood enough\u201d\n\uf0a7E.g., find a r such that r*r is within a given (small) distance of x\n\uf0a7Use epsilon: given x we want to find rsuch that |\ud835\udc5f\ud835\udc5f2-x|<\ud835\udf00\ud835\udf00\n\uf0a7Algorithm \n\uf0a7Start with guess known to be too small \u2013call it g\n\uf0a7Increment by a small value \u2013 call it a \u2013to give a new guess g\n\uf0a7Check if g**2 is close enough to x (within \ud835\udf00\ud835\udf00)\n\uf0a7Continue until get answer close enough to actual answer\n\uf0a7Looking at all possible values g + k*a for integer values of k\n\u2013so similar to exhaustive enumeration\n\uf0a7But cannot test all possibilities as infinite\n6.100L Lecture 5\n"
+    },
+    {
+        "slide 24": "APPROXIMATION ALGORITHM\n\uf0a7In this case, we have two parameters to set\n\uf0a7epsilon (how close are we to answer?)\n\uf0a7increment (how much to increase our guess?)\n\uf0a7Performance will vary based on these values\n\uf0a7In speed\n\uf0a7In accuracy\n\uf0a7Decreasing increment size \uf0e0slower program, but more likely \nto get good answer (and vice versa)\n6.100L Lecture 5-2          -1           0            1             2           3            4            5             6           7           8 xguess?Good \nenough\nepsilon epsilon"
+    },
+    {
+        "slide 25": "APPROXIMATION ALGORITHM\n\uf0a7In this case, we have two parameters to set\n\uf0a7epsilon (how close are we to answer?)\n\uf0a7increment (how much to increase our guess?)\n\uf0a7Performance will vary based on these values\n\uf0a7In speed\n\uf0a7In accuracy\n\uf0a7Increasing epsilon\uf0e0less accurate answer, but faster program \n(and vice versa)\n6.100L Lecture 5-2          -1           0            1             2           3            4            5             6           7           8 xguess?Good \nenough\nepsilon epsilon"
+    },
+    {
+        "slide 26": "BIG  IDEA\nApproximation is like \nguess-and -check \nexcept\u2026 \n1) We increment by some small amount \n2) We stop when close enough (exact is not possible)\n6.100L Lecture 5"
+    },
+    {
+        "slide 27": "IMPLEMENTATION\nx = 36\nepsilon = 0.01\nnum_guesses = 0\nguess = 0.0\nincrement = 0.0001\nwhileabs(guess**2 -x) >= epsilon:\nguess += increment\nnum_guesses += 1\nprint('num_guesses =', num_guesses)\nprint(guess, 'is close to square root of', x)\n6.100L Lecture 5"
+    },
+    {
+        "slide 28": "OBSERVATIONS with DIFFERENT \nVALUES for x\n\uf0a7For x = 36\n\uf0a7Didn\u2019t find 6\n\uf0a7Took about 60,000 guesses\n\uf0a7Let\u2019s try:\n\uf0a724\n\uf0a72 \n\uf0a712345\n\uf0a754321\n6.100L Lecture 5\n"
+    },
+    {
+        "slide 29": "x = 54321\nepsilon = 0.01\nnum_guesses = 0\nguess = 0.0\nincrement = 0.0001\nwhileabs(guess**2 -x) >= epsilon:\nguess += increment\nnum_guesses += 1\nifnum_guesses%100000 == 0:\nprint('Current guess =', guess)\nprint('Current guess**2 -x =', abs(guess*guess -x))\nprint('num_guesses =', num_guesses)\nprint(guess, 'is close to square root of', x)\n6.100L Lecture 5"
+    },
+    {
+        "slide 30": "WE OVERSHOT the EPSILON!\n\uf0a7Blue arrow is the guess\n\uf0a7Green arrow isguess**2\n6.100L Lecture 5x = 54321\nepsilon epsilon"
+    },
+    {
+        "slide 31": "SOME OBSERVATIONS\n\uf0a7Decrementing function eventually starts incrementing\n\uf0a7So didn\u2019t exit loop as expected\n\uf0a7We have over -shot the mark\n\uf0a7I.e., we jumped from a value too far away but too small to one too far \naway but too large\n\uf0a7We didn\u2019t account for this possibility when writing the loop\n\uf0a7Let\u2019s fix that\n6.100L Lecture 5\n"
+    },
+    {
+        "slide 32": "LET\u2019S FIX IT\nx = 54321\nepsilon = 0.01\nnum_guesses = 0\nguess = 0.0\nincrement = 0.0001\nwhileabs(guess**2 -x) >= epsilon andguess**2 <= x+epsilon:\nguess += incrementnum_guesses += 1\nprint('num_guesses =', num_guesses)\nifabs(guess**2 -x) >= epsilon:\nprint('Failed on square root of', x)\nelse:\nprint(guess, 'is close to square root of', x)\n6.100L Lecture 5"
+    },
+    {
+        "slide 33": "BIG  IDEA\nIt\u2019s possible to overshoot \nthe epsilon, so you need another end condition\n6.100L Lecture 5"
+    },
+    {
+        "slide 34": "SOME OBSERVATIONS\n\uf0a7Now it stops, but reports failure , because it has over -shot the \nanswer\n\uf0a7Let\u2019s try resetting increment to 0.00001\n\uf0a7Smaller increment means more values will be checked\n\uf0a7Program will be slower\n\uf0a7Let\u2019s try resetting epsilo nto 1\n\uf0a7Bigger epsilon means less accurate answer\n\uf0a7Program will be faster\n\uf0a7Even ifyou pre -calculated that your \nincrement will bring you to within \nepsilon, approximation errors be like: \n6.100L Lecture 5\n"
+    },
+    {
+        "slide 35": "BIG  IDEA\nBe careful when \ncomparing floats.\n6.100L Lecture 5"
+    },
+    {
+        "slide 36": "LESSONS LEARNED in \nAPPROXIMATION\n\uf0a7Can\u2019t use == to check an exit condition\n\uf0a7Need to be careful that looping mechanism doesn\u2019t jump over \nexit test and loop forever\n\uf0a7Tradeoff exists between efficiency of algorithm and accuracy of \nresult\n\uf0a7Need to think about how close an answer we want when \nsetting parameters of algorithm\n\uf0a7To get a good answer, this method can be painfully slow.  \n\uf0a7Is there a faster way that still gets good answers ?\n\uf0a7YES! We will see it next lecture\u2026.\n6.100L Lecture 5"
+    },
+    {
+        "slide 37": "SUMMARY\n\uf0a7Floating point numbers introduce challenges!\n\uf0a7They can\u2019t be represented in memory exactly\n\uf0a7Operations on floats introduce tiny errors\n\uf0a7Multiple operations on floats magnify errors :(\n\uf0a7Approximation methods use floats\n\uf0a7Like guess -and-check except that\n(1) We use a float as an increment\n(2) We stop when we are close enough\n\uf0a7Never use == to compare floats in the stopping condition\n\uf0a7Be careful about overshooting the close -enough stopping condition\n6.100L Lecture 5"
+    }
+]

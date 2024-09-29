@@ -1,0 +1,149 @@
+[
+    {
+        "slide 0": "STRINGS, INPUT/OUTPUT, \nand BRANCHING\n(download slides and . pyfiles to follow along)\n6.100L Lecture 2\nAna Bell"
+    },
+    {
+        "slide 1": "RECAP\n\uf0a7Objects\n\uf0a7Objects in memory have types . \n\uf0a7Types tell Python what operations you can do with the objects.\n\uf0a7Expressions evaluate to one value and involve objects and operations.\n\uf0a7Variables bind names to objects.\n\uf0a7= sign is an assignment, for ex. var = type(5*4)\n\uf0a7Programs\n\uf0a7Programs only do what you tell them to do.\n\uf0a7Lines of code are executed in order .\n\uf0a7Good variable names and comments help you read code later .\n6.100L Lecture 2 2pi\nradius\narea3.14\n2.2\n15.19763.2pi = 3.14\nradius = 2.2\narea = pi*(radius**2)\nradius = radius+1\nvar int var = type(5*4)"
+    },
+    {
+        "slide 2": "STRINGS\n6.100L Lecture 2 3"
+    },
+    {
+        "slide 3": "STRINGS\n\uf0a7Think of a str as a sequence of case sensitive characters\n\uf0a7Letters, special characters, spaces, digits\n\uf0a7Enclose in quotation marks or single quotes\n\uf0a7Just be consistent about the quotes\na = \"me\"\nz = 'you' \n\uf0a7Concatenate and repeat strings\nb = \"myself\"\nc = a + b\nd = a + \" \" + b\nsilly = a * 3\n6.100L Lecture 2 4a \"me\"\nb \"myself\"\nc \"memyself\"\nd \"me myself\"\nsilly \"mememe\""
+    },
+    {
+        "slide 4": "YOU TRY IT!\nWhat\u2019s the value of s1 and s2?\n\uf0a7b = \":\"\nc = \")\"s1 = b + 2*c\n\uf0a7f = \"a\"g = \" b\"h = \"3\"s2 = (f+g)*int(h)\n6.100L Lecture 2 5"
+    },
+    {
+        "slide 5": "STRING OPERATIONS\n\uf0a7len() is a function used to retrieve the length of a string in \nthe parentheses\ns = \"abc\"\nlen(s) \uf0e0evaluates to 3\nchars = len(s)\n6.100L Lecture 2 7"
+    },
+    {
+        "slide 6": "SLICING to get \nONE CHARACTER IN A STRING\n\uf0a7Square brackets used to perform indexing\ninto a string to get the value at a certain \nindex/position\ns = \"abc\"\ns[0] \uf0e0evaluates to \"a\"\ns[1] \uf0e0evaluates to \"b\"\ns[2] \uf0e0evaluates to \"c\"\ns[3] \uf0e0trying to index out of \nbounds, error\ns[-1] \uf0e0evaluates to \"c\"\ns[-2] \uf0e0evaluates to \"b\"\ns[-3] \uf0e0evaluates to \"a\" \n6.100L Lecture 2 8index:        0  1  2     \uf0df indexing always starts at 0\nindex:       -3 -2 -1    \uf0df index of last element is len (s) -1 or -1\n"
+    },
+    {
+        "slide 7": "SLICING to get a SUBSTRING\n\uf0a7Can slice strings using [start:stop:step]\n\uf0a7Get characters at start \nup to and including stop -1\ntaking every step characters\n\uf0a7If give two numbers, [ start:stop], step=1 by default\n\uf0a7If give one number, you are back to indexing for the character \nat one location ( prev slide) \n\uf0a7You can also omit numbers and leave just colons (try this out!)\n6.100L Lecture 2 9\n"
+    },
+    {
+        "slide 8": "SLICING EXAMPLES\n\uf0a7Can slice strings using [start:stop:step ]\n\uf0a7Look at step first. + vemeans go left -to-right\n-vemeans go right -to-left\ns = \"abcdefgh \"\ns[3:6] \uf0e0evaluates to \"def\", same as s[3:6:1]\ns[3:6:2] \uf0e0evaluates to \"df\"\ns[:] \uf0e0evaluates to \"abcdefgh\" , same as s[0:len(s):1]\ns[::-1]\uf0e0evaluates to \"hgfedcba\"\ns[4:1:-2]\uf0e0 evaluates to \"ec\"\n6.100L Lecture 2 10index:        0   1    2    3    4   5    6   7\nindex:       -8   -7  -6  -5  -4  -3   -2  -1"
+    },
+    {
+        "slide 9": "YOU TRY IT!\ns = \"ABC d3f ghi\"\ns[3:len(s)-1]\ns[4:0:-1]\ns[6:3] \n6.100L Lecture 2 11"
+    },
+    {
+        "slide 10": "IMMUTABLE STRINGS\n\uf0a7Strings are \u201c immutable \u201d \u2013cannot be modified \n\uf0a7You can create new objects that are versions of the original one\n\uf0a7Variable name can only be bound to one object\ns = \"car\"\ns[0] = 'b' \uf0e0gives an error\ns = 'b'+s[1:len(s)] \uf0e0is allowed,\ns bound to new object\n6.100L Lecture 2 12s\"car\"\n\"bar\""
+    },
+    {
+        "slide 11": "BIG  IDEA\nIf you are wondering \n\u201cwhat happens if\u201d\u2026\nJust try it out in the console!\n6.100L Lecture 2 13"
+    },
+    {
+        "slide 12": "INPUT/OUTPUT\n6.100L Lecture 2 14"
+    },
+    {
+        "slide 13": "PRINTING\n\uf0a7Used to output stuff to console\nIn [11]: 3+2\nOut[11]: 5\n\uf0a7Command is print\nIn [12]: print(3+2)\n5\n\uf0a7Printing many objects in the same command\n\uf0a7Separate objects using commas to output them separated by spaces\n\uf0a7Concatenate strings together using + to print as single object\n\uf0a7a = \"the\"\nb = 3c = \"musketeers\"print(a, b, c)\nprint(a + str(b) + c)\n6.100L Lecture 2 15\n"
+    },
+    {
+        "slide 14": "INPUT\n\uf0a7x = input(s)\n\uf0a7Prints the value of the string s\n\uf0a7User types in something and hits enter\n\uf0a7That value is assigned to the variable x\n\uf0a7Binds that value to a variable\ntext = input( \"Type anything: \")\nprint(5*text)\n6.100L Lecture 2 17SHELL:\nType anything:  \n"
+    },
+    {
+        "slide 15": "INPUT\n\uf0a7x = input(s)\n\uf0a7Prints the value of the string s\n\uf0a7User types in something and hits enter\n\uf0a7That value is assigned to the variable x\n\uf0a7Binds that value to a variable\ntext = input( \"Type anything: \")\nprint(5*text)\n6.100L Lecture 2 18SHELL:\nType anything: howdy  "
+    },
+    {
+        "slide 16": "INPUT\n\uf0a7x = input(s)\n\uf0a7Prints the value of the string s\n\uf0a7User types in something and hits enter\n\uf0a7That value is assigned to the variable x\n\uf0a7Binds that value to a variable\ntext = input( \"Type anything: \")\nprint(5*text)\n6.100L Lecture 2 19SHELL:\nType anything: howdy  \"howdy\""
+    },
+    {
+        "slide 17": "INPUT\n\uf0a7x = input(s)\n\uf0a7Prints the value of the string s\n\uf0a7User types in something and hits enter\n\uf0a7That value is assigned to the variable x\n\uf0a7Binds that value to a variable\ntext = input( \"Type anything: \")\nprint(5*text)\n6.100L Lecture 2 20text \"howdy\"SHELL:\nType anything: howdy  "
+    },
+    {
+        "slide 18": "INPUT\n\uf0a7x = input(s)\n\uf0a7Prints the value of the string s\n\uf0a7User types in something and hits enter\n\uf0a7That value is assigned to the variable x\n\uf0a7Binds that value to a variable\ntext = input( \"Type anything: \")\nprint(5*text)\n6.100L Lecture 2 21text \"howdy\"SHELL:\nType anything: howdy\nhowdyhowdyhowdyhowdyhowdy"
+    },
+    {
+        "slide 19": "INPUT\n\uf0a7input always returns an str, must cast if working with numbers\nnum1 = input( \"Type a number: \")\nprint(5*num1)\nnum2 = int( input(\"Type a number: \"))\nprint(5*num2)\n6.100L Lecture 2 22num1 \"3\"SHELL:\nType a number: 3"
+    },
+    {
+        "slide 20": "INPUT\n\uf0a7input always returns an str, must cast if working with numbers\nnum1 = input( \"Type a number: \")\nprint(5*num1)\nnum2 = int( input(\"Type a number: \"))\nprint(5*num2)\n6.100L Lecture 2 23num1 \"3\"SHELL:\nType a number: 3\n33333"
+    },
+    {
+        "slide 21": "INPUT\n\uf0a7input always returns an str, must cast if working with numbers\nnum1 = input( \"Type a number: \")\nprint(5*num1)\nnum2 = int( input(\"Type a number: \"))\nprint(5*num2)\n6.100L Lecture 2 24num1 \"3\"SHELL:\nType a number: 3\n33333Type a number: 3"
+    },
+    {
+        "slide 22": "INPUT\n\uf0a7input always returns an str, must cast if working with numbers\nnum1 = input( \"Type a number: \")\nprint(5*num1)\nnum2 = int( input(\"Type a number: \"))\nprint(5*num2)\n6.100L Lecture 2 25num1 \"3\"SHELL:\nType a number: 3\n33333Type a number: 3num2 3"
+    },
+    {
+        "slide 23": "INPUT\n\uf0a7input always returns an str, must cast if working with numbers\nnum1 = input( \"Type a number: \")\nprint(5*num1)\nnum2 = int( input(\"Type a number: \"))\nprint(5*num2)\n6.100L Lecture 2 26num1 \"3\"SHELL:\nType a number: 3\n33333Type a number: 315num2 3"
+    },
+    {
+        "slide 24": "YOU TRY IT!\n\uf0a7Write a program that\n\uf0a7Asks the user for a verb\n\uf0a7Prints \u201cI can _ better than you\u201d where you replace _ with the verb.\n\uf0a7Then prints the verb 5 times in a row separated by spaces.\n\uf0a7For example, if the user enters run, you print:\nI can run better than you!\nrun runrunrunrun\n6.100L Lecture 2 27"
+    },
+    {
+        "slide 25": "AN IMPORTANT ALGORITHM:\nNEWTON\u2019S METHOD\n\uf0a7Finds roots of a polynomial\n\uf0a7E.g., find g such that f(g, x) = g3\u2013x = 0\n\uf0a7Algorithm uses successive approximation\n\uf0a7next_guess = guess -\ud835\udc53\ud835\udc53(\ud835\udc54\ud835\udc54\ud835\udc54\ud835\udc54\ud835\udc54\ud835\udc54\ud835\udc54\ud835\udc54\ud835\udc54\ud835\udc54 )\n\ud835\udc53\ud835\udc53\u2032(\ud835\udc54\ud835\udc54\ud835\udc54\ud835\udc54\ud835\udc54\ud835\udc54\ud835\udc54\ud835\udc54\ud835\udc54\ud835\udc54 )\n\uf0a7Partial code of algorithm that gets input and finds next guess\n6.100L Lecture 2 29#Try Newton Raphson for cube root\nx = int( input('What x to find the cube root of? '))\ng = int( input('What guess to start with? '))\nprint('Current estimate cubed = ', g**3)\nnext_g= g -((g**3 -x)/(3*g**2))\nprint('Next guess to try = ', next_g)"
+    },
+    {
+        "slide 26": "F-STRINGS\n\uf0a7Available starting with Python 3.6\n\uf0a7Character ffollowed by a \nformatted string literal\n\uf0a7Anything that can be appear in a \nnormal string literal\n\uf0a7Expressions bracketed by curly braces { }\n\uf0a7Expressions in curly braces evaluated at runtime, automatically \nconverted to strings, and concatenated to the string preceding them\n6.100L Lecture 2 30\nnum = 3000\nfraction = 1/3print(num*fraction, 'is', fraction*100, '% of', num)\nprint(num*fraction, 'is', str(fraction*100) + '% of', num)\nprint(f'{num*fraction} is {fraction*100}% of {num}')"
+    },
+    {
+        "slide 27": "BIG  IDEA\nExpressions can be \nplaced anywhere.\nPython evaluates them!\n6.100L Lecture 2 32"
+    },
+    {
+        "slide 28": "CONDITIONS for \nBRANCHING\n6.100L Lecture 2 33"
+    },
+    {
+        "slide 29": "BINDING VARIABLES and VALUES\n\uf0a7In CS, there are two notions of equal\n\uf0a7Assignment and Equality test\n\uf0a7variable = value\n\uf0a7Change the stored value of variable to value\n\uf0a7Nothing for us to solve, computer just does the action\n\uf0a7some_expression == other_expression\n\uf0a7A test for equality\n\uf0a7No binding is happening\n\uf0a7Expressions are replaced by values and computer just does the \ncomparison\n\uf0a7Replaces the entire line with True or False\n6.100L Lecture 2 34"
+    },
+    {
+        "slide 30": "COMPARISON OPERATORS\n\uf0a7iand jare variable names\n\uf0a7They can be of type ints, float, strings, etc.\n\uf0a7Comparisons below evaluate to the type Boolean\n\uf0a7The Boolean type only has 2 values: True and False\ni> j\ni>= j\ni< j\ni<= j\ni== j\uf0e0equality test, True if iis the same as j\ni!= j\uf0e0inequality test, True if inot the same as j\n6.100L Lecture 2 35\n"
+    },
+    {
+        "slide 31": "LOGICAL OPERATORS on bool\n\uf0a7aand bare variable names (with Boolean values)\nnota\uf0e0True if ais False\nFalse if ais True\na andb\uf0e0True if both are True\na orb\uf0e0True if either or both are True\n6.100L Lecture 2 36A B A and B A or B\nTrue True True True\nTrue False False True\nFalse True False True\nFalse False False False\n"
+    },
+    {
+        "slide 32": "COMPARISON EXAMPLE\npset_time = 15\nsleep_time = 8\nprint(sleep_time > pset_time)\nderive = True\ndrink = False\nboth = drink and derive\nprint(both)\n6.100L Lecture 2 37pset_time 15\nsleep_time 8\nderive True\ndrink False\nboth False\n"
+    },
+    {
+        "slide 33": "YOU TRY IT!\n\uf0a7Write a program that\n\uf0a7Saves a secret number in a variable. \n\uf0a7Asks the user for a number guess.\n\uf0a7Prints a bool False or True depending on whether the guess \nmatches the secret.\n6.100L Lecture 2 38"
+    },
+    {
+        "slide 34": "WHY bool?\n\uf0a7When we get to flow of control, i.e. branching to different \nexpressions based on values, we need a way of knowing if a condition is true\n\uf0a7E.g., if something is true, do this, otherwise do that\n6.100L Lecture 2 40\n"
+    },
+    {
+        "slide 35": "INTERESTING ALGORITHMS \nINVOLVE DECISIONS\n6.100L Lecture 2 41It\u2019s midnight\nGo get it!Free \nfood \nemail\nSleep"
+    },
+    {
+        "slide 36": "If right clear,\ngo right If right blocked,\ngo forwardIf right and \nfront blocked,\ngo leftIf right , front, \nleft blocked,\ngo back\n6.100L Lecture 2 42\n"
+    },
+    {
+        "slide 37": "BRANCHING IN PYTHON\n\uf0a7<condition> has a value True or False\n\uf0a7Indentation matters in Python!\n\uf0a7Do code within if block if condition is True\n6.100L Lecture 2 43if<condition>:\n<code>\n<code>\n...\n<rest of program>\nsion>\n<expression>\n...\nelse:\n<expression><expression>...\n<rest of program>\n"
+    },
+    {
+        "slide 38": "BRANCHING IN PYTHON\n\uf0a7<condition> has a value True or False\n\uf0a7Indentation matters in Python!\n\uf0a7Do code within if block when condition is True orcode within else \nblock when condition is False. \n6.100L Lecture 2 44if <condition>:\n<code>\n<code>\n...\n<rest of program>\nif <condition>:\n<code>\n<code>...\nelse:\n<code><code>...\n<rest of program>\n"
+    },
+    {
+        "slide 39": "BRANCHING IN PYTHON\n\uf0a7<condition> has a value True or False\n\uf0a7Indentation matters in Python!\n\uf0a7Run the first block whose corresponding  <condition> is True\n6.100L Lecture 2 45if <condition>:\n<code>\n<code>\n...\n<rest of program>\nif <condition>:\n<code>\n<code>...\nelse:\n<code><code>...\n<rest of program>if<condition>:\n<code>\n<code>\n...\nelif<condition>:\n<code> \n<code>\n...\nelif<condition>:\n<code>\n<code>\n...\n<rest of program>\n"
+    },
+    {
+        "slide 40": "BRANCHING IN PYTHON\n\uf0a7<condition> has a value True or False\n\uf0a7Indentation matters in Python!\n\uf0a7Run the first block whose corresponding <condition> is True. \nThe else block runs when no conditions were True\n6.100L Lecture 2 46if <condition>:\n<code>\n<code>\n...\n<rest of program>\nif <condition>:\n<code>\n<code>...\nelse:\n<code><code>...\n<rest of program>if<condition>:\n<code>\n<code>\n...\nelif<condition>:\n<code> \n<code>\n...\nelse:\n<code>\n<code>\n...\n<rest of program>if <condition>:\n<code>\n<code>\n...\nelif<condition>:\n<code> <code>\n...\nelif<condition>:\n<code>\n<code>\n...\n<rest of program>\n"
+    },
+    {
+        "slide 41": "BRANCHING EXAMPLE\npset_time = ???\nsleep_time = ???\nif(pset_time + sleep_time) > 24:\nprint(\"impossible!\")\nelif(pset_time + sleep_time) >= 24:\nprint(\"full schedule!\")\nelse:\nleftover = abs(24- pset_time- sleep_time)\nprint(leftover,\"h of free time!\")\nprint(\"end of day\")\n6.100L Lecture 2 47"
+    },
+    {
+        "slide 42": "YOU TRY IT!\n\uf0a7Semantic structure matches visual structure\n\uf0a7Fix this buggy code (hint, it has bad indentation)!\nx = int( input(\"Enter a number for x: \"))\ny = int( input(\"Enter a different number for y: \"))\nifx == y:\nprint(x,\"isthe same as\",y)\nprint(\"These are equal!\")\n6.100L Lecture 2 48"
+    },
+    {
+        "slide 43": "INDENTATION and NESTED \nBRANCHING\n\uf0a7Matters in Python\n\uf0a7How you denote blocks of code\nx = float( input(\"Enter a number for x: \"))\ny = float( input(\"Enter a number for y: \"))\nifx == y:\nprint(\"x and y are equal\")\nify != 0:\nprint(\"therefore, x / y is\", x/y)\nelifx < y:\nprint(\"x is smaller\")\nelse:\nprint(\"y is smaller\")\nprint(\"thanks!\")\n6.100L Lecture 2 505\n5\nTrue\n<-\nTrue<-\n<-50\nFalse\nFalse\n<-\n<-0\n0\nTrue<-\nFalse\n<-\n"
+    },
+    {
+        "slide 44": "BIG  IDEA\nPractice will help you \nbuild a mental model of how to trace the code\nIndentation does a lot of the work for you!\n6.100L Lecture 2 51"
+    },
+    {
+        "slide 45": "YOU TRY IT!\n\uf0a7What does this code print with \n\uf0a7y = 2 \n\uf0a7y = 20\n\uf0a7y = 11\n\uf0a7What if  if x <= y: becomes  elifx <= y: ?\nanswer = ''\nx = 11\nif x == y:\nanswer = answer + 'M'\nif x >= y:\nanswer = answer + 'i '\nelse:\nanswer = answer + 'T'\nprint(answer)\n6.100L Lecture 2 52"
+    },
+    {
+        "slide 46": "YOU TRY IT!\n\uf0a7Write a program that\n\uf0a7Saves a secret number. \n\uf0a7Asks the user for a number guess.\n\uf0a7Prints whether the guess is too low, too high, or the same as the secret. \n6.100L Lecture 2 53"
+    },
+    {
+        "slide 47": "BIG  IDEA\nDebug early, \ndebug often. \nWrite a little and test a little. \nDon\u2019t write a complete program at once. It introduces too many errors. \nUse the Python Tutor to step through code when you see something \nunexpected!\n6.100L Lecture 2 55"
+    },
+    {
+        "slide 48": "SUMMARY\n\uf0a7Strings provide a new data type\n\uf0a7They are sequences of characters, the first one at index 0\n\uf0a7They can be indexed and sliced\n\uf0a7Input \n\uf0a7Done with the input command\n\uf0a7Anything the user inputs is read as a string object !\n\uf0a7Output \n\uf0a7Is done with the print command\n\uf0a7Only objects that are printed in a . pycode file will be visible in the shell\n\uf0a7Branching\n\uf0a7Programs execute code blocks when conditions are true\n\uf0a7In an if-elif-elif\u2026 structure, the first condition that is True will \nbe executed\n\uf0a7Indentation matters in Python!\n6.100L Lecture 2 56"
+    }
+]

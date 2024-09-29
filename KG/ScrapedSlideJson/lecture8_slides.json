@@ -1,0 +1,173 @@
+[
+    {
+        "slide 0": "FUNCTIONS as OBJECTS\n(download slides and . pyfiles to follow along)\n6.100L Lecture 8\nAna Bell"
+    },
+    {
+        "slide 1": "FUNCTION FROM LAST LECTURE\ndefis_even( i):\n\"\"\" \nInput: i, a positive int\nReturns True if i is even and False otherwise\n\"\"\"returni%2 == 0\n\uf0a7A function always returns something\n6.100L Lecture 8"
+    },
+    {
+        "slide 2": "WHAT IF THERE IS\nNO return KEYWORD\ndefis_even( i):\n\"\"\" \nInput: i, a positive int\nReturns None\n\"\"\"\ni%2 == 0\n\uf0a7Python returns the value None, if no return given\n\uf0a7Represents the absence of a value\n\uf0a7If invoked in shell, nothing is printed\n\uf0a7No static semantic error generated\n6.100L Lecture 8"
+    },
+    {
+        "slide 3": "defis_even( i):\n\"\"\" \nInput: i, a positive int\nReturns None\n\"\"\"\ni%2 == 0\nreturn None\n6.100L Lecture 8"
+    },
+    {
+        "slide 4": "YOU TRY IT!\n\uf0a7What is printed if you run this code as a file?\ndefadd(x,y):\nreturnx+y\ndefmult(x,y):\nprint(x*y)\nadd(1,2)\nprint(add(2,3))\nmult(3,4)\nprint(mult(4,5))\n6.100L Lecture 8"
+    },
+    {
+        "slide 5": "return vs.        print\n6.100L Lecture 8\uf0a7return only has meaning \ninside a function\n\uf0a7only one return executed \ninside a function\n\uf0a7code inside function, but \nafter return statement, \nnot executed\n\uf0a7has a value associated \nwith it, given to function caller\uf0a7print can be used outside\nfunctions\n\uf0a7can execute many print \nstatements inside a function\n\uf0a7code inside function can be \nexecuted after a print \nstatement\n\uf0a7has a value associated with \nit, outputted to the console\n\uf0a7print expression itself returns \nNone value"
+    },
+    {
+        "slide 6": "YOU TRY IT!\n\uf0a7Fix the code that tries to write this function\ndefis_triangular(n):\n\"\"\" n is an int > 0 \nReturns True if n is triangular, i.e. equals a continued\nsummation of natural numbers (1+2+3+...+k), False otherwise \"\"\"\ntotal = 0foriinrange(n):\ntotal += i\niftotal == n:\nprint(True)\nprint(False)\n6.100L Lecture 8"
+    },
+    {
+        "slide 7": "FUNCTIONS SUPPORT \nMODULARITY\n\uf0a7Here is our bisection square root method as a function\n6.100L Lecture 8defbisection_root(x):\nepsilon = 0.01\nlow = 0high = xans= (high + low)/2.0\nwhileabs(ans**2 -x) >= epsilon:\nifans**2 < x: \nlow = ans\nelse: \nhigh = ans\nans= (high + low)/2.0\n# print(ans, 'is close to the root of', x)returnansInitialize variables\niterate\nreturn resultguess not close enough\nnew value for guessupdate low or high, \ndepends on guess too \nsmall or too large"
+    },
+    {
+        "slide 8": "FUNCTIONS SUPPORT \nMODULARITY\n\uf0a7Call it with different values\nprint(bisection_root(4))\nprint(bisection_root(123))\n\uf0a7Write a function that calls this one!\n6.100L Lecture 8"
+    },
+    {
+        "slide 9": "YOU TRY IT!\n\uf0a7Write a function that satisfies the following specs\ndef count_nums_with_sqrt_close_to (n, epsilon):\n\"\"\" n is an int > 2\nepsilon is a positive number < 1\nReturns how many integers have a square root within epsilon of n \"\"\"\nUse bisection_root we already wrote to get an approximation \nfor the sqrt of an integer. \nFor example: print(count_nums_with_sqrt_close_to (10, 0.1)) \nprints 4 because all these integers have a sqrt within 0.1\n\uf0a7sqrt of 99 is 9.949699401855469\n\uf0a7sqrt of 100 is 9.999847412109375\n\uf0a7sqrt of 101 is 10.049758911132812\n\uf0a7sqrt of 102 is 10.099456787109375\n6.100L Lecture 8"
+    },
+    {
+        "slide 10": "ZOOMING OUT\n6.100L Lecture 8Program Scope\nsum_oddlowhighmy_sumdefsum_odd(a, b):\nsum_of_odds = 0\nforiinrange(a, b+1):\nifi%2 == 1:\nsum_of_odds += i\nreturnsum_of_odds\nlow = 2high = 7my_sum= sum_odd(low, high)Some \ncodefunction \nobjectThis is my \u201cblack box\u201d\nOne function call2\n7"
+    },
+    {
+        "slide 11": "ZOOMING OUT\n6.100L Lecture 8Program Scope\nsum_oddlowhighmy_sumdefsum_odd(a, b):\nsum_of_odds = 0\nforiinrange(a, b+1):\nifi%2 == 1:\nsum_of_odds += i\nreturnsum_of_odds\nlow = 2high = 7my_sum= sum_odd(low, high)Some \ncodefunction \nobject\n2\n7"
+    },
+    {
+        "slide 12": "ZOOMING OUT\n6.100L Lecture 8Program Scope\nsum_oddlowhighmy_sumdefsum_odd(a, b):\nsum_of_odds = 0\nforiinrange(a, b+1):\nifi%2 == 1:\nsum_of_odds += i\nreturnsum_of_odds\nlow = 2high = 7my_sum= sum_odd(low, high)Some \ncodefunction \nobjectThis is my \u201cblack box\u201d\n152\n7\n15"
+    },
+    {
+        "slide 13": "FUNCTION SCOPE\n6.100L Lecture 8"
+    },
+    {
+        "slide 14": "UNDERSTANDING FUNCTION \nCALLS\n\uf0a7How does Python execute a function call?\n\uf0a7How does Python know what value is associated with a variable \nname?\n\uf0a7It creates a new environment with every function call!\n\uf0a7Like a mini program that it needs to complete\n\uf0a7The mini program runs with assigning its parameters to some inputs\n\uf0a7It does the work (aka the body of the function)\n\uf0a7It returns a value\n\uf0a7The environment disappears after it returns the value\n6.100L Lecture 8\n"
+    },
+    {
+        "slide 15": "ENVIRONMENTS\n\uf0a7Global environment \n\uf0a7Where user interacts with Python interpreter\n\uf0a7Where the program starts out\n\uf0a7Invoking a function creates a new environment (frame/scope)\n6.100L Lecture 8"
+    },
+    {
+        "slide 16": "VARIABLE SCOPE\n\uf0a7Formal parameters get bound to the value of input parameters\n\uf0a7Scope is a mapping of names to objects\n\uf0a7Defines context in which body is evaluated\n\uf0a7Values of variables given by bindings of names\n\uf0a7Expressions in body of function evaluated wrtthis new scope\n6.100L Lecture 8deff( x ):\nx = x + 1\nprint('in f(x): x =', x)\nreturnx\nx = 3\nz = f( x )yy"
+    },
+    {
+        "slide 17": "Global scope\nfdeff( x ):\nx = x + 1\nprint('in f(x): x =', x)\nreturnx\nx = 3\nz = f( x )VARIABLE SCOPE\nafter evaluating def\n6.100L Lecture 8Some \ncodefunction \nobject\nThis is my \u201cblack box\u201d"
+    },
+    {
+        "slide 18": "Global scope\nf\nxdeff( x ):\nx = x + 1\nprint('in f(x): x =', x)\nreturnx\nx = 3\nz = f( x )VARIABLE SCOPE\nafter exec 1stassignment\n6.100L Lecture 8Some \ncode\n3This is my \u201cblack box\u201d"
+    },
+    {
+        "slide 19": "deff( x ):\nx = x + 1\nprint('in f(x): x =', x)\nreturnx\nx = 3\nz = f( x )VARIABLE SCOPE\nafter f invoked\n6.100L Lecture 8Global scope\nf\nxSome \ncodef scope\nx3\n3"
+    },
+    {
+        "slide 20": "deff( x ):\nx = x + 1\nprint('in f(x): x =', x)\nreturnx\ny = 3\nz = f( y )VARIABLE SCOPE\nafter f invoked\n6.100L Lecture 8Global scope\nf\nySome \ncodef scope\nx3\n3"
+    },
+    {
+        "slide 21": "VARIABLE SCOPE\neval body of f in f\u2019s scope\n6.100L Lecture 8Global scope\nf\nxSome \ncode\n3deff( x ):\nx = x + 1\nprint('in f(x): x =', x)\nreturnx\nx = 3\nz = f( x )in f(x): x = 4 printed out\nf scope\nx34"
+    },
+    {
+        "slide 22": "VARIABLE SCOPE\nduring return\n6.100L Lecture 8Global scope\nf\nxSome \ncode\n3f scope\nx4deff( x ):\nx = x + 1\nprint('in f(x): x =', x)\nreturnx\nx = 3\nz = f( x )returns 4"
+    },
+    {
+        "slide 23": "VARIABLE SCOPE\nafter exec 2ndassignment\n6.100L Lecture 8Global scope\nf\nxzSome \ncode\n3\n4deff( x ):\nx = x + 1\nprint('in f(x): x =', x)\nreturnx\nx = 3\nz = f( x )"
+    },
+    {
+        "slide 24": "BIG  IDEA\nYou need to know what \nexpression you are executing to know the scope you are in.\n6.100L Lecture 8"
+    },
+    {
+        "slide 25": "ANOTHER SCOPE EXAMPLE\n\uf0a7What we\u2019ve already seen, name x does not interfere between \nglobal scope and function definition\n6.100L Lecture 8deff(y):\nx = 1x += 1print(x)\nx = 5f(x)print(x)\n2\n5"
+    },
+    {
+        "slide 26": "ANOTHER SCOPE EXAMPLE\n\uf0a7Inside a function, can access a variable defined outside\n\uf0a7Use the Python Tutor to step through this!\n6.100L Lecture 8defg(y):\nprint(x)print(x + 1)\nx = 5g(x)print(x)deff(y):x = 1x += 1print(x)\nx = 5f(x)print(x)\n5\n65"
+    },
+    {
+        "slide 27": "ANOTHER SCOPE EXAMPLE\n\uf0a7Inside a function, cannot modify a variable defined outside \n(can by using global variables , but frowned upon)\n\uf0a7Use the Python Tutor to step through this!\n6.100L Lecture 8defg(y):\nprint(x)print(x + 1)\nx = 5g(x)print(x)defh(y):x += 1\nx = 5h(x)print(x)deff(y):x = 1x += 1print(x)\nx = 5f(x)print(x)\nError"
+    },
+    {
+        "slide 28": "FUNCTIONS as \nARGUMENTS\n6.100L Lecture 8"
+    },
+    {
+        "slide 29": "HIGHER ORDER PROCEDURES\n\uf0a7Objects in Python have a type\n\uf0a7int, float, str, Boolean, NoneType , function\n\uf0a7Objects can appear in RHS of assignment statement\n\uf0a7Bind a name to an object\n\uf0a7Objects\n\uf0a7Can be used as an argument to a procedure\n\uf0a7Can be returned as a value from a procedure\n\uf0a7Functions are also first class objects !\n\uf0a7Treat functions just like the other types\n\uf0a7Functions can be arguments to another function\n\uf0a7Functions can be returned by another function\n6.100L Lecture 8\n"
+    },
+    {
+        "slide 30": "OBJECTS IN A PROGRAM\n6.100L Lecture 8defis_even( i):\nreturn i%2 == 0\nr = 2\npi = 22/7\nmy_func = is_even\na = is_even(3)b = my_func(4)pifunction \nobject with \nsome code\nint object 2\nfloat object \n3.14285714is_even\nrmy_func\na False\nb True"
+    },
+    {
+        "slide 31": "BIG  IDEA\nEverything in Python is \nan object.\n6.100L Lecture 8"
+    },
+    {
+        "slide 32": "FUNCTION AS A PARAMETER\ndefcalc(op, x, y):\nreturnop(x,y)\ndefadd(a,b):returna+b\ndefdiv(a,b):\nifb != 0:\nreturna/b\nprint(\"Denominator was 0.\")\nprint(calc(add, 2, 3))\n6.100L Lecture 8"
+    },
+    {
+        "slide 33": "STEP THROUGH THE CODE\n6.100L Lecture 8Program Scope\ncalc\nadddivresSome \ncodefunction \nobject\nSome \ncodefunction \nobject\nSome \ncodefunction \nobjectdef calc(op, x, y):\nreturn op(x,y)\ndef add(a,b):\nreturn a+b\ndef div(a,b):\nif b != 0:\nreturn a/b\nprint(\"Denom was 0.\")\nres = calc(add, 2, 3)"
+    },
+    {
+        "slide 34": "CREATE calc SCOPE\n6.100L Lecture 8def calc(op, x, y):\nreturn op(x,y)\ndef add(a,b):\nreturn a+b\ndef div(a,b):\nif b != 0:\nreturn a/b\nprint(\"Denom was 0.\")\nres = calc(add, 2, 3)Program Scope\ncalc\nadddivresSome \ncodefunction \nobject\nSome \ncodefunction \nobject\nSome \ncodefunction \nobjectcalc scope"
+    },
+    {
+        "slide 35": "MATCH FORMAL PARAMS in calc\n6.100L Lecture 8def calc(op, x, y):\nreturn op(x,y)\ndef add(a,b):\nreturn a+b\ndef div(a,b):\nif b != 0:\nreturn a/b\nprint(\"Denom was 0.\")\nres = calc(add, 2, 3)Program Scope\ncalc\nadddivresSome \ncodefunction \nobject\nSome \ncodefunction \nobject\nSome \ncodefunction \nobjectcalc scope\nop\nxyadd\n2\n3"
+    },
+    {
+        "slide 36": "FIRST (and only) LINE IN calc\n6.100L Lecture 8def calc(op, x, y):\nreturn op(x,y)\ndef add(a,b):\nreturn a+b\ndef div(a,b):\nif b != 0:\nreturn a/b\nprint(\"Denom was 0.\")\nres = calc(add, 2, 3)Program Scope\ncalc\nadddivresSome \ncodefunction \nobject\nSome \ncodefunction \nobject\nSome \ncodefunction \nobjectcalc scope\nop\nxyadd\n2\n3"
+    },
+    {
+        "slide 37": "CREATE SCOPE OF add\n6.100L Lecture 8def calc(op, x, y):\nreturn op(x,y)\ndef add(a,b):\nreturn a+b\ndef div(a,b):\nif b != 0:\nreturn a/b\nprint(\"Denom was 0.\")\nres = calc(add, 2, 3)Program Scope\ncalc\nadddivresSome \ncodefunction \nobject\nSome \ncodefunction \nobject\nSome \ncodefunction \nobjectcalc scope\nop\nxyadd\n2\n3add scope"
+    },
+    {
+        "slide 38": "MATCH FORMAL PARAMS IN add\n6.100L Lecture 8def calc(op, x, y):\nreturn op(x,y)\ndef add(a,b):\nreturn a+b\ndef div(a,b):\nif b != 0:\nreturn a/b\nprint(\"Denom was 0.\")\nres = calc(add, 2, 3)Program Scope\ncalc\nadddivresSome \ncodefunction \nobject\nSome \ncodefunction \nobject\nSome \ncodefunction \nobjectcalc scope\nop\nxyadd\n2\n3add scope\na\nb2\n3"
+    },
+    {
+        "slide 39": "EXECUTE LINE OF add\n6.100L Lecture 8def calc(op, x, y):\nreturn op(x,y)\ndef add(a,b):\nreturn a+b\ndef div(a,b):\nif b != 0:\nreturn a/b\nprint(\"Denom was 0.\")\nres = calc(add, 2, 3)Program Scope\ncalc\nadddivresSome \ncodefunction \nobject\nSome \ncodefunction \nobject\nSome \ncodefunction \nobjectcalc scope\nop\nxyadd\n2\n3add scope\na\nb2\n3\nreturns 5"
+    },
+    {
+        "slide 40": "REPLACE FUNC CALL WITH RETURN\n6.100L Lecture 8def calc(op, x, y):\nreturn op(x,y)\ndef add(a,b):\nreturn a+b\ndef div(a,b):\nif b != 0:\nreturn a/b\nprint(\"Denom was 0.\")\nres = calc(add, 2, 3)Program Scope\ncalc\nadddivresSome \ncodefunction \nobject\nSome \ncodefunction \nobject\nSome \ncodefunction \nobjectcalc scope\nop\nxyadd\n2\n3"
+    },
+    {
+        "slide 41": "EXECUTE LINE OF calc\n6.100L Lecture 8def calc(op, x, y):\nreturn op(x,y)\ndef add(a,b):\nreturn a+b\ndef div(a,b):\nif b != 0:\nreturn a/b\nprint(\"Denom was 0.\")\nres = calc(add, 2, 3)Program Scope\ncalc\nadddivresSome \ncodefunction \nobject\nSome \ncodefunction \nobject\nSome \ncodefunction \nobjectcalc scope\nop\nxyadd\n2\n3\nreturns 5"
+    },
+    {
+        "slide 42": "REPLACE FUNC CALL WITH RETURN\n6.100L Lecture 8defcalc(op, x, y):\nreturnop(x,y)\ndefadd(a,b):returna+b\ndefdiv(a,b):ifb != 0:\nreturna/b\nprint(\"Denomwas 0.\")\nres = calc(add, 2, 3)Program Scope\ncalc\nadddivresSome \ncodefunction \nobject\nSome \ncodefunction \nobject\nSome \ncodefunction \nobject\n5"
+    },
+    {
+        "slide 43": "YOU TRY IT!\n\uf0a7Do a similar trace with the function call\ndef calc(op, x, y):\nreturn op( x,y)\ndef div( a,b):\nif b != 0:\nreturn a/b\nprint(\"Denom was 0.\")\nres = calc(div,2,0)\nWhat is the value of res and what gets printed?\n6.100L Lecture 8"
+    },
+    {
+        "slide 44": "ANOTHER EXAMPLE: \nFUNCTIONS AS PARAMS\n6.100L Lecture 8deffunc_a():\nprint('inside func_a ')\ndeffunc_b(y):\nprint('inside func_b ')\nreturny\ndeffunc_c(f, z):\nprint('inside func_c ')\nreturnf(z)\nprint(func_a())\nprint(5 + func_b (2))\nprint(func_c(func_b, 3))\n"
+    },
+    {
+        "slide 45": "FUNCTIONS AS PARAMETERS\n6.100L Lecture 8deffunc_a():\nprint('inside func_a ')\ndeffunc_b(y):\nprint('inside func_b ')\nreturn y\ndeffunc_c(f, z):\nprint('inside func_c ')\nreturn f(z)\nprint(func_a ())\nprint(5 + func_b (2))\nprint(func_c (func_b, 3))Global scope\nfunc_a\nfunc_bfunc_cSome \ncode\nSome \ncode\nSome \ncodefunc_a scope"
+    },
+    {
+        "slide 46": "FUNCTIONS AS PARAMETERS\n6.100L Lecture 8deffunc_a():\nprint('inside func_a ')\ndeffunc_b(y):\nprint('inside func_b ')\nreturn y\ndeffunc_c(f, z):\nprint('inside func_c ')\nreturn f(z)\nprint(func_a ())\nprint(5 + func_b (2))\nprint(func_c (func_b, 3))Global scope\nfunc_a\nfunc_bfunc_cSome \ncode\nSome \ncode\nSome \ncodefunc_a scope\nNone"
+    },
+    {
+        "slide 47": "FUNCTIONS AS PARAMETERS\n6.100L Lecture 8deffunc_a():\nprint('inside func_a ')\ndeffunc_b(y):\nprint('inside func_b ')\nreturn y\ndeffunc_c(f, z):\nprint('inside func_c ')\nreturn f(z)\nprint(func_a ())\nprint(5 + func_b (2))\nprint(func_c (func_b, 3))Global scope\nfunc_a\nfunc_bfunc_cSome \ncode\nSome \ncode\nSome \ncode"
+    },
+    {
+        "slide 48": "Global scope\nfunc_a\nfunc_bfunc_cFUNCTIONS AS PARAMETERS\n6.100L Lecture 8deffunc_a():\nprint('inside func_a ')\ndeffunc_b(y):\nprint('inside func_b ')\nreturn y\ndeffunc_c(f, z):\nprint('inside func_c ')\nreturn f(z)\nprint(func_a ())\nprint(5 + func_b (2))\nprint(func_c (func_b, 3))Some \ncode\nSome \ncode\nSome \ncodefunc_b scope\ny 2\nNone"
+    },
+    {
+        "slide 49": "Global scope\nfunc_a\nfunc_bfunc_cFUNCTIONS AS PARAMETERS\n6.100L Lecture 8deffunc_a():\nprint('inside func_a ')\ndeffunc_b(y):\nprint('inside func_b ')\nreturn y\ndeffunc_c(f, z):\nprint('inside func_c ')\nreturn f(z)\nprint(func_a ())\nprint(5 + func_b (2))\nprint(func_c (func_b, 3))Some \ncode\nSome \ncode\nSome \ncodefunc_b scope\ny 2\nNone"
+    },
+    {
+        "slide 50": "Global scope\nfunc_a\nfunc_bfunc_cFUNCTIONS AS PARAMETERS\n6.100L Lecture 8deffunc_a():\nprint('inside func_a ')\ndeffunc_b(y):\nprint('inside func_b ')\nreturn y\ndeffunc_c(f, z):\nprint('inside func_c ')\nreturn f(z)\nprint(func_a ())\nprint(5 + func_b (2))\nprint(func_c (func_b, 3))Some \ncode\nSome \ncode\nSome \ncodefunc_b scope\ny 2\nreturns 2None\n7"
+    },
+    {
+        "slide 51": "Global scope\nfunc_a\nfunc_bfunc_cFUNCTIONS AS PARAMETERS\n6.100L Lecture 8deffunc_a():\nprint('inside func_a ')\ndeffunc_b(y):\nprint('inside func_b ')\nreturn y\ndeffunc_c(f, z):\nprint('inside func_c ')\nreturn f(z)\nprint(func_a ())\nprint(5 + func_b (2))\nprint(func_c (func_b, 3))Some \ncode\nSome \ncode\nSome \ncode\nNone\n7"
+    },
+    {
+        "slide 52": "Global scope\nfunc_a\nfunc_bfunc_cFUNCTIONS AS PARAMETERS\ndeffunc_a():\nprint('inside func_a ')\ndeffunc_b(y):\nprint('inside func_b ')\nreturn y\ndeffunc_c(f, z):\nprint('inside func_c ')\nreturn f(z)\nprint(func_a ())\nprint(5 + func_b (2))\nprint(func_c (func_b, 3))Some \ncode\nSome \ncode\nSome \ncodefunc_c scope\nf\nz func_b\nNone\n7\n6.100L Lecture 83"
+    },
+    {
+        "slide 53": "Global scope\nfunc_a\nfunc_bfunc_cFUNCTIONS AS PARAMETERS\ndeffunc_a():\nprint('inside func_a ')\ndeffunc_b(y):\nprint('inside func_b ')\nreturn y\ndeffunc_c(f, z):\nprint('inside func_c ')\nreturn f(z)\nprint(func_a ())\nprint(5 + func_b (2))\nprint(func_c (func_b, 3))Some \ncode\nSome \ncode\nSome \ncodefunc_c scope\nf\nz func_b\nfunc_b scope\nyreturns 3 None\n7\n6.100L Lecture 833\n3"
+    },
+    {
+        "slide 54": "Global scope\nfunc_a\nfunc_bfunc_cFUNCTIONS AS PARAMETERS\ndeffunc_a():\nprint('inside func_a ')\ndeffunc_b(y):\nprint('inside func_b ')\nreturn y\ndeffunc_c(f, z):\nprint('inside func_c ')\nreturn f(z)\nprint(func_a ())\nprint(5 + func_b (2))\nprint(func_c (func_b, 3))Some \ncode\nSome \ncode\nSome \ncodefunc_c scope\nf\nz func_b\nreturns 3None\n7\n6.100L Lecture 833\n3"
+    },
+    {
+        "slide 55": "YOU TRY IT!\n\uf0a7Write a function that meets these specs.\ndef apply(criteria,n):\n\"\"\" \n* criteria is a func that takes in a number and returns a bool\n* n is an intReturns how many ints from 0 to n (inclusive) match \nthe criteria (i.e. return True when run with criteria)\n\"\"\"\n6.100L Lecture 8"
+    },
+    {
+        "slide 56": "SUMMARY\n\uf0a7Functions are first class objects\n\uf0a7They have a type\n\uf0a7They can be assigned as a value bound to a name\n\uf0a7They can be used as an argument to another procedure\n\uf0a7They can be returned as a value from another procedure\n\uf0a7Have to be careful about environments\n\uf0a7Main program runs in the global environment\n\uf0a7Function calls each get a new temporary environment\n\uf0a7This enables the creation of concise, easily read code\n6.100L Lecture 8"
+    }
+]

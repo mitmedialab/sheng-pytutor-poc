@@ -1,0 +1,137 @@
+[
+    {
+        "slide 0": "LISTS, MUTABILITY\n(download slides and . pyfiles to follow along)\n6.100L Lecture 10\nAna Bell"
+    },
+    {
+        "slide 1": "INDICES and ORDERING in LISTS\na_list= []\nL = [2, 'a', 4, [1,2]]\nlen(L) \uf0e0evaluates to 4\nL[0] \uf0e0evaluates to 2\nL[3] \uf0e0evaluates to [1,2], another list!\n[2,'a'] + [5,6] \uf0e0evaluates to [2,'a',5,6]\nmax([3,5,0]) \uf0e0evaluates to 5 \nL[1:3] \uf0e0evaluates to ['a', 4]\nfor e in L \uf0e0loop variable becomes each element in L \nL[3] = 10 \uf0e0mutates L to [2,'a',4,10]\n6.100L Lecture 10"
+    },
+    {
+        "slide 2": "MUTABILITY\n6.100L Lecture 10\uf0a7Lists are mutable !\n\uf0a7Assigning to an element at an index changes the value\nL = [2, 4, 3]\nL[1] = 5\n\uf0a7Lis now [2, 5, 3]; note this is the same object L\nL[2,4,3][2,5,3]"
+    },
+    {
+        "slide 3": "MUTABILITY\n6.100L Lecture 10\uf0a7Compare \n\uf0a7Making L by mutating an element vs. \n\uf0a7Making t by creating a new object\nL = [2, 4, 3]\nL[1] = 5\nt = (2, 4, 3)t = (2, 5, 3) L [2,4,3][2,5,3]\nt (2,4,3)\n(2,5,3)x\n"
+    },
+    {
+        "slide 4": "OPERATION ON LISTS \u2013 append\n\uf0a7Add an element to end of list with L.append(element)\n\uf0a7Mutates the list!\nL = [2,1,3]\nL.append(5) \uf0e0L is now [2,1,3,5]\n6.100L Lecture 10L[2,1,3][2,1,3,5]"
+    },
+    {
+        "slide 5": "OPERATION ON LISTS \u2013 append\n\uf0a7Add an element to end of list with L.append(element)\n\uf0a7Mutates the list!\nL = [2,1,3]\nL.append(5) \uf0e0L is now [2,1,3,5]\nL = L.append(5)\n6.100L Lecture 10L[2,1,3][2,1,3,5]"
+    },
+    {
+        "slide 6": "OPERATION ON LISTS \u2013 append\n\uf0a7Add an element to end of list with L.append(element)\n\uf0a7Mutates the list!\nL = [2,1,3]\nL.append(5) \uf0e0L is now [2,1,3,5]\nL = L.append(5)\n6.100L Lecture 10L[2,1,3][2,1,3,5,5]"
+    },
+    {
+        "slide 7": "OPERATION ON LISTS \u2013 append\n\uf0a7Add an element to end of list with L.append(element)\n\uf0a7Mutates the list!\nL = [2,1,3]\nL.append(5) \uf0e0L is now [2,1,3,5]\nL = L.append(5)\n6.100L Lecture 10L[2,1,3][2,1,3,5,5]\nNone\n"
+    },
+    {
+        "slide 8": "OPERATION ON LISTS \u2013 append\n\uf0a7Add an element to end of list with L.append(element)\n\uf0a7Mutates the list!\nL = [2,1,3]\nL.append(5) \uf0e0L is now [2,1,3,5]\nL.append(5) \uf0e0L is now [2,1,3,5,5]\nprint(L)\n6.100L Lecture 10L[2,1,3][2,1,3,5,5]"
+    },
+    {
+        "slide 9": "YOU TRY IT!\n\uf0a7What is the value of L1, L2, L3 and L at the end? \nL1 = ['re']\nL2 = ['mi']L3 = ['do']\nL4 = L1 + L2\nL3.append(L4)L = L1.append(L3)\n6.100L Lecture 10"
+    },
+    {
+        "slide 10": "BIG  IDEA\nSome functions mutate \nthe list and don\u2019t return anything. \nWe use these functions for their side effect.\n6.100L Lecture 10"
+    },
+    {
+        "slide 11": "OPERATION ON LISTS: append\n\uf0a7L = [2,1,3]\nL.append (5)\n\uf0a7What is the dot? \n\u2022Lists are Python objects, everything in Python is an object\n\u2022Objects have data\n\u2022Object types also have associated operations \n\u2022Access this information by object_name.do_something()\n\u2022Equivalent to calling append with arguments L and 5\n6.100L Lecture 10\n"
+    },
+    {
+        "slide 12": "YOU TRY IT!\n\uf0a7Write a function that meets these specs:\ndef make_ordered_list(n):\n\"\"\" n is a positive int\nReturns a new list containing all ints in order \nfrom 0 to n (inclusive)\"\"\"\n6.100L Lecture 10"
+    },
+    {
+        "slide 13": "YOU TRY IT!\n\uf0a7Write a function that meets the specification.\ndef remove_elem(L, e):\n\"\"\" \nL is a list\nReturns a new list with elements in the same order as L\nbut without any elements equal to e. \n\"\"\"\nL = [1,2,2,2]print(remove_elem(L, 2))   # prints [1]\n6.100L Lecture 10"
+    },
+    {
+        "slide 14": "STRINGS to LISTS\n\uf0a7Convert string to list with list(s)\n\uf0a7Every character from sis an element in a list\n\uf0a7Use s.split(), to split a string on a character parameter, \nsplits on spaces if called without a parameter\n6.100L Lecture 10s = \"I<3 cs &u?\" \uf0e0sis a string\nL = list(s) \uf0e0L is['I','<','3',' ','c','s',' ','&','u','?']\nL1 = s.split(' ') \uf0e0L1 is  ['I<3','cs','&u?']\nL2 = s.split ('<') \uf0e0L2 is ['I', '3 cs &u?' ] "
+    },
+    {
+        "slide 15": "LISTS to STRINGS\n\uf0a7Convert a list of strings back to string\n\uf0a7Use ''.join(L) to turn a list of strings into a bigger string\n\uf0a7Can give a character in quotes to add char between every \nelement\n6.100L Lecture 10L = ['a','b','c'] \uf0e0Lis a list\nA = ''.join(L) \uf0e0A is \"abc\"\nB = '_'.join(L) \uf0e0B is \"a_b_c\"\nC = ''.join([1,2,3]) \uf0e0an error\nC = ''.join(['1', '2','3']\uf0e0C is \"123\" a string!"
+    },
+    {
+        "slide 16": "YOU TRY IT!\n\uf0a7Write a function that meets these specs:\ndef count_words (sen):\n\"\"\" senis a string representing a sentence \nReturns how many words are in sen(i.e. a word is a \na sequence of characters between spaces. \"\"\"\nprint(count_words (\"Hello it's me\"))\n6.100L Lecture 10"
+    },
+    {
+        "slide 17": "A FEW INTERESTING LIST \nOPERATIONS\n\uf0a7Add an element to end of list with L.append(element)\n\uf0a7mutates the list\n\uf0a7sort() \n\uf0a7L = [4,2,7]\nL.sort()\n\uf0a7Mutates L\n\uf0a7reverse()\n\uf0a7L = [4,2,7]\nL.reverse()\n\uf0a7Mutates L\n\uf0a7sorted()\n\uf0a7L = [4,2,7]\n\uf0a7L_new= sorted(L)\n\uf0a7Returns a sorted version of L ( no mutation!)\n6.100L Lecture 10"
+    },
+    {
+        "slide 18": "MUTABILITY\n6.100L Lecture 10L=[9,6,0,3]\nL.append (5)\na = sorted(L) \uf0e0returns a new sorted list, does not mutate L\nb = L.sort() \uf0e0mutatesL to be [0,3,5,6,9] and returns None\nL.reverse() \uf0e0mutatesL to be [9,6,5,3,0] and returns None\nL[9,6,0,3][9,6,0,3,5]"
+    },
+    {
+        "slide 19": "[9,6,0,3,5]MUTABILITY\n6.100L Lecture 10L=[9,6,0,3]\nL.append (5)\na = sorted(L) \uf0e0returns a new sorted list, does not mutate L\nb = L.sort() \uf0e0mutatesL to be [0,3,5,6,9] and returns None\nL.reverse() \uf0e0mutatesL to be [9,6,5,3,0] and returns None\nL[0,3,5,6,9]\na"
+    },
+    {
+        "slide 20": "[0,3,5,6,9][9,6,0,3,5]MUTABILITY\n6.100L Lecture 10L=[9,6,0,3]\nL.append (5)\na = sorted(L) \uf0e0returns a new sorted list, does not mutate L\nb = L.sort() \uf0e0mutatesL to be [0,3,5,6,9] and returns None\nL.reverse() \uf0e0mutatesL to be [9,6,5,3,0] and returns None\nL[0,3,5,6,9]\nabNone"
+    },
+    {
+        "slide 21": "[0,3,5,6,9][9,6,5,3,0]MUTABILITY\n6.100L Lecture 10L=[9,6,0,3]\nL.append (5)\na = sorted(L) \uf0e0returns a new sorted list, does not mutate L\nb = L.sort() \uf0e0mutatesL to be [0,3,5,6,9] and returns None\nL.reverse() \uf0e0mutatesL to be [9,6,5,3,0] and returns None\nL[0,3,5,6,9]\nabNone"
+    },
+    {
+        "slide 22": "YOU TRY IT!\n\uf0a7Write a function that meets these specs:\ndef sort_words (sen):\n\"\"\" senis a string representing a sentence \nReturns a list containing all the words in sen but\nsorted in alphabetical order. \"\"\"\nprint(sort_words (\"look at this photograph\"))\n6.100L Lecture 10"
+    },
+    {
+        "slide 23": "BIG  IDEA\nFunctions with side \neffects mutate inputs.\nYou can write your own!\n6.100L Lecture 10"
+    },
+    {
+        "slide 24": "\uf0a7Let\u2019s write a function that mutates the input\n\uf0a7Example: square every element of a list, mutating original list\n\uf0a7Solutions (we\u2019ll go over option 2, try the others on your own!):\n\uf0a7Option 1: Make a new variable representing the index, initialized to 0 \nbefore the loop and incremented by 1 in the loop.\n\uf0a7Option 2: Loop over the index not the element, and use L[index] to get \nthe element\n\uf0a7Option 3: Use enumerate in the for loop (I leave this option to you to \nlook up). i.e. for i,ein enumerate(L)LISTS SUPPORT ITERATION\n6.100L Lecture 10defsquare_list(L):\nforeleminL: \n# ?? How to do L[index] = the square ??# ?? elem is an element in L, not the index :("
+    },
+    {
+        "slide 25": "LISTS SUPPORT ITERATION\n\uf0a7Example: square every element of a list, mutating original list\n\uf0a7Recall that changing an element at an index is done by\nL[index] = newelement e.g. L[2] = 6\n\uf0a7Note, no return!\n6.100L Lecture 10defsquare_list(L):\nforiinrange(len (L)): \nL[i] = L[i]**2"
+    },
+    {
+        "slide 26": "\uf0a7Example: square every element of a list, mutating original list\ndefsquare_list(L):\nforiinrange(len (L)): \nL[i] = L[i]**2TRACE the CODE with an \nEXAMPLE\n6.100L Lecture 10iis 0: L is mutated to [4, 3, 4]\niis 1: L is mutated to [4, 9, 4]\niis 2: L is mutated to [4, 9, 16]Suppose L is [2,3,4]"
+    },
+    {
+        "slide 27": "\uf0a7Example: square every element of a list, mutating original list\ndefsquare_list(L):\nforiinrange(len (L)): \nL[i] = L[i]**2\nLin = [2,3,4]print(\"before fcncall:\",Lin )  # prints [2,3,4]\nsquare_list (Lin)\nprint(\"after fcncall:\",Lin)   # prints [4,9,16]TRACE the CODE with an \nEXAMPLE\n6.100L Lecture 10"
+    },
+    {
+        "slide 28": "BIG  IDEA\nFunctions that mutate \nthe input likely\u2026..\nIterate over len(L) not L.\nReturn None, so the function call does not need to be saved.\n6.100L Lecture 10"
+    },
+    {
+        "slide 29": "MUTATION\n\uf0a7Lists are mutable structures\n\uf0a7There are many advantages to being able to change a portion \nof a list \n\uf0a7Suppose I have a very long list (e.g. of personnel records) and I want to \nupdate one element.  Without mutation, I would have to copy the \nentire list, with a new version of that record in the right spot.  A \nmutable structure lets me change just that element\n\uf0a7But, this ability can also introduce unexpected challenges\n6.100L Lecture 10"
+    },
+    {
+        "slide 30": "TRICKY EXAMPLES OVERVIEW\n\uf0a7TRICKY EXAMPLE 1:\n\uf0a7A loop iterates over indices of L and mutates L each time (adds more \nelements). \n\uf0a7TRICKY EXAMPLE 2:\n\uf0a7A loop iterates over L\u2019s elements directly and mutates L each time (adds \nmore elements).\n\uf0a7TRICKY EXAMPLE 3:\n\uf0a7A loop iterates over L\u2019s elements directly but reassigns L to a new \nobject each time\n\uf0a7TRICKY EXAMPLE 4 (next time):\n\uf0a7A loop iterates over L\u2019s elements directly and mutates L by removing \nelements . \n6.100L Lecture 10"
+    },
+    {
+        "slide 31": "TRICKY EXAMPLE 1: append\n\uf0a7Range returns something that behaves like a tuple \n(but isn\u2019t \u2013it returns an iterable )\n\uf0a7Returns the first element, and an iteration method by which \nsubsequent elements are generated as needed\nrange(4) \uf0e0kind of like tuple (0,1,2,3)\nrange(2,9,2) \uf0e0kind of like tuple (2,4,6,8)\nL = [1,2,3,4]\nforiinrange(len(L)):\nL.append(i) print(L)\n6.100L Lecture 101sttime: L is [1, 2, 3, 4, 0]\n2ndtime: L is [1, 2, 3, 4, 0, 1]\n3rdtime: L is [1, 2, 3, 4, 0, 1, 2]\n4thtime: L is [1, 2, 3, 4, 0, 1, 2, 3]"
+    },
+    {
+        "slide 32": "TRICKY EXAMPLE 1: append\nL = [1,2,3,4]\nfor iin range(len(L)):\nL.append( i) \nprint(L)\n6.100L Lecture 10[1,2,3,4]\nL[1,2,3,4,0][1,2,3,4,0,1]\n(0,1,2,3)\ni[1,2,3,4,0,1,2][1,2,3,4,0,1,2,3]\n1sttime: L is [1, 2, 3, 4, 0]\n2ndtime: L is [1, 2, 3, 4, 0, 1]\n3rdtime: L is [1, 2, 3, 4, 0, 1, 2]\n4thtime: L is [1, 2, 3, 4, 0, 1, 2, 3]"
+    },
+    {
+        "slide 33": "TRICKY EXAMPLE 2: append\nLooks similar but\u2026\nL = [1,2,3,4]\ni= 0\nfor e in L:\nL.append( i)\ni+= 1\nprint(L)\n6.100L Lecture 101sttime: L is [1, 2, 3, 4, 0]\n2ndtime: L is [1, 2, 3, 4, 0, 1]\n3rdtime: L is [1, 2, 3, 4, 0, 1, 2]\n4thtime: L is [1, 2, 3, 4, 0, 1, 2, 3]\nNEVER STOPS![1,2,3,4]\nLe\n[1,2,3,4,0][1,2,3,4,0,1]\ni012\nIn previous example, L was accessed at \nonset to create a range iterable ; in this \nexample, the loop is directly accessing indices into L[1,2,3,4,0,1,2]\n3"
+    },
+    {
+        "slide 34": "COMBINING LISTS\n\uf0a7Concatenation, + operator, creates a new list, with copies\n\uf0a7Mutate list with L.extend( some_list )(copy of some_list )\nL1 = [2,1,3]\nL2 = [4,5,6]\nL3 = L1 + L2 \uf0e0L3is [2,1,3,4,5,6]\nL1 [2,1,3]\nL2 [4,5,6]\nL3 [2,1,3,4,5,6]\n6.100L Lecture 10"
+    },
+    {
+        "slide 35": "COMBINING LISTS\n\uf0a7Concatenation, + operator, creates a new list, with copies\n\uf0a7Mutate list with L.extend( some_list )(copy of some_list )\nL1 = [2,1,3]\nL2 = [4,5,6]\nL3 = L1 + L2 \uf0e0L3is [2,1,3,4,5,6]\nL1.extend([0,6]) \uf0e0mutate L1to [2,1,3,0,6] \nL1 [2,1,3]\nL2 [4,5,6]\nL3 [2,1,3,4,5,6][2,1,3,0,6]\n6.100L Lecture 10"
+    },
+    {
+        "slide 36": "COMBINING LISTS\n\uf0a7Concatenation, + operator, creates a new list, with copies\n\uf0a7Mutate list with L.extend( some_list )(copy of some_list )\nL1 = [2,1,3]\nL2 = [4,5,6]\nL3 = L1 + L2 \uf0e0L3is [2,1,3,4,5,6]\nL1.extend([0,6]) \uf0e0mutate L1to [2,1,3,0,6] \nL2.extend([[1,2],[3,4]]) \uf0e0mutates L2to [4,5,6,[1,2],[3,4]]\nL1 [2,1,3]\nL2 [4,5,6]\nL3 [2,1,3,4,5,6][2,1,3,0,6]\n6.100L Lecture 10[4,5,6,[1,2],[3,4]]"
+    },
+    {
+        "slide 37": "TRICKY EXAMPLE 3: combining\nL = [1,2,3,4]\nfor e in L:\nL = L + Lprint(L)\n6.100L Lecture 101sttime: new L is [1, 2, 3, 4, 1, 2, 3, 4]\n2ndtime: new L is [ 1, 2, 3, 4, 1, 2, 3, 4, \n1, 2, 3, 4, 1, 2, 3, 4]\n3rdtime: new L is [ 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 41, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]\n4thtime: new L is [ 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 41, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 41, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 41, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]"
+    },
+    {
+        "slide 38": "TRICKY EXAMPLE 3: combining\nL = [1,2,3,4]\nfor e in L:\nL = L + Lprint(L)\n6.100L Lecture 101sttime: new L is [1, 2, 3, 4, 1, 2, 3, 4][1,2,3,4]\nLe\n[1,2,3,4,1,2,3,4]"
+    },
+    {
+        "slide 39": "TRICKY EXAMPLE 3: combining\nL = [1,2,3,4]\nfor e in L:\nL = L + Lprint(L)\n6.100L Lecture 101sttime: new L is [1, 2, 3, 4, 1, 2, 3, 4][1,2,3,4]\nLe\n[1,2,3,4,1,2,3,4]\n[1,2,3,4,1,2,3,4,\n1,2,3,4,1,2,3,4]\n2ndtime: new L is [1, 2, 3, 4, 1, 2, 3, 4,\n1, 2, 3, 4, 1, 2, 3, 4 ]"
+    },
+    {
+        "slide 40": "TRICKY EXAMPLE 3: combining\nL = [1,2,3,4]\nfor e in L:\nL = L + Lprint(L)\n6.100L Lecture 101sttime: new L is [1, 2, 3, 4, 1, 2, 3, 4][1,2,3,4]\nLe\n[1,2,3,4,1,2,3,4]\n[1,2,3,4,1,2,3,4,\n1,2,3,4,1,2,3,4]\n2ndtime: new L is [1, 2, 3, 4, 1, 2, 3, 4,\n1, 2, 3, 4, 1, 2, 3, 4 ][1,2,3,4,1,2,3,4,\n1,2,3,4,1,2,3,4,\n1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,]\n3rdtime: new L is [1, 2, 3, 4, 1, 2, 3, 4,\n1, 2, 3, 4, 1, 2, 3, 4 ,\n1, 2, 3, 4, 1, 2, 3, 4,1, 2, 3, 4, 1, 2, 3, 4]"
+    },
+    {
+        "slide 41": "TRICKY EXAMPLE 3: combining\nL = [1,2,3,4]\nfor e in L:\nL = L + Lprint(L)\n6.100L Lecture 10[1,2,3,4]\nLe\n[1,2,3,4,1,2,3,4]\n[1,2,3,4,1,2,3,4,\n1,2,3,4,1,2,3,4]\n[1,2,3,4,1,2,3,4,\n1,2,3,4,1,2,3,4,\n1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,]\n[1,2,3,4,1,2,3,4,\n1,2,3,4,1,2,3,4,\n1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,]4thtime: new L is [1, 2, 3, 4, 1, 2, 3, 4,\n1, 2, 3, 4, 1, 2, 3, 4 ,1, 2, 3, 4, 1, 2, 3, 4,1, 2, 3, 4, 1, 2, 3, 41, 2, 3, 4, 1, 2, 3, 4,1, 2, 3, 4, 1, 2, 3, 4 ,1, 2, 3, 4, 1, 2, 3, 4,1, 2, 3, 4, 1, 2, 3, 4 ]"
+    },
+    {
+        "slide 42": "EMPTY OUT A LIST AND CHECKING \nTHAT IT\u2019S THE SAME OBJECT\n\uf0a7You can mutate a list to remove all its elements\n\uf0a7This does not make a new empty list !\n\uf0a7Use L.clear()\n\uf0a7How to check that it\u2019s the same object in memory ? \n\uf0a7Use the id() function\n\uf0a7Try this in the console\n6.100L Lecture 10>>> L = [4,5,6]\n>>> id(L)\n>>> L.append(8)\n>>> id(L)\n>>> L.clear()\n>>> id(L)L\n[4,5,6][4,5,6,8][]"
+    },
+    {
+        "slide 43": "EMPTY OUT A LIST AND CHECKING \nTHAT IT\u2019S THE SAME OBJECT\n\uf0a7You can mutate a list to remove all its elements\n\uf0a7This does not make a new empty list !\n\uf0a7Use L.clear()\n\uf0a7How to check that it\u2019s the same object in memory ? \n\uf0a7Use the id() function\n\uf0a7Try this in the console\n6.100L Lecture 10>>> L = [4,5,6]\n>>> id(L)\n>>> L.append(8)\n>>> id(L)\n>>> L = []\n>>> id(L)L\n[4,5,6][4,5,6,8]\n[]\nL"
+    },
+    {
+        "slide 44": "SUMMARY\n\uf0a7Lists and tuples provide a way to organize data that naturally \nsupports iterative functions\n\uf0a7Tuples are immutable (like strings)\n\uf0a7Tuples are useful when you have data that doesn\u2019t need to change . \ne.g. (latitude, longitude) or (page #, line #)\n\uf0a7Lists are mutable\n\uf0a7You can modify the object by changing an element at an index\n\uf0a7You can modify the object by adding elements to the end\n\uf0a7Will see many more operations on lists next time\n\uf0a7Lists are useful in dynamic situations . \ne.g. a list of daily top 40 songs or a list of recently watched movies\n6.100L Lecture 10"
+    }
+]

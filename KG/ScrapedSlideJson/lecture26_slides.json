@@ -1,0 +1,140 @@
+[
+    {
+        "slide 0": "LIST ACCESS, HASHING, \nSIMULATIONS,\n& WRAP -UP!\n(download slides and . pyfiles to follow along)\n6.100L Lecture 26\nAna Bell"
+    },
+    {
+        "slide 1": "COURSE EVALUATIONS OPEN\n\uf0a7Open now until May 19 at 9am\n\uf0a7If you enjoyed or not it please submit an evaluation!\n\uf0a7So I know what worked\n\uf0a7To fix confusing parts\n\uf0a7If you have comments on my teaching , submit an evaluation!\n\uf0a7I\u2019d like to improve!\n6.100L Lecture 26\nfor your course evaluations"
+    },
+    {
+        "slide 2": "TODAY\n\uf0a7A bit about lists\n\uf0a7Hashing\n\uf0a7Simulations\n6.100L Lecture 26\n37984321\n"
+    },
+    {
+        "slide 3": "LISTS\n6.100L Lecture 26"
+    },
+    {
+        "slide 4": "COMPLEXITY OF SOME PYTHON OPERATIONS\n\u25aaLists: n is len(L)\n\u2022access \u03b8(1)\n\u2022store \u03b8(1)\n\u2022length \u03b8(1)\n\u2022append \u03b8(1)\n\u2022== \u03b8(n)\n\u2022delete \u03b8(n)\n\u2022copy \u03b8(n)\n\u2022reverse \u03b8(n)\n\u2022iteration \u03b8(n)\n\u2022inlist \u03b8(n)\n6.100L Lecture 26"
+    },
+    {
+        "slide 5": "CONSTANT TIME LIST ACCESS\n\uf0a7If list is all ints, list of length L\n\uf0a7Set aside 4* len(L) bytes\n\uf0a7Store values directly\n\uf0a7Consecutive set of memory locations\n\uf0a7List name points to first memory location\n\uf0a7To access ithelement\n\uf0a7Add 32*itofirst location\n\uf0a7Access that location in memory\n\uf0a7Constant time complexity\u2026\n6.100L Lecture 26actual value1234 5295"
+    },
+    {
+        "slide 6": "CONSTANT TIME LIST ACCESS\n\uf0a7If list is heterogeneous\n\uf0a7Can\u2019t store values directly (don\u2019t all fit in 32 bits)\n\uf0a7Use indirection to reference other objects\n\uf0a7Store pointers to values (not value itself)\n\uf0a7Still use consecutive set of memory locations \n\uf0a7Still set aside 4* len(L) bytes\n\uf0a7Still add 32* ito first location and +1 to access that location in memory\n\uf0a7Still constant time complexity\n6.100L Lecture 26\u2026\nvalue stored is pointer to \nactual object in memory 5295 pointer to a list"
+    },
+    {
+        "slide 7": "\uf0a7Just use a l ist of pairs :key, value\n[['Ana', True], [' John', False], [' Eric', False], ['Sam', False]]\n\uf0a7What is time complexity to index into this na\u00efve dictionary? \n\uf0a7We don\u2019t know the order of entries\n\uf0a7Have to do linear search to find entryNA\u00cfVE IMPLEMENTATION OF dict\n6.100L Lecture 26"
+    },
+    {
+        "slide 8": "COMPLEXITY OF SOME PYTHON OPERATIONS\n\u25aaLists: n is len(L)\n\u2022access \u03b8(1)\n\u2022store \u03b8(1)\n\u2022length \u03b8(1)\n\u2022append \u03b8(1)\n\u2022== \u03b8(n)\n\u2022delete \u03b8(n)\n\u2022copy \u03b8(n)\n\u2022reverse \u03b8(n)\n\u2022iteration \u03b8(n)\n\u2022in list \u03b8(n)\uf0a7Dictionaries: n is len(d)\n\uf0a7worst case (very rare)\n\u2022length \u03b8(n)\n\u2022access \u03b8(n)\n\u2022store \u03b8(n)\n\u2022delete \u03b8(n)\n\u2022iteration \u03b8(n)\n\uf0a7average case\n\u2022access \u03b8(1)\n\u2022store \u03b8(1)\n\u2022delete \u03b8(1)\n\u2022in               \u03b8(1) \n\u2022iteration \u03b8(n)\n6.100L Lecture 26"
+    },
+    {
+        "slide 9": "HASHING\n6.100L Lecture 26"
+    },
+    {
+        "slide 10": "DICTIONAR YIMPLEMENT ATION\n\uf0a7Uses a hash table\n\uf0a7How it does it\n\uf0a7Convert key to an integer \u2013use a hash function\n\uf0a7Use that integer as the index into a list\n\uf0a7This is constant time\n\uf0a7Find value associated with key\n\uf0a7This is constant time\n\uf0a7Dictionary lookup is constant time complexity\n\uf0a7If hash function is fast enough\n\uf0a7If indexing into list is constant\n6.100L Lecture 26\n"
+    },
+    {
+        "slide 11": "\uf0a7Just to reveal what\u2019s under the hood, a f unction hash()QUERYING THE HASH FUNCTION\n6.100L Lecture 26\n"
+    },
+    {
+        "slide 12": "HASH TABLE\n\uf0a7How big should a hash table be?\n\uf0a7To avoid many keys hashing to the same \nvalue, have each key hash to a separate value\n\uf0a7If hashing strings:\n\uf0a7Represent each character with binary code\n\uf0a7Concatenate bits together , and convert to an \ninteger\n6.100L Lecture 26\n"
+    },
+    {
+        "slide 13": "NAMES TO INDICES\n\uf0a7E.g., 'Ana Bell'\n= 01000001 01101110 01100001 00100000 01000010 01100101 01101100 01101100 \n= 4,714,812,651,084,278,892\n\uf0a7Advantage : unique names mapped to unique indices\n\uf0a7Disadvantage : VERY space inefficient\n\uf0a7Consider a table containing MIT\u2019s ~4,000 undergraduates\n\uf0a7Assume longest name is 20 characters\n\uf0a7Each character 8 bits, so 160 bits per name\n\uf0a7How many entries will table have? \n6.100L Lecture 2621601,461,501,637,330,902,918,203,684,832,716,283,019,655,932,542,976"
+    },
+    {
+        "slide 14": "A BETTER IDEA: ALLOW COLLISIONS\n6.100L Lecture 26\n"
+    },
+    {
+        "slide 15": "Hash table (like a list)\n0\n1\n2\n3Ana:C\nEric:A\nJohn :B\n6.100L Lecture 26Hash function:\n1) Sum the letters\n2) Take mod 16 (to fit in a hash table with 16 entries)\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15Eve: B\nA n a\nE r ic\nJ o h nC\nA\nB1 + 14 + 1 = 16\n16%16 = 0\n5 + 18 + 9 + 3 = 3535%16 = 3\n10 + 15 + 8 + 14 = 47\n47%16 = 15\nEve B5 + 22 + 5 = 32\n32%16 = 0"
+    },
+    {
+        "slide 16": "PROPERTIES OF A GOOD HASH \nFUNCTION\n\uf0a7Maps domain of interest to integers between \n0 and size of hash table\n\uf0a7The hash value is fully determined by value being hashed \n(nothing random)\n\uf0a7The hash function uses the entire input to be hashed\n\uf0a7Fewer collisions\n\uf0a7Distribution of values is uniform , i.e., equally likely to land \non any entry in hash table\n\uf0a7Side Reminder: keys in a dictionary must be hashable\n\uf0a7aka immutable\n\uf0a7They always hash to the same value\n\uf0a7What happens if they are not hashable ?\n6.100L Lecture 26\n"
+    },
+    {
+        "slide 17": "A n a\nE r ic\nJ o h nC\nA\nB1 + 14 + 1 = 16\n16%16 = 0\n5 + 18 + 9 + 3 = 3535%16 = 3\n10 + 15 + 8 + 14 = 47\n47%16 = 15Hash table (like a list)\n0\n1\n2\n3Ana:C\nEric:A\nJohn :B\n6.100L Lecture 26Hash function:\n1) Sum the letters\n2) Take mod 16 (to fit in a memory block with 16 entries)\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15[K, a, t, e] B11 + 1 + 20 + 5 = 37\n37%16 = 5[K,a,t,e ]:B\nEve B5 + 22 + 5 = 32\n32%16 = 0Eve: B"
+    },
+    {
+        "slide 18": "Hash table (like a list)\n0\n1\n2\n3Ana:C\nEric:A\n6.100L Lecture 26Hash function:\n1) Sum the letters\n2) Take mod 16 (to fit in a memory block with 16 entries)\nKate changes her name to Cate. Same \nperson, different name. Look up her \ngrade?\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15[C, a, t, e]3 + 1 + 20 + 5 = 29\n29%16 = 13[K,a,t,e ]:B\n\uf0df??? Not here!\nJohn :B\nEve: B"
+    },
+    {
+        "slide 19": "COMPLEXITY OF SOME PYTHON OPERATIONS\n\uf0a7Dictionaries: n is len(d)\n\uf0a7worst case (very rare)\n\u2022length \u03b8(n)\n\u2022access \u03b8(n)\n\u2022store \u03b8(n)\n\u2022delete \u03b8(n)\n\u2022iteration \u03b8(n)\n\uf0a7average case\n\u2022access \u03b8(1)\n\u2022store \u03b8(1)\n\u2022delete \u03b8(1)\n\u2022in               \u03b8(1) \n\u2022iteration \u03b8(n)\n6.100L Lecture 26"
+    },
+    {
+        "slide 20": "SIMULATIONS\n6.100L Lecture 26"
+    },
+    {
+        "slide 21": "TOPIC USEFUL FOR MANY \nDOMAINS\n\uf0a7Computationally describe the world using randomness\n\uf0a7One very important topic relevant to many fields of study\n\uf0a7Risk modeling and analysis\n\uf0a7Reduce complex models\n\uf0a7Idea:\n\uf0a7Observe an event and want to calculate something about it\n\uf0a7Using computation, design an experiment of that event\n\uf0a7Repeat the experiment K many times (make a simulation)\n\uf0a7Keep track of the outcome of your event\n\uf0a7After K repetitions, report the value of interest\n6.100L Lecture 26\n"
+    },
+    {
+        "slide 22": "ROLLING A DICE\n\uf0a7Observe an event and want to calculate something about it\n\uf0a7Roll a dice, what\u2019s the prob to get a :: ? How about a .?\n\uf0a7Using computation, design an experiment of that event\n\uf0a7Make a listrepresenting die faces and randomly choose one\n\uf0a7random.choice(['.', ':',':.','::','::.',':::'] )\n\uf0a7Repeat the experiment K many times (simulate it!)\n\uf0a7Randomly choose a die face from a list repeatedly , 10000 times\n\uf0a7How? Wrap the simulation in a loop !\nforiinrange(10000):\nroll=random.choice(['.', ':',':.','::','::.',':::'])\n\uf0a7Keep track of the outcome of your event\n\uf0a7Count how many times out of 10000 the roll equaled ::\n\uf0a7After K repetitions, report the value of interest\n\uf0a7Divide the count by 10000\n6.100L Lecture 26"
+    },
+    {
+        "slide 23": "THE SIMULATION CODE\n6.100L Lecture 26defprob_dice(side):\ndice = ['.',':',':.' ,'::','::.',':::' ]\nNsims= 10000\ncount = 0foriinrange(Nsims ):\nroll = random.choice (dice)\nifroll == side:\ncount += 1\nprint(count/ Nsims)\nprob_dice ('.')\nprob_dice ('::')\n"
+    },
+    {
+        "slide 24": "THAT\u2019S AN EASY SIMULATION\n\uf0a7We can compute the probability of a die roll mathematically\n\uf0a7Why bother with the code?\n\uf0a7Because we can answer variations of that original question\nand we can ask harder questions!\n\uf0a7Small tweaks in code\n\uf0a7Easy to change the code\n\uf0a7Fast to run\n6.100L Lecture 26"
+    },
+    {
+        "slide 25": "NEW QUESTION\nNOT AS EASY MATHEMATICALLY\n\uf0a7Observe an event and want to calculate something about it\n\uf0a7Roll a dice 7 times, what\u2019s the prob to get a :: at least 3 times out of 7 \nrolls ?\n\uf0a7Using computation, design an experiment of that event\n\uf0a7Make a list representing die faces and randomly choose one 7 times in a \nrow\n\uf0a7Face counter increments when you choose :: (keep track of this number)\n\uf0a7Repeat the experiment K many times (simulate it!)\n\uf0a7Repeat the prev step 10000 times.\n\uf0a7How? Wrap the simulation in a loop !\n\uf0a7Keep track of the outcome of your event\n\uf0a7Count how many times out of 10000 the :: face counter >= 3\n\uf0a7After K repetitions, report the value of interest\n\uf0a7Divide the outcome count by 10000\n6.100L Lecture 26"
+    },
+    {
+        "slide 26": "EASY TWEAK TO \nEXISTING CODE\n6.100L Lecture 26defprob_dice_atleast( Nrolls, n_at_least):\ndice = ['.', ':',':.','::','::.',':::']\nNsims= 10000\nhow_many_matched = []\nforiinrange(Nsims):\nmatched = 0\nforiinrange(Nrolls):\nroll = random.choice(dice)\nifroll == '::':\nmatched += 1\nhow_many_matched.append(matched)\ncount = 0\nforiinhow_many_matched :\nifi>= n_at_least:\ncount += 1\nprint(count/len( how_many_matched))\nprob_dice_atleast(7, 3)        prob_dice_atleast(1, 1)\n"
+    },
+    {
+        "slide 27": "REAL WORLD QUESTION\nVERY COMMON EXAMPLE OF HOW \nUSEFUL SIMULATIONS CAN BE\n\uf0a7Water runs through a faucet somewhere \nbetween  1 gallons per minute and 3 gallons per minute\n\uf0a7What\u2019s the time it takes to fill a 600 gallon pool? \n\uf0a7Intuition?\n\uf0a7It\u2019s not 300 minutes (600/2)\n\uf0a7It\u2019s not 400 minutes (600/1 + 600/3)/2\n\uf0a7In code:\n\uf0a7Grab a bunch of random values between 1 and 3\n\uf0a7Simulate the time it takes to fill a 600 gallon pool with each \nrandomly chose value\n\uf0a7Print the average time it takes to fill the pool over all these randomly chosen values\n6.100L Lecture 26\n"
+    },
+    {
+        "slide 28": "6.100L Lecture 26deffill_pool(size):\nflow_rate = []\nfill_time = []\nNpoints = 10000\nforiinrange(Npoints ):\nr = 1+2*random.random()flow_rate.append (r)\nfill_time.append (size/r)\nprint('avg flow_rate:' , sum(flow_rate)/ len(flow_rate))\nprint('avg fill_time', sum(fill_time )/len(fill_time ))\nplt.figure ()    \nplt.scatter( range(Npoints ),flow_rate,s=1)\nplt.figure ()    \nplt.scatter( range(Npoints ),fill_time,s=1)\nfill_pool (600)\n"
+    },
+    {
+        "slide 29": "PLOTTING RANDOM FILL RATES AND \nCORRESPONDING TIME IT TAKES TO FILL\nRandom values for fill rate Time to fill using formula \npool_size /rate\n6.100L Lecture 26\n"
+    },
+    {
+        "slide 30": "PLOTTING RANDOM FILL RATES AND \nCORRESPONDING TIME IT TAKES TO FILL\nRandom values for fill rate (sorted) Time to fill (sorted) using formula \npool_size /rate\n6.100L Lecture 26\n"
+    },
+    {
+        "slide 31": "RESULTS\n\uf0a7avg flow_rate : 1.992586945871106 approx. 2 gal/min\n(avg random values between 1 and 3)\n\uf0a7avg fill_time : 330.6879477596955 approx. 331 min\n(not what we expected!)\n\uf0a7Not 300 and not 400\n\uf0a7There is an inverse relationship for fill time vs fill rate\n\uf0a7Mathematically you\u2019d have to do an integral\n\uf0a7Computationally you just write a few lines of code!\n6.100L Lecture 26\n"
+    },
+    {
+        "slide 32": "WRAP -UP of 6.100L\nTHANK YOU FOR BEING IN THIS CLASS!\n6.100L Lecture 26"
+    },
+    {
+        "slide 33": "\uf0a7Python syntax\n\uf0a7Flow of control\n\uf0a7Loops, branching, exceptions\n\uf0a7Data structures\n\uf0a7Tuples, lists, dictionaries\n\uf0a7Organization, decomposition, abstraction\n\uf0a7Functions\n\uf0a7Classes\n\uf0a7Algorithms\n\uf0a7Binary/bisection\n\uf0a7Computational complexity\n\uf0a7Big Theta notation\n\uf0a7Searching and sortingWHAT DID YOU LEARN?\n6.100L Lecture 26\n6.100L program: throws errors\nME: make no changes and run it again\n6.100L program:"
+    },
+    {
+        "slide 34": "YOUR EXPERIENCE\n\uf0a7Were you a \u201cnatural\u201d?\n\uf0a7Did you join the class late?\n\uf0a7Did you work hard?\n\uf0a7Look back at the first pset\nit will seem so easy!\n\uf0a7You learned a LOT no matter what!\n6.100L Lecture 26\n"
+    },
+    {
+        "slide 35": "6.100L Lecture 26\n"
+    },
+    {
+        "slide 36": "WHAT\u2019S NEXT\n\uf0a76.100B overview of interesting topics \nin CS and data science (Python)\n\uf0a7Optimization problems\n\uf0a7Simulations \n\uf0a7Experimental data\n\uf0a7Machine learning\n6.100L Lecture 26\nTrying to fix my code\nPSET code  Quiz code\nMaking one last change before \nthe quiz timer reaches 1s"
+    },
+    {
+        "slide 37": "WHAT\u2019S NEXT\n\uf0a76.101 fundamentals of \nprogramming (Python)\n\uf0a7Implementing efficient algorithms\n\uf0a7Debugging\n6.100L Lecture 26\n"
+    },
+    {
+        "slide 38": "WHAT\u2019S NEXT\n\uf0a76.102 software construction \n(TypeScript)\n\uf0a7Writing code that is safe from bugs, \neasy to understand, ready for change\n6.100L Lecture 26\n"
+    },
+    {
+        "slide 39": "WHAT\u2019S NEXT\n\uf0a7Other classes \n(ML, algorithms, etc.)\n6.100L Lecture 26\n"
+    },
+    {
+        "slide 40": "IT\u2019S EASY TO FORGET WITHOUT PRACTICE!\nHAPPY CODING!\n6.100L Lecture 26\n"
+    },
+    {
+        "slide 41": "6.100L Lecture 25\n"
+    },
+    {
+        "slide 42": "FUTURE of 6.100L\n\uf0a7Students watch lecture video before \nclass time (1hr in 1.5x time). \n\uf0a7Students do fex before class time.\n\uf0a7Make actual class 1hr long and do \nmany \"you try it\" exercises. \n\uf0a7Focus on different implementations \nand common patterns. \n6.100L Lecture 25\n"
+    },
+    {
+        "slide 43": "\uf0a7Students can watch it later. \n\uf0a7But students won't get as much out of the class time as they \nwould otherwise :(\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 44": "\uf0a7Student can just watch the video. \n\uf0a7Hey, it's like the lectures this semester!\n\uf0a7Again, won't get as much out of the 6.100L.\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 45": "\uf0a7TLDR: \n\uf0a7Students often ask for recorded lectures . Now you'll have them. \n\uf0a7Students often want more practice and discussion. Now you'll have \nthem. With a bonus active learning and discussion portion during class!\n\uf0a7No busy work. No required attendance (video or class). \n\uf0a7Learn the material as you wish. Within a couple weeks students realize \nwhat combination brings more value to their learning of the material .\n\uf0a7Thoughts/concerns from you \nall to make this a success?\n6.100L Lecture 25\n"
+    }
+]

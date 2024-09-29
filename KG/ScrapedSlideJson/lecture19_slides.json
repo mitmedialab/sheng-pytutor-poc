@@ -1,0 +1,119 @@
+[
+    {
+        "slide 0": "INHERITANCE\n(download slides and . pyfiles to follow along)\n6.100L Lecture 19\nAna Bell"
+    },
+    {
+        "slide 1": "\uf0a7Mimic real life\n\uf0a7Group different objects part of the same type\n6.100L Lecture 19WHY USE OOP AND \nCLASSES OF OBJECTS?"
+    },
+    {
+        "slide 2": "WHY USE OOP AND \nCLASSES OF OBJECTS?\n\uf0a7Mimic real life\n\uf0a7Group different objects part of the same type\n6.100L Lecture 19"
+    },
+    {
+        "slide 3": "GROUPS OF OBJECTS HAVE ATTRIBUTES \n(RECAP)\n\uf0a7Data attributes\n\uf0a7How can you represent your object with data?\n\uf0a7What it is\nfor a coordinate: x and y values\nfor an animal: age\n\uf0a7Procedural attributes (behavior/operations/ methods )\n\uf0a7How can someone interact with the object?\n\uf0a7What it does\nfor a coordinate: find distance between twofor an animal: print how long it\u2019s been alive\n6.100L Lecture 19"
+    },
+    {
+        "slide 4": "HOW TO DEFINE A CLASS (RECAP)\nclassAnimal(object):\ndef__init__(self, age):\nself.age = age\nself.name = None\nmyanimal = Animal(3)\n6.100L Lecture 19"
+    },
+    {
+        "slide 5": "GETTER AND SETTER METHODS\nclassAnimal(object ):\ndef__init__(self, age):\nself.age= age\nself.name = None\ndef__str__(self ):\nreturn \"animal:\"+str(self.name)+\":\" +str(self .age)\n\uf0a7Getters and setters should be used outside of class to \naccess data attributes\n6.100L Lecture 19"
+    },
+    {
+        "slide 6": "GETTER AND SETTER METHODS\nclassAnimal(object ):\ndef__init__(self, age):\nself.age= age\nself.name = None\ndef__str__(self ):\nreturn\"animal:\"+str(self.name)+\":\" +str(self .age)\ndefget_age( self):\nreturn self.age\ndefget_name( self):\nreturn self.name\ndefset_age( self, newage):\nself.age= newage\ndefset_name( self, newname=\"\"):\nself.name = newname\n\uf0a7Getters and setters should be used outside of class to \naccess data attributes\n6.100L Lecture 19\n"
+    },
+    {
+        "slide 7": "AN INSTANCE and \nDOT NOTATION (RECAP)\n\uf0a7Instantiation creates an instance of an object\na = Animal(3)\n\uf0a7Dot notation used to access attributes (data and methods) \nthough it is better to use getters and setters to access data \nattributes\na.age\na.get_age()\n6.100L Lecture 19\n"
+    },
+    {
+        "slide 8": "INFORMATION HIDING\n\uf0a7Author of class definition may change data attribute variable \nnames\nclassAnimal(object):\ndef__init__(self, age):\nself.years= age\ndefget_age(self):\nreturn self.years\n\uf0a7If you are accessing data attributes outside the class and class \ndefinition changes , may get errors\n\uf0a7Outside of class, use getters and setters instead \n\uf0a7Use a.get_age() NOT a.age\n\uf0a7good style\n\uf0a7easy to maintain code\n\uf0a7prevents bugs\n6.100L Lecture 19"
+    },
+    {
+        "slide 9": "CHANGING INTERNAL REPRESENTATION\nclassAnimal(object ):\ndef__init__(self, age):\nself.years= age\nself.name = None\ndef__str__(self ):\nreturn\"animal:\"+str(self.name)+\":\" +str(self .age)\ndefget_age( self):\nreturn self.years\ndefset_age( self, newage):\nself.years= newage\na.get_age()   # works\na.age # error\n\uf0a7Getters and setters should be used outside of class to \naccess data attributes\n6.100L Lecture 19"
+    },
+    {
+        "slide 10": "PYTHON NOT GREAT AT \nINFORMATION HIDING\n\uf0a7Allows you to access data from outside class definition\nprint(a.age)\n\uf0a7Allows you to write to data from outside class definition\na.age= 'infinite'\n\uf0a7Allows you to create data attributes for an instance from \noutside class definition\na.size= \"tiny\"\n\uf0a7It\u2019s not good style to do any of these! \n6.100L Lecture 19"
+    },
+    {
+        "slide 11": "USE OUR NEW CLASS\ndefanimal_dict(L):\n\"\"\" L is a list\nReturns a dict, d, mappping an int to an Animal object. \nA key in d is all non- negative ints, n, in L. A value \ncorresponding to a key is an Animal object with n as its age. \"\"\"\nd = {}\nforn inL:\niftype(n) == int andn >= 0:\nd[n] = Animal(n)\nreturnd\nL = [2,5,'a',- 5,0]\n6.100L Lecture 19"
+    },
+    {
+        "slide 12": "USE OUR NEW CLASS\n\uf0a7Python doesn\u2019t know how to call print recursively\ndefanimal_dict(L):\n\"\"\" L is a list \nReturns a dict, d, mappping an int to an Animal object. \nA key in d is all non- negative intsn L. A value corresponding \nto a key is an Animal object with n as its age. \"\"\"\nd = {}\nforn inL:\niftype(n) == int andn >= 0:\nd[n] = Animal(n)\nreturnd\nL = [2,5,'a',- 5,0]\nanimals = animal_dict(L)\nprint(animals)\n6.100L Lecture 19"
+    },
+    {
+        "slide 13": "USE OUR NEW CLASS\ndefanimal_dict(L):\n\"\"\" L is a list \nReturns a dict, d, mappping an int to an Animal object. \nA key in d is all non- negative intsn L. A value corresponding \nto a key is an Animal object with n as its age. \"\"\"\nd = {}\nforn inL:\niftype(n) == int andn >= 0:\nd[n] = Animal(n)\nreturnd\nL = [2,5,'a',- 5,0]\nanimals = animal_dict(L) \nforn,ainanimals.items():   \nprint(f'key{n} with val {a}')\n6.100L Lecture 19"
+    },
+    {
+        "slide 14": "YOU TRY IT!\n\uf0a7Write a function that meets this spec. \ndef make_animals(L1, L2):\n\"\"\" L1 is a list of ints and L2 is a list of str\nL1 and L2 have the same length\nCreates a list of Animals the same length as L1 and L2.An animal object at index i has the age and name\ncorresponding to the same index in L1 and L2, respectively. \"\"\"\n#For example:\nL1 = [2,5,1]\nL2 = [\"blobfish\", \"crazyant\", \"parafox\"]\nanimals = make_animals(L1, L2)\nprint(animals)     # note this prints a list of animal objects\nfor iin animals:  # this loop prints the individual animals\nprint(i)\n6.100L Lecture 19"
+    },
+    {
+        "slide 15": "BIG  IDEA\nAccess data attributes \n(stuff defined by self.xxx ) \nthrough methods \u2013 it\u2019s \nbetter style. \n6.100L Lecture 19"
+    },
+    {
+        "slide 16": "HIERARCHIES\n6.100L Lecture 19"
+    },
+    {
+        "slide 17": "Animal\nCat Rabbit PersonHIERARCHIES\n\uf0a7Parent class\n(superclass)\n\uf0a7Child class\n(subclass)\n\u2022Inherits all data and \nbehaviors of parent \nclass\n\u2022Add more info\n\u2022Add more behavior \n\u2022Override behavior Student\n6.100L Lecture 19"
+    },
+    {
+        "slide 18": "INHERITANCE:\nPARENT CLASS\nclassAnimal(object):\ndef__init__(self, age):\nself.age= age\nself.name = None\ndefget_age(self):\nreturn self.age\ndefget_name (self):\nreturn self.name\ndefset_age(self, newage):\nself.age= newage\ndefset_name (self, newname =\"\"):\nself.name = newname\ndef__str__(self):\nreturn\"animal:\" +str(self.name)+\":\"+ str(self.age)\n6.100L Lecture 19\n"
+    },
+    {
+        "slide 19": "SUBCLASS CAT\n6.100L Lecture 19"
+    },
+    {
+        "slide 20": "classCat(Animal):\ndefspeak(self):\nprint(\"meow\" )\ndef__str__(self):\nreturn \"cat:\"+str( self.name)+\":\"+str( self.age )\n\uf0a7Add new functionality with speak()\n\uf0a7Instance of type Cat can be called with new methods\n\uf0a7Instance of type Animal throws error if called with Cat\u2019s new \nmethod\n\uf0a7__init__ is not missing, uses the Animal versionINHERITANCE: \nSUBCLASS \n6.100L Lecture 19"
+    },
+    {
+        "slide 21": "WHICH METHOD \nTO USE?\n\uf0a7Subclass can have methods with same name as superclass\n\uf0a7For an instance of a class, look for a method name in current \nclass definition\n\uf0a7If not found, look for method name up the hierarchy (in parent, \nthen grandparent, and so on)\n\uf0a7Use first method up the hierarchy that you found with that method name\n6.100L Lecture 19\n"
+    },
+    {
+        "slide 22": "SUBCLASS PERSON\n6.100L Lecture 19"
+    },
+    {
+        "slide 23": "classPerson(Animal):\ndef__init__( self, name, age):\nAnimal.__ init__(self, age)\nself.set_name (name)\nself.friends = []\ndefget_friends (self):\nreturn self.friends.copy()\ndefadd_friend( self, fname):\nif fnamenot in self.friends:\nself.friends.append (fname)\ndefspeak(self):\nprint(\"hello\")\ndefage_diff (self, other):\ndiff = self.age -other.age\nprint(abs(diff), \"year difference\")\ndef__str__( self):\nreturn\"person:\"+str(self .name)+\":\"+str(self .age)\n6.100L Lecture 19"
+    },
+    {
+        "slide 24": "YOU TRY IT!\n\uf0a7Write a function according to this spec.\ndef make_pets(d):\n\"\"\" d is a dict mapping a Person obj to a Cat obj\nPrints, on each line, the name of a person, a colon, and the \nname of that person's cat \"\"\"pass\np1 = Person(\"ana\", 86)p2 = Person(\"james\", 7)\nc1 = Cat(1)\nc1.set_name(\"furball\")c2 = Cat(1)\nc2.set_name(\"fluffsphere\")\nd = {p1:c1, p2:c2}\nmake_pets(d)  # prints ana:furball\n#        james:fluffsphere\n6.100L Lecture 19"
+    },
+    {
+        "slide 25": "BIG  IDEA\nA subclass can \nusea parent\u2019s attributes, \noverride a parent\u2019s attributes, or \ndefine new attributes.\nAttributes are either data or methods.\n6.100L Lecture 19"
+    },
+    {
+        "slide 26": "SUBCLASS STUDENT\n6.100L Lecture 19"
+    },
+    {
+        "slide 27": "importrandom\nclassStudent(Person):\ndef__init__(self, name, age, major=None):\nPerson.__init__( self, name, age)\nself.major = major\ndefchange_major( self, major):\nself.major= major\ndefspeak(self):r = random.random()\nif r < 0.25:\nprint(\"ihave homework\")\nelif0.25 <= r < 0.5:\nprint(\"ineed sleep\")\nelif0.5 <= r < 0.75:\nprint(\"ishould eat\")\nelse:\nprint(\"i'mstill zooming\")\ndef__str__(self):\nreturn\"student:\"+ str(self.name)+\":\"+str(self.age)+\":\" +str(self.major)\n6.100L Lecture 19"
+    },
+    {
+        "slide 28": "SUBCLASS RABBIT\n6.100L Lecture 19"
+    },
+    {
+        "slide 29": "CLASS VARIABLES AND THE Rabbit\nSUBCLASS\n\uf0a7Class variables and their values are shared between all \ninstances of a class\nclassRabbit(Animal):\ntag = 1\ndef__init__(self, age, parent1=None,parent2=None):\nAnimal.__ init__(self, age)\nself.parent1 = parent1\nself.parent2 = parent2\nself.rid= Rabbit.tag\nRabbit.tag += 1\n\uf0a7tag used to give unique id to each new rabbit instance\n6.100L Lecture 19\n"
+    },
+    {
+        "slide 30": "6.100L Lecture 19r1 = Rabbit(8)Rabbit.tag 1\nr1Age: 8\nParent1: None Parent2: NoneRid:  12\nRECALL THE __init__OF Rabbit\ndef__init__( self, age, parent1=None,parent2=None):\nAnimal.__init __(self, age)\nself.parent1 = parent1self.parent2 = parent2self.rid = Rabbit.tag\nRabbit.tag += 1"
+    },
+    {
+        "slide 31": "6.100L Lecture 19r1 = Rabbit(8)\nr2 = Rabbit(6)Rabbit.tag 1\nr1Age: 8\nParent1: None Parent2: NoneRid:  1\nr2Age: 6Parent1: None Parent2: NoneRid:  223\nRECALL THE __init__OF Rabbit\ndef__init__( self, age, parent1=None,parent2=None):\nAnimal.__init __(self, age)\nself.parent1 = parent1self.parent2 = parent2self.rid = Rabbit.tag\nRabbit.tag += 1"
+    },
+    {
+        "slide 32": "6.100L Lecture 19r1 = Rabbit(8)\nr2 = Rabbit(6)\nr3 = Rabbit(10)Rabbit.tag 1\nr1Age: 8\nParent1: None Parent2: NoneRid:  1\nr2Age: 6Parent1: None Parent2: NoneRid:  223\nr3Age: 10Parent1: None Parent2: NoneRid:  34\nRECALL THE __init__OF Rabbit\ndef__init__( self, age, parent1=None,parent2=None):\nAnimal.__init __(self, age)\nself.parent1 = parent1self.parent2 = parent2self.rid = Rabbit.tag\nRabbit.tag += 1"
+    },
+    {
+        "slide 33": "Rabbit GETTER METHODS\nclassRabbit(Animal):\ntag = 1\ndef__init__(self, age, parent1=None, parent2=None):\nAnimal.__ init__(self, age)\nself.parent1 = parent1\nself.parent2 = parent2\nself.rid= Rabbit.tag\nRabbit.tag += 1\ndefget_rid(self):\nreturnstr(self.rid).zfill(5)\ndefget_parent1(self ):\nreturn self.parent1\ndefget_parent2(self ):\nreturn self.parent2\n6.100L Lecture 19\n"
+    },
+    {
+        "slide 34": "WORKING WITH YOUR OWN \nTYPES\ndef__add__(self , other):\n# returning object of same type as this class\nreturnRabbit(0, self, other)\n\uf0a7Define + operator between two Rabbit instances\n\uf0a7Define what something like this does: r4 = r1 + r2 \nwhere r1and r2are Rabbit instances\n\uf0a7r4is a new Rabbit instance with age 0\n\uf0a7r4has self as one parent and other as the other parent\n\uf0a7In __init__, parent1 and parent2 are of type Rabbit\n6.100L Lecture 19recall Rabbit\u2019s __init__(self, age, parent1=None, parent2=None)\n"
+    },
+    {
+        "slide 35": "6.100L Lecture 19r1 = Rabbit(8)\nr2 = Rabbit(6)\nr3 = Rabbit(10)Rabbit.tag 1\nr1Age: 8\nParent1: None Parent2: NoneRid:  1\nr2Age: 6Parent1: None Parent2: NoneRid:  223\nr3Age: 10Parent1: None Parent2: NoneRid:  34\nr4 = r1 + r2\nr4Age: 0Parent1: obj bound to r1 Parent2: obj bound to r2\nRid:  45\nRECALL THE __init__OF Rabbit\ndef__init__( self, age, parent1=None,parent2=None):\nAnimal.__init __(self, age)\nself.parent1 = parent1\nself.parent2 = parent2self.rid = Rabbit.tag\nRabbit.tag += 1"
+    },
+    {
+        "slide 36": "SPECIAL METHOD TO COMPARE TWO \nRabbits\n\uf0a7Decide that two rabbits are equal if they have the same two \nparents\ndef__eq__(self, other):\nparents_same = (self.p1.rid == oth.p1.rid and self.p2.rid == oth.p2.rid)\nparents_opp = (self.p2.rid == oth.p1.rid and self.p1.rid == oth.p2.rid)\nreturn parents_same or parents_opp\n\uf0a7Compare ids of parents since ids are unique (due to class var)\n\uf0a7Note you can\u2019t compare objects directly\n\uf0a7For ex. with  self.parent1 == other.parent1\n\uf0a7This calls the __eq__ method over and over until call it on None and \ngives an AttributeError when it tries to do None.parent1\n6.100L Lecture 19\n"
+    },
+    {
+        "slide 37": "BIG  IDEA\nClass variables are \nshared between all instances.\nIf one instance changes it, it\u2019s changed for every instance.\n6.100L Lecture 19"
+    },
+    {
+        "slide 38": "OBJECT ORIENTED \nPROGRAMMING\n\uf0a7Create your own collections of data\n\uf0a7Organize information\n\uf0a7Division of work\n\uf0a7Access information in a consistent manner\n\uf0a7Add layers of complexity\n\uf0a7Hierarchies\n\uf0a7Child classes inherit data and methods from parent classes\n\uf0a7Like functions, classes are a mechanism for decomposition and \nabstraction in programming\n6.100L Lecture 19\n"
+    }
+]

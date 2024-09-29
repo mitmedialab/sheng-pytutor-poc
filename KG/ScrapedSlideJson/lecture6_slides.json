@@ -1,0 +1,128 @@
+[
+    {
+        "slide 0": "BISECTION SEARCH\n(download slides and . pyfiles to follow along)\n6.100L Lecture 6\nAna Bell"
+    },
+    {
+        "slide 1": "LAST LECTURE\n\uf0a7Floating point numbers introduce challenges!\n\uf0a7They can\u2019t be represented in memory exactly\n\uf0a7Operations on floats introduce tiny errors\n\uf0a7Multiple operations on floats magnify errors :(\n\uf0a7Guess- and- check enumerates ints one at a time as a solution to \na problem\n\uf0a7Approximation methods enumerate using a float increment. \nChecking a solution is not possible. Checking whether a \nsolution yields a value within epsilon is possible!\n6.100L Lecture 6"
+    },
+    {
+        "slide 2": "RECAP: SQUARE ROOT FINDING:\nSTOPPING CONDITION with a BIG INCREMENT (0.01)\n\uf0a7Blue arrow is the guess\n\uf0a7Green arrow isguess**2\n6.100L Lecture 6x = 54321\nepsilon epsilon"
+    },
+    {
+        "slide 3": "RECAP of APPROXIMATION METHOD TO \nFIND A \u201cclose enough\u201d SQUARE ROOT\nx = 54321\nepsilon = 0.01\nnum_guesses = 0\nguess = 0.0\nincrement = 0.0001\nwhileabs(guess**2 -x) >= epsilon and guess**2 <= x+epsilon:\nguess += incrementnum_guesses += 1\nprint('num_guesses =', num_guesses)\nifabs(guess**2 -x) >= epsilon:\nprint('Failed on square root of', x)\nelse:\nprint(guess, 'is close to square root of', x)\n6.100L Lecture 6"
+    },
+    {
+        "slide 4": "BISECTION SEARCH\n6.100L Lecture 6"
+    },
+    {
+        "slide 5": "CHANCE to WIN BIG BUCKS\n\uf0a7Suppose I attach a hundred dollar bill to a particular page in the text book, \n448 pages long\n\uf0a7If you can guess page in 8 or fewer guesses, you get big bucks\n\uf0a7If you fail, you get an F\n\uf0a7Would you want to play?\n\uf0a7Now suppose on each guess I told you whether you were correct, or too low or too high\n\uf0a7Would you want to play in this case?\n6.100L Lecture 6\n"
+    },
+    {
+        "slide 6": "BISECTION SEARCH\n\uf0a7Apply it to problems with an inherent order to the range of \npossible answers\n\uf0a7Suppose we know answer lies within some interval\n\uf0a7Guess midpoint of interval\n\uf0a7If not the answer, check if answer is greater than or less than midpoint\n\uf0a7Change interval\n\uf0a7Repeat\n\uf0a7Process cuts set of things to check in half at each stage\n\uf0a7Exhaustive search reduces them from N to N -1 on each step\n\uf0a7Bisection search reduces them from N to N/2\n6.100L Lecture 6\n"
+    },
+    {
+        "slide 7": "LOG GROWTH is BETTER\n\uf0a7Process cuts set of things to check in half at each stage\n\uf0a7Characteristic of a logarithmic growth\n\uf0a7Algorithm comparison: guess -and- check vs. bisection search\n\uf0a7Checking answer on- by-one iteratively is linear in the number of \npossible guesses \n\uf0a7Checking answer by guessing the halfway point is logarithmic on the \nnumber of possible guesses\n\uf0a7Log algorithm is much more efficient\n6.100L Lecture 6\n"
+    },
+    {
+        "slide 8": "AN ANALOGY\n\uf0a7Suppose we forced you to sit in alphabetical order in class, \nfrom front left corner to back right corner\n\uf0a7To find a particular student, I could ask the person in the \nmiddle of the hall their name\n\uf0a7Based on the response , I can either dismiss the back half or the \nfront half of the entire hall\n\uf0a7And I repeat that process until I find the person I am seeking\n6.100L Lecture 6\n"
+    },
+    {
+        "slide 9": "BISECTION SEARCH for SQUARE \nROOT\n\uf0a7Suppose we know that the answer lies between 0 and x\n\uf0a7Rather than exhaustively trying things starting at 0, suppose \ninstead we pick a number in the middle of this range\n\uf0a7If we are lucky, this answer is close enough\n6.100L Lecture 60 x\ng"
+    },
+    {
+        "slide 10": "BISECTION SEARCH for SQUARE \nROOT\n\uf0a7If not close enough, is guess too big or too small ?\n\uf0a7If g**2 > x, then know g is too big; so now search\n6.100L Lecture 60 x\ng new g"
+    },
+    {
+        "slide 11": "BISECTION SEARCH for SQUARE \nROOT\n\uf0a7And if, for example, this new g is such that g**2 < x, then know \ntoo small; so now search\n\uf0a7At each stage, reduce range of values to search by half\n6.100L Lecture 60 x\ng new g next g"
+    },
+    {
+        "slide 12": "BISECTION SEARCH for SQUARE \nROOT\n\uf0a7And if, for example, this next g is such that g**2 < x, then know \ntoo small; so now search\n\uf0a7At each stage, reduce range of values to search by half\n6.100L Lecture 60 x\nglatest gnext g"
+    },
+    {
+        "slide 13": "BIG  IDEA\nBisection search takes advantage \nof properties of the problem.\n1) The search space has an order\n2) We can tell whether the guess was too low or too high\n6.100L Lecture 6"
+    },
+    {
+        "slide 14": "YOU TRY IT!\n\uf0a7You are guessing a 4 digit pin code. The only feedback the \nphone tells you is whether your guess is correct or not. Can you use bisection search to quickly and correctly guess the code?\n6.100L Lecture 6\n"
+    },
+    {
+        "slide 15": "YOU TRY IT!\n\uf0a7You are playing an EXTREME guessing game to guess a number \nEXACTLY . A friend has a decimal number between 0 and 10 (to any precision) in mind. The feedback on your guess is whether it is correct, too high, or too low. Can you use bisection search to quickly and correctly guess the number?\n6.100L Lecture 6\n"
+    },
+    {
+        "slide 16": "SLOW SQUARE ROOT USING \nAPPROXIMATION METHODS\nx = 54321\nepsilon = 0.01\nnum_guesses = 0\nguess = 0.0\nincrement = 0.00001\nwhileabs(guess**2 -x) >= epsilon and guess**2 <= x:\nguess += incrementnum_guesses += 1\nprint('num_guesses =', num_guesses)\nifabs(guess**2 -x) >= epsilon:\nprint('Failed on square root of', x)\nelse:\nprint(guess, 'is close to square root of', x)\n6.100L Lecture 6\n"
+    },
+    {
+        "slide 17": "FAST SQUARE ROOT\nx = 54321\nepsilon = 0.01num_guesses = 0\nwhileabs(guess**2 -x) >= epsilon:\nnum_guesses += 1\nprint('num_guesses =', num_guesses)\nprint(guess, 'is close to square root of', x)\n6.100L Lecture 6"
+    },
+    {
+        "slide 18": "FAST SQUARE ROOT\nx = 54321\nepsilon = 0.01num_guesses = 0\nlow = 0high = xguess= (high + low)/2.0\nwhileabs(guess**2 -x) >= epsilon:\nnum_guesses += 1\nprint('num_guesses =', num_guesses)\nprint(guess, 'is close to square root of', x)\n6.100L Lecture 6"
+    },
+    {
+        "slide 19": "FAST SQUARE ROOT\nx = 54321\nepsilon = 0.01num_guesses = 0\nlow = 0high = xguess= (high + low)/2.0\nwhileabs(guess**2 -x) >= epsilon:\nifguess**2 < x :\nelse:\nnum_guesses += 1\nprint('num_guesses =', num_guesses)\nprint(guess, 'is close to square root of', x)\n6.100L Lecture 6"
+    },
+    {
+        "slide 20": "FAST SQUARE ROOT\nx = 54321\nepsilon = 0.01num_guesses = 0\nlow = 0high = xguess= (high + low)/2.0\nwhileabs(guess**2 -x) >= epsilon:\nifguess**2 < x :\nlow = guess\nelse:\nnum_guesses += 1\nprint('num_guesses =', num_guesses)\nprint(guess, 'is close to square root of', x)\n6.100L Lecture 6"
+    },
+    {
+        "slide 21": "FAST SQUARE ROOT\nx = 54321\nepsilon = 0.01num_guesses = 0\nlow = 0high = xguess= (high + low)/2.0\nwhileabs(guess**2 -x) >= epsilon:\nifguess**2 < x :\nlow = guess\nelse:\nhigh = guess\nnum_guesses += 1\nprint('num_guesses =', num_guesses)\nprint(guess, 'is close to square root of', x)\n6.100L Lecture 6"
+    },
+    {
+        "slide 22": "FAST SQUARE ROOT\nPython Tutor LINK\nx = 54321\nepsilon = 0.01num_guesses = 0\nlow = 0high = xguess= (high + low)/2.0\nwhileabs(guess**2 -x) >= epsilon:\nifguess**2 < x :\nlow = guess\nelse:\nhigh = guess\nguess= (high + low)/2.0\nnum_guesses += 1\nprint('num_guesses =', num_guesses)\nprint(guess, 'is close to square root of', x)\n6.100L Lecture 6"
+    },
+    {
+        "slide 23": "LOG GROWTH is BETTER\n\uf0a7Brute force search for root of 54321 took over 23M guesses\n\uf0a7With bisection search, reduced to 30 guesses !\n\uf0a7We\u2019ll spend more time on this later, but we say the brute force \nmethod is linear in size of problem , because number to steps \ngrows linearly as we increase problem size\n\uf0a7Bisection search is logarithmic in size of problem , because \nnumber of steps grows logarithmically with problem size\n\uf0a7search space\n\uf0a7first guess: N/2\n\uf0a7second guess: N/4\n\uf0a7kthguess: N/2k\n\uf0a7guess converges on the order of log2N steps\n6.100L Lecture 6\n"
+    },
+    {
+        "slide 24": "WHY?\n\uf0a7N/2k= 1 Since at this point we have one guess left to check\nthis tells us n in terms of k\n\uf0a7N = 2k Solve this for k\n\uf0a7k = log(N) Tells us k in terms of N\nIt takes us k steps to guess using bisection search\n==\nIt takes us log(N) steps to guess using bisection search\n6.100L Lecture 6\n"
+    },
+    {
+        "slide 25": "DOES IT ALWAYS WORK?\n\uf0a7Try running code for x such that 0 < x < 1\n\uf0a7If x < 1, we are searching from 0 to x \n\uf0a7But know square root is greater than x and less than 1\n\uf0a7Modify the code to choose the search space depending on \nvalue of x\n6.100L Lecture 6\n"
+    },
+    {
+        "slide 26": "You Try It: BISECTION SEARCH \u2013\nSQUARE ROOT with 0 < x < 1\nx = 0.5\nepsilon = 0.01\nguess = (high + low)/2\nwhileabs(guess**2 -x) >= epsilon:\nifguess**2 < x:\nlow = guess\nelse:\nhigh = guess\nguess = (high + low)/2.0\nprint(f'{str(guess)} is close to square root of {str(x)}' )\n6.100L Lecture 6"
+    },
+    {
+        "slide 27": "BISECTION SEARCH \u2013SQUARE \nROOT for ALL x VALUES\nx = 0.5\nepsilon = 0.01\nifx >= 1:\nlow = 1.0\nhigh = x\nelse:\nlow = xhigh = 1.0\nguess = (high + low)/2\nwhileabs(guess**2 -x) >= epsilon:\nifguess**2 < x:\nlow = guess\nelse:\nhigh = guess\nguess = (high + low)/2.0\nprint(f'{str(guess)} is close to square root of {str(x)}' )\n6.100L Lecture 6"
+    },
+    {
+        "slide 28": "SOME OBSERVATIONS\n\uf0a7Bisection search radically reduces computation time \u2013being \nsmart about generating guesses is important\n\uf0a7Search space gets smaller quickly at the beginning and then \nmore slowly (in absolute terms, but not as a fraction of search \nspace) later\n\uf0a7Works on problems with \u201cordering\u201d property\n6.100L Lecture 6\n"
+    },
+    {
+        "slide 29": "YOU TRY IT!\n\uf0a7Write code to do bisection search to find the cube root of \npositive cubes within some epsilon. Start with:\ncube = 27\nepsilon = 0.01low = 0\nhigh = cube\n6.100L Lecture 6"
+    },
+    {
+        "slide 30": "NEWTON- RAPHSON\n\uf0a7General approximation algorithm to find roots of a polynomial \nin one variable\np(x) = anxn+ an-1xn-1+ \u2026 + a1x + a0\n\uf0a7Newton and Raphson showed that if g is an approximation to \nthe root, then\ng \u2013p(g)/p\u2019(g)\nis a better approximation; where p\u2019 is derivative of p\n\uf0a7Try to use this idea for finding the square root of x\n\uf0a7Want to find r such that p(r) = 0\n\uf0a7For example, to find the square root of 24, find the root of p(x) = x2\u201324\n6.100L Lecture 6\n"
+    },
+    {
+        "slide 31": "INTUITION -LINK\n6.100L Lecture 6\n"
+    },
+    {
+        "slide 32": "NEWTON- RAPHSON ROOT FINDER\n\uf0a7Simple case for a polynomial: x2-k\n\uf0a7First derivative: 2x\n\uf0a7Newton- Raphson says given a guess g for root of k, a better \nguess is:\ng \u2013(g2\u2013k)/2g\n\uf0a7This eventually finds an approximation to the square root of k!\n6.100L Lecture 6\n"
+    },
+    {
+        "slide 33": "NEWTON- RAPHSON ROOT FINDER\n\uf0a7Another way of generating guesses which we can check; very \nefficient\nepsilon = 0.01\nk = 24.0\nguess = k/2.0\nnum_guesses = 0\nwhileabs(guess*guess -k) >= epsilon:\nnum_guesses += 1\nguess = guess -(((guess**2 ) -k)/(2*guess))\nprint('num_guesses = ' +str(num_guesses))\nprint('Square root of ' + str(k) + ' is about ' + str(guess))\n6.100L Lecture 6"
+    },
+    {
+        "slide 34": "ITERATIVE ALGORITHMS\n\uf0a7Guess and check methods build on reusing same code\n\uf0a7Use a looping construct\n\uf0a7Generate guesses (important difference in algorithms)\n\uf0a7Check and continue\n\uf0a7Generating guesses\n\uf0a7Exhaustive enumeration\n\uf0a7Approximation algorithm\n\uf0a7Bisection search\n\uf0a7Newton -Raphson (for root finding)\n6.100L Lecture 6\n"
+    },
+    {
+        "slide 35": "SUMMARY\n\uf0a7For many problems, cannot find exact answer\n\uf0a7Need to seek a \u201cgood enough\u201d answer using approximations\n\uf0a7When testing floating point numbers\n\uf0a7It\u2019s important to understand how the computer represents these in \nbinary\n\uf0a7Understand why we use \u201cclose enough\u201d and not \u201c==\u201c\n\uf0a7Bisection search works is FAST but for problems with:\n\uf0a7Two endpoints\n\uf0a7An ordering to the values\n\uf0a7Feedback on guesses (too low, too high, correct, etc.)\n\uf0a7Newton- Raphson is a smart way to find roots of a polynomial\n6.100L Lecture 6"
+    },
+    {
+        "slide 36": "DECOMPOSITION and \nABSTRACTION\n6.100L Lecture 6"
+    },
+    {
+        "slide 37": "LEARNING to CREATE CODE\n\uf0a7So far have covered basic language mechanisms \u2013 primitives, \ncomplex expressions, branching, iteration\n\uf0a7In principle, you know all you need to know to accomplish \nanything that can be done by computation\n\uf0a7But in fact, we\u2019ve taught you nothing about two of the most \nimportant concepts in programming \u2026\n6.s061 Lecture 7\n"
+    },
+    {
+        "slide 38": "DECOMPOSITION and \nABSTRACTION\n\uf0a7Decomposition\n\uf0a7How to divide a program into self- contained parts that can be \ncombined to solve the current problem\n6.s061 Lecture 7\n"
+    },
+    {
+        "slide 39": "DECOMPOSITION and \nABSTRACTION\n\uf0a7Abstraction\n\uf0a7How to ignore unnecessary detail\n6.s061 Lecture 7\nPosting memes\nPosting memes \nabout posting \nmemes"
+    },
+    {
+        "slide 40": "DECOMPOSITION and \nABSTRACTION\n\uf0a7Decomposition: \n\uf0a7Ideally parts can be reused by other programs\n\uf0a7Self-contained means parts should complete computation using only \ninputs provided to them and \u201cbasic\u201d operations\n\uf0a7Abstraction:\n\uf0a7Used to separate what something does, from how it actually does it\n\uf0a7Creating parts and abstracting away details allows us to write complex \ncode while suppressing details, so that we are not overwhelmed by \nthat complexity\n6.s061 Lecture 7a = 3.14*2.2*2.2 pi = 3.14\nr = 2.2area = pi*r**2\n# calculate the area of a circle\n"
+    },
+    {
+        "slide 41": "BIG  IDEA\nMake code easy to \ncreate\nmodifymaintainunderstand \n6.s061 Lecture 7"
+    }
+]

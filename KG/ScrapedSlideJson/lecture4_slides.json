@@ -1,0 +1,140 @@
+[
+    {
+        "slide 0": "LOOPS OVER STRINGS, \nGUESS -and- CHECK, \nBINARY\n(download slides and . pyfiles to follow along)\n6.100L Lecture 4\nAna Bell"
+    },
+    {
+        "slide 1": "LAST TIME\n\uf0a7Looping mechanisms\n\uf0a7while and for loops\n\uf0a7While loops\n\uf0a7Loop as long as a condition is true\n\uf0a7Need to make sure you don\u2019t enter an infinite loop\n\uf0a7For loops\n\uf0a7Loop variable takes on values in a sequence, one at a time\n\uf0a7Can loop over ranges of numbers\n\uf0a7Will soon see many other things are easy to loop over\n6.100L Lecture 4"
+    },
+    {
+        "slide 2": "break STATEMENT\n\uf0a7Immediately exits whatever loop it is in\n\uf0a7Skips remaining expressions in code block\n\uf0a7Exits only innermost loop !\nwhile<condition_1>:\nwhile<condition_2>:\n<expression_a>\nbreak\n<expression_b>\n<expression_c>\n6.100L Lecture 4\n"
+    },
+    {
+        "slide 3": "break STATEMENT\nmysum= 0\nforiinrange(5, 11, 2):\nmysum+= i\nifmysum== 5:\nbreak\nmysum+= 1\nprint(mysum )\n\uf0a7What happens in this program? \n\uf0a7Python Tutor LINK\n6.100L Lecture 4"
+    },
+    {
+        "slide 4": "YOU TRY IT!\n\uf0a7Write code that loops a for loop over some range and prints \nhow many even numbers are in that range. Try it with:\n\uf0a7range(5)\n\uf0a7range(10)\n\uf0a7range(2,9,3)\n\uf0a7range(-4,6,2)\n\uf0a7range(5,6)\n6.100L Lecture 4"
+    },
+    {
+        "slide 5": "STRINGS and LOOPS\n\uf0a7Code to check for letter ior u in a string.\n\uf0a7All 3 do the same thing\n6.100L Lecture 4s = \"demo loops - fruit loops\"\nforindex inrange(len(s)):\nifs[index] == 'i 'ors[index] == 'u':\nprint(\"There is an i or u\")\nforchar in s:\nifchar == ' i'orchar == 'u':\nprint(\"There is an i or u\")\nforchar in s:\nifchar in 'iu':\nprint(\"There is an i or u\")\n"
+    },
+    {
+        "slide 6": "BIG  IDEA\nThe sequence of values \nin a for loop isn\u2019t \nlimited to numbers\n6.100L Lecture 4"
+    },
+    {
+        "slide 7": "ROBOT CHEERLEADERS\n6.100L Lecture 4\n"
+    },
+    {
+        "slide 8": "YOU TRY IT!\n\uf0a7Assume you are given a string of lowercase letters in variable s. \nCount how many unique letters there are in the string. For example, if \ns = \"abca\"\nThen your code prints 3. \n6.100L Lecture 4HINT : \nGo through each character in s. \nKeep track of ones you\u2019ve seen in a string variable. \nAdd characters from s to the seen string variable if they are not already a character in that seen variable. "
+    },
+    {
+        "slide 9": "SUMMARY SO FAR\n\uf0a7Objects have types\n\uf0a7Expressions are evaluated to one value , and bound to a \nvariable name\n\uf0a7Branching\n\uf0a7if, else, elif\n\uf0a7Program executes one set of code or another\n\uf0a7Looping mechanisms\n\uf0a7while and for loops\n\uf0a7Code executes repeatedly while some condition is true\n\uf0a7Code executes repeatedly for all values in a sequence\n6.100L Lecture 4"
+    },
+    {
+        "slide 10": "THAT IS ALL YOU NEED TO \nIMPLEMENT ALGORITHMS\n6.100L Lecture 4\n"
+    },
+    {
+        "slide 11": "GUESS -and -CHECK\n6.100L Lecture 4"
+    },
+    {
+        "slide 12": "GUESS -and- CHECK\n\uf0a7Process called exhaustive enumeration\n\uf0a7Applies to a problem where \u2026\n\uf0a7You are able to guess a value for solution\n\uf0a7You are able to check if the solution is correct\n\uf0a7You can keep guessing until \n\uf0a7Find solution or\n\uf0a7Have guessed all values\n6.100L Lecture 4Initial guess\ndoneIs your \nguess \ncorrect?Choose the \nnext guess\n(Be systematic)\nyesno\n"
+    },
+    {
+        "slide 13": "GUESS -and- CHECK\nSQUARE ROOT\n\uf0a7Basic idea:\n\uf0a7Given an int, call it x, want to see if there is another int which is its \nsquare root\n\uf0a7Start with a guess and check if it is the right answer\n6.100L Lecture 4x\n0            1             2           3            4            5             6           7            8            9       10guess? guess? guess? guess?\n"
+    },
+    {
+        "slide 14": "GUESS -and- CHECK\nSQUARE ROOT\n\uf0a7Basic idea:\n\uf0a7Given an int, call it x, want to see if there is another int which is its \nsquare root\n\uf0a7Start with a guess and check if it is the right answer\n\uf0a7To be systematic , start with guess = 0, then 1, then 2, etc\n6.100L Lecture 4\n"
+    },
+    {
+        "slide 15": "GUESS -and- CHECK\nSQUARE ROOT\n\uf0a7Basic idea:\n\uf0a7Given an int, call it x, want to see if there is another int which is its \nsquare root\n\uf0a7Start with a guess and check if it is the right answer\n\uf0a7To be systematic , start with guess = 0, then 1, then 2, etc\n\uf0a7If xis a perfect square , we will eventually find its root and can \nstop (look at guess squared)\n6.100L Lecture 4x\n0            1             2           3            4            5             6           7            8            9       10guess? guess? guess?"
+    },
+    {
+        "slide 16": "GUESS -and- CHECK\nSQUARE ROOT\n\uf0a7Basic idea:\n\uf0a7Given an int, call it x, want to see if there is another int which is its \nsquare root\n\uf0a7Start with a guess and check if it is the right answer\n\uf0a7To be systematic , start with guess = 0, then 1, then 2, etc\n\uf0a7But what if xis not a perfect square ?  \n\uf0a7Need to know when to stop\n\uf0a7Use algebra \u2013if guess squared is bigger than x, then can stop\n6.100L Lecture 4x\n0            1             2           3            4            5             6           7            8            9       10guess? guess? guess? guess? guess?"
+    },
+    {
+        "slide 17": "GUESS -and- CHECK\nSQUARE ROOT with while loop\nguess = 0\nx = int( input(\"Enter an integer: \"))\nwhileguess**2 < x:\nguess = guess + 1\nifguess**2 == x:\nprint(\"Square root of\", x, \"is\", guess)\nelse:\nprint(x, \"is not a perfect square\")\n6.100L Lecture 4"
+    },
+    {
+        "slide 18": "GUESS -and- CHECK\nSQUARE ROOT\n\uf0a7Does this work for any integer value of x?\n\uf0a7What if x is negative?\n\uf0a7while loop immediately terminates\n\uf0a7Could check for negative input, and handle differently\n6.100L Lecture 4x\n-2          -1           0            1             2           3            4            5             6           7           8 guess?\n"
+    },
+    {
+        "slide 19": "GUESS -and- CHECK\nSQUARE ROOT with while loop\nguess = 0\nneg_flag = False\nx = int(input(\"Enter a positive integer: \"))\nif x < 0:\nneg_flag = True\nwhileguess**2 < x:\nguess = guess + 1\nifguess**2 == x:\nprint(\"Square root of\", x, \"is\", guess)\nelse:\nprint(x, \"is not a perfect square\")\nifneg_flag:\nprint(\"Just checking... did you mean\", -x, \"?\")\n6.100L Lecture 4"
+    },
+    {
+        "slide 20": "BIG  IDEA\nGuess -and -check can\u2019t \ntest an infinite number \nof values\nYou have to stop at some point!\n6.100L Lecture 4"
+    },
+    {
+        "slide 21": "GUESS -and- CHECK COMPARED\nwhile LOOP for LOOP\n6.100L Lecture 4Initial guess\nBreak the \nloop, you\u2019re\ndoneIs your \nguess \ncorrect\n?Choose next guess\n(Be systematic)\nyesnoNothing here\nDid not find a solutionSequentially \ngo through \nall possible \nguessesCheck if the guess is correct\nWent through all \nvals in sequenceStill more vals in \nsequence"
+    },
+    {
+        "slide 22": "YOU TRY IT!\n\uf0a7Hardcode a number as a secret number. \n\uf0a7Write a program that checks through all the numbers from 1 to \n10 and prints the secret value if it\u2019s in that range. If it\u2019s not found, it doesn\u2019t print anything.\n\uf0a7How does the program look if I change the requirement to be: If it\u2019s not found, prints that it didn\u2019t find it. \n6.100L Lecture 4"
+    },
+    {
+        "slide 23": "YOU TRY IT!\n\uf0a7Compare the two codes that:\n\uf0a7Hardcode a number as a secret number. \n\uf0a7Checks through all the numbers from 1 to 10 and prints the secret value if \nit\u2019s in that range. \nIf it\u2019s not found, it doesn\u2019t print anything . If it\u2019s not found, prints that it didn\u2019t find it . \n6.100L Lecture 4Answer:\nsecret = 7\nfound = Falsefor i in range(1,11):\nif i== secret:\nprint(\"yes, it's\", i)found = True\nif not found:\nprint(\"not found\")Answer:\nsecret = 7\nfor iin range(1,11):\nif i== secret:\nprint(\"yes, it's\", i)"
+    },
+    {
+        "slide 24": "BIG  IDEA\nBooleans can be used as \nsignals that something happened\nWe call them Boolean flags.\n6.100L Lecture 4"
+    },
+    {
+        "slide 25": "while LOOP or for LOOP?\n\uf0a7Already saw that code looks cleaner when iterating over \nsequences of values (i.e. using a for loop)\n\uf0a7Don\u2019t set up the iterant yourself as with a while loop\n\uf0a7Less likely to introduce errors \n\uf0a7Consider an example that uses a for loop and an explicit \nrange of values\n6.100L Lecture 4\n"
+    },
+    {
+        "slide 26": "GUESS -and- CHECK CUBE ROOT:\nPOSITIVE CUBES\ncube = int(input(\"Enter an integer: \"))\nforguess inrange(cube+1):\nifguess**3 == cube:\nprint(\"Cube root of \", cube, \"is \", guess)\n6.100L Lecture 4\n"
+    },
+    {
+        "slide 27": "GUESS -and- CHECK CUBE ROOT:\nPOSITIVE and NEGATIVE CUBES\ncube = int(input(\"Enter an integer: \"))\nforguess inrange(abs(cube)+1):\nifguess**3 == abs(cube):\nifcube < 0:\nguess = - guess\nprint(\"Cube root of \"+ str(cube)+\" is \" +str(guess))\n6.100L Lecture 4\n"
+    },
+    {
+        "slide 28": "GUESS -and- CHECK CUBE ROOT:\nJUST a LITTLE FASTER\ncube = int(input(\"Enter an integer: \"))\nforguess inrange(abs(cube)+1):\nifguess**3 >= abs(cube):\nbreak\nifguess**3 != abs(cube):\nprint(cube, \"is not a perfect cube\")\nelse:\nifcube < 0:\nguess = -guess\nprint(\"Cube root of \"+str(cube)+\" is \"+str(guess))\n6.100L Lecture 4\n"
+    },
+    {
+        "slide 29": "ANOTHER EXAMPLE\n\uf0a7Remember those word problems from your childhood?\n\uf0a7For example:\n\uf0a7Alyssa, Ben, and Cindy are selling tickets to a fundraiser\n\uf0a7Ben sells 2 fewer than Alyssa\n\uf0a7Cindy sells twice as many as Alyssa\n\uf0a710 total tickets were sold by the three people\n\uf0a7How many did Alyssa sell?\n\uf0a7Could solve this algebraically, but we can also use guess -and-\ncheck\n6.100L Lecture 4\n"
+    },
+    {
+        "slide 30": "GUESS -and- CHECK \nwith WORD PROBLEMS\nforalyssainrange(11):\nforben inrange(11):\nforcindyin range(11):\ntotal = (alyssa + ben + cindy == 10)\ntwo_less = (ben == alyssa -2)\ntwice = (cindy == 2*alyssa)\niftotal andtwo_less andtwice:\nprint(f\"Alyssa sold {alyssa} tickets\" )\nprint(f\"Bensold {ben} tickets\" )\nprint(f\"Cindy sold {cindy } tickets\")\n6.100L Lecture 4\n"
+    },
+    {
+        "slide 31": "EXAMPLE WITH BIGGER \nNUMBERS\n\uf0a7With bigger numbers, nesting loops is slow!\n\uf0a7For example:\n\uf0a7Alyssa, Ben, and Cindy are selling tickets to a fundraiser\n\uf0a7Ben sells 20fewer than Alyssa\n\uf0a7Cindy sells twice as many as Alyssa\n\uf0a71000 total tickets were sold by the three people\n\uf0a7How many did Alyssa sell?\n\uf0a7The previous code won\u2019t end in a reasonable time\n\uf0a7Instead, loop over one variable and code the equations directly\n6.100L Lecture 4\n"
+    },
+    {
+        "slide 32": "MORE EFFICIENT SOLUTION\nforalyssainrange(1001):\nben = max (alyssa-20, 0)\ncindy= alyssa * 2\nifben + cindy+ alyssa== 1000:\nprint(\"Alyssa sold \" + str(alyssa) + \" tickets\" )\nprint(\"Ben sold \" + str(ben) + \" tickets\" )\nprint(\"Cindy sold \" + str(cindy ) + \" tickets\" )\n6.100L Lecture 4\n"
+    },
+    {
+        "slide 33": "BIG  IDEA\nYou can apply \ncomputation to many problems!\n6.100L Lecture 4"
+    },
+    {
+        "slide 34": "BINARY NUMBERS\n6.100L Lecture 4"
+    },
+    {
+        "slide 35": "NUMBERS in PYTHON\n\uf0a7int\n\uf0a7integers, like the ones you learned about in elementary school\n\uf0a7float\n\uf0a7reals, like the ones you learned about in middle school\n6.100L Lecture 4\n"
+    },
+    {
+        "slide 36": "OUR MOTIVATION -keep this in \nmind for the next few slides\nx = 0\nforiinrange(10):\nx += 0.1\nprint(x == 1)print(x, '==', 10*0.1)\n6.100L Lecture 4\n"
+    },
+    {
+        "slide 37": "BIG  IDEA\nOperations on some \nfloats introduces a very small error.\nThe small error can have a big effect if operations are done many times!\n6.100L Lecture 4"
+    },
+    {
+        "slide 38": "A CLOSER LOOK AT FLOATS\n\uf0a7Python (and every other programming language) uses \u201cfloating \npoint\u201d to approximate real numbers\n\uf0a7The term \u201cfloating point\u201d refers to the way these numbers are stored in computer\n\uf0a7Approximation usually doesn\u2019t matter\n\uf0a7But it does for us!\n\uf0a7Let\u2019s see why\u2026\n6.100L Lecture 4\n"
+    },
+    {
+        "slide 39": "FLOATING POINT \nREPRESENTATION\n\uf0a7Depends on computer hardware, not programming language \nimplementation\n\uf0a7Key things to understand\n\uf0a7Numbers (and everything else) are represented as a sequence of bits (0 \nor 1). \n\uf0a7When wewrite numbers down, the notation uses base 10.  \n\uf0a70.1 stands for the rational number 1/10\n\uf0a7This produces cognitive dissonance \u2013and it will influence how we write \ncode\n6.100L Lecture 4\n"
+    },
+    {
+        "slide 40": "WHY BINARY? \nHARDWARE IMPLEMENTATION\n\uf0a7Easy to implement in hardware \u2014build components that can be \nin one of two states\n\uf0a7Computer hardware is built around methods that can efficiently \nstore information as 0\u2019s or 1\u2019s and do arithmetic with this rep \n\uf0a7a voltage is \u201chigh\u201d or \u201clow\u201d a magnetic spin is \u201cup\u201d or \u201cdown\u201d\n\uf0a7Fine for integer arithmetic, but what about numbers with fractional parts (floats)?\n6.100L Lecture 4\n"
+    },
+    {
+        "slide 41": "BINARY NUMBERS\n\uf0a7Base 10 representation of an integer \n\uf0a7sum of powers of 10, scaled by integers from 0 to 9\n1507 = 1*103+ 5*102+ 0*101+ 7*100\n= 1000 + 500 + 7\n\uf0a7Binary representation is same idea in base 2 \n\uf0a7sum of powers of 2, scaled by integers from 0 to 1\n\uf0a7150710= 1*210+ 1*28+ 1*27+ 1*26+ 1*25+ 1*21+ 1*20\n= 1024 + 256 + 128 + 64 + 32 + 2 + 1\n= 210+ 28+ 27+ 26+ 25+ 21+ 20\n= 101111000112\n6.100L Lecture 4\nWe just went from 0 to 1"
+    },
+    {
+        "slide 42": "CONVERTING DECIMAL INTEGER \nTO BINARY\n\uf0a7We input integers in decimal, computer needs to convert to \nbinary\n\uf0a7Consider example of\n\uf0a7x = 1910 = 1*24+ 0*23+ 0*22+ 1*21+ 1*20= 10011\n\uf0a7If we take remainder of x relative to 2 (x%2), that gives us \nthe last binary bit\n\uf0a7If we then integer divide x by 2 (x//2), all the bits get \nshifted right\n\uf0a7x//2 = 1*23+ 0*22+ 0*21+ 1*20= 1001\n\uf0a7Keep doing successive divisions ; now remainder gets next bit, \nand so on\n\uf0a7Let\u2019s convert to binary form\n6.100L Lecture 4"
+    },
+    {
+        "slide 43": "DOING THIS in PYTHON for \nPOSITIVE NUMBERS\nresult = ''\nifnum == 0:\nresult = '0'\nwhilenum > 0:\nresult = str(num% 2) + result\nnum = num//2\n6.100L Lecture 4Python Tutor LINK"
+    },
+    {
+        "slide 44": "DOING this in PYTHON and \nHANDLING NEGATIVE NUMBERS\nifnum < 0:\nis_neg= True\nnum = abs(num)\nelse:\nis_neg= False\nresult = ''\nifnum == 0:\nresult = '0'\nwhilenum > 0:\nresult = str(num% 2) + result\nnum = num//2\nifis_neg:\nresult = '-' + result\n6.100L Lecture 4"
+    },
+    {
+        "slide 45": "SUMMARY\n\uf0a7Loops can iterate over any sequence of values:\n\uf0a7range for numbers\n\uf0a7A string\n\uf0a7Guess- and- check provides a simple algorithm for solving \nproblems\n\uf0a7When set of potential solutions is enumerable, exhaustive \nenumeration guaranteed to work (eventually)\n\uf0a7Binary numbers help us understand how the machine works\n\uf0a7Converting to binary will help us understand how decimal numbers are \nstored\n\uf0a7Important for the next algorithm we will see\n6.100L Lecture 4"
+    }
+]

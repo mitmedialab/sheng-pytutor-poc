@@ -1,0 +1,6 @@
+Cluster1: 
+  Main_Topic: 
+    - Topic
+  Nodes:
+    - Concept1
+    - Concept2

@@ -1,0 +1,74 @@
+[
+    {
+        "slide 0": "6.100L Lecture 13\nIF YOU MISSED LAST LECTURE,\nCOME GRAB YOUR OWN \nDEBUGGING DUCK"
+    },
+    {
+        "slide 1": "EXCEPTIONS,\nASSERTIONS\n(download slides and . pyfiles to follow along)\n6.100L Lecture 13\nAna Bell"
+    },
+    {
+        "slide 2": "EXCEPTIONS"
+    },
+    {
+        "slide 3": "UNEXPECTED \nCONDITIONS\n\uf0a7What happens when procedure execution hits an unexpected \ncondition?\n\uf0a7Get an exception \u2026 to what was expected\n\u2022Trying to access beyond list limits \ntest = [1,7,4]\ntest[4] \uf0e0IndexError\n\u2022Trying to convert an inappropriate type \nint(test) \uf0e0TypeError\n\u2022Referencing a non- existing variable \na \uf0e0NameError\n\u2022Mixing data types without coercion \n'a'/4 \uf0e0TypeError\n6.100L Lecture 13"
+    },
+    {
+        "slide 4": "HANDLING EXCEPTIONS\n\uf0a7Typically, exception causes an error to occur and execution to stop\n\uf0a7Python code can provide handlers for exceptions\n\uf0a7If expressions in try block all succeed\n\uf0a7Evaluation continues with code after except block\n\uf0a7Exceptions raised by any statement in body of try are handled by the \nexcept statement\n\uf0a7Execution continues with the body of the except statement\n\uf0a7Then other expressions after that block of code\n6.100L Lecture 13if<all potentially problematic code succeeds> :\n# great, all that code\n# just ran fine!\nelse:\n# do something to # handle the problemtry:\n# do some potentially # problematic code\nexcept:\n# do something to # handle the problem"
+    },
+    {
+        "slide 5": "EXAMPLE with CODE YOU MIGHT \nHAVE ALREADY SEEN\n\uf0a7A function that sums digits in a string\nCODE YOU\u2019VE SEEN CODE WITH EXCEPTIONS\n6.100L Lecture 13defsum_digits(s):\n\"\"\" s is a non- empty string \ncontaining digits.\nReturns sum of all chars that \nare digits \"\"\"    \ntotal = 0forchar ins:\ntry:\nval= int(char)\ntotal += val\nexcept:\nprint(\"can't convert\", char)\nreturntotaldefsum_digits(s):\n\"\"\" s is a non- empty string \ncontaining digits.\nReturns sum of all chars that are digits \"\"\"    total = 0forchar ins:\nifchar in'0123456789':\nval= int(char)\ntotal += val\nreturntotal"
+    },
+    {
+        "slide 6": "USER INPUT CAN LEAD TO \nEXCEPTIONS\n\uf0a7User might input a character :(\n\uf0a7User might make b be 0 :(\na = int( input(\"Tell me one number:\"))\nb = int( input(\"Tell me another number:\"))\nprint(a/b)\n\uf0a7Use try/except around the problematic code\ntry:\na = int(input(\"Tell me one number:\"))\nb = int(input(\"Tell me another number:\"))\nprint(a/b)\nexcept:\nprint(\"Bug in user input.\")\n6.100L Lecture 13"
+    },
+    {
+        "slide 7": "HANDLING SPECIFIC EXCEPTIONS\n\uf0a7Have separate except clauses to deal with a particular \ntype of exception\ntry:\na = int( input(\"Tell me one number: \"))\nb = int( input(\"Tell me another number: \"))\nprint(\"a/b = \", a/b)\nprint(\"a+b= \", a+b)\nexceptValueError:\nprint(\"Could not convert to a number.\")\nexceptZeroDivisionError:\nprint(\"Can't divide by zero\")\nprint(\"a/b = infinity\")\nprint(\"a+b=\", a+b)\nexcept:\nprint(\"Something went very wrong.\")\n6.100L Lecture 13"
+    },
+    {
+        "slide 8": "OTHER BLOCKS ASSOCIATED WITH \nA TRY BLOCK\n\uf0a7else:\n\u2022Body of this is executed when execution of associated try body \ncompletes with no exceptions\n\uf0a7finally:\n\u2022Body of this is always executed after try,  else and except clauses, \neven if they raised another error or executed a break, continue or \nreturn\n\u2022Useful for clean -up code that should be run no matter what else \nhappened (e.g. close a file)\n\uf0a7Nice to know these exist, but we don\u2019t really use these in this \nclass\n6.100L Lecture 13"
+    },
+    {
+        "slide 9": "WHAT TO DO WITH EXCEPTIONS?\n\uf0a7What to do when encounter an error?\n\uf0a7Fail silently : \n\u2022Substitute default values or just continue\n\u2022Bad idea! user gets no warning\n\uf0a7Return an \u201cerror\u201d value\n\u2022What value to choose?\n\u2022Complicates code having to check for a special value\n\uf0a7Stop execution, signal error condition\n\u2022In Python: raise an exception\nraiseValueError( \"something is wrong\")\n6.100L Lecture 13"
+    },
+    {
+        "slide 10": "EXAMPLE with SOMETHING \nYOU\u2019VE ALREADY SEEN\n\uf0a7A function that sums digits in a string\n\uf0a7Execution stopping means a bad result is not propagated\n6.100L Lecture 13defsum_digits(s):\n\"\"\" s is a non- empty string containing digits.\nReturns sum of all chars that are digits \"\"\"    \ntotal = 0\nforchar ins:\ntry:\nval= int(char)\ntotal += val\nexcept:\nraise ValueError( \"string contained a character\")\nreturntotal"
+    },
+    {
+        "slide 11": "YOU TRY IT!\ndef pairwise_div( Lnum, Ldenom):\n\"\"\" Lnumand Ldenomare non-empty lists of equal lengths containing numbers\nReturns a new list whose elements are the pairwise \ndivision of an element in Lnumby an element in Ldenom. \nRaise a ValueError if Ldenomcontains 0. \"\"\"\n# your code here\n# For example:L1 = [4,5,6]L2 = [1,2,3]    print(pairwise_div(L1, L2))  # prints [4.0,2.5,2.0]\nL1 = [4,5,6]\nL2 = [1,0,3]    print(pairwise_div(L1, L2))  # raises a ValueError\n6.100L Lecture 13"
+    },
+    {
+        "slide 12": "ASSERTIONS\n6.100L Lecture 13"
+    },
+    {
+        "slide 13": "ASSERTIONS: DEFENSIVE \nPROGRAMMING TOOL\n\uf0a7Want to be sure that assumptions on state of computation are as \nexpected\n\uf0a7Use an assert statement to raise an AssertionError\nexception if assumptions not met\nassert<statement that should be true>, \"message if not true\"\n\uf0a7An example of good defensive programming\n\uf0a7Assertions don\u2019t allow a programmer to control response to unexpected \nconditions\n\uf0a7Ensure that execution halts whenever an expected condition is not met\n\uf0a7Typically used to check inputs to functions, but can be used anywhere\n\uf0a7Can be used to check outputs of a function to avoid propagating bad \nvalues\n\uf0a7Can make it easier to locate a source of a bug\n6.100L Lecture 13"
+    },
+    {
+        "slide 14": "EXAMPLE with SOMETHING \nYOU\u2019VE ALREADY SEEN\n\uf0a7A function that sums digits in a NON -EMPTY string\n\uf0a7Execution stopping means a bad result is not propagated\n6.100L Lecture 13defsum_digits (s):\n\"\"\" s is a non-empty string containing digits.\nReturns sum of all chars that are digits \"\"\"    \nassertlen(s) != 0, \"s is empty\"\ntotal = 0forchar ins:\ntry:\nval= int(char)\ntotal += val\nexcept:\nraise ValueError (\"string contained a character\" )"
+    },
+    {
+        "slide 15": "YOU TRY IT!\ndef pairwise_div( Lnum, Ldenom):\n\"\"\" Lnumand Ldenomare non-emptylists of equal lengths\ncontaining numbers\nReturns a new list whose elements are the pairwise \ndivision of an element in Lnumby an element in Ldenom. \nRaise a ValueError if Ldenomcontains 0. \"\"\"\n# add an assert line here\n6.100L Lecture 13"
+    },
+    {
+        "slide 16": "ANOTHER EXAMPLE\n6.100L Lecture 13"
+    },
+    {
+        "slide 17": "LONGER EXAMPLE OF \nEXCEPTIONS and ASSERTIONS\n\uf0a7Assume we are given a class list for a subject: each \nentry is a list of two parts\n\u2022A list of first and last name for a student\n\u2022A list of grades on assignments\n\uf0a7Create a new class list , with name, grades, and an \naverage added at the endtest_grades = [[['peter', 'parker'], [80.0, 70.0, 85.0]], \n[['bruce ', 'wayne'], [100.0, 80.0, 74.0]]]\n[[['peter', 'parker'], [80.0, 70.0, 85.0], 78.33333],   \n[['bruce ', 'wayne'], [100.0, 80.0, 74.0], 84.666667]]]\n6.100L Lecture 13"
+    },
+    {
+        "slide 18": "EXAMPLE \nCODE\ndefget_stats (class_list):\nnew_stats = []\nforstuinclass_list :\nnew_stats.append ([stu[0], stu [1], avg( stu[1])])\nreturnnew_stats\ndefavg(grades):\nreturnsum(grades)/ len(grades)[[['peter', 'parker'], [80.0, 70.0, 85.0]], \n[['bruce', 'wayne'], [100.0, 80.0, 74.0]]]\n6.100L Lecture 13"
+    },
+    {
+        "slide 19": "ERROR IF NO GRADE FOR A \nSTUDENT\n\uf0a7If one or more students don\u2019t have any grades , \nget an error\ntest_grades = [[['peter', 'parker'], [10.0,55.0,85.0]], \n[['bruce', 'wayne'], [10.0,80.0,75.0]],\n[['captain', 'america' ], [80.0,10.0,96.0]],\n[['deadpool' ], []]]\n\uf0a7Get ZeroDivisionError: float division by zero\nbecause try to \nreturnsum(grades)/len(grades)\n6.100L Lecture 13"
+    },
+    {
+        "slide 20": "OPTION 1: FLAG THE ERROR BY \nPRINTING A MESSAGE\n\uf0a7Decide to notify that something went wrong with a msg\ndefavg(grades):\ntry:\nreturnsum(grades)/len(grades)\nexceptZeroDivisionError:\nprint('warning: no grades data')\n\uf0a7Running on same test data gives\nwarning: no grades data\n[[['peter', 'parker'], [10.0, 55.0, 85.0], 50.0], \n[['bruce' , 'wayne'], [10.0, 80.0, 75.0], 55.0], \n[['captain' , 'america '], [80.0, 10.0, 96.0], 62.0],\n[['deadpool '], [], None]]\n6.100L Lecture 13"
+    },
+    {
+        "slide 21": "OPTION 2: CHANGE THE POLICY\n\uf0a7Decide that a student with no grades gets a zero\ndefavg(grades):\ntry:\nreturnsum(grades)/len(grades)\nexceptZeroDivisionError:\nprint('warning: no grades data')\nreturn0.0\n\uf0a7Running on same test data gives\nwarning: no grades data\n[[['peter', 'parker'], [10.0, 55.0, 85.0], 50.0], \n[['bruce' , 'wayne'], [10.0, 80.0, 75.0], 55.0], \n[['captain' , 'america '], [80.0, 10.0, 96.0], 62]\n[['deadpool' ], [], 0.0]]\n6.100L Lecture 13"
+    },
+    {
+        "slide 22": "OPTION 3: HALT EXECUTION IF \nASSERT IS NOT MET\ndefavg(grades):\nassertlen(grades) != 0, 'no grades data'\nreturnsum(grades)/len(grades)\n\uf0a7Raises an AssertionError if it is given an empty list \nfor grades, prints out string message; stops execution \n\uf0a7Otherwise runs as normal\n6.100L Lecture 13"
+    },
+    {
+        "slide 23": "ASSERTIONS vs. EXCEPTIONS\n\uf0a7Goal is to spot bugs as soon as introduced and make \nclear where they happened\n\uf0a7Exceptions provide a way of handling unexpected input\n\uf0a7Use when you don\u2019t need to halt program execution\n\uf0a7Raise exceptions if users supplies bad data input\n\uf0a7Use assertions:\n\u2022Enforce conditions on a \u201ccontract\u201d between a coder and a user\n\u2022As a supplement to testing\n\u2022Check types of arguments or values\n\u2022Check that invariants on data structures are met\n\u2022Check constraints on return values\n\u2022Check for violations of constraints on procedure (e.g. no \nduplicates in a list)\n6.100L Lecture 13"
+    }
+]

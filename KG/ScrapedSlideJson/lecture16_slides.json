@@ -1,0 +1,254 @@
+[
+    {
+        "slide 0": "RECURSION ON \nNON-NUMERICS\n(download slides and . pyfiles to follow along)\n6.100L Lecture 16\nAna Bell"
+    },
+    {
+        "slide 1": "REVIEW OF RECURSION FROM \nLAST LECTURE, WITH AN EXAMPLE\n\uf0a7Fibonacci numbers (circa 1202)\n\uf0a7Leonardo of Pisa (aka Fibonacci) modeled \nrabbits mating (under certain assumptions) as a Fibonacci sequence\n\uf0a7newborn pair of rabbits (one female, one male) \nare put in a pen\n\uf0a7rabbits mate at age of one month\n\uf0a7rabbits have a one month gestation period\n\uf0a7assume rabbits never die, that female always produces one new pair (one male, one female) \neach month from its second month on\n\uf0a7females(n) = females(n-1) + females(n-2)\n6.100L Lecture 16Month Females\n1 1\n2 1\n3 2\n4 3\n5 5\n6 8\n7 13\nFemales alive in \nmonth n- 1Every female alive at month n- 2 will produce \none female in month n"
+    },
+    {
+        "slide 2": "FIBONACCI\n\uf0a7Base cases:\n\uf0a7Females(1) = 1\n\uf0a7Females(2) = 1\n\uf0a7Recursive case\n\uf0a7Females(n ) = Females(n -1) + Females(n -2)\n6.100L Lecture 16\n"
+    },
+    {
+        "slide 3": "FIBONACCI RECURSIVE CODE \n(MULTIPLE BASE CASES)\ndeffib(x):\nifx == 1orx == 2:\nreturn 1\nelse:\nreturnfib(x-1) + fib(x-2)\nTwo base cases\n\uf0a7Calls itself twice\n\uf0a7But! It has to go to the base case of the first fib call before \ncompleting the second fib call\n6.100L Lecture 16"
+    },
+    {
+        "slide 4": "HIGH -LEVEL VIEW OF \nFIBONACCI with \nRECURSION\nPYTHON TUTOR LINK\nFib(6)\nFib(5) Fib(4)\nFib(4) Fib(3) Fib(2)\nFib(3) Fib(2)\n6.100L Lecture 16Fib(3)\nFib(2) Fib(1)Fib(2)Fib(1)Fib(2) Fib(1)deffib(x):\nifx == 1orx == 2:\nreturn 1\nelse:\nreturnfib(x-1) + fib(x- 2)"
+    },
+    {
+        "slide 5": "INEFFICIENT FIBONACCI\nfib(x) = fib(x-1) + fib(x-2)\n\uf0a7Recalculating the same values many times!\n\uf0a7Could keep track of already calculated valuesFib(6)\nFib(5) Fib(4)\nFib(4) Fib(3) Fib(2)\nFib(3) Fib(2)\n6.100L Lecture 16Fib(3)\nFib(2) Fib(1)Fib(2)Fib(1)Fib(2) Fib(1)"
+    },
+    {
+        "slide 6": "FIBONACCI WITH \nMEMO IZATION \nPython Tutor LINK\ndeffib_efficient(n, d):\nifn ind:\nreturnd[n]\nelse:\nans= fib_efficient(n -1, d) + fib_efficient(n -2, d)\nd[n] = ans\nreturnans\nd = {1:1, 2:1}print(fib_efficient (6, d))\n\uf0a7Do a lookup first in case already calculated the value\n\uf0a7Modify dictionary as progress through function calls\n6.100L Lecture 16\nEinstein: Never memorize something you can look up.\nPerson who invented memoization :"
+    },
+    {
+        "slide 7": "EFFICIENT FIBONACCI CHECKS the DICT FIRST\n\uf0a7No more recalculating , just check the dict before calculating!\n\uf0a7Add to the dict so we can look it up next time we see itFib(6)\nFib(5) Fib(4)\nFib(4) Fib(3)\nFib(3) Fib(2)\n6.100L Lecture 16Fib(2) Fib(1)11\n21\n32\n43\n55n   fib(n)\n68"
+    },
+    {
+        "slide 8": "EFFICIENCY GAINS\n\uf0a7Calling fib(34) results in 11,405,773 recursive calls to the \nprocedure\n\uf0a7Calling fib_efficient(34) results in 65recursive calls to \nthe procedure\n\uf0a7Using dictionaries to capture intermediate results can be very \nefficient\n\uf0a7But note that this only works for procedures without side \neffects (i.e., the procedure will always produce the same result \nfor a specific argument independent of any other computations between calls)\n6.100L Lecture 16\n"
+    },
+    {
+        "slide 9": "A MORE PRACTICAL EXAMPLE\nWHAT ARE ALL THE WAYS YOU CAN MAKE A SCORE OF x IN BASKETBALL?\ndefscore_count(x):\n\"\"\" Returns all the ways to make a score  of x by adding   \n1, 2, and/or 3 together. Order doesn't matter. \"\"\"\nifx == 1:return1 \nelifx == 2:\nreturn2\nelifx == 3:\nreturn3\nelse:\nreturn score_count(x -1)+score_count (x-2)+score_count (x-3)\nIn basketball you can make a basket worth 1, 2, or 3 points\n\uf0a7Base cases: 3 of them! \n\uf0a7You can make a score of 1 with 1+0 (that\u2019s 1 way)\n\uf0a7You can make a score of 2 with 1+1 or 2+0 (that\u2019s 2 ways)\n\uf0a7You can make a score of 3 with 1+1+1 or 2+1 or 3+0 (that\u2019s 3 ways)\n6.100L Lecture 16"
+    },
+    {
+        "slide 10": "A MORE PRACTICAL EXAMPLE: PYTHON TUTOR LINK\nWHAT ARE ALL THE WAYS YOU CAN MAKE A SCORE OF x IN BASKETBALL?\ndefscore_count(x):\n\"\"\" Returns all the ways to make a score  of x by adding   \n1, 2, and/or 3 together. Order doesn't matter. \"\"\"\nifx == 1:return1 \nelifx == 2:\nreturn2\nelifx == 3:\nreturn3\nelse:\nreturnscore_count(x -1)+score_count (x-2)+score_count (x-3)\n\uf0a7Recursive step: Let future function calls do the work down until base cases\n\uf0a7Ways to make a score of x means you could have made: \na score of (x- 1) or a score of (x- 2) or a score of (x- 3) \n\uf0a7If you make a score of x- 1 you can just add 1 to it to make the score of x. \n\uf0a7If you make a score of x- 2 you can just add 2 to it to make the score of x. \n\uf0a7If you make a score of x- 3 you can just add 3 to it to make the score of x. \n6.100L Lecture 16"
+    },
+    {
+        "slide 11": "HIGH-LEVEL VIEW \nof score_count\nscore(6)\nscore(5) score(4)\nscore(4)score(3)score(2)\nscore(3)\nscore(2)\n6.100L Lecture 16score(3)defscore_count(x):\nifx == 1:\nreturn1 \nelifx == 2:\nreturn2\nelifx == 3:\nreturn3\nelse:\nreturnscore_count(x- 1)+score_count(x -2)+score_count(x- 3)\nscore(1)score(2)score(1)score(3)"
+    },
+    {
+        "slide 12": "SUM of LIST ELEMENTS\n6.100L Lecture 16"
+    },
+    {
+        "slide 13": "LISTS ARE NATURALLY RECURSIVE\ndeftotal_iter(L):\nresult = 0\nfore inL:\nresult += e\nreturnresult\ntest = [30, 40, 50]\nprint(total_iter(test))\n6.100L Lecture 16\n"
+    },
+    {
+        "slide 14": "VISUALIZING LISTS as RECURSIVE\n\uf0a7Find sum of this original list\n6.100L Lecture 1610 20 30 40 50 60"
+    },
+    {
+        "slide 15": "VISUALIZING LISTS as RECURSIVE\n\uf0a7L[0] + sum of the new list\n6.100L Lecture 1610 20 30 40 50 60"
+    },
+    {
+        "slide 16": "VISUALIZING LISTS as RECURSIVE\n\uf0a7Solve the same problem, slightly changed (its length is smaller)\n6.100L Lecture 1610 20 30 40 50 60"
+    },
+    {
+        "slide 17": "VISUALIZING LISTS as RECURSIVE\n\uf0a7L[0] + sum of the new list \n6.100L Lecture 1610 20 30 40 50 60"
+    },
+    {
+        "slide 18": "VISUALIZING LISTS as RECURSIVE\n\uf0a7Solve the same problem again, slightly changed\n6.100L Lecture 1610 20 30 40 50 60"
+    },
+    {
+        "slide 19": "VISUALIZING LISTS as RECURSIVE\n\uf0a7L[0] + sum of the new list\n6.100L Lecture 1610 20 30 40 50 60"
+    },
+    {
+        "slide 20": "VISUALIZING LISTS as RECURSIVE\n\uf0a7Keep repeating, decreasing until a base case\n6.100L Lecture 1610 20 30 40 50 60"
+    },
+    {
+        "slide 21": "VISUALIZING LISTS as RECURSIVE\n\uf0a7Keep repeating, decreasing until a base case\n6.100L Lecture 1610 20 30 40 50 60"
+    },
+    {
+        "slide 22": "VISUALIZING LISTS as RECURSIVE\n\uf0a7The base case\n6.100L Lecture 1610 20 30 40 50 60"
+    },
+    {
+        "slide 23": "VISUALIZING LISTS as RECURSIVE\n\uf0a7Pass the sum back up the chain\n6.100L Lecture 1610 20 30 40 50 60"
+    },
+    {
+        "slide 24": "VISUALIZING LISTS as RECURSIVE\n\uf0a7Pass the sum back up the chain\n6.100L Lecture 1610 20 30 40 50 60"
+    },
+    {
+        "slide 25": "VISUALIZING LISTS as RECURSIVE\n\uf0a7Pass the sum back up the chain\n6.100L Lecture 1610 20 30 40 50 60"
+    },
+    {
+        "slide 26": "VISUALIZING LISTS as RECURSIVE\n\uf0a7Pass the sum back up the chain\n6.100L Lecture 1610 20 30 40 50 60"
+    },
+    {
+        "slide 27": "VISUALIZING LISTS as RECURSIVE\n\uf0a7Pass the sum back up the chain\n6.100L Lecture 1610 20 30 40 50 60"
+    },
+    {
+        "slide 28": "VISUALIZING LISTS as RECURSIVE\n\uf0a7Pass the sum back up the chain\n6.100L Lecture 1610 20 30 40 50 60"
+    },
+    {
+        "slide 29": "SUM of LIST ELEMENTS:\nthe PIECES\ndeftotal_recur(L):\nif \nelse:\ntest = [30, 40, 50]\nprint(total_recur(test))\u2022Base case\n\u2022Recursive step\n6.100L Lecture 16"
+    },
+    {
+        "slide 30": "SUM of LIST ELEMENTS:\nthe BASE CASE (one option)\ndeftotal_recur(L):\nifL == []:\nreturn 0\nelse:\ntest = [30, 40, 50]\nprint(total_recur(test))\u2022What is the base case?\n\u2022One option:\nAn empty list has sum 0\n6.100L Lecture 16"
+    },
+    {
+        "slide 31": "SUM of LIST ELEMENTS:\nthe BASE CASE (another option)\ndeftotal_recur(L):\niflen(L) == 1:\nreturnL[0]\nelse:\ntest = [30, 40, 50]\nprint(total_recur(test))\u2022What is the base case?\n\u2022Another option:\nA list with one element \nhas a sum of that one element\n\u2022For example:\nL = [50]\nReturns:\n50\n6.100L Lecture 16"
+    },
+    {
+        "slide 32": "SUM of LIST ELEMENTS:\nthe RECURSIVE STEP\ndeftotal_recur(L):\niflen(L) == 1:\nreturnL[0]\nelse:\nreturnL[0] + # something\ntest = [30, 40, 50]\nprint(total_recur(test))\u2022What is the recursive step?\n\u2022Need to get to the base case \nsomehow\n\u2022Let\u2019s look at elements one at a time\n\u2022Extract the first one and \ngrab its value\n\u2022For example:\nL = [30,40,50]\nReturns:\n30 + <something>\n6.100L Lecture 16"
+    },
+    {
+        "slide 33": "SUM of LIST ELEMENTS\nRECURSIVE STEP will EVENTUALLY END\ndeftotal_recur(L):\niflen(L) == 1:\nreturnL[0]\nelse:\nreturnL[0] + total_recur(L[1:])\ntest = [30, 40, 50]\nprint(total_recur(test))\u2022What is the recursive step?\n\u2022The function call finds the \nsum of the remaining list \nelements\n\u2022For example:\nL = [30,40,50]\nReturns:\n30 + total_recur([40,50])\n6.100L Lecture 16"
+    },
+    {
+        "slide 34": "SUM of LIST ELEMENTS:\nTAKEAWAYS, Python Tutor LINK\ndeftotal_recur(L):\niflen(L) == 1:\nreturnL[0]\nelse:\nreturnL[0] + total_recur(L[1:])\ntest = [30, 40, 50]\nprint(total_recur(test))\u2022Notice:\n\u2022Every case in the function \nreturns something that is \nthe same type\n\u2022Base case returns an int\n\u2022Recursive step returns an int\n\u2022We need to trust that the \nrecursive calls eventually do the right thing\n6.100L Lecture 16"
+    },
+    {
+        "slide 35": "YOU TRY IT!\n\uf0a7Modify the code we wrote to return the total length of all strings \ninside L: \ndef total_len_recur(L):\nif len(L) == 1:\nreturn _______\nelse:\nreturn __________________\ntest = [\"ab\", \"c\", \"defgh\"]\nprint(total_recur(test))  # prints 8\n6.100L Lecture 16"
+    },
+    {
+        "slide 36": "LOOKING for an \nELEMENT in a LIST\n6.100L Lecture 16"
+    },
+    {
+        "slide 37": "ANOTHER EXAMPLE:\nIs an ELEMENT in a LIST? \n(careful with this implementation)\ndefin_list(L, e):\niflen(L) == 1:\nreturnL[0] == e\nelse:    \nreturnin_list(L[1:], e)\u2022Let\u2019s start by following the \nsame pattern as the prev\nexample\n\u2022Base case is when we have one element\n\u2022Check if it\u2019s the one we are \nlooking for\n\u2022Recursive step looks at the \nremaining elements\n\u2022Grab the list from index 1 \nonward and look for e in it\n6.100L Lecture 16"
+    },
+    {
+        "slide 38": "ANOTHER EXAMPLE:\nIs an ELEMENT in a LIST?\n(careful with this implementation) Python Tutor\ndefin_list(L, e):\niflen(L) == 1:\nreturnL[0] == e\nelse:    \nreturnin_list(L[1:], e)\ntest = [2,5,8,1]\nprint(in_list(test, 1))\ntest = [2,1,5,8]\nprint(in_list(test, 1))\u2022Test it out\n\u2022test = [2,5,8,1] and e=1 \ngives True\n\u2022ok\n\u2022test = [2,1,5,8] and e=1 gives False\n\u2022Not ok!\n\u2022It checks only if the last elem is the one we are \nlooking for!\n6.100L Lecture 16"
+    },
+    {
+        "slide 39": "ANOTHER EXAMPLE:\nIs an ELEMENT in a LIST?\n(fix the implementation)\ndefin_list(L, e):\niflen(L) == 1:\nreturnL[0] == e\nelse:    \n# Check the first element\n# before looking in the rest\nreturnin_list(L[1:], e)\u2022Still want to look at \nelements one at a time\n\u2022Need to check whether the element we extracted is the one we are looking for at each function call\n6.100L Lecture 16"
+    },
+    {
+        "slide 40": "ANOTHER EXAMPLE:\nIs an ELEMENT in a LIST?\n(fix the implementation)\ndefin_list(L, e):\niflen(L) == 1:\nreturnL[0] == e\nelse:    \nifL[0] == e:\nreturnTrue\nelse:\nreturnin_list(L[1:], e)\u2022Still want to look at \nelements one at a time\n\u2022Add the check in the \nrecursive step , before \nchecking the rest of the list. \n6.100L Lecture 16"
+    },
+    {
+        "slide 41": "ANOTHER EXAMPLE:\nIs an ELEMENT in a LIST?\n(test the implementation) Python Tutor LINK\ndefin_list(L, e):\niflen(L) == 1:\nreturnL[0] == e\nelse:    \nifL[0] == e:\nreturnTrue\nelse:\nreturnin_list(L[1:], e)\u2022Test it now\n\u2022test = [2,5,8,1] and e=1 \ngives True\n\u2022ok\n\u2022test = [2,1,5,8] and e=1 gives True\n\u2022ok\n\u2022test = [2,5,8] and e=1 gives False\n\u2022ok\n6.100L Lecture 16"
+    },
+    {
+        "slide 42": "ANOTHER EXAMPLE:\nIs an ELEMENT in a LIST?\n(improve the implementation)\ndefin_list(L, e):\niflen(L) == 0:\nreturnFalse\nelifL[0] == e:\nreturnTrue\nelse:\nreturnin_list(L[1:], e)\u2022Two cases that return L[0]\n\u2022Add case when L is empty\n\u2022Simplify the code to check \nthe first element as another \nbase case\n6.100L Lecture 16"
+    },
+    {
+        "slide 43": "BIG  IDEA\nEach case (base cases, recursive step)\nmust return the same \ntype of object.\nRemember that function returns build upon each other!\nIf the base case returns a bool and the recursive step returns \nan int, this gives a type mismatch error at runtime. \n6.100L Lecture 16"
+    },
+    {
+        "slide 44": "FLATTEN a LIST with \nONLY ONE LEVEL of LIST ELEMENTS\n6.100L Lecture 16"
+    },
+    {
+        "slide 45": "FLATTEN a LIST CONTAINING LISTS of ints\ne.g. [[1, 2],[3, 4],[9, 8, 7]]\ngives [1, 2, 3, 4, 9, 8, 7]\ndefflatten(L):\niflen(L) == 1:\nelse:\u2022Base case\n\u2022There is only one element \nin L\n\u2022For example:\n[[2,3,4]]\n6.100L Lecture 16"
+    },
+    {
+        "slide 46": "FLATTEN a LIST CONTAINING LISTS of ints\ne.g. [[1, 2],[3, 4],[9, 8, 7]]\ngives [1, 2, 3, 4, 9, 8, 7]\ndefflatten(L):\niflen(L) == 1:\nreturnL[0]\nelse:\u2022Base case\n\u2022Return that element\n\u2022For example:\n[[2,3,4]]\nReturns:\n[2,3,4]\n6.100L Lecture 16"
+    },
+    {
+        "slide 47": "FLATTEN a LIST CONTAINING LISTS of ints\ne.g. [[1, 2],[3, 4],[9, 8, 7]]\ngives [1, 2, 3, 4, 9, 8, 7]\ndefflatten(L):\niflen(L) == 1:\nreturnL[0]\nelse:\nreturnL[0] + #something \u2022Recursive step\n\u2022Recall that + between two \nlists concatenates the elements into a new list\n\u2022Make a new list containing the first element and\u2026\n6.100L Lecture 16"
+    },
+    {
+        "slide 48": "FLATTEN a LIST CONTAINING LISTS of ints\ne.g. [[1, 2],[3, 4],[9, 8, 7]]\ngives [1, 2, 3, 4, 9, 8, 7]\nPython Tutor LINK\ndefflatten(L):\niflen(L) == 1:\nreturnL[0]\nelse:\nreturnL[0] + flatten(L[1:])\u2022Recursive step\n\u2022\u2026 flatten the rest of the \nremaining list\n\u2022For example:\n[[1,2],[3,4],[9,8,7]]\nReturns:\n[1,2] + \nflatten([[3,4], [9,8,7]])\n6.100L Lecture 16"
+    },
+    {
+        "slide 49": "WHEN to USE RECURSION\n\uf0a7So far you should have some intuition \nfor how to write recursive functions\n\uf0a7The problem is that so far you\u2019ve been writing recursive version of functions that are usually easier to implement WITHOUT recursion :(\n\uf0a7So why learn recursion?\n\uf0a7Some problems are very difficult to solve \nwith iteration\n6.100L Lecture 16\n"
+    },
+    {
+        "slide 50": "INTUITION for WHEN to use \nRECURSION\n\uf0a7Remember when we learned while loops?\n\uf0a7Remember when we tried to write a program that kept asking \nthe user which way to go in the Lost Woods of Zelda?\n\uf0a7We did not know ahead of time how many times we needed to loop! (aka how many levels of if/else we needed )\n\uf0a7While loops kept iterating as long as some condition held true.\n6.100L Lecture 16if<exit right>:\n<set background to woods_background>\nif<exit right>:\n<set background to woods_background >\nif<exit right>:\n<set background to woods_background>and so on and on and on...\nelse:\n<set background to exit_background>\nelse:\n<set background to exit_background>\nelse:\n<set background to exit_background>\n"
+    },
+    {
+        "slide 51": "INTUITION for WHEN to use \nRECURSION\n\uf0a7In the list recursion examples so far, we knew how many levels \nwe needed to iterate.\n\uf0a7Either look at elems directly or in one level down\n\uf0a7But lists can have elements that are lists, which can in turn have elements that are lists, which can in turn have elements that are lists, etc.\n\uf0a7How can we use iteration to do these checks? It\u2019s hard.\n6.100L Lecture 16for iin L:\nif type( i) == list:\nfor j in i:\nif type(j) == list:\nfor k in j:\nif type(k) == list:\n# and so on and on\nelse:\n# do what you need to do\nelse:\n# do what you need to do\nelse:\n# do what you need to do\n# done with the loop over L and all its elements"
+    },
+    {
+        "slide 52": "PROBLEMS that are NATURALLY \nRECURSIVE\n\uf0a7A file system\n\uf0a7Order of operations in a calculator\n\uf0a7Scooby Doo gang searching a haunted castle\n\uf0a7Bureaucracy   \n6.100L Lecture 16\n"
+    },
+    {
+        "slide 53": "LET\u2019S SEE HOW TO GO FROM ONE \nLEVEL to MANY LEVELS (RECURSIVELY)\n\uf0a7Example: reverse a list\u2019s elements\n\uf0a7How to break up the problem into a smaller version of your \nsame problem?\n6.100L Lecture 161 2 3 4"
+    },
+    {
+        "slide 54": "LET\u2019S SEE HOW TO GO FROM ONE \nLEVEL to MANY LEVELS (RECURSIVELY)\n\uf0a7Example: reverse a list\u2019s elements\n\uf0a7How to break up the problem into a smaller version of your \nsame problem?\n6.100L Lecture 162 3 4 1"
+    },
+    {
+        "slide 55": "LET\u2019S SEE HOW TO GO FROM ONE \nLEVEL to MANY LEVELS (RECURSIVELY)\n\uf0a7Example: reverse a list\u2019s elements\n\uf0a7How to break up the problem into a smaller version of your \nsame problem?\n6.100L Lecture 162 3 4 1"
+    },
+    {
+        "slide 56": "LET\u2019S SEE HOW TO GO FROM ONE \nLEVEL to MANY LEVELS (RECURSIVELY)\n\uf0a7Example: reverse a list\u2019s elements\n\uf0a7How to break up the problem into a smaller version of your \nsame problem?\n6.100L Lecture 163 4 2 1"
+    },
+    {
+        "slide 57": "LET\u2019S SEE HOW TO GO FROM ONE \nLEVEL to MANY LEVELS (RECURSIVELY)\n\uf0a7Example: reverse a list\u2019s elements\n\uf0a7How to break up the problem into a smaller version of your \nsame problem?\n6.100L Lecture 163 4 2 1"
+    },
+    {
+        "slide 58": "LET\u2019S SEE HOW TO GO FROM ONE \nLEVEL to MANY LEVELS (RECURSIVELY)\n\uf0a7Example: reverse a list\u2019s elements\n\uf0a7How to break up the problem into a smaller version of your \nsame problem?\n6.100L Lecture 164 3 2 1"
+    },
+    {
+        "slide 59": "LET\u2019S SEE HOW TO GO FROM ONE \nLEVEL to MANY LEVELS (RECURSIVELY)\n\uf0a7Example: reverse a list\u2019s elements\n\uf0a7How to break up the problem into a smaller version of your \nsame problem?\n6.100L Lecture 164 3 2 1"
+    },
+    {
+        "slide 60": "REVERSE a LIST of ELEMENTS:\nTOP-LEVEL ONLY\ndefmy_rev(L):\niflen(L) == 1:\nelse:\u2022Base case\n6.100L Lecture 16"
+    },
+    {
+        "slide 61": "REVERSE a LIST of ELEMENTS:\nTOP-LEVEL ONLY\ndefmy_rev(L):\niflen(L) == 1:\nreturnL\nelse:\u2022Base case\n\u2022Reversing a list with one \nelement is just that list.\n6.100L Lecture 16"
+    },
+    {
+        "slide 62": "REVERSE a LIST of ELEMENTS:\nTOP-LEVEL ONLY\ndefmy_rev(L):\niflen(L) == 1:\nreturnL\nelse:\nreturn <something>  + [L[0]]\u2022Recursive step\n\u2022Move element at index 0 to \nthe end. \n\u2022Equivalent to concatenating something \nwith that element\n\u2022For example:\n[10,20,30,40]\nReturns:\n<something> + [10]\n6.100L Lecture 16"
+    },
+    {
+        "slide 63": "REVERSE a LIST of ELEMENTS:\nTOP-LEVEL ONLY\ndefmy_rev(L):\niflen(L) == 1:\nreturnL\nelse:\nreturnmy_rev(L[1:]) + [L[0]]\u2022Recursive step\n\u2022Solve the same problem, \nbut on the list containing all elements except the first one\n\u2022For example:\n[10,20,30,40]\nReturns:\nmy_rev([20,30,40]) + [10]\n6.100L Lecture 16"
+    },
+    {
+        "slide 64": "REVERSE a LIST of ELEMENTS:\nTOP-LEVEL ONLY\nPython Tutor LINK\ndefmy_rev(L):\niflen(L) == 1:\nreturnL\nelse:\nreturnmy_rev(L[1:]) + [L[0]]\ntest = [1, 2, \"abc\"]\nprint(my_rev(test))\ntest = [1,['d'],[ 'e',['f', 'g']]]\nprint(my_rev(test))\u2022Test it\ntest = [1, 2, \" abc\"]\n# prints \n['abc', 2, 1]\ntest = [1,['d'],['e',[ 'f', 'g']]]\n# prints this, notice it # just reverses top- level elems\n[['e', ['f', 'g']], ['d'], 1]\n6.100L Lecture 16"
+    },
+    {
+        "slide 65": "ALL ELEMENTS GET REVERSED\n\uf0a7Example: reverse all elements in all sublists\n\uf0a7Need to know whether we have an element or a list\n\uf0a7Elements are put at the end, lists are reversed themselves\n6.100L Lecture 16[1, 2] 3 4 [[5,6], [7,8]]"
+    },
+    {
+        "slide 66": "ALL ELEMENTS GET REVERSED\n\uf0a7If it\u2019s a list, \n6.100L Lecture 163 4 [1,2] [[5,6], [7,8]]"
+    },
+    {
+        "slide 67": "ALL ELEMENTS GET REVERSED\n\uf0a7If it\u2019s a list, \n6.100L Lecture 163 4 [2,1] [[5,6], [7,8]]"
+    },
+    {
+        "slide 68": "ALL ELEMENTS GET REVERSED\n\uf0a7If it\u2019s nota list \n6.100L Lecture 164 3 [2,1] [[5,6], [7,8]]"
+    },
+    {
+        "slide 69": "ALL ELEMENTS GET REVERSED\n\uf0a7And so on.\n6.100L Lecture 164 3 [2,1] [[5,6], [7,8]]"
+    },
+    {
+        "slide 70": "ALL ELEMENTS GET REVERSED\n\uf0a7Lists within lists get reversed each\n6.100L Lecture 164 3 [2,1] [[7,8], [5,6]]"
+    },
+    {
+        "slide 71": "ALL ELEMENTS GET REVERSED\n\uf0a7Lists within lists get reversed each\n6.100L Lecture 164 3 [2,1] [[7,8], [6,5]]"
+    },
+    {
+        "slide 72": "ALL ELEMENTS GET REVERSED\n\uf0a7Lists within lists get reversed each\n6.100L Lecture 164 3 [2,1] [[8,7], [6,5]]"
+    },
+    {
+        "slide 73": "REVERSE a LIST of ELEMENTS:\nALL ELEMENTS GET REVERSED\ndefdeep_rev(L):\niflen(L) == 1:\niftype(L[0]) != list:\n# do something\nelse:\n# do something\u2022Base case is NOT the same\n\u2022A single element can either\nbe a \n\u2022Non -list: \n\u2022List:\n6.100L Lecture 16"
+    },
+    {
+        "slide 74": "REVERSE a LIST of ELEMENTS:\nALL ELEMENTS GET REVERSED\ndefdeep_rev(L):\niflen(L) == 1:\niftype(L[0]) != list:\nreturnL\nelse:\n# do something\u2022Base case is NOT the same\n\u2022A single element can either\nbe a \n\u2022Non -list: it\u2019s just the list \nitself, like before\n\u2022List:\n6.100L Lecture 16"
+    },
+    {
+        "slide 75": "REVERSE a LIST of ELEMENTS:\nALL ELEMENTS GET REVERSED\ndefdeep_rev(L):\niflen(L) == 1:\niftype(L[0]) != list:\nreturnL\nelse:\nreturn[deep_rev(L[0])]\u2022Base case is NOT the same\n\u2022A single element can either\nbe a \n\u2022Non -list: it\u2019s just the list \nitself, like before\n\u2022List: Must reverse it!\n6.100L Lecture 16"
+    },
+    {
+        "slide 76": "REVERSE a LIST of ELEMENTS:\nALL ELEMENTS GET REVERSED\ndefdeep_rev(L):\niflen(L) == 1:\niftype(L[0]) != list:\nreturnL\nelse:\nreturn[deep_rev(L[0])]\nelse:\niftype(L[0]) != list:\n# do something\nelse:\n# do something\u2022Recursive step\n\u2022Extract the first element. It \ncan either be a \n\u2022Non -list: \n\u2022List:\n6.100L Lecture 16"
+    },
+    {
+        "slide 77": "REVERSE a LIST of ELEMENTS:\nALL ELEMENTS GET REVERSED\ndefdeep_rev(L):\niflen(L) == 1:\niftype(L[0]) != list:\nreturnL\nelse:\nreturn[deep_rev(L[0])]\nelse:\niftype(L[0]) != list:\nreturndeep_rev (L[1:]) + [L[0]]\nelse:\n# do something\u2022Recursive step\n\u2022Extract the first element. It \ncan either be a \n\u2022Non -list: reverse the \nremaining elements and \nconcatenate the result with \nthe first element\n\u2022List:\n6.100L Lecture 16"
+    },
+    {
+        "slide 78": "REVERSE a LIST of ELEMENTS:\nALL ELEMENTS GET REVERSED\ndefdeep_rev(L):\niflen(L) == 1:\niftype(L[0]) != list:\nreturnL\nelse:\nreturn[deep_rev(L[0])]\nelse:\niftype(L[0]) != list:\nreturndeep_rev (L[1:]) + [L[0]]\nelse:\nreturndeep_rev (L[1:]) + [deep_rev(L[0])]\u2022Recursive step\n\u2022Extract the first element. It \ncan either be a \n\u2022Non -list: reverse the \nremaining elements and \nconcatenate the result with \nthe first element\n\u2022List: reverse the remaining \nelements and concatenate \nthe result with the first \nelement reversed (it\u2019s a list!) \ntoo\n6.100L Lecture 16"
+    },
+    {
+        "slide 79": "REVERSE a LIST of ELEMENTS:\nALL ELEMENTS GET REVERSED\nCLEANED UP CODE\ndefdeep_rev(L):\nifL == []:\nreturn[]\neliftype(L[0]) != list:\nreturndeep_rev(L[1:]) + [L[0]]\nelse:\nreturndeep_rev(L[1:]) + [deep_rev (L[0])]\u2022Extract out the empty list\n\u2022Extract out L[0]\n6.100L Lecture 16"
+    },
+    {
+        "slide 80": "THE FORMULAIC APPROACH (don\u2019t need to know \ntricks! not the prettiest looking, but widely applicable)\n\u2022Consider a list with one \nelement . What is its type?\n\u2022If it\u2019s a list, you'll need to \nrecurse\n\u2022If it's not a list, what \nquantity are you extracting? \u2022Consider the general case of a list with many items\n\u2022Extract the first item . What \nis its type?\n\u2022If it's a list, you'll need to \nrecurse on it AND the \nremaining list\n\u2022If it's not a list, what \nquantity are you extracting? Keep track of it AND recurse \non remaining list.\n6.100L Lecture 16\u2022What changes between list recursion problems? The quantity of interest!\n\u2022A count, a sum, whether an element meets some criteria (e.g. it's in the list, or the \nelement is an even number), etc."
+    },
+    {
+        "slide 81": "BIG  IDEA\nFormulaic recursion procedure \nshown can be applied to any \nindexable ordered sequence.\nThe same idea will work on problems involving strings.\nThe same idea will work on problems involving tuples.\n6.100L Lecture 16"
+    },
+    {
+        "slide 82": "MAJOR RECURSION TAKEAWAYS\n\uf0a7Most problems are solved more intuitively with iteration. We do \nrecursion on these to:\n\uf0a7Show you a different way of thinking about the same problem (algorithm)\n\uf0a7Show you how to write a recursive function (programming)\n\uf0a7Some problems have nicer solutions with recursion\n\uf0a7If you recognize solving the same problem repeatedly, use recursion\n\uf0a7Tips\n\uf0a7Each case in your recursive function must return the same type of thing\ni.e. don\u2019t have a base case return []\nand a recursive step return len(L[0])+recur(L[1:])\n\uf0a7Your function doesn\u2019t have to be efficient on the first pass\n\uf0a7It\u2019s ok to have more than 1 base case\n\uf0a7It\u2019s ok to break down the problem into many if/ elifs\n\uf0a7As long as you are making progress towards a base case recursively\n6.100L Lecture 16"
+    },
+    {
+        "slide 83": "YOU TRY IT!\n\uf0a7I added many practice recursion questions in the . pyfile \nassociated with this lecture, to prep for the quiz.\n\uf0a71) Memoize the basketball score function/\n\uf0a72) An exercise to implement a recursive function (no lists within lists etc.)\n\uf0a73) An exercise to implement a recursive function (with lists within lists \nwithin lists etc.)\n\uf0a74) Three buggy recursion implementations to fix.\n6.100L Lecture 16"
+    }
+]

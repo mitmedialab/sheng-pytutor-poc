@@ -1,0 +1,89 @@
+[
+    {
+        "slide 0": "PYTHON CLASSES\n(download slides and . pyfiles to follow along)\n6.100L Lecture 17\nAna Bell"
+    },
+    {
+        "slide 1": "OBJECTS\n\uf0a7Python supports many different kinds of data\n1234 3.14159 \"Hello\" [1, 5, 7, 11, 13]\n{\"CA\": \"California\", \"MA\": \"Massachusetts\"}\n\uf0a7Each is an object , and every object has:\n\u2022An internal data representation (primitive or composite)\n\u2022A set of procedures for interaction with the object\n\uf0a7An object is an instance of a type\n\u20221234 is an instance of an int\n\u2022\"hello\" is an instance of a str\n6.100L Lecture 17"
+    },
+    {
+        "slide 2": "OBJECT ORIENTED \nPROGRAMMING (OOP)\n\uf0a7EVERYTHING IN PYTHON IS AN OBJECT (and has a type)\n\uf0a7Can create new objects of some type\n\uf0a7Can manipulate objects\n\uf0a7Can destroy objects\n\uf0a7Explicitly using del or just \u201cforget\u201d about them\n\uf0a7Python system will reclaim destroyed or inaccessible objects \u2013\ncalled \u201cgarbage collection \u201d\n\uf0a7Define a new object type using a Python class\n6.100L Lecture 17"
+    },
+    {
+        "slide 3": "WHAT ARE OBJECTS?\n\uf0a7Objects are a data abstraction\nthat captures\u2026\n(1) An internal representation \n\uf0a7Through data attributes\n(2) An interface for \ninteracting with object \n\uf0a7Through methods \n(aka procedures/functions)\n\uf0a7Defines behaviors but hides implementation\n6.100L Lecture 17\n"
+    },
+    {
+        "slide 4": "\uf0a7(1) How are lists represented internally ? \nDoes not matter for so much for us as users (private representation)\nL =\nor              L =\n\uf0a7(2) How to interface with, and manipulate, lists?\n\u2022L[i], L[i:j], +\n\u2022len(), min(), max(), del(L [i])\n\u2022L.append(),L .extend(), L.count(), L.index(), \nL.insert(),L .pop(),L.remove(),L.reverse(), \nL.sort()\n\uf0a7Internal representation should be private\n\uf0a7Correct behavior may be compromised if you manipulate internal \nrepresentation directlyEXAMPLE: \n[1,2,3,4] has type list\n6.100L Lecture 171        - > 2       -> 3       -> 4       ->1        - > 2       ->3      "
+    },
+    {
+        "slide 5": "REAL -LIFE EXAMPLES\n\uf0a7Elevator : a box that can change floors\n\uf0a7Represent using length, width, height, max_capacity , current_floor\n\uf0a7Move its location to a different floor, add people, remove people\n\uf0a7Employee: a person who works for a company\n\uf0a7Represent using name, birth_date , salary\n\uf0a7Can change name or salary\n\uf0a7Queue at a store : first customer to arrive is the first one helped\n\uf0a7Represent customers as a list of str names\n\uf0a7Append names to the end and remove names from the beginning\n\uf0a7Stack of pancakes : first pancake made is the last one eaten\n\uf0a7Represent stack as a list of str\n\uf0a7Append pancake to the end and remove from the end\n6.100L Lecture 17"
+    },
+    {
+        "slide 6": "ADVANTAGES OF OOP\n\uf0a7Bundle data into packages together with procedures that \nwork on them through well -defined interfaces\n\uf0a7Divide -and- conquer development\n\u2022Implement and test behavior of each class separately\n\u2022Increased modularity reduces complexity\n\uf0a7Python classes make it easy to reuse code\n\u2022Many Python modules define new classes\n\u2022Each class has a separate environment (no collision on function \nnames)\n\u2022Inheritance allows subclasses to redefine or extend a selected subset of a superclass\u2019 behavior\n6.100L Lecture 17\n"
+    },
+    {
+        "slide 7": "BIG  IDEA\nYou write the class so you \nmake the design decisions.\nYou decide what data represents the class.\nYou decide what operations a user can do with the class.\n6.100L Lecture 17"
+    },
+    {
+        "slide 8": "\uf0a7Make a distinction between creating a class and \nusing an instance of the class\n\uf0a7Creating the class involves\n\u2022Defining the class name\n\u2022Defining class attributes\n\u2022for example, someone wrote code to implement a list class\n\uf0a7Using the class involves\n\u2022Creating new instances of the class\n\u2022Doing operations on the instances\n\u2022for example, L=[1,2] and len(L)\n6.100L Lecture 17Implementing the class Using the class\nCREATING AND USING YOUR \nOWN TYPES WITH CLASSES"
+    },
+    {
+        "slide 9": "A PARALLEL with FUNCTIONS\n\uf0a7Defining a class is like defining a function\n\uf0a7With functions, we tell Python this procedure exists\n\uf0a7With classes, we tell Python about a blueprint for this new data type\n\uf0a7Its data attributes\n\uf0a7Its procedural attributes\n\uf0a7Creating instances of objects is like calling the function\n\uf0a7With functions we make calls with different actual parameters\n\uf0a7With classes, we create new object instances, in memory, of this type\n\uf0a7L1 = [1,2,3]\nL2 = [5,6,7]\n6.100L Lecture 17"
+    },
+    {
+        "slide 10": "COORDINATE TYPE\nDESIGN DECISIONS\n6.100L Lecture 17(3 , 4)\n(1 , 1)\uf0a7Decide what to do with \ncoordinates\n\u2022Tell us how far away the \ncoordinate is on the x or y axes\n\u2022Measure the distance between \ntwo coordinates, PythagorasCan create instances of a \nCoordinate object\uf0a7Decide what data elements \nconstitute an object\n\u2022In a 2D plane\n\u2022A coordinate is defined by an x and y value"
+    },
+    {
+        "slide 11": "DEFINE YOUR OWN TYPES\n\uf0a7Use the class keyword to define a new type\nclassCoordinate(object):\n#define attributes here\n\uf0a7Similar to def, indent code to indicate which statements are \npart of the class definition\n\uf0a7The word object means that Coordinate is a Python \nobject and inherits all its attributes (will see in future lects ) \n6.100L Lecture 17Implementing the class Using the class"
+    },
+    {
+        "slide 12": "WHAT ARE ATTRIBUTES?\n\uf0a7Data and procedures that \u201c belong \u201d to the class\n\uf0a7Data attributes\n\u2022Think of data as other objects/variables that make up the class\n\u2022for example, a coordinate is made up of two numbers\n\uf0a7Methods (procedural attributes)\n\u2022Think of methods as functions that only work with this class\n\u2022How to interact with the object\n\u2022for example you can define a distance between two coordinate \nobjects but there is no meaning to a distance between two list \nobjects\n6.100L Lecture 17"
+    },
+    {
+        "slide 13": "DEFINING HOW TO CREATE AN INSTANCE OF A \nCLASS\n\uf0a7First have to define how to create an instance of class\n\uf0a7Use a special method called __init__ to initialize some \ndata attributes or perform initialization operations\nclassCoordinate( object):\ndef__init__(self, xval, yval):\nself.x= xval\nself.y= yval\n\uf0a7self allows you to create variables that belong to this object\n\uf0a7Without self, you are just creating regular variables!\n6.100L Lecture 17Implementing the class Using the class"
+    },
+    {
+        "slide 14": "WHAT is self?\nROOM EXAMPLE\n\uf0a7Think of the class definition as a \nblueprint with placeholders for \nactual items\n\uf0a7self has a chair\n\uf0a7self has a coffee table\n\uf0a7self has a sofa\n6.100L Lecture 17\n\uf0a7Now when you create ONE instance \n(name it living_room ), self becomes \nthis actual object\n\uf0a7living_room has a blue chair\n\uf0a7living_room has a black table\n\uf0a7living_room has a white sofa\n\uf0a7Can make many instances using \nthe same blueprint\n"
+    },
+    {
+        "slide 15": "BIG  IDEA\nWhen defining a class, \nwe don\u2019t have an actual tangible object here. \nIt\u2019s only a definition.\n6.100L Lecture 17"
+    },
+    {
+        "slide 16": "ACTUALLY CREATING \nAN INSTANCE OF A CLASS\n\uf0a7Don\u2019t provide argument for self, Python \ndoes this automatically\nc = Coordinate(3,4)\norigin = Coordinate(0,0)\n\uf0a7Data attributes of an instance are called instance variables\n\uf0a7Data attributes were defined with self.XXX and they are \naccessible with dot notation for the lifetime of the object\n\uf0a7All instances have these data attributes, but with different values!\nprint(c.x)\nprint(origin.x)\n6.100L Lecture 17Implementing the class Using the class\nRecall the __ init__  method in the class def:\ndef__init__(self, xval, yval):\nself.x= xval\nself.y= yval"
+    },
+    {
+        "slide 17": "VISUALIZING INSTANCES\n\uf0a7Suppose we create an instance of \na coordinate\nc = Coordinate(3,4)\n\uf0a7Think of this as creating a structure in memory\n\uf0a7Then evaluating \nc.x\nlooks up the structure to whichc points, then finds the binding forx in that structure \n6.100L Lecture 17cType: Coordinate\nx: 3\ny: 4"
+    },
+    {
+        "slide 18": "VISUALIZING INSTANCES:\nin memory\n\uf0a7Make another instance using \na variable\na = 0\norig= Coordinate(a,a )\norig.x\n\uf0a7All these are just objects in \nmemory!\n\uf0a7We just access attributes of these objects\n6.100L Lecture 17origType: Coordinate\nx: 0\ny: 0a 0cType: Coordinate\nx: 3y: 4"
+    },
+    {
+        "slide 19": "VISUALIZING INSTANCES:\ndraw it\n6.100L Lecture 17(3 , 4)\n(0 , 0)\norigincclassCoordinate(object):\ndef__init__(self, xval, yval):\nself.x= xval\nself.y= yval\nc = Coordinate(3,4)\norigin = Coordinate(0,0)print(c.x)\nprint(origin.x)"
+    },
+    {
+        "slide 20": "WHAT IS A METHOD?\n\uf0a7Procedural attribute\n\uf0a7Think of it like a function that works only with this class\n\uf0a7Python always passes the object as the first argument\n\uf0a7Convention is to use self as the name of the first argument of all \nmethods\n6.100L Lecture 17"
+    },
+    {
+        "slide 21": "DEFINE A METHOD \nFOR THE Coordinate CLASS\nclassCoordinate(object):\ndef__init__(self, xval, yval):\nself.x= xval\nself.y= yval\ndefdistance(self, other):\nx_diff_sq = (self.x- other.x)**2\ny_diff_sq = (self.y- other.y)**2\nreturn (x_diff_sq + y_diff_sq)**0.5\n\uf0a7Other than self and dot notation, methods behave just \nlike functions (take params, do operations, return)\n6.100L Lecture 17Implementing the class Using the class"
+    },
+    {
+        "slide 22": "HOW TO CALL A METHOD?\n\uf0a7The \u201c .\u201doperator is used to access any attribute\n\uf0a7A data attribute of an object (we saw c.x)\n\uf0a7A method of an object\n\uf0a7Dot notation\n<object_variable>.<method>(<parameters>)\n\uf0a7Familiar? \nmy_list.append(4)\nmy_list.sort()\n6.100L Lecture 17Using the class Implementing the class"
+    },
+    {
+        "slide 23": "HOW TO USE A METHOD\nUsing the class:\nc = Coordinate(3,4)\norig= Coordinate(0,0)\nprint(c.distance (orig))\n\uf0a7Notice that self becomes the object you call the \nmethod on (the thing before the dot!)\n6.100L Lecture 17Implementing the class Using the class\nRecall the definition of distance method:\ndefdistance(self, other):\nx_diff_sq = (self.x- other.x)**2\ny_diff_sq = (self.y- other.y)**2\nreturn (x_diff_sq + y_diff_sq)**0.5"
+    },
+    {
+        "slide 24": "VISUALIZING INVOCATION\n\uf0a7Coordinate class is an object in \nmemory\n\uf0a7From the class definition\n\uf0a7Create two Coordinate objects\nc = Coordinate(3,4)\norig= Coordinate(0,0)\n6.100L Lecture 17cType: Coordinate\nx: 3\ny: 4Coordinateself.xself.y__init__: some codedistance: some code\norigType: Coordinate\nx: 0y: 0"
+    },
+    {
+        "slide 25": "VISUALIZING INVOCATION\n\uf0a7Evaluate the method call\nc.distance( orig)\n\uf0a71) The object is before the dot\n\uf0a72) Looks up the type of  c\n\uf0a73) The method to call is after the \ndot. \n\uf0a74) Finds the binding fordistance in that object class\n\uf0a75) Invokes that method with \nc as self and \norig as other\n6.100L Lecture 17cType: Coordinate\nx: 3\ny: 4Coordinateself.xself.y__init__: some codedistance: some code\norigType: Coordinate\nx: 0y: 0"
+    },
+    {
+        "slide 26": "HOW TO USE A METHOD\n\uf0a7Conventional way\nc = Coordinate(3,4)\nzero = Coordinate(0,0)c.distance(zero)\n6.100L Lecture 17\uf0a7Equivalent to \nc = Coordinate(3,4)zero = Coordinate(0,0)\nCoordinate.distance (c, zero)Implementing the class Using the class\nRecall the definition of distance method:\ndefdistance(self, other):\nx_diff_sq = (self.x- other.x)**2\ny_diff_sq = (self.y- other.y)**2\nreturn (x_diff_sq + y_diff_sq)**0.5"
+    },
+    {
+        "slide 27": "BIG  IDEA\nThe . operator accesses \neither data attributes or methods.\nData attributes are defined with self.some_variable_name\nMethods are functions defined inside the class with self as the first parameter.\n6.100L Lecture 17"
+    },
+    {
+        "slide 28": "THE POWER OF OOP\n\uf0a7Bundle together objects that share \n\u2022Common attributes and \n\u2022Procedures that operate on those attributes\n\uf0a7Use abstraction to make a distinction between how to \nimplement an object vs how to use the object\n\uf0a7Build layers of object abstractions that inherit behaviors \nfrom other classes of objects\n\uf0a7Create our own classes of objects on top of Python\u2019s \nbasic classes\n6.100L Lecture 17"
+    }
+]

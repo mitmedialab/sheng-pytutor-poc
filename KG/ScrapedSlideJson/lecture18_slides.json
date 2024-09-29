@@ -1,0 +1,122 @@
+[
+    {
+        "slide 0": "MORE PYTHON CLASS \nMETHODS\n(download slides and . pyfiles to follow along)\n6.100L Lecture 18\nAna Bell"
+    },
+    {
+        "slide 1": "IMPLEMENTING USING\nTHE CLASS             vs THE CLASS\nImplementing a new \nobject type with a class\n\uf0a7Define the class\n\uf0a7Define data attributes\n(WHAT IS the object)\n\uf0a7Define methods\n(HOW TO use the object)\nClass abstractly captures \ncommon properties and \nbehaviors \n6.100L Lecture 18Using the new object type in \ncode\n\u2022Create instances of the \nobject type\n\u2022Do operations with them\nInstances have specific \nvalues for attributes\uf0a7Write code from two different perspectives"
+    },
+    {
+        "slide 2": "RECALL THE COORDINATE CLASS\n\uf0a7Class definition tells Python the blueprint for a type Coordinate\n6.100L Lecture 18classCoordinate(object ):\n\"\"\" A coordinate made up of an x and y value \"\"\"\ndef__init__( self, x, y):\n\"\"\" Sets the x and y values \"\"\"self.x= x\nself.y= y\ndefdistance(self , other):\n\"\"\" Returns euclidean distbetween two Coord obj \"\"\"\nx_diff_sq = (self.x- other.x)**2\ny_diff_sq = (self.y- other.y)**2\nreturn(x_diff_sq + y_diff_sq)**0.5\n"
+    },
+    {
+        "slide 3": "ADDING METHODS TO THE \nCOORDINATE CLASS\n\uf0a7Methods are functions that only work with objects of this type\n6.100L Lecture 18classCoordinate(object ):\n\"\"\" A coordinate made up of an x and y value \"\"\"\ndef__init__( self, x, y):\n\"\"\" Sets the x and y values \"\"\"self.x= x\nself.y= y\ndefdistance(self , other):\n\"\"\" Returns euclidean distbetween two Coord obj \"\"\"\nx_diff_sq = (self.x- other.x)**2\ny_diff_sq = (self.y- other.y)**2\nreturn(x_diff_sq + y_diff_sq)**0.5\ndefto_origin(self ):\n\"\"\" always sets self.xand self.yto 0,0 \"\"\"\nself.x= 0\nself.y= 0"
+    },
+    {
+        "slide 4": "MAKING COORDINATE INSTANCES\n\uf0a7Creating instances makes actual Coordinate objects in memory\n\uf0a7The objects can be manipulated\n\uf0a7Use dot notation to call methods and access data attributes\n6.100L Lecture 18c = Coordinate(3,4)\norigin = Coordinate(0,0)\nprint(f\"c's x is {c.x} and origin's x is {origin.x }\")\nprint(c.distance (origin))\nc.to_origin ()\nprint(c.x , c.y)"
+    },
+    {
+        "slide 5": "CLASS DEFINITION             INSTANCE \nOF AN OBJECT TYPE   vs   OF A CLASS\n\uf0a7Class name is the type\nclass Coordinate(object)\n\uf0a7Class is defined generically\n\uf0a7Use self to refer to some \ninstance while defining the \nclass\n(self.x \u2013self.y)**2\n\uf0a7self is a parameter to \nmethods in class definition \n\uf0a7Class defines data and \nmethods common across all \ninstances\n6.100L Lecture 18\uf0a7Instance is one specific object\ncoord= Coordinate(1,2)\n\uf0a7Data attribute values vary \nbetween instances\nc1 = Coordinate(1,2)\nc2 = Coordinate(3,4)\n\u2022c1 andc2have different data \nattribute values c1.x and c2.x\nbecause they are different objects\n\uf0a7Instance has the structure of \nthe class"
+    },
+    {
+        "slide 6": "USING CLASSES TO BUILD OTHER \nCLASSES\n\uf0a7Example: use Coordinates to build Circles\n\uf0a7Our implementation will use 2 data attributes\n\uf0a7Coordinate object representing the center\n\uf0a7int object representing the radius\n6.100L Lecture 18Center \ncoordinateradius"
+    },
+    {
+        "slide 7": "CIRCLE CLASS:\nDEFINITION and INSTANCES\nclassCircle(object):\ndef__init__(self, center, radius):\nself.center = center\nself.radius = radius\ncenter = Coordinate(2, 2)\nmy_circle = Circle(center, 2)\n6.100L Lecture 18"
+    },
+    {
+        "slide 8": "YOU TRY IT!\n\uf0a7Add code to the init method to check that the type of center is \na Coordinate obj and the type of radius is an int. If either are \nnot these types, raise a ValueError .\ndef__init__(self, center, radius):\nself.center = center\nself.radius = radius\n6.100L Lecture 18"
+    },
+    {
+        "slide 9": "CIRCLE CLASS:\nDEFINITION and INSTANCES\nclassCircle(object):\ndef__init__(self, center, radius):\nself.center = center\nself.radius = radius\ndefis_inside( self, point):\n\"\"\" Returns True if point is in self, False otherwise \"\"\"\nreturnpoint.distance( self.center) < self.radius\ncenter = Coordinate(2, 2)\nmy_circle = Circle(center, 2)\np = Coordinate(1,1)\nprint(my_circle.is_inside(p))\n6.100L Lecture 18"
+    },
+    {
+        "slide 10": "YOU TRY IT!\n\uf0a7Are these two methods in the Circle class functionally equivalent?\nclassCircle(object):\ndef__init__(self, center, radius):\nself.center = center\nself.radius = radius \ndefis_inside1(self , point):\nreturn point.distance (self.center) < self.radius\ndefis_inside2(self , point):\nreturn self.center.distance(point) < self.radius\n6.100L Lecture 18"
+    },
+    {
+        "slide 11": "EXAMPLE: \nFRACTIONS\n\uf0a7Create a new type to represent a number as a fraction\n\uf0a7Internal representation is two integers\n\u2022Numerator\n\u2022Denominator\n\uf0a7Interface a.k.a. methods a.k.a how to interact with \nFraction objects\n\u2022Add, subtract\n\u2022Invert the fraction\n\uf0a7Let\u2019s write it together!\n6.100L Lecture 18"
+    },
+    {
+        "slide 12": "NEED TO CREATE INSTANCES\nclassSimpleFraction(object):\ndef__init__(self, n, d):\nself.num = n\nself.denom = d\n6.100L Lecture 18"
+    },
+    {
+        "slide 13": "MULTIPLY FRACTIONS\n6.100L Lecture 18classSimpleFraction(object):\ndef__init__(self, n, d):\nself.num = n\nself.denom = d\ndeftimes(self, oth):\ntop = self.num* oth.num\nbottom = self.denom* oth.denom\nreturntop/bottom"
+    },
+    {
+        "slide 14": "ADD FRACTIONS\n6.100L Lecture 18classSimpleFraction(object):\ndef__init__(self, n, d):\nself.num = n\nself.denom = d\n\u2026\u2026\u2026defplus(self, oth):\ntop = self.num* oth.denom + self.denom* oth.num\nbottom = self.denom* oth.denom\nreturntop/bottom"
+    },
+    {
+        "slide 15": "LET\u2019S TRY IT OUT\nf1 = SimpleFraction(3, 4)\nf2 = SimpleFraction(1, 4)\nprint(f1.num)\nprint(f1.denom)\nprint(f1.plus(f2))\nprint(f1.times(f2))\n6.100L Lecture 183\n4\n1.0\n0.1875"
+    },
+    {
+        "slide 16": "YOU TRY IT!\n\uf0a7Add two methods to invert fraction object according to the specs below:\nclassSimpleFraction(object):\n\"\"\" A number represented as a fraction \"\"\"\ndef__init__(self, num, denom):\nself.num = num\nself.denom = denom\ndefget_inverse( self):\n\"\"\" Returns a float representing 1/self \"\"\"\npass\ndefinvert(self):\n\"\"\" Sets self's num to denomand vice versa. \nReturns None. \"\"\"\npass\n# Example:\nf1 = SimpleFraction(3,4)\nprint(f1.get_inverse())   # prints 1.33333333 (note this one returns value)\nf1.invert()               # acts on data attributes internally, no return\nprint(f1.num, f1.denom)   # prints 4 3 \n6.100L Lecture 18"
+    },
+    {
+        "slide 17": "LET\u2019S TRY IT OUT WITH MORE \nTHINGS\nf1 = SimpleFraction(3, 4)\nf2 = SimpleFraction(1, 4)\nprint(f1.num)\nprint(f1.denom)\nprint(f1.plus(f2))\nprint(f1.times(f2))\nprint(f1)\nprint(f1 * f2)\n6.100L Lecture 183\n4\n1.0\n0.1875\n<__main__. SimpleFraction object at 0x00000234A8C41DF0> \nError!\n"
+    },
+    {
+        "slide 18": "SPECIAL OPERATORS IMPLEMENTED \nWITH DUNDER METHODS\n\uf0a7+, -, ==, <, >, len(), print, and many others are \nshorthand notations\n\uf0a7Behind the scenes, these get replaced by a method!\nhttps://docs.python.org/3/reference/datamodel.html#basic -customization\n\uf0a7Can override these to work with your class\n6.100L Lecture 18\n"
+    },
+    {
+        "slide 19": "SPECIAL OPERATORS IMPLEMENTED \nWITH DUNDER METHODS\n\uf0a7Define them with double underscores before/after\n__add__(self, other) \uf0e0self + other\n__sub__(self, other) \uf0e0self -other\n__mul__(self, other)   \uf0e0self * other\n__truediv__(self, other) \uf0e0 self / other\n__eq__(self, other) \uf0e0self == other\n__lt__(self, other) \uf0e0self < other\n__len__(self) \uf0e0len(self)\n__str__(self) \uf0e0print(self)\n__float__(self)       \uf0e0float(self) i.ecast\n__pow__               \uf0e0 self**other\n... and others\n6.100L Lecture 18"
+    },
+    {
+        "slide 20": "PRINTING OUR OWN \nDATA TYPES\n6.100L Lecture 18"
+    },
+    {
+        "slide 21": "PRINT REPRESENTATION OF AN \nOBJECT\n>>> c = Coordinate(3,4) \n>>> print(c)\n<__main__.Coordinate object at 0x7fa918510488>\n\uf0a7Uninformative print representation by default\n\uf0a7Define a __str__ method for a class\n\uf0a7Python calls the __str__ method when used with \nprint on your class object\n\uf0a7You choose what it does! Say that when we print a \nCoordinate object, want to show\n>>> print(c)\n<3,4>\n6.100L Lecture 18\n"
+    },
+    {
+        "slide 22": "DEFINING YOUR OWN PRINT \nMETHOD\nclassCoordinate(object):\ndef__init__(self, xval, yval):\nself.x= xval\nself.y= yval\ndefdistance(self, other):\nx_diff_sq = (self.x- other.x)**2\ny_diff_sq = (self.y- other.y)**2\nreturn(x_diff_sq + y_diff_sq)**0.5\ndef__str__(self):\nreturn\"<\"+str( self.x)+\",\"+ str( self.y)+\">\"\n6.100L Lecture 18"
+    },
+    {
+        "slide 23": "WRAPPING YOUR HEAD AROUND \nTYPES AND CLASSES\n\uf0a7Can ask for the type of an object instance\n>>> c = Coordinate(3,4)\n>>> print(c)\n<3,4>\n>>> print(type(c))\n<class __main__.Coordinate >\n\uf0a7This makes sense since\n>>> print(Coordinate)\n<class __main__.Coordinate >\n>>> print(type(Coordinate))\n<type 'type'>\n\uf0a7Use isinstance() to check if an object is a Coordinate\n>>> print(isinstance(c, Coordinate))\nTrue\n6.100L Lecture 18"
+    },
+    {
+        "slide 24": "EXAMPLE: FRACTIONS WITH \nDUNDER METHODS\n\uf0a7Create a new type to represent a number as a fraction\n\uf0a7Internal representation is two integers\n\u2022Numerator\n\u2022Denominator\n\uf0a7Interface a.k.a. methods a.k.a how to interact with \nFraction objects\n\u2022Add, sub, mult , div to work with +, -, *, /\n\u2022Print representation, convert to a float\n\u2022Invert the fraction\n\uf0a7Let\u2019s write it together!\n6.100L Lecture 18\n"
+    },
+    {
+        "slide 25": "CREATE & PRINT INSTANCES\nclassFraction(object):\ndef__init__(self, n, d):\nself.num = n\nself.denom = d\ndef__str__(self):\nreturnstr( self.num) + \"/\" + str( self.denom)\n6.100L Lecture 18"
+    },
+    {
+        "slide 26": "LET\u2019S TRY IT OUT\nf1 = Fraction(3, 4)\nf2 = Fraction(1, 4)\nf3 = Fraction(5, 1)\nprint(f1)\nprint(f2)\nprint(f3)\n6.100L Lecture 183/4\n1/4\n5/1\nOk, but looks weird!\n"
+    },
+    {
+        "slide 27": "YOU TRY IT!\n\uf0a7Modify the str method to represent the Fraction as just the \nnumerator, when the denominator is 1. Otherwise its \nrepresentation is the numerator then a / then the denominator. \n6.100L Lecture 18classFraction(object):\ndef__init__( self, num, denom):\nself.num = num\nself.denom = denom\ndef__str__( self):\nreturnstr(self .num) + \"/\"+ str(self .denom)\n# Example:\na = Fraction(1,4)b = Fraction(3,1)print(a)     # prints 1/4print(b)     # prints 3"
+    },
+    {
+        "slide 28": "IMPLEMENTING\n+ -* /\nfloat()\n6.100L Lecture 18"
+    },
+    {
+        "slide 29": "COMPARING METHOD vs. \nDUNDER METHOD\n6.100L Lecture 18classSimpleFraction(object):\ndef__init__(self, n, d):\nself.num = n\nself.denom = d\n\u2026\u2026\u2026\ndeftimes(self, oth):\ntop = self.num* oth.num\nbottom = self.denom* oth.denom\nreturntop/bottomclassFraction(object):\ndef__init__(self, n, d):\nself.num = n\nself.denom = d\n\u2026\u2026\u2026\ndef__mul__(self, other):\ntop = self.num* other.num\nbottom = self.denom* other.denom\nreturnFraction(top, bottom)"
+    },
+    {
+        "slide 30": "LETS TRY IT OUT\na = Fraction(1,4)\nb = Fraction(3,4)\nprint(a) \nc = a * b\nprint(c)\n6.100L Lecture 181/4\n3/16\n"
+    },
+    {
+        "slide 31": "CLASSES CAN HIDE DETAILS\n\uf0a7These are all equivalent\nprint(a * b)\nprint(a.__mul __(b))\nprint(Fraction.__mul __(a, b))\n\uf0a7Every operation in Python \ncomes back to a method call\n\uf0a7The first instance makes clear the operation, without worrying about the internal details!  Abstraction at work\n6.100L Lecture 18\n"
+    },
+    {
+        "slide 32": "BIG  IDEA\nSpecial operations we\u2019ve \nbeen using are just methods behind the scenes.\nThings like:\nprint, len\n+, *, -, /, <, >, <=, >=, ==, !=[]and many others!\n6.100L Lecture 18"
+    },
+    {
+        "slide 33": "CAN KEEP BOTH OPTIONS BY ADDING \nA METHOD TO CAST TO A float\nclassFraction(object):\ndef__init__(self, n, d):\nself.num = n\nself.denom = d\n\u2026\u2026\u2026\ndef__float__(self):\nreturn self.num/ self.denom\nc = a * b\nprint(c)print(float(c))\n6.100L Lecture 183/16\n0.1875"
+    },
+    {
+        "slide 34": "LETS TRY IT OUT SOME MORE\na = Fraction(1,4)\nb = Fraction(2,3)\nc = a * b\nprint(c)\n\uf0a7Not quite what we might expect? It\u2019s not reduced.\n\uf0a7Can we fix this?\n6.100L Lecture 182/12"
+    },
+    {
+        "slide 35": "ADD A METHOD\nclassFraction(object):\n\u2026\u2026\u2026\ndefreduce(self):\ndefgcd(n, d):\nwhiled != 0:\n(d, n) = (n%d, d)\nreturnn\nifself.denom == 0:\nreturnNone\nelif self.denom == 1:\nreturn self.num\nelse:\ngreatest_common_divisor = gcd(self .num, self.denom)\ntop = int(self.num /greatest_common_divisor)\nbottom = int(self .denom/greatest_common_divisor)\nreturnFraction(top, bottom)\nc = a*bprint(c)print(c.reduce ())\n6.100L Lecture 182/12\n1/6"
+    },
+    {
+        "slide 36": "classFraction(object):\n\u2026\u2026\u2026\u2026\ndefreduce(self):\ndefgcd(n, d):\nwhiled != 0:\n(d, n) = (n%d, d)\nreturnn\nifself.denom == 0:\nreturnNone\nelif self.denom == 1:\nreturn self.num\nelse:\ngreatest_common_divisor = gcd(self .num, self.denom)\ntop = int(self.num /greatest_common_divisor)\nbottom = int(self .denom/greatest_common_divisor)\nreturnFraction(top, bottom)WE HAVE SOME IMPROVEMENTS TO MAKE\n6.100L Lecture 18s"
+    },
+    {
+        "slide 37": "CHECK THE TYPES, THEY\u2019RE DIFFERENT\na = Fraction(4,1)\nb = Fraction(3,9)ar= a.reduce()\nbr= b.reduce()\nprint(ar, type(ar))\nprint(br, type(br))\nc = ar* br\n6.100L Lecture 184\n1/3\n4 <class 'int'>\n1/3 <class '__main__.Fraction '>"
+    },
+    {
+        "slide 38": "YOU TRY IT!\n\uf0a7Modify the code to return a Fraction object when denominator \nis 1\n6.100L Lecture 18classFraction(object):\ndefreduce(self):\ndefgcd(n, d):\nwhiled != 0:\n(d, n) = (n%d, d)\nreturnn\nifself.denom == 0:\nreturnNone\nelif self.denom == 1:\nreturn self.num\nelse:\ngreatest_common_divisor = gcd( self.num, self.denom)\ntop = int(self.num/ greatest_common_divisor)\nbottom = int(self.denom/ greatest_common_divisor)\nreturnFraction(top, bottom)\n# Example:\nf1 = Fraction(5,1)print(f1.reduce())   # prints 5/1 not 5 (using the original print)"
+    },
+    {
+        "slide 39": "WHY OOP and BUNDLING THE \nDATA IN THIS WAY?\n\uf0a7Code is organized and modular\n\uf0a7Code is easy to maintain\n\uf0a7It\u2019s easy to build upon objects to make more complex objects\n\uf0a7Decomposition and abstraction at work with Python classes\n\uf0a7Bundling data and behaviors means you can use objects consistently\n\uf0a7Dunder methods are abstracted by common operations, but they\u2019re \njust methods behind the scenes!\n6.100L Lecture 18"
+    }
+]

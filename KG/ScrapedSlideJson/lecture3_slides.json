@@ -1,0 +1,104 @@
+[
+    {
+        "slide 0": "ITERATION\n(download slides and . pyfiles to follow along)\n6.100L Lecture 3\nAna Bell"
+    },
+    {
+        "slide 1": "LAST LECTURE RECAP\n\uf0a7Strings provide a new data type\n\uf0a7They are sequences of characters, the first one at index 0\n\uf0a7They can be indexed and sliced\n\uf0a7Input \n\uf0a7Done with the input command\n\uf0a7Anything the user inputs is read as a string object !\n\uf0a7Output \n\uf0a7Is done with the print command\n\uf0a7Only objects that are printed in a . pycode file will be visible in the shell\n\uf0a7Branching\n\uf0a7Programs execute code blocks when conditions are true\n\uf0a7In an if-elif-elif\u2026 structure, the first condition that is True will \nbe executed\n\uf0a7Indentation matters in Python!\n6.100L Lecture 3"
+    },
+    {
+        "slide 2": "BRANCHING RECAP\n\uf0a7<condition> has a value True or False\n\uf0a7Evaluate the first block whose corresponding <condition> is \nTrue\n\uf0a7A block is started by an if statement\n\uf0a7Indentation matters in Python!\n6.100L Lecture 3if<condition>:\n< code >\n< code >\n...\nif<condition>:\n< code >< code >\n...\nelse:\n< code >\n< code >\n...if<condition>:\n<code >\n<code >\n...\nelif <condition>:\n<code > \n<code >\n...\nelse:\n<code >\n<code >\n...if<condition>:\n<code >\n<code >\n...\nelif <condition>:\n<code > \n<code >\n...\nelif <condition>:\n<code >\n<code >\n..."
+    },
+    {
+        "slide 3": "\uf0a7Zelda, Lost Woods tricks you\n6.100L Lecture 3if<exit right>:\n<set background to woods_background>\nif<exit right>:\n<set background to woods_background >\nif<exit right>:\n<set background to woods_background >\nand so on and on and on...\nelse:<set background to exit_background >\nelse:<set background to exit_background>\nelse:\n<set background to exit_background >\n\uf0a7If you keep going right, you are stuck in the same spot forever\n\uf0a7To exit, take a chance and go the opposite way"
+    },
+    {
+        "slide 4": "\uf0a7Zelda, Lost Woods tricks you\n6.100L Lecture 3while<exit_right >:\n<set background to woods_background>\n<ask user which way to go>\n<set background to exit_background >\n\uf0a7If you keep going right, you are stuck in the same spot forever\n\uf0a7To exit, take a chance and go the opposite way"
+    },
+    {
+        "slide 5": "while LOOPS\n6.100L Lecture 3"
+    },
+    {
+        "slide 6": "BINGE ALL EPISODES OF ONE SHOW\n6.100L Lecture 3Netflix: start watching a new show\nSuggest 3 more shows like this oneThere are \nmore \nepisodes to \nwatch?Play the next one\nnoyes"
+    },
+    {
+        "slide 7": "CONTROL FLOW: while LOOPS\nwhile<condition>:\n<code>\n<code>...\n\uf0a7<condition> evaluates to a Boolean\n\uf0a7If <condition> is True, execute all the steps inside the \nwhile code block\n\uf0a7Check<condition> again\n\uf0a7Repeat until <condition> is False\n\uf0a7If <condition> is never False, then will loop forever!!\n6.100L Lecture 3\n"
+    },
+    {
+        "slide 8": "while LOOP EXAMPLE\nYou are in the Lost Forest.\n************\n************\n\uf04a\n************\n************\nGo left or right?\nPROGRAM:\nwhere = input( \"You're in the Lost Forest. Go left or right? \")\nwhilewhere == \"right\":\nwhere = input(\"You're in the Lost Forest. Go left or right? \")\nprint(\"You got out of the Lost Forest!\")\n6.100L Lecture 3\nwhere \"right\"\n\"left\""
+    },
+    {
+        "slide 9": "YOU TRY IT!\n\uf0a7What is printed when you type \"RIGHT\"?\nwhere = input(\"Go left or right? \")\nwhile where == \"right\":\nwhere = input(\"Go left or right? \")\nprint(\"You got out!\")\n6.100L Lecture 3"
+    },
+    {
+        "slide 10": "while LOOP EXAMPLE\nn = int(input(\"Enter a non- negative integer: \"))\nwhilen > 0:\nprint('x')\nn = n-1\n6.100L Lecture 3n 4\n3\n2\n1\n0"
+    },
+    {
+        "slide 11": "while LOOP EXAMPLE\nn = int(input(\"Enter a non- negative integer: \"))\nwhilen > 0:\nprint('x')\nn = n-1\n\uf0a7To terminate:\n\uf0a7Hit CTRL -c or CMD -c in the shell\n\uf0a7Click the red square in the shell\n6.100L Lecture 3\n"
+    },
+    {
+        "slide 12": "YOU TRY IT!\n\uf0a7Run this code and stop the infinite loop in your IDE\nwhileTrue:\nprint(\"noooooo\")\n6.100L Lecture 3"
+    },
+    {
+        "slide 13": "BIG  IDEA\nwhile loops can repeat \ncode inside indefinitely!\nSometimes they need your intervention to end the program.\n6.100L Lecture 3"
+    },
+    {
+        "slide 14": "CONTROL FLOW: while LOOPS\n\uf0a7Iterate through numbers in a sequence\nn = 0\nwhilen < 5:\nprint(n)\nn = n+1\n6.100L Lecture 3\nn 0\n1\n2\n3\n4\n5"
+    },
+    {
+        "slide 15": "A COMMON PATTERN\n\uf0a7Find 4!\n\uf0a7iis our loop variable\n\uf0a7factorial keeps track of the product\n\uf0a7Python Tutor LINK\n6.100L Lecture 3x = 4\ni= 1\nfactorial = 1whilei<= x:\nfactorial *= ii+= 1\nprint(f'{x} factorial is {factorial}')"
+    },
+    {
+        "slide 16": "YOU TRY IT!\n\uf0a7Expand this code to show a sad face when the user entered the \nwhile loop more than 2 times.\n\uf0a7Hint: use a variable as a counter\nwhere = input(\"Go left or right? \")\nwhile where == \"right\":\nwhere = input(\"Go left or right? \")\nprint(\"You got out!\")\n6.100L Lecture 3"
+    },
+    {
+        "slide 17": "for LOOPS\n6.100L Lecture 3"
+    },
+    {
+        "slide 18": "ARE YOU STILL WATCHING?\n6.100L Lecture 3Netflix while falling asleep\n(it plays only 4 episodes if you\u2019re not paying attention)\nCuts you off4 episodes \nin the \nsequencePlay the next episode\nWent through all eps in sequenceStill more eps  in sequence"
+    },
+    {
+        "slide 19": "CONTROL FLOW:\nwhile and for LOOPS\n\uf0a7Iterate through numbers in a sequence\n# very verbose with while loop\nn = 0whilen < 5:\nprint(n)\nn = n+1\n# shortcut with for loopforn inrange(5):\nprint(n)\n6.100L Lecture 3\n"
+    },
+    {
+        "slide 20": "STRUCTURE of for LOOPS\nfor<variable> in<sequence of values>:\n<code> \n...\n\uf0a7Each time through the loop, <variable> takes a value\n\uf0a7First time, <variable> is the first value in sequence\n\uf0a7Next time, <variable> gets the second value\n\uf0a7etc. until <variable> runs out of values\n6.100L Lecture 3\n"
+    },
+    {
+        "slide 21": "A COMMON SEQUENCE of VALUES\nfor<variable> inrange(<some_num >):\n<code>\n<code> ...\nforn inrange(5):\nprint(n)\n\uf0a7Each time through the loop, <variable> takes a value\n\uf0a7First time, <variable> starts at 0\n\uf0a7Next time, <variable> gets the value 1\n\uf0a7Then, <variable> gets the value 2\n\uf0a7...\n\uf0a7etc. until <variable> gets some_num -1\n6.100L Lecture 3"
+    },
+    {
+        "slide 22": "A COMMON SEQUENCE of VALUES\nfor<variable> inrange(<some_num >):\n<code>\n<code> ...\nforn inrange(5):\nprint(n)\n\uf0a7Each time through the loop, <variable> takes a value\n\uf0a7First time, <variable> starts at 0\n\uf0a7Next time, <variable> gets the value 1\n\uf0a7Then, <variable> gets the value 2\n\uf0a7...\n\uf0a7etc. until <variable> gets some_num -1\n6.100L Lecture 3n 0\n1\n2\n3\n4"
+    },
+    {
+        "slide 23": "range\n\uf0a7Generates a sequence of ints, following a pattern\n\uf0a7range(start, stop, step)\n\uf0a7start: first int generated\n\uf0a7stop: controls last int generated (go up to but not including this int)\n\uf0a7step: used to generate next int in sequence\n\uf0a7A lot like what we saw for slicing\n\uf0a7Often omit start and step\n\uf0a7e.g., foriinrange(4):\n\uf0a7start defaults to 0\n\uf0a7step defaults to 1\n\uf0a7e.g., foriinrange(3,5):\n\uf0a7step defaults to 1\n6.100L Lecture 3\n"
+    },
+    {
+        "slide 24": "YOU TRY IT!\n\uf0a7What do these print? \n\uf0a7for iin range(1,4,1):\nprint(i)\n\uf0a7for j in range(1,4,2):\nprint(j*2)\n\uf0a7for me in range(4,0,-1):\nprint(\"$\"*me)\n6.100L Lecture 3"
+    },
+    {
+        "slide 25": "RUNNING SUM\n\uf0a7mysum is a variable to store the running sum\n\uf0a7range(10) makes ibe 0 then 1 then 2 then \u2026 then 9\nmysum= 0\nforiin range(10):\nmysum+= i\nprint(mysum)\n6.100L Lecture 3i 0\nmysum 0"
+    },
+    {
+        "slide 26": "RUNNING SUM\n\uf0a7mysum is a variable to store the running sum\n\uf0a7range(10) makes ibe 0 then 1 then 2 then \u2026 then 9\nmysum= 0\nforiin range(10):\nmysum+= i\nprint(mysum)\n6.100L Lecture 3i 0\nmysum 01\n1"
+    },
+    {
+        "slide 27": "RUNNING SUM\n\uf0a7mysum is a variable to store the running sum\n\uf0a7range(10) makes ibe 0 then 1 then 2 then \u2026 then 9\nmysum= 0\nforiin range(10):\nmysum+= i\nprint(mysum)\n6.100L Lecture 3i 0\nmysum 11\n32"
+    },
+    {
+        "slide 28": "RUNNING SUM\n\uf0a7mysum is a variable to store the running sum\n\uf0a7range(10) makes ibe 0 then 1 then 2 then \u2026 then 9\nmysum= 0\nforiin range(10):\nmysum+= i\nprint(mysum)\n6.100L Lecture 3i 0\nmysum 31\n62\n3"
+    },
+    {
+        "slide 29": "RUNNING SUM\n\uf0a7mysum is a variable to store the running sum\n\uf0a7range(10) makes ibe 0 then 1 then 2 then \u2026 then 9\nmysum= 0\nforiin range(10):\nmysum+= i\nprint(mysum)\n6.100L Lecture 3\u2026i 0\nmysum 361\n452\n3\n9"
+    },
+    {
+        "slide 30": "YOU TRY IT!\n\uf0a7Fix this code to use variables start and end in the range, to get \nthe total sum between and including those values. \n\uf0a7For example, if start=3 and end=5 then the sum should be 12.\nmysum= 0\nstart = ??\nend = ??for iin range(start, end):\nmysum+= i\nprint(mysum)\n6.100L Lecture 3"
+    },
+    {
+        "slide 31": "for LOOPS and range\n\uf0a7Factorial implemented with a while loop (seen this already) \nand a for loop\n6.100L Lecture 3x = 4\ni= 1\nfactorial = 1whilei<= x:\nfactorial *= i\ni+= 1\nprint(f'{x} factorial is {factorial}\u2019)\nx = 4factorial = 1foriinrange(1, x+1, 1):\nfactorial *= i\nprint(f'{x} factorial is {factorial}')"
+    },
+    {
+        "slide 32": "BIG  IDEA\nfor loops only repeat \nfor however long the \nsequence is\nThe loop variables takes on these values in order.\n6.100L Lecture 3"
+    },
+    {
+        "slide 33": "SUMMARY\n\uf0a7Looping mechanisms\n\uf0a7while and for loops\n\uf0a7Lots of syntax today, be sure to get lots of practice !\n\uf0a7While loops\n\uf0a7Loop as long as a condition is true\n\uf0a7Need to make sure you don\u2019t enter an infinite loop\n\uf0a7For loops\n\uf0a7Can loop over ranges of numbers\n\uf0a7Can loop over elements of a string\n\uf0a7Will soon see many other things are easy to loop over\n6.100L Lecture 3"
+    }
+]

@@ -1,0 +1,86 @@
+[
+    {
+        "slide 0": "RECURSION\n(download slides and . pyfiles to follow along)\n6.100L Lecture 15\nAna Bell"
+    },
+    {
+        "slide 1": "ITERATIVE ALGORITHMS\nSO FAR\n\uf0a7Looping constructs ( while and for loops) lead to \niterative algorithms\n\uf0a7Can capture computation in a set of state variables that \nupdate, based on a set of rules, on each iteration through \nloop\n\uf0a7What is changing each time through loop, and how?\n\uf0a7How do I keep track of number of times through loop?\n\uf0a7When can I stop ?\n\uf0a7Where is the result when I stop?\n6.100L Lecture 15"
+    },
+    {
+        "slide 2": "MULTIPLICATION\n\uf0a7The * operator does this for us\n\uf0a7Make a function\n6.100L Lecture 15def mult(a, b):\nreturn a*b"
+    },
+    {
+        "slide 3": "MULTIPLICATION\nTHINK in TERMS of ITERATION\n\uf0a7Can you make this iterative? \n\uf0a7Define a*b as a+a+a+a... b times\n\uf0a7Write a function \n6.100L Lecture 15def mult(a, b):\ntotal = 0for n in range(b):\ntotal += a\nreturn total"
+    },
+    {
+        "slide 4": "MULTIPLICATION \u2013\nANOTHER ITERATIVE SOLUTION\n\uf0a7\u201cmultiply a* b\u201d is equivalent to \u201cadd bcopies of a \u201d\n\uf0a7Capture state by \n\uf0a7An iteration number (i) starts at b\ni\uf0dfi-1and stop when 0\n\uf0a7A current value ofcomputation (result) starts at 0\nresult \uf0dfresult + a\ndefmult_iter(a, b):\nresult = 0\nwhileb > 0:\nresult += ab -= 1\nreturnresult\n6.100L Lecture 15a + a + a + a + \u2026 + a\ni\nresult: 0iresult: a iresult: 2a iresult: 3a iresult: 4a\nUpdate rules"
+    },
+    {
+        "slide 5": "MULTIPLICATION\nNOTICE the RECURSIVE PATTERNS\n\uf0a7Recognize that we have a problem we are solving many times\n\uf0a7If a = 5 and b = 4\n\uf0a75*4 is 5+5+5+5\n\uf0a7Decompose the original problem into \n\uf0a7Something you know and \n\uf0a7the same problem again\n\uf0a7Original problem is using * between two numbers\n\uf0a75*4 is 5+5* 3\n\uf0a7But this is 5+5+5* 2\n\uf0a7And this is 5+5+5+5* 1\n6.100L Lecture 15"
+    },
+    {
+        "slide 6": "MULTIPLICATION\nFIND SMALLER VERSIONS of the PROBLEM\n\uf0a7Recognize that we have a problem we are solving many times\n\uf0a7If a = 5 and b = 4\n\uf0a75*4 is 5+5+5+5\n\uf0a7Decompose the original problem into \n\uf0a7Something you know and \n\uf0a7the same problem again\n\uf0a7Original problem is using * between two numbers\n\uf0a75*4 \n\uf0a7= 5+(    5*3    )\n\uf0a7= 5+(5+(  5*2  ))\n\uf0a7= 5+(5+(5+(5*1)))\n6.100L Lecture 15"
+    },
+    {
+        "slide 7": "MULTIPLICATION\nFIND SMALLER VERSIONS of the PROBLEM\n\uf0a7Recognize that we have a problem we are solving many times\n\uf0a7If a = 5 and b = 4\n\uf0a75*4 is 5+5+5+5\n\uf0a7Decompose the original problem into \n\uf0a7Something you know and \n\uf0a7the same problem again\n\uf0a7Original problem is using * between two numbers\n\uf0a75*4 \n\uf0a7= 5+(    5*3    )\n\uf0a7= 5+(5+(  5*2  ))\n\uf0a7= 5+(5+(5+(5*1)))\n6.100L Lecture 15"
+    },
+    {
+        "slide 8": "MULTIPLICATION\nFIND SMALLER VERSIONS of the PROBLEM\n\uf0a7Recognize that we have a problem we are solving many times\n\uf0a7If a = 5 and b = 4\n\uf0a75*4 is 5+5+5+5\n\uf0a7Decompose the original problem into \n\uf0a7Something you know and \n\uf0a7the same problem again\n\uf0a7Original problem is using * between two numbers\n\uf0a75*4 \n\uf0a7= 5+(    5*3    )\n\uf0a7= 5+(5+(  5*2  ))\n\uf0a7= 5+(5+(5+(5*1)))\n6.100L Lecture 15"
+    },
+    {
+        "slide 9": "MULTIPLICATION\nREACHED the END\n\uf0a7Recognize that we have a problem we are solving many times\n\uf0a7If a = 5 and b = 4\n\uf0a75*4 is 5+5+5+5\n\uf0a7Decompose the original problem into \n\uf0a7Something you know and \n\uf0a7the same problem again\n\uf0a7Original problem is using * between two numbers\n\uf0a75*4 \n\uf0a7= 5+(    5*3    )\n\uf0a7= 5+(5+(  5*2  ))\n\uf0a7= 5+(5+(5+(5*1)))\n6.100L Lecture 15"
+    },
+    {
+        "slide 10": "MULTIPLICATION\nBUILD the RESULT BACK UP\n\uf0a7Recognize that we have a problem we are solving many times\n\uf0a7If a = 5 and b = 4\n\uf0a75*4 is 5+5+5+5\n\uf0a7Decompose the original problem into \n\uf0a7Something you know and \n\uf0a7the same problem again\n\uf0a7Original problem is using * between two numbers\n\uf0a75*4 \n\uf0a7= 5+(    5*3    )\n\uf0a7= 5+(5+(  5*2  ))\n\uf0a7= 5+(5+(5+( 5 )))\n6.100L Lecture 15"
+    },
+    {
+        "slide 11": "MULTIPLICATION\nBUILD the RESULT BACK UP\n\uf0a7Recognize that we have a problem we are solving many times\n\uf0a7If a = 5 and b = 4\n\uf0a75*4 is 5+5+5+5\n\uf0a7Decompose the original problem into \n\uf0a7Something you know and \n\uf0a7the same problem again\n\uf0a7Original problem is using * between two numbers\n\uf0a75*4 \n\uf0a7= 5+(    5*3    )\n\uf0a7= 5+(5+(  10   ))\n\uf0a7= 5+(5+(5+( 5 )))\n6.100L Lecture 15"
+    },
+    {
+        "slide 12": "MULTIPLICATION\nBUILD the RESULT BACK UP\n\uf0a7Recognize that we have a problem we are solving many times\n\uf0a7If a = 5 and b = 4\n\uf0a75*4 is 5+5+5+5\n\uf0a7Decompose the original problem into \n\uf0a7Something you know and \n\uf0a7the same problem again\n\uf0a7Original problem is using * between two numbers\n\uf0a75*4 \n\uf0a7= 5+(    15     )\n\uf0a7= 5+(5+(  10   ))\n\uf0a7= 5+(5+(5+( 5 )))\n6.100L Lecture 15"
+    },
+    {
+        "slide 13": "a*b = a + a + a + a + \u2026 + a\n= a + a + a + a + \u2026 + a\n= a + a * (b -1)MULTIPLICATION \u2013\nRECURSIVE and BASE STEPS\n\uf0a7Recursive step\n\u2022Decide how to reduce \nproblem to a \nsimpler/smaller version \nof same problem, plus \nsimple operations \n6.100L Lecture 15\n"
+    },
+    {
+        "slide 14": "a*b = a + a + a + a + \u2026 + a\n= a + a + a + a + \u2026 + a\n= a + a * (b -1)MULTIPLICATION \u2013\nRECURSIVE and BASE STEPS\n\uf0a7Recursive step\n\u2022Decide how to reduce \nproblem to a \nsimpler/smaller version \nof same problem, plus \nsimple operations \n\uf0a7Base case\n\u2022Keep reducing problem \nuntil reach a simple case \nthat can be solved \ndirectly\n\u2022When b=1, a*b=a\n6.100L Lecture 15\n"
+    },
+    {
+        "slide 15": "MULTIPLICATION \u2013RECURSIVE \nCODE Python Tutor LINK\n\uf0a7Recursive step\n\u2022If b != 1, a*b = a + a*(b- 1) \n\uf0a7Base case\n\u2022If b = 1, a*b = a\n6.100L Lecture 15def mult_recur(a, b):\nifb == 1:\nreturna\nelse:\nreturna + mult_recur(a, b- 1)\n"
+    },
+    {
+        "slide 16": "REAL LIFE EXAMPLE \nStudent requests a regrade: ONLY ONE function call\nIterative :\n\uf0a7Student asks the prof then the TA then the LA then the grader \none-by-one until one or more regrade the exam/parts\n\uf0a7Student iterates through everyone and keeps track of the new score\n6.100L Lecture 15\n"
+    },
+    {
+        "slide 17": "REAL LIFE EXAMPLE\nStudent requests a regrade: MANY function calls\nRecursive:\n\uf0a71) Student request(a function call to \nregrade!): \n\uf0a7Asks the prof to regrade\n\uf0a7Prof asks a TA to regrade\n\uf0a7TA asks an LA to regrade\n\uf0a7LA asks a grader to regrade\n\uf0a72) Relay the results (functions return \nresults to their callers):\n\uf0a7Grader tells the grade to the LA\n\uf0a7LA tells the grade to the TA\n\uf0a7TA tells the grade to the prof\n\uf0a7Prof tells the grade to the student\n6.100L Lecture 15Regrade \nplease?\nRegrade please?\nRegrade \nplease?Here you goHere you goHere you goHere you go\n"
+    },
+    {
+        "slide 18": "BIG  IDEA\n\u201cEarlier\u201d function calls \nare waiting on results before completing.\n6.100L Lecture 15"
+    },
+    {
+        "slide 19": "WHAT IS RECURSION?\n\uf0a7Algorithmically: a way to design solutions to problems by \ndivide -and- conquer ordecrease- and- conquer\n\uf0a7Reduce a problem to simpler versions of the same problem or to \nproblem that can be solved directly \n\uf0a7Semantically: a programming technique where a function \ncalls itself\n\uf0a7In programming, goal is to \nNOT have infinite recursion\n\uf0a7Must have 1 or more base cases \nthat are easy to solve directly\n\uf0a7Must solve the same problem on some other input with the goal of \nsimplifying the larger input problem, ending at base case\n6.100L Lecture 15\n"
+    },
+    {
+        "slide 20": "YOU TRY IT!\n\uf0a7Complete the function that calculates npfor variables n and p\ndef power_recur (n, p):\nif _______:\nreturn ______\nelif_______:\nreturn ______\nelse:\nreturn _________________\n6.100L Lecture 15"
+    },
+    {
+        "slide 21": "FACTORIAL\nn! = n*(n- 1)*(n-2)*(n-3)* \u2026 * 1\n\uf0a7For what ndo we know the factorial?\nn = 1 \uf0e0ifn == 1:\nreturn1 \n\uf0a7How to reduce problem? Rewrite in terms of something simpler \nto reach base case\nn*(n- 1)! \uf0e0else: \nreturnn*fact(n- 1)\n6.100L Lecture 15\n"
+    },
+    {
+        "slide 22": "RECURSIVE \nFUNCTION SCOPE EXAMPLE\nGlobal scope\nfact Some \ncodefact scope\n(call w/ n=4)\nn4fact scope\n(call w/ n=3)\nn3fact scope\n(call w/ n=2)\nn2fact scope\n(call w/ n=1)\nn1\n6.100L Lecture 15deffact(n):\nifn == 1:\nreturn 1\nelse:\nreturnn*fact(n- 1)\nprint(fact(4))"
+    },
+    {
+        "slide 23": "BIG  IDEA\nIn recursion, each \nfunction call is completely separate.\nSeparate scope/environments.\nSeparate variable names.\nFully I -N-D-E-P-E-N-D-E-N-T\n6.100L Lecture 15"
+    },
+    {
+        "slide 24": "SOME OBSERVATIONS\nPython Tutor LINK for factorial\n\uf0a7Each recursive call to a function \ncreates its own scope/environment\n\uf0a7Bindings of variables in a scope are not changed by recursive call to same function\n\uf0a7Values of variable binding shadow bindings in other frames\n\uf0a7Flow of control passes back to previous scope once function call returns value\n6.100L Lecture 15\n"
+    },
+    {
+        "slide 25": "ITERATION vs. RECURSION \ndeffactorial_iter(n):\nprod = 1\nforiinrange(1,n+1):\nprod *= i\nreturnproddef fact_recur(n):\nifn == 1:\nreturn1\nelse:\nreturnn*fact_recur(n- 1)\n6.100L Lecture 15\uf0a7Recursion may be efficient from programmer POV\n\uf0a7Recursion may not be efficient from computer POV"
+    },
+    {
+        "slide 26": "WHEN to USE RECURSION?\nSO FAR WE SAW VERY SIMPLE CODE\n\uf0a7Multiplication of two numbers did not need a recursive \nfunction, did not even need an iterative function!\n\uf0a7Factorial was a little more intuitive to implement with recursion\n\uf0a7We translated a mathematical equation that told us the structure\n\uf0a7MOST problems do not need recursion to solve them\n\uf0a7If iteration is more intuitive for you then solve them using loops!\n\uf0a7SOME problems yield far \nsimpler code using recursion\n\uf0a7Searching a file system \nfor a specific file\n\uf0a7Evaluating mathematical expressions that use parens\nfor order of ops\n6.100L Lecture 15\n"
+    },
+    {
+        "slide 27": "SUMMARY\n\uf0a7Recursion is a \n\uf0a7Programming method \n\uf0a7Way to divide and conquer\n\uf0a7A function calls itself\n\uf0a7A problem is broken down into a base case and a recursive step\n\uf0a7A base case \n\uf0a7Something you know\n\uf0a7You\u2019ll eventually reach this case (if not, you have infinite recursion)\n\uf0a7A recursive step \n\uf0a7The same problem\n\uf0a7Just slightly different in a way that will eventually reach the base case\n6.100L Lecture 15"
+    }
+]

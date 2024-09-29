@@ -1,0 +1,86 @@
+[
+    {
+        "slide 0": "BIG OH and THETA\n(download slides and . pyfiles to follow along)\n6.100L Lecture 22\nAna Bell"
+    },
+    {
+        "slide 1": "TIMING AND COUNTING ARE OK\n\u2026BUT NEED A BETTER WAY\n\u2022Timing and counting evaluate implementations\n\u2022Timing and counting evaluate machines\n\u2022Want to evaluate algorithm\n\u2022Want to evaluate scalability\n\u2022Want to evaluate in terms of input size\n6.100L Lecture 21\n"
+    },
+    {
+        "slide 2": "ORDER of GROWTH\n6.100L Lecture 22"
+    },
+    {
+        "slide 3": "ORDERS OF GROWTH\n\uf0a7It\u2019s a notation\n\uf0a7Evaluates programs when input is very big\n\uf0a7Expresses the growth of program \u2019s run time\n\uf0a7Puts an upper bound on growth\n\uf0a7Do not need to be precise: \u201corder of \u201d not \u201cexact \u201d growth\n\uf0a7Focus on the largest factors in run time (which section of \nthe program will take the longest to run?)\n6.100L Lecture 22"
+    },
+    {
+        "slide 4": "A BETTER WAY\nA GENERALIZED WAY WITH APPROXIMATIONS\n\uf0a7Use the idea of counting operations in an algorithm, but not \nworry about small variations in implementation\n\uf0a7When x is big, 3x+4 and 3x and x are pretty much the same! \n\uf0a7Don\u2019t care about exact value: ops = 1+x(2+1) \n\uf0a7Express it in an \u201corder of\u201d way vs. the input : ops = Order of x\n\uf0a7Focus on how algorithm performs when size of problem gets arbitrarily large\n\uf0a7Relate time needed to complete a computation against the \nsize of the input to the problem\n\uf0a7Need to decide what to measure. What is the input?\n6.100L Lecture 22"
+    },
+    {
+        "slide 5": "6.0001 LECTURE 8WHICH INPUT TO USE TO MEASURE EFFICIENCY\n\uf0a7Want to express efficiency in terms of input, so need to \ndecide what is your input\n\uf0a7Could be an integer \n--convert_to_km(x)\n\uf0a7Could be length of list \n--list_sum(L)\n\uf0a7You decide when multiple parameters to a function\n--is_in(L, e)\n\uf0a7Might be different depending on which input you consider\n6.100L Lecture 22"
+    },
+    {
+        "slide 6": "6.0001 LECTURE 8DIFFERENT INPUTS CHANGE HOW \nTHE PROGRAM RUNS\n\uf0a7A function that searches for an element in a list\ndefis_in(L, e):\nforiinL:\nifi== e:\nreturnTrue\nreturnFalse\n\uf0a7Does the program take longer to run as eincreases ?\n\uf0a7No \n6.100L Lecture 22"
+    },
+    {
+        "slide 7": "6.0001 LECTURE 8DIFFERENT INPUTS CHANGE HOW \nTHE PROGRAM RUNS\n\uf0a7A function that searches for an element in a list\ndefis_in(L, e):\nforiinL:\nifi== e:\nreturnTrue\nreturnFalse\n\uf0a7Does the program take longer to run as L increases?\n\uf0a7What if L has a fixed length and its elements are big numbers ?\n\uf0a7No \n\uf0a7What if L has different lengths ? \n\uf0a7Yes!\n6.100L Lecture 22"
+    },
+    {
+        "slide 8": "6.0001 LECTURE 8DIFFERENT INPUTS CHANGE HOW \nTHE PROGRAM RUNS\n\uf0a7A function that searches for an element in a list\ndefis_in(L, e):\nforiinL:\nifi== e:\nreturnTrue\nreturnFalse\n\uf0a7When eis first element in the list \n\uf0e0 BEST CASE\n\uf0a7When look through about half of the elements in list\n\uf0e0 AVERAGE CASE\n\uf0a7When eis not in list \n\uf0e0 WORST CASE\n\uf0a7Want to measure this behavior in a general way\n6.100L Lecture 22"
+    },
+    {
+        "slide 9": "6.0001 LECTURE 8ASYMPTOTIC GRO WTH\n\uf0a7Goal: describe how time grows as size of input grows\n\uf0a7Formula relating input to number of operations\n\uf0a7Given an expression for the number of operations needed to \ncompute an algorithm, want to know asymptotic behavior as size \nof problem gets large\n\uf0a7Want to put a bound on growth\n\uf0a7Do not need to be precise: \u201corder of \u201d not \u201cexact \u201d growth\n\uf0a7Will focus on term that grows most rapidly\n\uf0a7Ignore additive and multiplicative constants, since want to know how \nrapidly time required increases as we increase size of input\n\uf0a7This is called order of growth\n\uf0a7Use mathematical notions of \u201c big O \u201d and \u201cbig \u0398 \u201d\nBig Oh  and Big Theta\n6.100L Lecture 22\n"
+    },
+    {
+        "slide 10": "6.100L Lecture 22\n"
+    },
+    {
+        "slide 11": "BIG O Definition \n\ud835\udc54\ud835\udc54(\ud835\udc65\ud835\udc65)=\ud835\udc65\ud835\udc65Not an upper bound; as \ud835\udc65\ud835\udc65\u2192\u221e\nf(x) will always exceed it\n4\ud835\udc65\ud835\udc652>3\ud835\udc65\ud835\udc652+20\ud835\udc65\ud835\udc65+1\u2200\ud835\udc65\ud835\udc65>20.04\n\uf0a7Suppose  some code runs in \n\ud835\udc53\ud835\udc53(\ud835\udc65\ud835\udc65)=3\ud835\udc65\ud835\udc652+20\ud835\udc65\ud835\udc65+1steps\n\uf0a7Think of this as the formula from \ncounting the number of ops.\n\uf0a7Big O His a way to upper bound the \ngrowth of any function\n\uf0a7f(x) = O(g(x)) means that g(x) times \nsome constant eventually always \nexceeds f(x)\n\uf0a7Eventually means above some \nthreshold value of xCrossoverNever \ncross again!3\ud835\udc65\ud835\udc652+20\ud835\udc65\ud835\udc65+1=\ud835\udc42\ud835\udc42(\ud835\udc65\ud835\udc652)\n6.100L Lecture 22"
+    },
+    {
+        "slide 12": "BIG O FORMALLY\n\uf0a7A big Oh bound is an upper bound on the growth of some function\n\uf0a7\ud835\udc53\ud835\udc53(\ud835\udc65\ud835\udc65)=\ud835\udc42\ud835\udc42(\ud835\udc88\ud835\udc88(\ud835\udc99\ud835\udc99))means there exist \nconstants \ud835\udc84\ud835\udc84\ud835\udfce\ud835\udfce,\ud835\udc99\ud835\udc99\ud835\udfce\ud835\udfcefor which \ud835\udc84\ud835\udc84\ud835\udfce\ud835\udfce\ud835\udc88\ud835\udc88(\ud835\udc99\ud835\udc99)\u2265\ud835\udc87\ud835\udc87(\ud835\udc99\ud835\udc99)for all \ud835\udc65\ud835\udc65 >\ud835\udc99\ud835\udc99\ud835\udfce\ud835\udfce\nExample:  \ud835\udc53\ud835\udc53(\ud835\udc65\ud835\udc65)=3\ud835\udc65\ud835\udc652+20\ud835\udc65\ud835\udc65+1\n\ud835\udc53\ud835\udc53(\ud835\udc65\ud835\udc65)=\ud835\udc42\ud835\udc42(\ud835\udc99\ud835\udc99\ud835\udfd0\ud835\udfd0) ,because \ud835\udfd2\ud835\udfd2\ud835\udc99\ud835\udc99\ud835\udfd0\ud835\udfd0>\ud835\udfd1\ud835\udfd1\ud835\udc99\ud835\udc99\ud835\udfd0\ud835\udfd0+\ud835\udfd0\ud835\udfd0\ud835\udfce\ud835\udfce\ud835\udc99\ud835\udc99+\ud835\udfcf\ud835\udfcf\u2200\ud835\udc65\ud835\udc65\u2265\ud835\udfd0\ud835\udfd0\ud835\udfcf\ud835\udfcf\n(\ud835\udc84\ud835\udc84\ud835\udfce\ud835\udfce=\ud835\udfd2\ud835\udfd2,\ud835\udc99\ud835\udc99\ud835\udfce\ud835\udfce=\ud835\udfd0\ud835\udfd0\ud835\udfce\ud835\udfce.\ud835\udfce\ud835\udfce\ud835\udfd2\ud835\udfd2)\n0 <= x <= 30 0 <= x <= 100Crossover at \nx=20.04\nThese lines\nwill nevercross againorange > blue \nfor all x > 20.04)\n6.100L Lecture 22"
+    },
+    {
+        "slide 13": "0 <= x <= 100\nBIG \u0398 Definition\n\uf0a7A big \u0398 bound is a lower and upper bound on the growth of some function\nSuppose  \ud835\udc53\ud835\udc53(\ud835\udc65\ud835\udc65)=3\ud835\udc65\ud835\udc652\u221220\ud835\udc65\ud835\udc65\u22121\n\ud835\udc87\ud835\udc87(\ud835\udc99\ud835\udc99)=\u0398(\ud835\udc88\ud835\udc88(\ud835\udc99\ud835\udc99))means:\nthere exist constants \ud835\udc84\ud835\udc84\ud835\udfce\ud835\udfce,\ud835\udc65\ud835\udc650for which \ud835\udc84\ud835\udc84 \ud835\udfce\ud835\udfce\ud835\udc88\ud835\udc88(\ud835\udc99\ud835\udc99)\u2265\ud835\udc87\ud835\udc87(\ud835\udc99\ud835\udc99)for all \ud835\udc65\ud835\udc65>\ud835\udc99\ud835\udc99\ud835\udfce\ud835\udfce\nand             constants \ud835\udc84\ud835\udc84\ud835\udfcf\ud835\udfcf,\ud835\udc65\ud835\udc651for which \ud835\udc84\ud835\udc84 \ud835\udfcf\ud835\udfcf\ud835\udc88\ud835\udc88(\ud835\udc99\ud835\udc99)\u2264\ud835\udc87\ud835\udc87(\ud835\udc99\ud835\udc99)for all \ud835\udc65\ud835\udc65>\ud835\udc99\ud835\udc99\ud835\udfcf\ud835\udfcf\n\uf0a7Example, \ud835\udc87\ud835\udc87(\ud835\udc99\ud835\udc99)=\u0398(\ud835\udc99\ud835\udc99\ud835\udfd0\ud835\udfd0)because    \ud835\udfd2\ud835\udfd2\ud835\udc99\ud835\udc99\ud835\udfd0\ud835\udfd0>\ud835\udfd1\ud835\udfd1\ud835\udc99\ud835\udc99\ud835\udfd0\ud835\udfd0\u2212\ud835\udfd0\ud835\udfd0\ud835\udfce\ud835\udfce\ud835\udc99\ud835\udc99\u2212\ud835\udfcf\ud835\udfcf\u2200\ud835\udc65\ud835\udc65\u2265\ud835\udfce\ud835\udfce(\ud835\udc84\ud835\udc84\ud835\udfce\ud835\udfce=\ud835\udfd2\ud835\udfd2,\ud835\udc99\ud835\udc99\ud835\udfce\ud835\udfce=\ud835\udfce\ud835\udfce)\nand  \ud835\udfd0\ud835\udfd0\ud835\udc99\ud835\udc99\ud835\udfd0\ud835\udfd0<\ud835\udfd1\ud835\udfd1\ud835\udc99\ud835\udc99\ud835\udfd0\ud835\udfd0\u2212\ud835\udfd0\ud835\udfd0\ud835\udfce\ud835\udfce\ud835\udc99\ud835\udc99\u2212\ud835\udfcf\ud835\udfcf\u2200\ud835\udc65\ud835\udc65\u2265\ud835\udfd0\ud835\udfd0\ud835\udfcf\ud835\udfcf(\ud835\udc84\ud835\udc84\ud835\udfcf\ud835\udfcf=\ud835\udfd0\ud835\udfd0,\ud835\udc99\ud835\udc99\ud835\udfcf\ud835\udfcf=\ud835\udfd0\ud835\udfd0\ud835\udfce\ud835\udfce.\ud835\udfce\ud835\udfce\ud835\udfd2\ud835\udfd2)\nThese lines\nwill nevercross againorange > blue \nfor all x > 0\nblue > green \nfor all x > 20.043\ud835\udc65\ud835\udc652\u221220\ud835\udc65\ud835\udc65\u22121=\ud835\udf03\ud835\udf03(\ud835\udc65\ud835\udc652)\n6.100L Lecture 22"
+    },
+    {
+        "slide 14": "6.100L Lecture 22\n"
+    },
+    {
+        "slide 15": "\u0398 vs O\n\uf0a7In practice, \u0398 bounds are preferred, because they are \u201c tight \u201d\nFor example: \ud835\udc53\ud835\udc53(\ud835\udc65\ud835\udc65)=3\ud835\udc65\ud835\udc652\u221220\ud835\udc65\ud835\udc65\u22121\n\uf0a7\ud835\udc53\ud835\udc53\ud835\udc65\ud835\udc65=\ud835\udc42\ud835\udc42\ud835\udc65\ud835\udc652=\ud835\udc42\ud835\udc42\ud835\udc65\ud835\udc653=\ud835\udc42\ud835\udc42(2\ud835\udc65\ud835\udc65)and anything higher order\nbecause they all upper bound it\n\uf0a7\ud835\udc87\ud835\udc87\ud835\udc99\ud835\udc99=\ud835\udf23\ud835\udf23\ud835\udc99\ud835\udc99\ud835\udfd0\ud835\udfd0\n\u2260\u0398\ud835\udc65\ud835\udc653\u2260\u03982\ud835\udc65\ud835\udc65and anything higher order because they \nupper bound but not lower bound it \n6.100L Lecture 22"
+    },
+    {
+        "slide 16": "6.0001 LECTURE 8SIMPLIFICATION EXAMPLES\n\uf0a7Drop constants and multiplicative factors\n\uf0a7Focus on dominant term\n: n2+ 2n + 2\n: 3x2+ 100000x + 31000 \n: log(a) + a+ 4\u0398(n2)\n\u0398(x2)\n\u0398(a)\n6.100L Lecture 22"
+    },
+    {
+        "slide 17": "BIG  IDEA\nExpress Theta in terms of \nthe input.\nDon\u2019t just use n all the time!\n6.100L Lecture 22"
+    },
+    {
+        "slide 18": "YOU TRY IT!\n: 1000*log(x) + x\n: n2log(n) + n3\n: log(y) + 0.000001y\n: 2b+ 1000a2 + 100*b2 + 0.0001a3\n6.100L Lecture 22\u0398(x)\n\u0398(n3)\n\u0398(y)\n\u0398(2b)\n\u0398(a3)\n\u0398(2b+a3)\nAll could be ok, depends on the input we care about"
+    },
+    {
+        "slide 19": "6.0001 LECTURE 8USING \u0398 TO EVALUATE YOUR \nALGORITHM\ndeffact_iter (n):\n\"\"\"assumes n an int >= 0\"\"\"\nanswer = 1whilen > 1:\nanswer *= nn -= 1\nreturnanswer\n\uf0a7Number of steps: \n\uf0a7Worst case asymptotic complexity: \n\uf0a7Ignore additive constants\n\uf0a72 doesn\u2019t matter when n is big\n\uf0a7Ignore multiplicative constant s\n\uf0a75 doesn\u2019t matter if just want to know how increasing n changes time \nneeded5n + 2\n\u0398(n)\n6.100L Lecture 22"
+    },
+    {
+        "slide 20": "6.0001 LECTURE 8COMBINING C OMPLEXITY CLASSES\nLOOPS IN SERIES\n\uf0a7Analyze statements inside functions to get order of growth\n\uf0a7Apply some rules, focus on dominant term\n\uf0a7Law of Addition for \u0398(): \n\uf0a7Used with sequential statements\n\uf0a7\u0398(\ud835\udc53\ud835\udc53(\ud835\udc5b\ud835\udc5b))+\u0398(\ud835\udc54\ud835\udc54(\ud835\udc5b\ud835\udc5b))=\u0398(\ud835\udc53\ud835\udc53(\ud835\udc5b\ud835\udc5b)+\ud835\udc54\ud835\udc54(\ud835\udc5b\ud835\udc5b))\n\uf0a7For example, \nforiinrange(n):\nprint('a')\nforj inrange(n*n):\nprint('b')\nis \u0398(\ud835\udc5b\ud835\udc5b)+\u0398(\ud835\udc5b\ud835\udc5b\u2217\ud835\udc5b\ud835\udc5b)=\u0398(\ud835\udc5b\ud835\udc5b+\ud835\udc5b\ud835\udc5b2)=\u0398(\ud835\udc5b\ud835\udc5b2)because of   \ndominant \ud835\udc5b\ud835\udc5b2term\u0398(n)\n\u0398(n2)\n6.100L Lecture 22"
+    },
+    {
+        "slide 21": "6.0001 LECTURE 8COMBINING COMPLEXITY CLASSES\nNESTED LOOPS\n\uf0a7Analyze statements inside functions to get order of growth\n\uf0a7Apply some rules, focus on dominant term\n\uf0a7Law of Multiplication for \u0398(): \n\uf0a7Used with nested statements/loops\n\uf0a7\u0398\ud835\udc53\ud835\udc53\ud835\udc5b\ud835\udc5b\u2217\u0398(\ud835\udc54\ud835\udc54(\ud835\udc5b\ud835\udc5b))=\u0398(\ud835\udc53\ud835\udc53\ud835\udc5b\ud835\udc5b\u2217\ud835\udc54\ud835\udc54(\ud835\udc5b\ud835\udc5b))\n\uf0a7For example, \nforiinrange(n):\nforj inrange(n//2 ):\nprint('a')\n\uf0a7\u0398(\ud835\udc5b\ud835\udc5b)\u00d7\u0398(\ud835\udc5b\ud835\udc5b)=\u0398(\ud835\udc5b\ud835\udc5b\u00d7\ud835\udc5b\ud835\udc5b)=\u0398(\ud835\udc5b\ud835\udc5b2)\n\uf0a7Outer loop runs n times and the inner loop runs n times \nfor every outer loop iteration.\u0398(n)\n\u0398(n) for each outer loop iteration\n6.100L Lecture 22"
+    },
+    {
+        "slide 22": "ANALYZE COMPLEXITY\n\uf0a7What is the Theta complexity of this program?\ndeff(x):\nanswer = 1foriin range(x):\nforj in range( i,x):\nanswer += 2\nreturnanswer\n\uf0a7\u0398(1)+ \u0398(x)*\u0398(x)*\u0398(1)+\u0398(1)\n\uf0a7Overall complexity is \u0398(x2)by rules of addition and \nmultiplication\n6.100L Lecture 22Outer loop is \u0398(x)\nInner loop is \u0398( x)\nEverything else is  \u0398( 1)"
+    },
+    {
+        "slide 23": "YOU TRY IT!\n\uf0a7What is the Theta complexity of this program? Careful to \ndescribe in terms of input (hint: what matters with a list, size of elems of length?)\ndeff(L):Lnew= []\nforiinL:\nLnew.append (i**2)\nreturnLnew\n6.100L Lecture 22ANSWER:\nLoop: \u0398(len(L))\nf is \u0398 (len(L))"
+    },
+    {
+        "slide 24": "YOU TRY IT!\n\uf0a7What is the Theta complexity of this program?\ndeff(L, L1, L2):\n\"\"\" L, L1, L2 are the same length \"\"\"\ninL1 = False\nforiinrange(len(L)):\nifL[i] == L1[i]:\ninL1 = True\ninL2 = False\nforiinrange(len(L)):\nifL[i] == L2[i]:\ninL2 = True\nreturninL1 andinL2\n6.100L Lecture 22ANSWER:\nLoop: \u0398(len(L)) + \u0398(len(L))\nf is \u0398 (len(L)) or \u0398(len(L1)) or \u0398(len(L2))"
+    },
+    {
+        "slide 25": "6.0001 LECTURE 8\nCOMPLEXITY CLASSES\nWe want to design algorithms that are as \nclose to top of this hierarchy as possible\n6.100L Lecture 22\uf0a7\u0398(1)denotes constant running time\n\uf0a7\u0398(log n) denotes logarithmic running time\n\uf0a7\u0398(n) denotes linear running time\n\uf0a7\u0398(n log n) denotes log-linear running time\n\uf0a7\u0398(nc) denotes polynomial running time \n(c is a constant)\n\uf0a7\u0398(cn) denotes exponential running time \n(c is a constant raised to a power based on input size)"
+    },
+    {
+        "slide 26": "COMPLEXITY GROWTH\nCLASS N =10 N = 100 N = 1000 N = 1000000\nConstant 1 1 1 1\nLogarithmic 1 2 3 6\nLinear 10 100 1000 1000000\nLog-linear 10 200 3000 6000000\nPolynomial 100 10000 1000000 1000000000000\nExponential 1024 12676506\n002282294014967032053761071508607186267320948425\n049060001810561404811705533607443750388370351051124936122493198378815695858\n1275946729175531468251871\n452856923140435984577574698574803934567774824230985421074605062371141877954\n1821530464749835819412673\n98767559165543946077062914571196477686542167660429831652624386837205668069376Good Luck!!\n6.100L Lecture 22"
+    },
+    {
+        "slide 27": "SUMMARY\n\uf0a7Timing is machine/implementation/algorithm dependent\n\uf0a7Counting ops is implementation/algorithm dependent\n\uf0a7Order of growth is algorithm dependent\n\uf0a7Compare efficiency of algorithms\n\u2022Notation that describes growth\n\u2022Lower order of growth is better\n\u2022Independent of machine or specific implementation\n\uf0a7Using Theta\n\u2022Describe asymptotic order of growth\n\u2022Asymptotic notation\n\u2022Upper bound and a lower bound\n6.100L Lecture 22"
+    }
+]

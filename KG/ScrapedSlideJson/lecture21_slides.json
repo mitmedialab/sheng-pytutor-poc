@@ -1,0 +1,158 @@
+[
+    {
+        "slide 0": "TIMING PROGRAMS, \nCOUNTING OPERATIONS\n(download slides and . pyfiles to follow along)\n6.100L Lecture 21\nAna Bell"
+    },
+    {
+        "slide 1": "WRITING EFFICIENT PROGRAMS\n\uf0a7So far, we have emphasized correctness . It is the first \nthing to worry about! But sometimes that is not enough.\n\uf0a7Problems can be very complex\n\uf0a7But data sets can be \nvery large: in 2014 Google served 30,000,000,000,000 pages covering 100,000,000 GB of data\n6.100L Lecture 21\n"
+    },
+    {
+        "slide 2": "EFFICIENCY IS IMPORTANT\n\uf0a7Separate time and space efficiency of a program\n\uf0a7Tradeoff between them: can use up a bit more memory \nto store values for quicker lookup later\n\uf0a7Think Fibonacci recursive vs. Fibonacci with memoization\n\uf0a7Challenges in understanding efficiency\n\uf0a7A program can be implemented in many different ways\n\uf0a7You can solve a problem using only a handful of different \nalgorithms\n\uf0a7Want to separate choice of implementation from choice \nof more abstract algorithm\n6.100L Lecture 21\n"
+    },
+    {
+        "slide 3": "EVALUATING PROGRAMS\n\uf0a7Measure with a timer\n\uf0a7Count the operations\n\uf0a7Abstract notion of order of growth\n6.100L Lecture 21"
+    },
+    {
+        "slide 4": "6.0001 LECTURE 9ASIDE on MODULES\n\uf0a7A module is a set of python definitions in a file\n\uf0a7Python provides many useful modules: math, plotting/graphing, random \nsampling for probability, statistical tools, many others\n\uf0a7You first need to \u201cimport\u201d the module into your environment\nimport time\nimport random\nimport dateutil\nimport math\n\uf0a7Call functions from inside the module using the module\u2019s name \nand dot notation\nmath.sin (math.pi /2)\n6.100L Lecture 21"
+    },
+    {
+        "slide 5": "TIMING\n6.100L Lecture 21"
+    },
+    {
+        "slide 6": "TIMING A PROGRAM\n\uf0a7Use time module\n\uf0a7Recall that \nimporting means to bring in that class into your own file\n\uf0a7Start clock\n\uf0a7Call function\n\uf0a7Stop clockimporttime\ndefc_to_f(c):\nreturnc*9.0/5 + 32 \ntstart= time.time ()\nc_to_f(37)\ndt = time.time() -tstart\nprint(dt, \"s,\")\n6.100L Lecture 21\n"
+    },
+    {
+        "slide 7": "TIMNG c_to_f\n\uf0a7Very fast, can\u2019t even time it accurately\n6.100L Lecture 21\n"
+    },
+    {
+        "slide 8": "TIMING mysum\n\uf0a7As the input increases , the time it takes also increases\n\uf0a7Pattern?\n\uf0a70.009 to 0.05 to 0.5 to 5 to ??\n6.100L Lecture 21\n"
+    },
+    {
+        "slide 9": "TIMING square\n\uf0a7As the input increases the time it takes also increases\n\uf0a7square called with 100000 did not finish within a reasonable \namount of time\n\uf0a7Maybe we can guess a pattern if we are patient for one more \nround?\n6.100L Lecture 21\n"
+    },
+    {
+        "slide 10": "6.0001 LECTURE 8TIMING A PROGRAM\n\uf0a7Use time module\n\uf0a7Importing means \nbringing collection of functions into your own file\n\uf0a7Start clock\n\uf0a7Call function\n\uf0a7Stop clockimporttime\ndef convert_to_km(m):\nreturn m * 1.609 \nt0 = time.perf_counter()\nconvert_to_km(100000)dt= time.perf_counter() -t0\nprint(\"t =\", dt, \"s,\")\n6.100L Lecture 22\n"
+    },
+    {
+        "slide 11": "6.0001 LECTURE 9EXAMPLE: convert_to_km, compound\n\uf0a7How long does it take to compute these functions?\n\uf0a7Does the time depend on the input parameters?\n\uf0a7Are the times noticeably different for these two \nfunctions?defconvert_to_km(m):\nreturnm * 1.609\ndefcompound(invest, interest, n_months):total=0foriinrange(n_months):\ntotal = total * interest + invest\nreturntotal\n6.100L Lecture 22"
+    },
+    {
+        "slide 12": "L_N = [1]\nforiinrange(7):\nL_N.append (L_N[-1]*10)\nforN inL_N:\nt = time.perf_counter()\nkm = convert_to_km(N)dt = time.perf_counter ()-t\nprint(f\"convert_to_km({N}) took {dt} seconds ({1/dt}/sec)\" )\n6.0001 LECTURE 9CREATING AN INPUT LIST\n6.100L Lecture 22\n"
+    },
+    {
+        "slide 13": "RUN IT !\nconvert_to_km OBSERVATIONS\nObservation: average time seems independent of size of argument\n6.100L Lecture 22\n"
+    },
+    {
+        "slide 14": "6.0001 LECTURE 9MEASURE TIME:\ncompound with a variable number of months\nObservation 2: average time \nseems to increase by 10 as size of \nargument increases by 10\nObservation 3: relationship \nbetween size and time only \npredictable for large sizescompound(1) took 2.26e -06 seconds (441,696.12/sec)\ncompound(10) took 2.31e -06 seconds (433,839.48/sec)\ncompound(100) took 6.59e -06 seconds (151,676.02/sec)\ncompound(1000) took 5.02e -05 seconds (19,938.59/sec)\ncompound(10000) took 5.10e -04 seconds (1,961.80/sec)\ncompound(100000) took 5.14e -03 seconds (194.46/sec)\ncompound(1000000) took 4.79e -02 seconds (20.86/sec)\ncompound(10000000) took 4.46e -01 seconds (2.24/sec)defcompound(invest, interest, n_months):total=0foriinrange(n_months):\ntotal = total * interest + invest\nreturntotal\n6.100L Lecture 22\nObservation 1: Time grows with \nthe input only when n_monthschanges"
+    },
+    {
+        "slide 15": "defsum_of(L):\ntotal = 0.0foreltinL:\ntotal = total + elt\nreturntotal\nL_N = [1]foriinrange(7):\nL_N.append (L_N[-1]*10)\nforN inL_N:\nL = list(range(N))t = time.perf_counter()\ns = sum_of(L)\ndt = time.perf_counter ()-t\nprint(f\"sum_of({N}) took {dt} seconds ({1/dt}/sec)\" )\n6.0001 LECTURE 9MEASURE TIME: sum over LObservation 1: Size of the input is \nnow the length of the list, not how big the element numbers are.\nObservation 2: average time \nseems to increase by 10 as size of \nargument increases by 10\nObservation 3: relationship \nbetween size and time only \npredictable for large sizes\nObservation 4: Time seems \ncomparable to  computation of \ncompound\n6.100L Lecture 22"
+    },
+    {
+        "slide 16": "# search each element one- by-one\ndefis_in(L, x):\nforeltin L:\nifelt==x: \nreturnTrue\nreturnFalse\n# search by bisecting the list (list should be sorted!)defbinary_search(L, x):lo = 0hi = len(L)\nwhilehi-lo > 1:\nmid = (hi+lo) // 2ifL[mid] <= x:\nlo = mid\nelse:\nhi = mid\nreturnL[lo] == x\n# search using built- in operator\nx inL\n6.0001 LECTURE 9MEASURE TIME : find element in a list\n6.100L Lecture 22\n"
+    },
+    {
+        "slide 17": "6.0001 LECTURE 9MEASURE TIME : find element in a list\n9/28/20is_in(10000000) took 1.62e- 01 seconds (6.16/sec)\n9.57 times more than for 10 times fewer elements\nbinary(10000000) took 9.37e- 06 seconds (106,761.64/sec)\n1.40 times more than for 10 times fewer elements\nbuiltin(10000000) took 5.64e- 02 seconds (17.72/sec)\n9.63 times more than for 10 times fewer elements\nis_in(100000000) took 1.64e+00 seconds (0.61/sec)\n10.12 times more than for 10 times fewer elements\nbinary(100000000) took 1.18e- 05 seconds (84,507.09/sec)\n1.26 times more than for 10 times fewer elements\nbuiltin(100000000) took 5.70e- 01 seconds (1.75/sec)\n10.11 times more than for 10 times fewer elements\nObservation 1: searching one -by-one grows by factor of 10, when L increases by 10\n6.100L Lecture 22\n"
+    },
+    {
+        "slide 18": "6.0001 LECTURE 9MEASURE TIME : find element in a list\n9/28/20is_in(10000000) took 1.62e- 01 seconds (6.16/sec)\n9.57 times more than for 10 times fewer elements\nbinary(10000000) took 9.37e- 06 seconds (106,761.64/sec)\n1.40 times more than for 10 times fewer elements\nbuiltin(10000000) took 5.64e- 02 seconds (17.72/sec)\n9.63 times more than for 10 times fewer elements\nis_in(100000000) took 1.64e+00 seconds (0.61/sec)\n10.12 times more than for 10 times fewer elements\nbinary(100000000) took 1.18e- 05 seconds (84,507.09/sec)\n1.26 times more than for 10 times fewer elements\nbuiltin(100000000) took 5.70e- 01 seconds (1.75/sec)\n10.11 times more than for 10 times fewer elements\nObservation 1: searching one -by-one grows by factor of 10, when L increases by 10\n6.100L Lecture 22\nObservation 2: built -in function grows by factor of 10, when L increases by 10 "
+    },
+    {
+        "slide 19": "6.0001 LECTURE 9MEASURE TIME : find element in a list\n9/28/20is_in(10000000) took 1.62e- 01 seconds (6.16/sec)\n9.57 times more than for 10 times fewer elements\nbinary(10000000) took 9.37e- 06 seconds (106,761.64/sec)\n1.40 times more than for 10 times fewer elements\nbuiltin(10000000) took 5.64e- 02 seconds (17.72/sec)\n9.63 times more than for 10 times fewer elements\nis_in(100000000) took 1.64e+00 seconds (0.61/sec)\n10.12 times more than for 10 times fewer elements\nbinary(100000000) took 1.18e- 05 seconds (84,507.09/sec)\n1.26 times more than for 10 times fewer elements\nbuiltin(100000000) took 5.70e- 01 seconds (1.75/sec)\n10.11 times more than for 10 times fewer elements\nObservation 1: searching one -by-one grows by factor of 10, when L increases by 10\nObservation 3: binary search time seems almost independent of size\n6.100L Lecture 22\nObservation 2: built -in function grows by factor of 10, when L increases by 10 "
+    },
+    {
+        "slide 20": "6.0001 LECTURE 9MEASURE TIME : find element in a list\n9/28/20is_in(10000000) took 1.62e- 01 seconds (6.16/sec)\n9.57 times more than for 10 times fewer elements\nbinary(10000000) took 9.37e- 06 seconds (106,761.64/sec)\n1.40 times more than for 10 times fewer elements\nbuiltin(10000000) took 5.64e- 02 seconds (17.72/sec)\n9.63 times more than for 10 times fewer elements\nis_in(100000000) took 1.64e+00 seconds (0.61/sec)\n10.12 times more than for 10 times fewer elements\nbinary(100000000) took 1.18e- 05 seconds (84,507.09/sec)\n1.26 times more than for 10 times fewer elements\nbuiltin(100000000) took 5.70e- 01 seconds (1.75/sec)\n10.11 times more than for 10 times fewer elements\nObservation 1: searching one -by-one grows by factor of 10, when L increases by 10\nObservation 4: binary search much faster than is_in , especially on larger problems\n6.100L Lecture 22\nObservation 3: binary search time seems almost independent of sizeObservation 2: built -in function grows by factor of 10, when L increases by 10 "
+    },
+    {
+        "slide 21": "6.0001 LECTURE 9MEASURE TIME : find element in a list\n9/28/20is_in(10000000) took 1.62e- 01 seconds (6.16/sec)\n9.57 times more than for 10 times fewer elements\nbinary(10000000) took 9.37e- 06 seconds (106,761.64/sec)\n1.40 times more than for 10 times fewer elements\nbuiltin(10000000) took 5.64e- 02 seconds (17.72/sec)\n9.63 times more than for 10 times fewer elements\nis_in(100000000) took 1.64e+00 seconds (0.61/sec)\n10.12 times more than for 10 times fewer elements\nbinary(100000000) took 1.18e- 05 seconds (84,507.09/sec)\n1.26 times more than for 10 times fewer elements\nbuiltin(100000000) took 5.70e- 01 seconds (1.75/sec)\n10.11 times more than for 10 times fewer elements\nObservation 1: searching one -by-one grows by factor of 10, when L increases by 10\nObservation 5: is_in is slightly slower than using Python\u2019s \u201cin\u201d capability\n6.100L Lecture 22\nObservation 4: binary search much faster than is_in , especially on larger problemsObservation 3: binary search time seems almost independent of sizeObservation 2: built -in function grows by factor of 10, when L increases by 10 "
+    },
+    {
+        "slide 22": "6.0001 LECTURE 9MEASURE TIME : find element in a list\nSo we have seen \ncomputations where time seems very different\n\u2022Constant time\n\u2022Linear in size of argument\n\u2022Something less than linear?\n6.100L Lecture 22\ndefis_in(L, x):foreltin L:\nifelt==x: \nreturnTrue\nreturnFalse\ndefbinary_search(L, x):lo = 0hi = len(L)whilehi-lo > 1:\nmid = (hi+lo) // 2ifL[mid] <= x:\nlo = mid\nelse:\nhi = mid\nreturnL[lo] == x"
+    },
+    {
+        "slide 23": "defdiameter(L):\nfarthest_dist = 0\nforiinrange(len (L)):\nforj inrange(i+1, len(L)):\np1 = L[i]p2 = L[j]dist= math.sqrt ((p1[0]-p2[0])**2+(p1[1] -p2[1])**2)\nifdist> farthest_dist :\nfarthest_dist = dist\nreturnfarthest_dist\n6.0001 LECTURE 9MEASURE TIME : diameter function\n6.100L Lecture 22L=[(cos(0), sin(0)),\n(cos(1), sin(1)), (cos(2), sin(2)), ... ] #example numbers\n"
+    },
+    {
+        "slide 24": "defdiameter(L):\nfarthest_dist = 0\nforiinrange(len (L)):\nforj inrange(i+1, len(L)):\np1 = L[i]p2 = L[j]dist= math.sqrt ((p1[0]-p2[0])**2+(p1[1] -p2[1])**2)\nifdist> farthest_dist :\nfarthest_dist = dist\nreturnfarthest_dist\n6.0001 LECTURE 9MEASURE TIME: diameter function\n6.100L Lecture 22"
+    },
+    {
+        "slide 25": "defdiameter(L):\nfarthest_dist = 0\nforiinrange(len (L)):\nforj inrange(i+1, len(L)):\np1 = L[i]p2 = L[j]dist= math.sqrt ((p1[0]-p2[0])**2+(p1[1] -p2[1])**2)\nifdist> farthest_dist :\nfarthest_dist = dist\nreturnfarthest_dist\n6.0001 LECTURE 9MEASURE TIME: diameter function\n6.100L Lecture 22"
+    },
+    {
+        "slide 26": "defdiameter(L):\nfarthest_dist = 0\nforiinrange(len (L)):\nforj inrange(i+1, len(L)):\np1 = L[i]p2 = L[j]dist= math.sqrt ((p1[0]-p2[0])**2+(p1[1] -p2[1])**2)\nifdist> farthest_dist :\nfarthest_dist = dist\nreturnfarthest_dist\n6.0001 LECTURE 9MEASURE TIME: diameter function\n6.100L Lecture 22"
+    },
+    {
+        "slide 27": "defdiameter(L):\nfarthest_dist = 0\nforiinrange(len (L)):\nforj inrange(i+1, len(L)):\np1 = L[i]p2 = L[j]dist= math.sqrt ((p1[0]-p2[0])**2+(p1[1] -p2[1])**2)\nifdist> farthest_dist :\nfarthest_dist = dist\nreturnfarthest_dist\n6.0001 LECTURE 9MEASURE TIME: diameter function\n6.100L Lecture 22"
+    },
+    {
+        "slide 28": "defdiameter(L):\nfarthest_dist = 0\nforiinrange(len (L)):\nforj inrange(i+1, len(L)):\np1 = L[i]p2 = L[j]dist= math.sqrt ((p1[0]-p2[0])**2+(p1[1] -p2[1])**2)\nifdist> farthest_dist :\nfarthest_dist = dist\nreturnfarthest_dist\n6.0001 LECTURE 9MEASURE TIME: diameter function\n6.100L Lecture 22"
+    },
+    {
+        "slide 29": "defdiameter(L):\nfarthest_dist = 0\nforiinrange(len (L)):\nforj inrange(i+1, len(L)):\np1 = L[i]p2 = L[j]dist= math.sqrt ((p1[0]-p2[0])**2+(p1[1] -p2[1])**2)\nifdist> farthest_dist :\nfarthest_dist = dist\nreturnfarthest_dist\n6.0001 LECTURE 9MEASURE TIME: diameter function\n6.100L Lecture 22"
+    },
+    {
+        "slide 30": "\uf0a7Gets much slower as size of input grows\n\uf0a7Quadratic:  for list of size len(L), does len(L)/2 operations \nper element on average\n\uf0a7len(L) x len(L)/2 operations \u2014worse than linear growthdefdiameter(L):\nfarthest_dist = 0\nforiinrange(len (L)):\nforj inrange(i+1, len(L)):\np1 = L[i]p2 = L[j]dist= math.sqrt ((p1[0]-p2[0])**2+(p1[1] -p2[1])**2)\nifdist> farthest_dist :\nfarthest_dist = dist\nreturnfarthest_dist\n6.0001 LECTURE 9MEASURE TIME: diameter function\n6.100L Lecture 22"
+    },
+    {
+        "slide 31": "6.100L Lecture 22PLOT OF INPUT SIZE vs. TIME TO RUN\nis_in\nbinary_search\ndiameterlinear logarithmic\nquadratic"
+    },
+    {
+        "slide 32": "TWO DIFFERENT MACHINES\nMy old laptop\n My old desktop\nObservation 1: even for the same code, the actual machine may affect speed .~2x slower for large problems\nObservation 2: Looking only at the relative increase in run time from a prev run, \nif input is n times as big, the run time is approx. n times as long."
+    },
+    {
+        "slide 33": "6.0001 LECTURE 8TIMING PROGRAMS IS \nINCONSISTENT\n\uf0a7GOAL: to evaluate different algorithms\n\uf0a7Running time should v arybetween algorithms\n\uf0a7Running time should not v arybetween implementations\n\uf0a7Running time should not vary between computers\n\uf0a7Running time should not vary between languages\n\uf0a7Running time is should be predictable for small inputs\n\uf0a7Time varies for different inputs but \ncannot really express a relationship \nbetween inputs and time needed\n\uf0a7Can only be measured a posteriori\n6.100L Lecture 21\n"
+    },
+    {
+        "slide 34": "6.0001 LECTURE 9DON\u2019T GET ME WRONG!\n\uf0a7Timing is a critical tool to assess the performance of programs\n\uf0a7At the end of the day, it is irreplaceable for real -world \nassessment\n\uf0a7But we will see a complementary tool ( asymptotic complexity ) \nthat has other advantages\n\uf0a7A priori evaluation (before writing or running code)\n\uf0a7Assesses algorithm independent of machine and \nimplementation (what is intrinsic efficiency of algorithm? )\n\uf0a7Provides direct insight into the design of efficient \nalgorithms\n6.100L Lecture 22"
+    },
+    {
+        "slide 35": "COUNTING\n6.100L Lecture 21"
+    },
+    {
+        "slide 36": "COUNTING \nOPERATIONS\n\uf0a7Assume these steps take \nconstant time :\n\u2022Mathematical operations\n\u2022Comparisons\n\u2022Assignments\n\u2022Accessing objects in memory\n\uf0a7Count number of \noperations executed as \nfunction of size of inputdefc_to_f(c):\nreturnc*9.0/5 + 32 \ndefmysum(x):total = 0\nforiinrange(x+1):\ntotal += i\nreturntotal\ndefsquare(n):\nsqsum= 0\nforiinrange(n):\nforj inrange(n):\nsqsum+= 1\nreturnsqsum\n6.100L Lecture 21mysum\uf0e01+(x+1)*(1+2) = 3x+4 opsc_to_f\uf0e03 ops\nsquare \uf0e01+n*(1)*n*(1+2) = 3n2+ 1 ops"
+    },
+    {
+        "slide 37": "COUNTING c_to_f\n\uf0a7No matter what the input is, the number of operations is the \nsame\n6.100L Lecture 21\n"
+    },
+    {
+        "slide 38": "COUNTING mysum\n\uf0a7As the input increases by 10 , the number if operations ran is \napprox. 10 times more.\n6.100L Lecture 21\n"
+    },
+    {
+        "slide 39": "COUNTING square\n\uf0a7As the input increases \nby 10 , the number of \noperations is approx. 100 times more .\n\uf0a7As the input increases by 2 , the number of \noperations is approx. 4 times more.\n6.100L Lecture 21\n"
+    },
+    {
+        "slide 40": "6.0001 LECTURE 8COUNT OPERATIONS\n\uf0a7Assume these steps take \nconstant time :\n\u2022Mathematical operations\n\u2022Comparisons\n\u2022Assignments\n\u2022Accessing objects in memory\n\uf0a7Count number of these operations executed as function of size of inputdefconvert_to_km(m):\nreturnm * 1.609 \ndefsum_of(L):\ntotal = 0\nforiinL:\ntotal += i\nreturntotalsum_of\uf0e0 1+len( L)*3+1 = 3* len(L)+2 ops\n6.100L Lecture 22convert_to_km \uf0e0 2 ops"
+    },
+    {
+        "slide 41": "6.0001 LECTURE 9COUNT OPERATIONS: is_in\ndef is_in_counter(L, x):\nglobalcount\ncount += 1 #return of value\nforeltinL:\ncount += 2 # set elt, if == test\nifelt==x: \nreturnTrue\nreturnFalse\n6.100L Lecture 22"
+    },
+    {
+        "slide 42": "6.0001 LECTURE 9COUNT OPERATIONS: is_in\ndef is_in_counter(L, x):\nglobalcount\ncount += 1 foreltinL:\ncount += 2ifelt==x:\nreturnTrue\nreturnFalse\n6.100L Lecture 22\n"
+    },
+    {
+        "slide 43": "6.0001 LECTURE 9COUNT OPERATIONS: \nbinary search\ndef binary_search_counter(L, x):\nglobalcount\nlo = 0hi = len(L)count += 3whilehi-lo > 1:\ncount += 2mid = (hi+lo) // 2count += 3 ifL[mid] <= x:\nlo = mid\nelse:\nhi = mid\ncount += 3\ncount += 3\nreturnL[lo] == x\n6.100L Lecture 22"
+    },
+    {
+        "slide 44": "6.0001 LECTURE 9COUNT OPERATIONS\n10/5/20is_in testing\nfor  1 element, is_in used 9 operations\nfor  10 element, is_in used 37 operations\nfor  100 element, is_in used 307 operations\nfor  1000 element, is_in used 3007 operations\nfor  10000 element, is_in used 30007 operations\nfor  100000 element, is_in used 300007 operations\nfor  1000000 element, is_in used 3000007 operations\nbinary_search testing\nfor  1 element, binary search used 15 operationsfor  10 element, binary search used 85 operationsfor  100 element, binary search used 148 operationsfor  1000 element, binary search used 211 operationsfor  10000 element, binary search used 295 operationsfor  100000 element, binary search used 358 operationsfor  1000000 element, binary search used 421 operationsObservation 1: number of \noperations for is_in increases by \n10 as size increases by 10\nObservation 2: butnumber \nof operations for binary search grows much more slowly . Unclear at what rate.\n6.100L Lecture 22"
+    },
+    {
+        "slide 45": "PLOT OF INPUT SIZE vs. OPERATION COUNT\n6.100L Lecture 22"
+    },
+    {
+        "slide 46": "6.0001 LECTURE 8COUNTING OPERATIONS IS \nINDEPENDENT OF COMPUTER VARIATIONS, BUT \u2026\n\uf0a7GOAL: to evaluate different algorithms\n\uf0a7Running \u201ctime\u201d should vary between algorithms\n\uf0a7Running \u201ctime\u201d should not vary between implementations\n\uf0a7Running \u201ctime\u201d should not vary between computers\n\uf0a7Running \u201ctime\u201d should not vary between languages\n\uf0a7Running \u201ctime\u201d is should be predictable for small inputs\n\uf0a7No real definition of which operations to count\n\uf0a7Count varies for different inputs and  \ncan derive a relationship between inputs and the count\n6.100L Lecture 21\n"
+    },
+    {
+        "slide 47": "PROBLEMS WITH TIMING AND COUNTING\n\uf0a7Timing the exact running time of the program \n\u2022Depends on machine \n\u2022Depends on implementation\n\u2022Small inputs don\u2019t show growth\n\uf0a7Counting the exact number of steps\n\u2022Gets us a formula!\n\u2022Machine independent, which is good\n\u2022Depends on implementation\n\u2022Multiplicative/additive constants are irrelevant for large inputs\n\uf0a7Want to:\n\uf0a7evaluate algorithm\n\uf0a7evaluate scalability\n\uf0a7evaluate in terms of input size\n6.100L Lecture 22"
+    },
+    {
+        "slide 48": "EFFICIENCY IN TERMS OF INPUT: BIG -PICTURE\nRECALL mysum (one loop) and square (nested loops)\n\uf0a7mysum(x)\n\uf0a7What happened to the program efficiency as x increased ?\n\uf0a710 times bigger x meant the program \n\uf0a7Took approx. 10 times as long to run\n\uf0a7Did approx. 10 times as many ops\n\uf0a7Express it in an \u201corder of\u201d way vs. the input variable: timing = Order of x\n\uf0a7square(x)\n\uf0a7What happened to the program efficiency as x increased ?\n\uf0a72 times bigger x meant the program \n\uf0a7Took approx. 4 times as long to run\n\uf0a7Did approx. 4 times as many ops\n\uf0a710 times bigger x meant the program \n\uf0a7Took approx. 100 times as long to run\n\uf0a7Did approx. 100 times as many ops\n\uf0a7Express it in an \u201corder of\u201d way vs. the input variable: timing = Order of x2\n6.100L Lecture 22"
+    },
+    {
+        "slide 49": "ORDER of GROWTH\n6.100L Lecture 22"
+    },
+    {
+        "slide 50": "ORDERS OF GROWTH\n\uf0a7It\u2019s a notation\n\uf0a7Evaluates programs when input is very big\n\uf0a7Expresses the growth of program\u2019s run time\n\uf0a7Puts an upper bound on growth\n\uf0a7Do not need to be precise: \u201corder of\u201d not \u201cexact\u201d growth\n\uf0a7Focus on the largest factors in run time (which section of \nthe program will take the longest to run?)\n6.100L Lecture 22"
+    },
+    {
+        "slide 51": "A BETTER WAY\nA GENERALIZED WAY WITH APPROXIMATIONS\n\uf0a7Use the idea of counting operations in an algorithm, but not \nworry about small variations in implementation\n\uf0a7When x is big, 3x+4 and 3x and x are pretty much the same! \n\uf0a7Don\u2019t care about exact value: ops = 1+x(2+1) \n\uf0a7Express it in an \u201corder of\u201d way vs. the input : ops = Order of x\n\uf0a7Focus on how algorithm performs when size of problem gets arbitrarily large\n\uf0a7Relate time needed to complete a computation against the \nsize of the input to the problem\n\uf0a7Need to decide what to measure. What is the input? \n6.100L Lecture 22"
+    }
+]

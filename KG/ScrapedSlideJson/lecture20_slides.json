@@ -1,0 +1,101 @@
+[
+    {
+        "slide 0": "FITNESS TRACKER\nOBJECT ORIENTED \nPROGRAMMING EXAMPLE\n(download slides and . pyfiles to follow along)\n6.100L Lecture 20\nAna Bell"
+    },
+    {
+        "slide 1": "IMPLEMENTING USING\nTHE CLASS            vs THE CLASS\nImplementing a new \nobject type with a class\n\uf0a7Define the class\n\uf0a7Define data attributes\n(WHAT IS the object)\n\uf0a7Define methods\n(HOW TO use the object)\nClass abstractly captures \ncommon properties and \nbehaviors \n6.100L Lecture 20Using the new object type in \ncode\n\u2022Create instances of the \nobject type\n\u2022Do operations with them\nInstances have specific \nvalues for attributes\nTwo different coding perspectives"
+    },
+    {
+        "slide 2": "Workout Tracker Example\n6.100L Lecture 20\n\uf0a7Suppose we are writing a program to track workouts, \ne.g., for a smart watch\nDifferent kinds of workoutsThanks to Sam Madden for this OOP \nexample (his slides have been modified)"
+    },
+    {
+        "slide 3": "Fitness Tracker\n6.100L Lecture 20\nDifferent types of workouts\nCommon properties:\nIcon Kind\nDate Start Time\nEnd Time Calories\nHeart Rate Distance\nSwimming Specific:\nSwimming Pace\nStroke Type100 yd Splits\nRunning Specific:\nCadenceRunning PaceMile SplitsElevation"
+    },
+    {
+        "slide 4": "GROUPS OF OBJECTS HAVE \nATTRIBUTES (RECAP)\n\uf0a7Data attributes\n\u2022How can you represent your object with data?\n\u2022What it is\n\u2022for a coordinate: x and y values\n\u2022for a workout: start time, end time, calories\n\uf0a7Functional attributes (behavior/operations/ methods )\n\u2022How can someone interact with the object?\n\u2022What it does\n\u2022for a coordinate: find distance between two\n\u2022for a workout: display an information card\n6.100L Lecture 20\n"
+    },
+    {
+        "slide 5": "DEFINE A SIMPLE CLASS (RECAP)\nclassWorkout(object):\ndef__init__(self, start, end, calories):\nself.start= start\nself.end= end\nself.calories = calories\nself.icon = '\ud83d\ude13\ud83d\ude13'\nself.kind= 'Workout'\nmy_workout = Workout('9/30/2021 1:35 PM', 9/30/2021 1:57 PM' , 200)\n  "
+    },
+    {
+        "slide 6": "GETTER AND SETTER METHODS (RECAP)\nclassWorkout(object):\ndef__init__(self, start, end, calories):\nself.start= start\nself.end= end\nself.calories = calories\nself.icon = '\ud83d\ude13\ud83d\ude13'\nself.kind= 'Workout'\ndefget_calories( self):\nreturn self.calories\ndefget_start( self):\nreturn self.start\ndefget_end( self):\nreturn self.end\ndefset_calories( self, calories):\nself.calories = calories\ndefset_start( self, start):\nself.start= start\ndefset_end(self, end):\nself.end = end\nGetters and setters used outside of class to access data attributes\n6.100L Lecture 20"
+    },
+    {
+        "slide 7": "Accessed via \n\u201cself\u201d keywordClass State \nDictionarySELF PROVIDES ACCESS TO CLASS \nSTATE\n6.100L Lecture 20Workout\nClassget_calories()\nget_end()\n__init__()my_workout = Workout('9/30/2021 1:35 PM', 9/30/2021 1:57 PM' , 200)\nstart\nend\ncaloriesmy_workout\nan instance\nInstance State \nDictionaryDemo\nget_start()\nset_calories()\nset_start()\nset_end()icon\nkind"
+    },
+    {
+        "slide 8": "AN INSTANCE and \nDOT NOTATION (RECAP)\n\uf0a7Instantiation creates an instance of an object\nmy_workout = Workout('9/30/2021 1:35 PM', '9/30/2021 1:57 PM', 200)\n\uf0a7Dot notation used to access attributes (data and methods)\n\uf0a7It\u2019s better to use getters and setters to access data attributes\nmy_workout.calories\nmy_workout.get_calories()\n6.100L Lecture 20"
+    },
+    {
+        "slide 9": "WHY INFORMATION HIDING?\n\uf0a7Keep the interface of your class as simple as possible\n\uf0a7Use getters & setters, not attributes\n\uf0a7i.e., get_calories() method NOT calories attribute\n\uf0a7Prevents bugs due to changes in implementation\n\uf0a7May seem inconsequential in small programs , but for \nlarge programs complex interfaces increase the potential \nfor bugs\n\uf0a7If you are writing a class for others to use, you are committing to maintaining its interface !\n6.100L Lecture 20"
+    },
+    {
+        "slide 10": "CHANGING THE CLASS \nIMPLEMENTATION\n\uf0a7Author of class definition may change internal \nrepresentation or implementation\n\uf0a7Use a class variable\n\uf0a7Now get_calories estimates calories based of workout \nduration if calories are not passed in\n\uf0a7If accessing data attributes outside the class and class \nimplementation changes , may get errors\n6.100L Lecture 20"
+    },
+    {
+        "slide 11": "CHANGING THE CLASS \nIMPLEMENTATION\nclass Workout:\ncal_per_hr = 200\ndef__init__(self, start, end, calories=None):\nself.start = parser.parse(start)  \nself.end = parser.parse(end)\nself.calories = calories # may be None\nself.icon = '\ud83d\ude13\ud83d\ude13'\nself.kind = 'Workout'        \ndefget_calories( self):\nif(calories == None):\nreturn Workout.cal_per_hr*( self.end- self.start).total_seconds()/3600\nelse:\nreturn self.calories\n6.100L Lecture 20Demo"
+    },
+    {
+        "slide 12": "ASIDE: datetime OBJECTS\nOTHER PYTON LIBRARIES\n\uf0a7Takes the string representing the date and time and converts it \nto a datetime object\nfromdateutil importparser\nstart = '9/30/2021 1:35 PM'\nend = '9/30/2021 1:45 PM'\nstart_date = parser.parse(start)\nend_date = parser.parse(end)\ntype(start_date)\n\uf0a7Why do this? Because it makes operations with dates easy ! \nThe datetime object takes care of everything\nprint((end_date -start_date ).total_seconds())\n6.100L Lecture 20"
+    },
+    {
+        "slide 13": "CLASS VARIABLES LIVE IN CLASS \nSTATE DICTIONARY\n6.100L Lecture 20Accessed via \n\u201cself\u201d keywordWorkout\nClassget_calories()\nget_end()\n__init__()start\nend\ncaloriesmy_workout\nan instance\nInstance State Dictionary\nClass State Dictionaryget_start()\nset_calories()\nset_start()\nset_end()icon\nkind\ncal_per_hr"
+    },
+    {
+        "slide 14": "CLASS VARIABLES\nclassWorkout:\ncal_per_hr = 200\ndef__init__(self, start, end, calories):\n\u2026\nprint(Workout.cal_per_hr)\nw = Workout('1 /1/2021 2:34', ' 1/1/2021 3:35', None)\nprint(w.cal_per_hr)\nWorkout.cal_per_hr = 250   \nprint(w.cal_per_hr) \n6.100L Lecture 20\uf0a7Associate a class variable with all instances of a class\n\uf0a7Warning: if an instance changes the class variable, it\u2019s \nchanged for all instances"
+    },
+    {
+        "slide 15": "YOU TRY IT!\n\uf0a7Write lines of code to create two Workout objects. \n\uf0a7One Workout object saved as variable w_one, \nfrom Jan 1 2021 at 3:30 PM until 4 PM. \nYou want to estimate the calories from this workout. \nPrint the number of calories for w_one.\n\uf0a7Another Workout object saved as w_two, \nfrom Jan 1 2021 at 3:35 PM until 4 PM. \nYou know you burned 300 calories for this workout. \nPrint the number of calories for w_two. \n6.100L Lecture 20"
+    },
+    {
+        "slide 16": "NEXT UP: CLASS HIERARCHIES\n6.100L Lecture 20"
+    },
+    {
+        "slide 17": "Workout HIERARCHIES\n\uf0a7Parent class\n(superclass)\n\uf0a7Child class\n(subclass)\n\u2022Inherits all data and \nbehaviors of parent \nclass\n\u2022Add more info\n\u2022Add more behavior \n\u2022Override behaviorIndoor \nWorkoutOutdoor \nWorkout\n6.100L Lecture 20TreadmillRunning\nWeightsSwimming"
+    },
+    {
+        "slide 18": "Fitness Tracker\n6.100L Lecture 20\nDifferent kinds of workouts\nCommon properties:\nIcon Kind\nDate Start \nTime\nEnd Time Calories\nHeart Rate Distance\nSwimming Specific:\nSwimming PaceStroke Type100 yd Splits\nRunning Specific:\nCadenceRunning PaceMile SplitsElevation"
+    },
+    {
+        "slide 19": "INHERITANCE:\nPARENT CLASS\nclassWorkout( object):\ncal_per_hr = 200\ndef__init__(self, start, end, calories=None):\n\u2026\n\uf0a7Everything is an object\n\uf0a7Class object implements basic operations in Python, e.g., \nbinding variables\n6.100L Lecture 20"
+    },
+    {
+        "slide 20": "classRunWorkout (Workout):\ndef__init__(self, start, end, elev=0, calories=None):\nsuper().__init__(start,end,calories )\nself.icon = '\ufffd'\nself.kind= 'Running'\nself.elev= elev\ndefget_elev (self):\nreturn self.elev\ndefset_elev (self, e):\nself.elev= e INHERITANCE: \nSUBCLASS \nAdd new functionality e.g., get_elev()\n\u2022New methods can be called on instance of type RunWorkout\n\u2022__init__ uses super() to setup Workout base instance (can also \ncall Workout.__init__(start,end,calories) directly\n6.100L Lecture 20"
+    },
+    {
+        "slide 21": "start\nend\ncalories\nicon\nkindINHERITANCE REPRESENTATION \nIN MEMORY\n6.100L Lecture 20RunWorkout\nClasssuper()\nget_elev()RunWorkout\ninstanceDemo\nset_elev()Workout\nClassget_calories()\nget_end()\n__init__()get_start()\nset_calories()\nset_start()\nset_end()\ncal_per_hr\nelev\nAccessed via \n\u201cself\u201d keyword"
+    },
+    {
+        "slide 22": "WHY USE INHERITENCE?\n\uf0a7Improve clarity\n\uf0a7Commonalities are explicit in parent class\n\uf0a7Differences are explicit in subclass\n\uf0a7Reuse code\n\uf0a7Enhance modularity\n\uf0a7Can pass subclasses to any method that uses parent\n6.100L Lecture 20"
+    },
+    {
+        "slide 23": "\uf0a7Complex print function shared by all subclasses\nSUBCLASSES REUSE PARENT CODE\n6.100L Lecture 20classWorkout(object)\n\u2026\u2026\u2026 \ndef__str__(self):\nwidth = 16\nretstr=  f\"|{'\u2013 '*width}|\\ n\"\nretstr+= f\"|{' ' *width}|\\ n\"\niconLen = 0\nretstr+= f\"| {self.icon}{' '*(width- 3)}|\\n\"\nretstr+= f\"| {self.kind}{' '*(width- len( self.kind)-1)}|\\n\"\nretstr+= f\"|{' ' *width}|\\ n\"\nduration_str = str(self.get_duration())\nretstr+= f\"| {duration_str }{' '*(width- len(duration_str) -1)}|\\n\"\ncal_str = f\"{ self.get_calories():. 0f}\"\nretstr+= f\"| {cal_str} Calories {' '*(width- len(cal_str) -11)}|\\n\"\nretstr+= f\"|{' ' *width}|\\ n\"\nretstr+=  f\"|{'_'*width}|\\ n\"\nreturnretstroutputs"
+    },
+    {
+        "slide 24": "SUBCLASSES REUSE PARENT CODE\n6.100L Lecture 20w=Workout(\u2026)\nrw=RunWorkout(\u2026)\nsw=SwimWorkout (\u2026)\nprint(w)print(rw )\nprint(sw )\nDemo"
+    },
+    {
+        "slide 25": "WHERE CAN I USE AN INSTANCE \nOF A CLASS?\n\uf0a7We can use an instance of RunWorkout anywhere Workout can \nbe used\n\uf0a7Opposite is not true (cannot use Workout anywhere \nRunWorkout is used)\n\uf0a7Consider two helper functions\n6.100L Lecture 20deftotal_calories(workouts):\ncals= 0\nforw inworkouts:\ncals+= w.get_cals()\nreturncalsdeftotal_elevation (run_workouts ):\nelev= 0\nforw inrun_workouts :\nelev+= w.get_elev()\nreturnelev"
+    },
+    {
+        "slide 26": "WHERE CAN I USE AN INSTANCE \nOF A CLASS?\n6.100L Lecture 20deftotal_calories(workouts):\ncals= 0\nforw inworkouts:\ncals+= w.get_cals()\nreturncalsdeftotal_elevation (run_workouts ):\nelev= 0\nforw inrun_workouts :\nelev+= w.get_elev()\nreturnelev\nw1 = Workout('9/30/2021 1:35 PM', '9/30/2021 2:05 PM') \nw2 = Workout('9/30/2021 4:35 PM', '9/30/2021 5:05 PM') \nrw1 = RunWorkout( '9/30/2021 1:35 PM' ,'9/30/2021 3:35 PM', 100) \nrw2 = RunWorkout( '9/30/2021 1:35 PM' ,'9/30/2021 3:35 PM', 200) \ntotal_calories([w1,w2,rw1,rw2]))  # (1) # cal = 100+100+400+400\ntotal_elevation([rw1,rw2]))       # (2) # elev = 100+200\ntotal_elevation([w1,rw1])         # (3) # err! w1 has no elev methodDemo"
+    },
+    {
+        "slide 27": "YOU TRY IT!\n\uf0a7For each line creating on object below, tell me:\n\uf0a7What is the calories valthrough get_calories()\n\uf0a7What is the elevation valthrough get_elev()\nw1 = Workout('9/30/2021 2:20 PM','9/30/2021 2:50 PM')  \nw2 = Workout('9/30/2021 2:20 PM','9/30/2021 2:50 PM',450)  \nrw1 = RunWorkout('9/30/2021 2:20 PM','9/30/2021 2:50 PM',250) \nrw2 = RunWorkout('9/30/2021 2:20 PM','9/30/2021 2:50 PM',250,300) \nrw3 = RunWorkout('9/30/2021 2:20 PM','9/30/2021 2:50 PM',calories=300) \n6.100L Lecture 20"
+    },
+    {
+        "slide 28": "OVERRIDING SUPERCLASSES\n\uf0a7Overriding superclass \u2013 add calorie calculation w/ distance\n6.100L Lecture 20classRunWorkout (Workout):\ncals_per_km = 100\n\u2026\ndefget_calories(self):\nif(self.route_gps_points != None):\ndist= 0\nlastP= self.routeGpsPoints [0]\nforp in self.routeGpsPoints[1:]:\ndist+= gpsDistance (lastP,p)\nlastP= p\nreturndist* RunWorkout.cals_per_km\nelse:\nreturn super().get_calories()\nDemo"
+    },
+    {
+        "slide 29": "start\nend\ncalories\nicon\nkind\nRunWorkout\nClasssuper()\nget_elev()RunWorkout\ninstance\nset_elev()Workout\nClassget_calories()\nget_end()\n__init__()get_start()\nset_calories()\nset_start()\nset_end()\ncal_per_hr\nelev\nAccessed via \n\u201cself\u201d keywordOVERRIDDEN METHODS IN \nMEMORY\n6.100L Lecture 20cals_per_kmget_calories()"
+    },
+    {
+        "slide 30": "WHICH METHOD \nWILL BE CALLED?\n\u2022Overriding : subclass methods \nwith same name as superclass\n\u2022For an instance of a class, look \nfor a method name in current \nclass definition\n\u2022If not found, look for method name up the hierarchy (in \nparent, then grandparent, and so on)\n\u2022Use first method up the hierarchy that you found with that method name\n6.100L Lecture 20Workout\nIndoor \nWorkoutOutdoor \nWorkout\nTreadmillRunning\nWeightsSwimming\nget_calories()?get_calories()?get_calories()"
+    },
+    {
+        "slide 31": "TESTING EQUALITY WITH \nSUBCLASSES\n\uf0a7With subclasses, often want to ensure base class is equal, in \naddition to new properties in the subclass\n6.100L Lecture 20classWorkout(object):\n\u2026\u2026\ndef__eq__( self, other):\nreturntype(self) == type(other) and \\\nself.startDate == other.startDate and \\\nself.endDate == other.endDate and \\\nself.kind == other.kind and \\\nself.get_calories() == other.get_calories()\nclassRunWorkout (Workout):\n\u2026\u2026\ndef__eq__(self,other ):\nreturnsuper().__eq__(other) and self.elev== other.elevDemo"
+    },
+    {
+        "slide 32": "OBJECT ORIENTED DESIGN: \nMORE ART THAN SCIENCE\n\uf0a7OOP is a powerful tool for modularizing your code and grouping state \nand functions together\nBUT \n\uf0a7It\u2019s possible to overdo it\n\uf0a7New OOP programmers often create elaborate class hierarchies\n\uf0a7Not necessarily a good idea\n\uf0a7Think about the users of your code\nWill your decomposition make sense to them?\n\uf0a7Because the function that is invoked is implicit in the class hierarchy, it can \nsometimes be difficult to reason about control flow\n\uf0a7The Internet is full of opinions OOP and \u201cgood software design\u201d \u2013you \nhave to develop your own taste through experience !\n6.100L Lecture 20\n"
+    }
+]

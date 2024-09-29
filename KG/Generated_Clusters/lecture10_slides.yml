@@ -1,0 +1,12 @@
+
+Cluster1: 
+  Main_Topic: 
+    - Lists
+  Nodes:
+    - indices
+    - mutability
+    - iteration
+    - append
+    - sort
+    - reverse
+    - extend

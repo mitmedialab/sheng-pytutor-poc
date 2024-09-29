@@ -1,0 +1,83 @@
+[
+    {
+        "slide 0": "SORTING ALGORITHMS\n(download slides and . pyfiles to follow along)\n6.100L Lecture 24\nAna Bell"
+    },
+    {
+        "slide 1": "COURSE EVALUATIONS OPEN\n\uf0a7Open now until May 19 at 9am\n\uf0a7If you enjoyed it please submit an evaluation so we know what \nworked.\n\uf0a7Right pace for a beginner?\n\uf0a7Interesting content?\n\uf0a7If you did not enjoy it, submit an evaluation to improve it.\n\uf0a7More examples?\n\uf0a7Timing?\n\uf0a7Boring?\n\uf0a7If you have comments on my teaching , submit an evaluation\n\uf0a7My job is to make students understand content and spark curiosity in CS\n6.100L Lecture 24"
+    },
+    {
+        "slide 2": "SEARCHING A SORTED LIST\n--n is len(L)\n\uf0a7Using linear search , search for an element is \u0398 (n)\n\uf0a7Using binary search , can search for an element in \u0398 (logn )\n\u2022assumes the list is sorted !\n\uf0a7When does it make sense to sort first then search?\nSORT   + \u0398(log n)   < \u0398(n) implies SORT < \u0398(n) \u2013\u0398(log n)\nWhen sorting is less than \u0398(n)!?!? This is never true!\n6.100L Lecture 24"
+    },
+    {
+        "slide 3": "AMORTIZED COST\n--n is len(L)\n\uf0a7Why bother sorting first?\n\uf0a7Sort a list once then do many searches\n\uf0a7AMORTIZE cost of the sort over many searches\n\uf0a7SORT  +  K * \u0398(log n) < K * \u0398(n) \n\uf0e0for large K, SORT time becomes irrelevant\n6.100L Lecture 24"
+    },
+    {
+        "slide 4": "SORTING ALGORITHMS"
+    },
+    {
+        "slide 5": "BOGO/RANDOM/MONKEY SORT\n\uf0a7aka bogosort , \nstupidsort, slowsort , \nrandomsort , \nshotgunsort\n\uf0a7To sort a deck of cards\n\u2022throw them in the air\n\u2022pick them up\n\u2022are they sorted? \n\u2022repeat if not sorted\n6.100L Lecture 24"
+    },
+    {
+        "slide 6": "COMPLEXITY OF BOGO SORT\ndefbogo_sort(L):\nwhilenotis_sorted(L):\nrandom.shuffle(L)\n\uf0a7Best case: \u0398(n) where n is len(L)to check if sorted\n\uf0a7Worst case: \u0398(?) it is unbounded if really unlucky\n6.100L Lecture 24\n"
+    },
+    {
+        "slide 7": "BUBBLE SORT\n\uf0a7Compare consecutive \npairs of elements\n\uf0a7Swap elements in pair \nsuch that smaller is first\n\uf0a7When reach end of list, start over again\n\uf0a7Stop when no more \nswaps have been made\nDonald Knuth, in \u201cThe Art of Computer Programming\u201d, said: \n\"the bubble sort seems to have nothing to recommend it, except a catchy name and the fact that it leads to some interesting theo retical problems\"\n6.100L Lecture 24\n"
+    },
+    {
+        "slide 8": "COMPLEXITY OF BUBBLE SORT\ndefbubble_sort(L):\ndid_swap = True\nwhiledid_swap:\ndid_swap = False\nforj inrange(1, len(L)):\nifL[j-1] > L[j]:\ndid_swap = True\nL[j],L[j- 1] = L[j- 1],L[j]\n\uf0a7Inner for loop is for doing the comparisons\n\uf0a7Outer while loop is for doing multiple passes until no \nmore swaps\n\uf0a7\u0398(n2) where n is len (L) \nto do len(L)-1 comparisons and len(L)-1 passes\n6.100L Lecture 24\n"
+    },
+    {
+        "slide 9": "SELECTION SORT\n\uf0a7First step\n\u2022Extract minimum element \n\u2022Swap it with element at index 0\n\uf0a7Second step\n\u2022In remaining sublist , extract minimum element\n\u2022Swap it with the element at index 1\n\uf0a7Keep the left portion of the list sorted \n\u2022At ithstep, first ielements in list are sorted\n\u2022All other elements are bigger than first ielements\n6.100L Lecture 24\n"
+    },
+    {
+        "slide 10": "COMPLEXITY OF SELECTION SORT\ndefselection_sort(L):\nforiinrange(len(L)):\nforj inrange(i, len(L)):\nifL[j] < L[i ]:\nL[i], L[j] = L[j], L[i ]\n\uf0a7Complexity of selection sort is \ud835\udeaf\ud835\udeaf(n2) where n is len (L)\n\uf0a7Outer loop executes len(L) times\n\uf0a7Inner loop executes len(L) \u2013itimes, on avg len(L)/2\n\uf0a7Can also think about how many times the comparison \nhappens over both loops: say n = len (L)\n\uf0a7Approx 1+2+3+\u2026+n = (n)(n+1)/2 = n2/2+n/2 = \u0398(n2) \n6.100L Lecture 24"
+    },
+    {
+        "slide 11": "VARIATION ON SELECTION SORT :\ndon\u2019t swap every time\n6.100L Lecture 24"
+    },
+    {
+        "slide 12": "6.0001 LECTURE 10MERGE SORT\n\uf0a7Use a divide -and- conquer approach:\n\uf0a7If list is of length 0 or 1, already sorted\n\uf0a7If list has more than one element, \nsplit into two lists, and sort each\n\uf0a7Merge sorted sublists\n\uf0a7Look at first element of each, \nmove smaller to end of the result\n\uf0a7When one list empty, just copy rest of other list\n6.100L Lecture 24"
+    },
+    {
+        "slide 13": "MERGE SORT\n\uf0a7Divide and conquer\n\uf0a7Split list in half until have sublists of only 1 elementunsorted\nunsorted unsorted\nunsorted unsorted unsorted unsorted\nunsor\ntedunsor\ntedunsor\ntedunsor\ntedunsor\ntedunsor\ntedunsor\ntedunsor\nted\nmerge merge merge merge merge merge merge merge\n6.100L Lecture 24"
+    },
+    {
+        "slide 14": "MERGE SORT\n\uf0a7Divide and conquer\n\uf0a7Merge such that sublists will be sorted after mergeunsorted\nunsorted unsorted\nunsorted unsorted unsorted unsorted\nsort sort sort sort sort sort sort sort\nmerge merge merge merge\n6.100L Lecture 24"
+    },
+    {
+        "slide 15": "MERGE SORT\n\uf0a7Divide and conquer\n\uf0a7Merge sorted sublists\n\uf0a7Sublists will be sorted after mergeunsorted\nunsorted unsorted\nsorted sorted sorted sorted\nmerge merge\n6.100L Lecture 24"
+    },
+    {
+        "slide 16": "MERGE SORT\n\uf0a7Divide and conquer\n\uf0a7Merge sorted sublists\n\uf0a7Sublists will be sorted after mergeunsorted\nsorted sorted\nmerge\n6.100L Lecture 24"
+    },
+    {
+        "slide 17": "MERGE SORT\n\uf0a7Divide and conquer \u2013 done!\nsorted\n6.100L Lecture 24"
+    },
+    {
+        "slide 18": "6.0001 LECTURE 10MERGE SORT DEMO\n1. Recursively divide into subproblems\n2. Sort each subproblem using linear merge3. Merge (sorted) subproblems into output list\n6.100L Lecture 24\n"
+    },
+    {
+        "slide 19": "CLOSER LOOK AT THE \nMERGE STEP (EXAMPLE)\nLeft in list 1               Left in list 2      Compare         Result\n[1,5,12,18,19,20]     [2,3,4,17]         1, 2                   []\n[5,12,18,19,20]         [2,3,4,17]         5, 2                  [1]\n[5,12,18,19,20]         [3,4,17]            5, 3                  [1,2][5,12,18,19,20]         [4,17]               5, 4                  [1,2,3]\n[5,12,18,19,20]         [17]                  5, 17                [1,2,3,4]\n[12,18,19,20]            [17]                  12, 17              [1,2,3,4,5][18,19,20]                  [17]                  18, 17             [1,2,3,4,5,12]\n[18,19,20]                  []                      18, -- [1,2,3,4,5,12,17]\n[]                                  []                                            \n[1,2,3,4,5,12,17,18,19,20]\n6.100L Lecture 24\n"
+    },
+    {
+        "slide 20": "MERGING SUBLISTS STEP\ndefmerge(left, right):\nresult = []\ni,j= 0, 0\nwhilei< len(left) andj < len(right):\nifleft[i] < right[j]:\nresult.append (left[i])\ni+= 1\nelse:\nresult.append (right[j])\nj += 1\nwhile(i< len(left)):\nresult.append (left[i])\ni+= 1\nwhile(j < len(right)):\nresult.append (right[j])\nj += 1\nreturnresult\n6.100L Lecture 24"
+    },
+    {
+        "slide 21": "6.0001 LECTURE 10COMPLEXITY OF \nMERGING STEP\n\uf0a7Go through two lists, only one pass\n\uf0a7Compare only smallest elements in each sublist\n\uf0a7\u0398(len(left) + len (right)) copied elements\n\uf0a7Worst case \u0398( len(longer list)) comparisons\n\uf0a7Linear in length of the lists\n6.100L Lecture 24"
+    },
+    {
+        "slide 22": "FULL MERGE SORT ALGORITHM\n--RECURSIVE\ndefmerge_sort(L):\niflen(L) < 2:\nreturn L[:]\nelse:\nmiddle = len(L)//2\nleft = merge_sort(L[:middle])right = merge_sort(L[middle:])\nreturnmerge(left, right)\n\uf0a7Divide list successively into halves\n\uf0a7Depth- first such that conquer smallest pieces down one \nbranch first before moving to larger pieces\n6.100L Lecture 24\n"
+    },
+    {
+        "slide 23": "6.100L Lecture 248 4 1 6 5 9 2 0\n8 4 1 6\n8 4 \n8 \nbase \ncase4\nbase \ncase1 6\n1 \nbase \ncase6\nbase \ncaseMerge\n4 8Merge\n4 8  & 1 6\n1 4 6 8\nMerge\n1 65 9 2 0\n5 9\n5 \nbase \ncase9\nbase \ncase2 0\n2 \nbase \ncase0\nbase \ncaseMerge\n5 9Merge\n5 9  & 0 2\n0 2 5 9\nMerge\n0 2Merge\n1 4 6 8  & 0 2 5 9\n0 1 2 4 5 6 8 9"
+    },
+    {
+        "slide 24": "COMPLEXITY OF MERGE SORT\n\uf0a7Each level\n\uf0a7At first recursion level\n\u2022n/2 elements in each list, 2 lists\n\u2022One merge \uf0e0 \u0398(n) + \u0398(n) = \u0398(n) where n is len (L)\n\uf0a7At second recursion level\n\u2022n/4 elements in each list, 4 lists\n\u2022Two merges \uf0e0\u0398(n) where n is len (L)\n\uf0a7And so on\u2026\n\uf0a7Dividing list in half with each recursive call gives our levels\n\u2022\u0398(log n) where n is len(L)\n\u2022Like bisection search: 1 = n/2itells us how many splits to get to one element\n\uf0a7Each recursion level does \u0398 (n) work and there are \u0398 (log n) levels, \nwhere n is len(L) \n\uf0a7Overall complexity is \ud835\udeaf\ud835\udeaf(n log n) where n is len(L)\n6.100L Lecture 24\n"
+    },
+    {
+        "slide 25": "SORTING SUMMARY\n--n is len(L)\n\uf0a7Bogo sort\n\u2022Randomness, unbounded \u0398()\n\uf0a7Bubble sort\n\u2022\u0398(n2)\n\uf0a7Selection sort\n\u2022\u0398(n2)\n\u2022Guaranteed the first ielements were sorted\n\uf0a7Merge sort\n\u2022\u0398(n log n)\n\uf0a7\ud835\udeaf\ud835\udeaf(n log n) is the fastest a sort can be\n6.100L Lecture 24\n"
+    },
+    {
+        "slide 26": "6.0001 LECTURE 9COMPLEXITY SUMMARY\n\uf0a7Compare efficiency of algorithms\n\u2022Describe asymptotic order of growth with Big Theta\n\u2022Worst case analysis\n\u2022Saw different classes of complexity\n\u2022Constant\n\u2022Log\n\u2022Linear\n\u2022Log linear\n\u2022Polynomial\n\u2022Exponential\n\u2022A priori evaluation (before writing or running code)\n\u2022Assesses algorithm independently of machine and \nimplementation\n\u2022Provides direct insight to the design of efficient algorithms\n10/6/20\n 6.100L Lecture 24"
+    }
+]

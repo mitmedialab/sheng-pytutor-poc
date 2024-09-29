@@ -1,0 +1,164 @@
+[
+    {
+        "slide 0": "REMOVING LIST ITEMS, \nCLONING, ALIASING\n(download slides and . pyfiles to follow along)\n6.100L Lecture 11\nAna Bell"
+    },
+    {
+        "slide 1": "MAKING A COPY OF THE LIST\n\uf0a7Can make a copy of a list object by duplicating all elements \n(top-level) into a new list object\n\uf0a7Lcopy= L[:]\n\uf0a7Equivalent to looping over L and appending each element to Lcopy\n\uf0a7This does not make a copy of elements that are lists (will see how to do \nthis at the end of this lecture)\n6.100L Lecture 11Loriginal = [4,5,6]\nLnew= Loriginal[:]\nLoriginal [4,5,6]\nLnew [4,5,6]"
+    },
+    {
+        "slide 2": "THIS DOES NOT MAKE A COPY\n\uf0a7This is called aliasing, we'll get to this at the end of this lecture\n6.100L Lecture 11Loriginal = [4,5,6]\nLnew= Loriginal\nLoriginal [4,5,6]\nLnew"
+    },
+    {
+        "slide 3": "YOU TRY IT!\n\uf0a7Write a function that meets the specification. \n\uf0a7Hint. Make a copy to save the elements. The use L.clear() to \nempty out the list and repopulate it with the ones you\u2019re keeping.\ndef remove_all(L, e):\n\"\"\" \nL is a listMutates L to remove all elements in L that are equal to e\nReturns None\"\"\" \nL = [1,2,2,2]\nremove_all(L, 2)\nprint(L)     # prints [1]\n6.100L Lecture 11"
+    },
+    {
+        "slide 4": "L.remove (2)\uf0e0mutates L = [1,3,6,3,7,0]\nL.remove (3)\uf0e0mutates L = [1,6,3,7,0] \na = L.pop ()\uf0e0returns 0 and mutates L = [1,3,7]del(L[1]) \uf0e0mutates L = [1,3,7,0]OPERATION ON LISTS: remove\n\uf0a7Delete element at a specific index withdel(L[index])\n\uf0a7Remove element at end of list with L.pop(), returns the \nremoved element (can also call with specific index: \nL.pop(3))\n\uf0a7Remove a specific element with L.remove(element)\n\u2022Looks for the element and removes it (mutating the list)\n\u2022If element occurs multiple times, removes first occurrence\n\u2022If element not in list, gives an error\n6.100L Lecture 11L = [2,1,3,6,3,7,0] # do below in order"
+    },
+    {
+        "slide 5": "EXERCISE WITH REMOVE INSTEAD \nOF COPY AND CLEAR\n\uf0a7Rewrite the code to remove e as long as we still have it in the list\n\uf0a7It works well!\ndefremove_all(L, e):\n\"\"\" \nL is a list\nMutates L to remove all elements in L that are equal to eReturns None.\"\"\"\nwhile e inL:\nL.remove(e)\n6.100L Lecture 11"
+    },
+    {
+        "slide 6": "EXERCISE WITH REMOVE INSTEAD \nOF COPY AND CLEAR\n\uf0a7What if the code was this:\ndefremove_all(L, e):\n\"\"\" \nL is a list\nMutates L to remove all elements in L that are equal to eReturns None.\"\"\"\nforeleminL:\nifelem== e:\nL.remove(e)\nL = [1,2,2,2]remove_all(L, 2)print(L)    # should print [1]\n6.100L Lecture 11"
+    },
+    {
+        "slide 7": "EXERCISE WITH REMOVE INSTEAD \nOF COPY AND CLEAR\ndefremove_all(L, e):\n\"\"\" \nL is a list\nMutates L to remove all elements in L that are equal to eReturns None.\"\"\"\nforeleminL:\nifelem== e:\nL.remove(e)\nL = [1,2,2,2]remove_all(L, 2)print(L)    # should print [1]\n6.100L Lecture 11L [1,2,2,2]elem"
+    },
+    {
+        "slide 8": "EXERCISE WITH REMOVE INSTEAD \nOF COPY AND CLEAR\ndefremove_all(L, e):\n\"\"\" \nL is a list\nMutates L to remove all elements in L that are equal to eReturns None.\"\"\"\nforeleminL:\nifelem== e:\nL.remove(e)\nL = [1,2,2,2]remove_all(L, 2)print(L)    # should print [1]\n6.100L Lecture 11L [1,2,2,2]elem"
+    },
+    {
+        "slide 9": "EXERCISE WITH REMOVE INSTEAD \nOF COPY AND CLEAR\ndefremove_all(L, e):\n\"\"\" \nL is a list\nMutates L to remove all elements in L that are equal to eReturns None.\"\"\"\nforeleminL:\nifelem== e:\nL.remove(e)\nL = [1,2,2,2]remove_all(L, 2)print(L)    # should print [1]\n6.100L Lecture 11L [1,2,2,2]elem\n[1,2,2]"
+    },
+    {
+        "slide 10": "EXERCISE WITH REMOVE INSTEAD \nOF COPY AND CLEAR\ndefremove_all(L, e):\n\"\"\" \nL is a list\nMutates L to remove all elements in L that are equal to eReturns None.\"\"\"\nforeleminL:\nifelem== e:\nL.remove(e)\nL = [1,2,2,2]remove_all(L, 2)print(L)    # should print [1]\n6.100L Lecture 11L [1,2,2]elem"
+    },
+    {
+        "slide 11": "EXERCISE WITH REMOVE INSTEAD \nOF COPY AND CLEAR\n\uf0a7It\u2019s not correct! We removed items as we iterated over the list !\ndefremove_all(L, e):\n\"\"\" \nL is a list\nMutates L to remove all elements in L that are equal to eReturns None.\"\"\"\nforeleminL:\nifelem== e:\nL.remove(e)\nL = [1,2,2,2]remove_all(L, 2)print(L)    # should print [1]\n6.100L Lecture 11L [1,2,2]elem\n[1,2]"
+    },
+    {
+        "slide 12": "TRICKY EXAMPLES OVERVIEW\n\uf0a7TRICKY EXAMPLE 1:\n\uf0a7A loop iterates over indices of L and mutates L each time (adds more \nelements). \n\uf0a7TRICKY EXAMPLE 2:\n\uf0a7A loop iterates over L\u2019s elements directly and mutates L each time (adds \nmore elements).\n\uf0a7TRICKY EXAMPLE 3:\n\uf0a7A loop iterates over L\u2019s elements directly but reassigns L to a new \nobject each time\n\uf0a7TRICKY EXAMPLE 4:\n\uf0a7A loop iterates over L\u2019s elements directly and mutates L by removing \nelements . \n6.100L Lecture 11"
+    },
+    {
+        "slide 13": "TRICKY EXAMPLE 4\nPYTHON TUTOR LINK to see step -by-step\n\uf0a7Want to mutate L1 to remove any elements that are also in L2 \ndef remove_dups(L1, L2):\nfor e in L1:\nif e in L2:\nL1.remove(e)\nL1 = [10, 20, 30, 40]\nL2 = [10, 20, 50, 60]\nremove_dups(L1, L2)\n\uf0a7L1 is [20,30,40] not [30,40] Why? \n\uf0a7You are mutating a list as you are iterating over it\n\uf0a7Python uses an internal counter. Tracks of index in the loop over list L1\n\uf0a7Mutating changes the list but Python doesn\u2019t update the counter\n\uf0a7Loop never sees element 20\n6.100L Lecture 11"
+    },
+    {
+        "slide 14": "MUTATION AND ITERATION WITHOUT CLONE\n6.100L Lecture 11def remove_dups (L1, L2):\nfor e in L1:\nif e in L2:\nL1.remove(e)\nL1 = [10, 20, 30, 40]\nL2 = [10, 20, 50, 60]remove_dups (L1, L2)\nL1 [10,20,30,40]\nL2 [10,20,50,60]e"
+    },
+    {
+        "slide 15": "[20,30,40]MUTATION AND ITERATION WITHOUT CLONE\n6.100L Lecture 11def remove_dups (L1, L2):\nfor e in L1:\nif e in L2:\nL1.remove(e)\nL1 = [10, 20, 30, 40]\nL2 = [10, 20, 50, 60]remove_dups (L1, L2)\nL1\nL2 [10,20,50,60]e"
+    },
+    {
+        "slide 16": "[20,30,40]MUTATION AND ITERATION WITHOUT CLONE\n6.100L Lecture 11def remove_dups (L1, L2):\nfor e in L1:\nif e in L2:\nL1.remove(e)\nL1 = [10, 20, 30, 40]\nL2 = [10, 20, 50, 60]remove_dups (L1, L2)\nL1\nL2 [10,20,50,60]e"
+    },
+    {
+        "slide 17": "[20,30,40]MUTATION AND ITERATION WITHOUT CLONE\n6.100L Lecture 11def remove_dups (L1, L2):\nfor e in L1:\nif e in L2:\nL1.remove(e)\nL1 = [10, 20, 30, 40]\nL2 = [10, 20, 50, 60]remove_dups (L1, L2)\nL1\nL2 [10,20,50,60]e"
+    },
+    {
+        "slide 18": "MUTATION AND ITERATION WITH CLONE\nL1_copy = L1[:]\n\uf0a7Make a clone with [:]\ndef remove_dups(L1, L2):\nfor e in L1:\nif e in L2:\nL1.remove(e)\nL1 = [10, 20, 30, 40]\nL2 = [10, 20, 50, 60]\nremove_dups(L1, L2)\n\uf0a7New version works!\n\uf0a7Iterate over a copy\n\uf0a7Mutate original list, not the copy\n\uf0a7Indexing is now consistent\n6.100L Lecture 11defremove_dups(L1, L2):\nL1_copy = L1[:]for e in L1_copy:\nif e in L2:\nL1.remove(e)"
+    },
+    {
+        "slide 19": "6.100L Lecture 11def remove_dups (L1, L2):\nL1_copy = L1[:]\nfor e in L1_copy:\nif e in L2:\nL1.remove(e)\nL1 = [10, 20, 30, 40]\nL2 = [10, 20, 50, 60]remove_dups (L1, L2)\nL1 [10,20,30,40]\nL2 [10,20,50,60]e\nL1_copy [10,20,30,40]"
+    },
+    {
+        "slide 20": "[20,30,40]\n6.100L Lecture 11def remove_dups (L1, L2):\nL1_copy = L1[:]\nfor e in L1_copy:\nif e in L2:\nL1.remove(e)\nL1 = [10, 20, 30, 40]\nL2 = [10, 20, 50, 60]remove_dups (L1, L2)\nL1\nL2 [10,20,50,60]e\nL1_copy [10,20,30,40]"
+    },
+    {
+        "slide 21": "[20,30,40]\n6.100L Lecture 11def remove_dups (L1, L2):\nL1_copy = L1[:]\nfor e in L1_copy:\nif e in L2:\nL1.remove(e)\nL1 = [10, 20, 30, 40]\nL2 = [10, 20, 50, 60]remove_dups (L1, L2)\nL1\nL2 [10,20,50,60]e\nL1_copy [10,20,30,40]"
+    },
+    {
+        "slide 22": "[30,40]\n6.100L Lecture 11def remove_dups (L1, L2):\nL1_copy = L1[:]\nfor e in L1_copy:\nif e in L2:\nL1.remove(e)\nL1 = [10, 20, 30, 40]\nL2 = [10, 20, 50, 60]remove_dups (L1, L2)\nL1\nL2 [10,20,50,60]e\nL1_copy [10,20,30,40]"
+    },
+    {
+        "slide 23": "[30,40]\n6.100L Lecture 11def remove_dups (L1, L2):\nL1_copy = L1[:]\nfor e in L1_copy:\nif e in L2:\nL1.remove(e)\nL1 = [10, 20, 30, 40]\nL2 = [10, 20, 50, 60]remove_dups (L1, L2)\nL1\nL2 [10,20,50,60]e\nL1_copy [10,20,30,40]"
+    },
+    {
+        "slide 24": "[30,40]\n6.100L Lecture 11def remove_dups (L1, L2):\nL1_copy = L1[:]\nfor e in L1_copy:\nif e in L2:\nL1.remove(e)\nL1 = [10, 20, 30, 40]\nL2 = [10, 20, 50, 60]remove_dups (L1, L2)\nL1\nL2 [10,20,50,60]e\nL1_copy [10,20,30,40]"
+    },
+    {
+        "slide 25": "ALIASING\n\uf0a7City may be known by many names\n\uf0a7Attributes of a city\n\uf0a7Small, tech -savvy\n\uf0a7All nicknames point to the same city\n\u2022Add new attribute to one nickname \u2026\n6.100L Lecture 11Boston\nThe HubBeantownAthens of America\nBoston small tech -savvy\nThe Hub small tech -savvy\nBeantown small tech -savvysnowy\nsnowy\nsnowy\u2026 all the aliases refer to the old attribute and all the new ones\n"
+    },
+    {
+        "slide 26": "MUTATION AND ITERATION WITH ALIAS\nL1_copy = L1 \n\uf0a7Assignment (= sign) on mutable obj creates an alias , not a clone\ndef remove_dups(L1, L2):\nL1_copy = L1for e in L1_copy:\nif e in L2:\nL1.remove(e)\nL1 = [10, 20, 30, 40]\nL2 = [10, 20, 50, 60]\nremove_dups(L1, L2)\n\uf0a7Using a simple assignment without making a copy\n\uf0a7Makes an alias for list ( same list object referenced by another name )\n\uf0a7It\u2019s like iterating over L itself, it doesn\u2019t work!\n6.100L Lecture 11defremove_dups(L1, L2):\nL1_copy = L1[:]for e in L1_copy:\nif e in L2:\nL1.remove(e)"
+    },
+    {
+        "slide 27": "6.100L Lecture 11def remove_dups (L1, L2):\nL1_copy = L1\nfor e in L1_copy:\nif e in L2:\nL1.remove(e)\nL1 = [10, 20, 30, 40]L2 = [10, 20, 50, 60]remove_dups (L1, L2)\nL1 [10,20,30,40]\nL2 [10,20,50,60]e\n[20,30,40]L1_copy"
+    },
+    {
+        "slide 28": "BIG  IDEA\nWhen you pass a list as a \nparameter to a function, you are making an alias. \nThe actual parameter (from the function call) is an alias for \nthe formal parameter (from the function definition ).\n6.100L Lecture 11"
+    },
+    {
+        "slide 29": "6.100L Lecture 11def remove_dups (L1, L2):\nL1_copy = L1\nfor e in L1_copy:\nif e in L2:\nL1.remove(e)\nLa = [10, 20, 30, 40]Lb= [10, 20, 50, 60]\nremove_dups (La, Lb)\nprint(La)\nLa [10,20,30,40]\nLb [10,20,50,60]e\n[20,30,40]L1_copy\nL1\nL2"
+    },
+    {
+        "slide 30": "ALIASES,\nSHALLOW COPIES, ANDDEEP COPIES WITH MUTABLE ELEMENTS\n6.100L Lecture 11"
+    },
+    {
+        "slide 31": "MAKING AN ALIAS\n\uf0a7Assignment just creates a new pointer to same object\nold_list = [[1,2],[3,4],[5,'foo']]\nnew_list = old_list\nnew_list[2][1] = 6\nprint(\"New list:\", new_list)\nprint(\"Old list:\", old_list)\n\uf0a7So mutating one object changes the other\n6.100L Lecture 11old_list\nnew_list[  ,   ,   ]New list: [[1,2],[3,4],[5,6]]\nOld list: [[1,2],[3,4],[5,6]]\n[1,2] [3,4] [5,\u2018foo\u2019][5,6]"
+    },
+    {
+        "slide 32": "MAKING A SHALLOW COPY\n\uf0a7Suppose we want to create a copy of a list, not just a shared \npointer\n\uf0a7Shallow copying does this at the top level of the list\n\uf0a7Equivalent to syntax [:]\n\uf0a7Any mutable elements are NOT copied\n\uf0a7Use this when your list contains immutable objects only\nimport copy\nold_list = [[1,2],[3,4],[5,6]]\nnew_list = copy.copy(old_list)\nprint(\"New list:\", new_list)\nprint(\"Old list:\", old_list)\n6.100L Lecture 11"
+    },
+    {
+        "slide 33": "MAKING A SHALLOW COPY\n6.100L Lecture 11old_list = [[1,2],[3,4],[5,6]]\nnew_list = copy.copy(old_list)\nprint(\"New list:\", new_list)\nprint(\"Old list:\", old_list)\n6.0001 LECTURE 5old_list\nnew_list\n[  ,  ,  ]New list: [[1,2],[3,4],[5,6]]\nOld list: [[1,2],[3,4],[5,6]]\n[  ,   ,   ]\n[1,2] [3,4] [5,6]"
+    },
+    {
+        "slide 34": "MAKING A SHALLOW COPY: ONLY \nTHE TOP LEVEL IS COPIED\n\uf0a7Now we mutate the top level structure\nimport copy\nold_list = [[1,2],[3,4],[5,6]]\nnew_list = copy.copy(old_list)\nold_list.append([7,8])\nprint(\"New list:\", new_list)\nprint(\"Old list:\", old_list)\n6.100L Lecture 11"
+    },
+    {
+        "slide 35": "MAKING A SHALLOW COPY: ONLY \nTHE TOP LEVEL IS COPIED\n6.100L Lecture 11old_list = [[1,2],[3,4],[5,6]]\nnew_list = copy.copy(old_list)\nold_list.append([7,8])\nprint(\"New list:\", new_list)\nprint(\"Old list:\", old_list)New list: [[1,2],[3,4],[5,6]]\nOld list: [[1,2],[3,4],[5,6],[7,8]]\n6.0001 LECTURE 5old_list\nnew_list\n[  ,  ,  ][  ,   ,   ]\n[1,2] [3,4] [5,6] [7,8][  ,   ,   ,   ]"
+    },
+    {
+        "slide 36": "MAKING A SHALLOW COPY: ONLY \nTHE TOP LEVEL IS COPIED\n\uf0a7But if we change an element in one of the sub- structures, they \nare shared! \n\uf0a7If your elements are not mutable then this is not a problem\nimport copy\nold_list = [[1,2],[3,4],[5,6]]\nnew_list = copy.copy(old_list)\nold_list.append([7,8])\nold_list[1][1] = 9\nprint(\"New list:\", new_list)\nprint(\"Old list:\", old_list)\n6.100L Lecture 11"
+    },
+    {
+        "slide 37": "MAKING A SHALLOW COPY: ONLY \nTHE TOP LEVEL IS COPIED\n6.100L Lecture 11old_list = [[1,2],[3,4],[5,6]]\nnew_list = copy.copy(old_list)\nold_list.append([7,8])\nold_list[1][1] = 9print(\"New list:\", new_list)\nprint(\"Old list:\", old_list)New list: [[1,2],[3,9],[5,6]]\n6.0001 LECTURE 5old_list\nnew_list\n[  ,  ,  ][  ,   ,   ]\n[1,2] [3,4] [5,6] [7,8][  ,   ,   ,   ]Old list: [[1,2],[3,9],[5,6],[7,8]]\n[3,9]"
+    },
+    {
+        "slide 38": "MAKING A DEEP COPY: EVERY \nLEVEL GETS COPIED\n\uf0a7If we want all structures to be new copies, we need a deep \ncopy\n\uf0a7Use deep copy when your list might have mutable elements to ensure every structure at every level is copied\nimport copy\nold_list = [[1,2],[3,4],[5,6]]\nnew_list = copy.deepcopy(old_list)\nold_list.append([7,8])\nold_list[1][1] = 9\nprint(\"New list:\", new_list)\nprint(\"Old list:\", old_list)\n6.100L Lecture 11"
+    },
+    {
+        "slide 39": "MAKING A DEEP COPY: EVERY \nLEVEL GETS COPIED\n6.100L Lecture 11old_list = [[1,2],[3,4],[5,6]]\nnew_list = copy.deepcopy(old_list)\nold_list.append([7,8])\nold_list[1][1] = 9print(\"New list:\", new_list)\nprint(\"Old list:\", old_list) New list: [[1,2],[3,4],[5,6]]\nOld list: [[1,2],[3,9],[5,6],[7,8]]\nold_list\nnew_list\n[  ,  ,  ][  ,   ,   ]\n[1,2] [3,4] [5,6] [7,8][  ,   ,   ,   ]\n[3,9]\n[1,2] [3,4] [5,6]"
+    },
+    {
+        "slide 40": "LISTS in MEMORY\n\uf0a7Separate the idea of the object vs. the name we give an object\n\uf0a7A list is an object in memory\n\uf0a7Variable name points to object\n\uf0a7Lists are mutable and behave differently than immutable types\n\uf0a7Using equal sign between mutable objects creates aliases\n\uf0a7Both variables point to the same object in memory\n\uf0a7Any variable pointing to that object is affected by mutation of object, \neven if mutation is by referencing another name\n\uf0a7If you want a copy, you explicitly tell Python to make a copy\n\uf0a7Key phrase to keep in mind when working with lists is side \neffects , especially when dealing with aliases \u2013two names \npointing to the same structure in memory\n\uf0a7Python Tutor is your best friend to help sort this out!\nhttp://www.pythontutor.com/\n6.100L Lecture 11"
+    },
+    {
+        "slide 41": "WHY LISTS and TUPLES?\n\uf0a7If mutation can cause so many problems, why do we even \nwant to have lists, why not just use tuples ?\n\uf0a7Efficiency \u2013if processing very large sequences, don\u2019t want to have \nto copy every time we change an element\n\uf0a7If lists basically do everything that tuples do, why not just have lists ?\n\uf0a7Immutable structures can be very valuable in context of other \nobject types\n\uf0a7Don\u2019t want to accidentally have other code mutate some important data, tuples safeguard against this\n\uf0a7They can be a bit faster\n6.100L Lecture 11"
+    },
+    {
+        "slide 42": "AT HOME TRACING \nEXAMPLES SHOWCASING ALIASING AND CLONING\n6.100L Lecture 11"
+    },
+    {
+        "slide 43": "ALIASES\n\uf0a7hot is an alias for warm \u2013changing one changes the other!\n\uf0a7append() has a side effect\n6.100L Lecture 11\n"
+    },
+    {
+        "slide 44": "ALIASES\n\uf0a7hot is an alias for warm \u2013changing one changes the other!\n\uf0a7append() has a side effect\n6.100L Lecture 11\n"
+    },
+    {
+        "slide 45": "CLONING A LIST\n\uf0a7Create a new list and copy every element using a clone \nchill = cool[:]\n6.100L Lecture 11\n"
+    },
+    {
+        "slide 46": "CLONING A LIST\n\uf0a7Create a new list and copy every element using a clone \nchill = cool[:]\n6.100L Lecture 11\n"
+    },
+    {
+        "slide 47": "CLONING A LIST\n\uf0a7Create a new list and copy every element using a clone \nchill = cool[:]\n6.100L Lecture 11\n"
+    },
+    {
+        "slide 48": "LISTS OF LISTS \nOF LISTS OF\u2026.\n\uf0a7Can have nested lists\n\uf0a7Side effects still \npossible after mutation\n6.100L Lecture 11\n"
+    },
+    {
+        "slide 49": "LISTS OF LISTS \nOF LISTS OF\u2026.\n\uf0a7Can have nested lists\n\uf0a7Side effects still \npossible after mutation\n6.100L Lecture 11\n"
+    },
+    {
+        "slide 50": "LISTS OF LISTS \nOF LISTS OF\u2026.\n\uf0a7Can have nested lists\n\uf0a7Side effects still \npossible after mutation\n6.100L Lecture 11\n"
+    },
+    {
+        "slide 51": "LISTS OF LISTS \nOF LISTS OF\u2026.\n\uf0a7Can have nested lists\n\uf0a7Side effects still \npossible after mutation\n6.100L Lecture 11\n"
+    },
+    {
+        "slide 52": "LISTS OF LISTS \nOF LISTS OF\u2026.\n\uf0a7Can have nested lists\n\uf0a7Side effects still \npossible after mutation\n6.100L Lecture 11\n"
+    },
+    {
+        "slide 53": "LISTS OF LISTS \nOF LISTS OF\u2026.\n\uf0a7Can have nested lists\n\uf0a7Side effects still \npossible after mutation\n6.100L Lecture 11\n"
+    }
+]

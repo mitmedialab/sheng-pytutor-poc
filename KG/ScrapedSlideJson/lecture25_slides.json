@@ -1,0 +1,233 @@
+[
+    {
+        "slide 0": "PLOTTING\n(download slides and . pyfiles to follow along)\n6.100L Lecture 25\nAna Bell"
+    },
+    {
+        "slide 1": "WHY PLOTTING?\n\uf0a7Sooner or later, everyone needs to produce \nplots\n\uf0a7Helps us visualize data to see trends, pose \ncomputational questions to probe\n\uf0a7If you join 6.100B , you will make extensive use of \nthem\n\uf0a7For those of you leaving us after next week, this \nis a valuable way to visualize data\n\uf0a7Example of leveraging an existing library, \nrather than writing procedures from scratch\n\uf0a7Python provides libraries for:\n\uf0a7Plotting\n\uf0a7Numerical computation\n\uf0a7Stochastic computation\n\uf0a7Many others\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 2": "MATPLOTLIB\n\uf0a7Can import library into computing environment\nimportmatplotlib.pyplot asplt\n\uf0a7Allows code to reference library procedures as  \nplt.<processName>\n\uf0a7Provides access to existing set of graphing/plotting \nprocedures\n\uf0a7Today will just show some simple examples; lots of \nadditional information available in documentation \nassociated with matplotlib\n\uf0a7Will see many other examples and details of these ideas if \nyou take 6.100B\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 3": "A SIMPLE EXAMPLE\n\uf0a7Idea \u2013create different functions of a variable (n), and \nvisualize their differences\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 4": "\uf0a7To generate a plot:\nplt.plot(<x values>, <y values>)\n\uf0a7Arguments are lists (or sequences) of numbers \n\uf0a7Lists must be of the same length\n\uf0a7Generates a sequence of <x, y> values on a Cartesian grid\n\uf0a7Plotted in order, then connected with lines\n\uf0a7Can change iPython console to generate plots in a new \nwindow through Preferences\n\uf0a7Inline in the console\n\uf0a7In a new windowPLOTTING THE DATA\n6.100L Lecture 25"
+    },
+    {
+        "slide 5": "EXAMPLE\n6.100L Lecture 25Note how \nmatplotlib \nautomatically \nfits plot within \nframe\n"
+    },
+    {
+        "slide 6": "ORDER OF POINTS MATTERS\n\uf0a7Suppose I create a set of values for n and for n2, but in arbitrary \norder\n\uf0a7Python plots using the order of the points and connecting \nconsecutive points\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 7": "UNORDERED EXAMPLE\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 8": "SCATTER PLOT DOES NOT CONNECT DATA POINTS\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 9": "SHOWING ALL DATA ON ONE PLOT\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 10": "PRODUCING MULTIPLE PLOTS\n\uf0a7Let\u2019s graph each one in separate frame/window\n\uf0a7Call\nplt.figure(<arg>)\n\uf0a7Creates a new display with that name if one does not already exist\n\uf0a7If a display with that name exists, reopens it for additional processing \n6.100L Lecture 25"
+    },
+    {
+        "slide 11": "EXAMPLE CODE\n6.100L Lecture 25"
+    },
+    {
+        "slide 12": "DISPLAY OF quad\n6.100L Lecture 25"
+    },
+    {
+        "slide 13": "DISPLAY OF cube\n6.100L Lecture 25"
+    },
+    {
+        "slide 14": "DISPLAY OF lin\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 15": "DISPLAY OF expo\n6.100L Lecture 25Note how \nmatplotlib \nautomatically \nscales to fit both \nplots within frame\n"
+    },
+    {
+        "slide 16": "A \u201cREAL\u201d EXAMPLE\n6.100L Lecture 25matplotlib has \nautomatically \nselected x and y scales to best fit data\n"
+    },
+    {
+        "slide 17": "A \u201cREAL\u201d EXAMPLE\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 18": "A \u201cREAL\u201d EXAMPLE\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 19": "A \u201cREAL\u201d EXAMPLE\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 20": "A \u201cREAL\u201d EXAMPLE\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 21": "ADDING GRID LINES\nCan toggle grid lines on/off with plt.grid()\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 22": "LET\u2019S ADD ANOTHER CITY\n6.100L Lecture 25\n)\n)"
+    },
+    {
+        "slide 23": "BUT WHERE AM I?\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 24": "LET\u2019S ADD ANOTHER CITY\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 25": "PLOT WITH TWO CURVES\n6.100L Lecture 25Note: Python \npicked different colors for each plot; we could specify if we wanted\n"
+    },
+    {
+        "slide 26": "CONTROL LING PARAMETERS\n\uf0a7Suppose we want to control details of the displays\n\uf0a7Examples:\n\uf0a7Changing color or style of data sets\n\uf0a7Changing width of lines or displays\n\uf0a7Using subplots\n\uf0a7Can provide a \u201cformat\u201d argument to plot\n\uf0a7\u201cmarker\u201d, \u201cline\u201d, \u201ccolor\u201d\n\uf0a7Can skip any of these choices, plot takes default\n\uf0a7Order doesn\u2019t matter, as no confusion between symbols\n6.100L Lecture 25"
+    },
+    {
+        "slide 27": "CONTROLLING COLOR AND STYLE\n6.100L Lecture 25"
+    },
+    {
+        "slide 28": "CONTROLLING COLOR AND STYLE\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 29": "USING KEYWORDS\n6.100L Lecture 25"
+    },
+    {
+        "slide 30": "CONTROLLING COLOR AND STYLE\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 31": "\uf0a7Line Style\n\uf0a7- solid line\n\uf0a7-- dashed line\n\uf0a7-. dash dot line\n\uf0a7: dotted line\n\uf0a7Color Options (plus many more)\n\uf0a7b blue\n\uf0a7g green\n\uf0a7r red\n\uf0a7c cyan\n\uf0a7m magenta\n\uf0a7y yellow\n\uf0a7k black\n\uf0a7w white\n\uf0a7Marker Options (plus many more)\n\uf0a7. point\n\uf0a7o circle\n\uf0a7v triangle down\n\uf0a7^ triangle up\n\uf0a7* starLINE, COLOR, MARKER OPTIONS\n6.100L Lecture 25\nwhiteyellow\n"
+    },
+    {
+        "slide 32": "CONTROLLING COLOR AND STYLE\n6.100L Lecture 25"
+    },
+    {
+        "slide 33": "WITH MARKERS\nNote how actual \npoints being plotted are now marked\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 34": "CONTROLLING LINE WIDTH\n6.100L Lecture 25"
+    },
+    {
+        "slide 35": "MANY OTHER OPTIONS\n\uf0a7Using the linewidth keyword (in pixels)\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 36": "PLOTS WITHIN PLOTS\n6.100L Lecture 25"
+    },
+    {
+        "slide 37": "AND THE PLOT THICKENS\n6.100L Lecture 25\nBut this can be \nmisleading?  \nY scales are \ndifferent!"
+    },
+    {
+        "slide 38": "PLOTS WITHIN PLOTS\n6.100L Lecture 25"
+    },
+    {
+        "slide 39": "AND THE PLOT THICKENS\n6.100L Lecture 25"
+    },
+    {
+        "slide 40": "LOTS OF SUBPLOTS\n6.100L Lecture 25"
+    },
+    {
+        "slide 41": "AND THE PLOT THICKENS\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 42": "US POPULATION \nEXAMPLE\n6.100L Lecture 25"
+    },
+    {
+        "slide 43": "\uf0a7Let\u2019s try plotting some more complicated data\n\uf0a7We have provided a file with the US population recorded every \n10 years for four centuries\n\uf0a7Would like to use plotting to examine that data\n\uf0a7Use plotting to help visualize trends in the data\n\uf0a7Use plotting to raise questions that might be tested computationally \n(you\u2019ll see much more of this if you take 6.100B)A MORE INTERESTING EXAMPLE\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 44": "THE INPUT FILE\nUSPopulation.txt\n...\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 45": "PLOTTING THE DATA\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 46": "POPULATION GROWTH\nWhat\u2019s going on in the early years? Impact of WWII\n6.100L Lecture 25Impact of Civil WarVisualizing data \ncan expose things not easily seen in raw data\nCould I visualize this differently?"
+    },
+    {
+        "slide 47": "CHANGING THE SCAL ING\n6.100L Lecture 25Log scale means each increment along axis \ncorresponds to exponential increase in size; while in normal scale each increment corresponds to linear increase in size "
+    },
+    {
+        "slide 48": "POPULATION GROWTH\nWhat does linear growth on a \nlog scale mean?\n6.100L Lecture 25Can now see that there was growth early on, actually at a faster rate than later years"
+    },
+    {
+        "slide 49": "WHICH DO YOU FIND MORE INFORMATIVE?\nVisualization can raise questions: for ex. \nby eye, it appears that there are three different exponential growth periodsChanging visualization can help expose trends in data not seen with standard plotting\n6.100L Lecture 25"
+    },
+    {
+        "slide 50": "COUNTRY POPULATION \nEXAMPLE\n6.100L Lecture 25"
+    },
+    {
+        "slide 51": "THE DATA FILE\ncountryPops.txt\n...\n6.100L Lecture 25\nInterested in \nanalyzing the population numbers. Don\u2019t care about rank, country, or year."
+    },
+    {
+        "slide 52": "LOADING AND \nPLOTTING THE DATA\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 53": "POPULATION SIZES\n6.100L Lecture 25"
+    },
+    {
+        "slide 54": "STRANGE INVESTIGATION: FIRST DIGITS\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 55": "Benford\u2019s Law\n\ud835\udc43\ud835\udc43\ud835\udc51\ud835\udc51=\ud835\udc59\ud835\udc59\ud835\udc59\ud835\udc59\ud835\udc59\ud835\udc5910(1+1\n\ud835\udc51\ud835\udc51)\n6.100L Lecture 25\nMany datasets follow this:\n\uf0a7# social media followers\n\uf0a7Stock values\n\uf0a7Grocery prices\n\uf0a7Sports stats\n\uf0a7Building heights\n\uf0a7Taxes paidFREQUENCY OF EACH DIGIT\n"
+    },
+    {
+        "slide 56": "COMPARING CITIES \nEXAMPLE\n6.100L Lecture 25"
+    },
+    {
+        "slide 57": "\uf0a7Let\u2019s use another example to examine how plotting allows us to \nexplore data in different ways, and how it provides a valuable way to visualize that data\n\uf0a7Won\u2019t be looking at the code in detail\n\uf0a7Example data set\n\uf0a7Mean daily temperature for each day for 55 years for 21 different US \ncities\n\uf0a7Want to explore variations across years, and across citiesAN EXTENDED EXAMPLE\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 58": "THE DATA FILE\ntemperatures.csv\n...\n6.100L Lecture 25\n"
+    },
+    {
+        "slide 59": "EXTRACTING DATA\n6.100L Lecture 25This will return a list of temperatures (in F) and a \ncorresponding list of dates for a specific city\nFile stores data as str, \nneed to converttemperatures.csv\nCITY ,TEMP ,DATE\nSEATTLE,3.1,19610101SEATTLE,0.55,19610102SEATTLE,0,19610103SEATTLE,4.45,19610104\nOnly want temp \nfor a specific city"
+    },
+    {
+        "slide 60": "AVERAGE TEMPERATURES\nJust plotting points \nas a scatter plot (no \nconnecting  lines)\nGetlist of cities\n6.100L Lecture 25\nUsing first two \ncharacters as \nlabelCompute \naverage \ntemperatureThis will calculate the average temp over every day for 55 years, for every city."
+    },
+    {
+        "slide 61": "AND THE TEMPERATURE IS \u2026\n6.100L Lecture 25Detroit, Chicago, \nBostonSan Juan, Miami, Phoenix"
+    },
+    {
+        "slide 62": "BUT MORE INTERESTING TO LOOK \nAT CHANGE OVER TIME\n6.100L Lecture 25\nPrevious \ncode\nGet temp data for yearCheck that entry is for right yearFor one city, calculate the average temperature over each year. "
+    },
+    {
+        "slide 63": "BUT MORE INTERESTING TO LOOK \nAT CHANGE OVER TIME\n6.100L Lecture 25Pick some cities to plot 55 temps (avg temp over each year)"
+    },
+    {
+        "slide 64": "BABY IT\u2019S COLD OUTSIDE!\n6.100L Lecture 25"
+    },
+    {
+        "slide 65": "BUT WHAT IS VARIATION?\nhigh, low, avg temps by year\n6.100L Lecture 25"
+    },
+    {
+        "slide 66": "BUT WHAT IS VARIATION?\nhigh, low, avg temps by year\n6.100L Lecture 25"
+    },
+    {
+        "slide 67": "\uf0a7Can see range for each city\n\uf0a7Not helpful for comparison between cities\n\uf0a7Y axis for Boston is 0 to 80\n\uf0a7Y axis for Miami is 40 to 90\n\uf0a7Y axis for San Diego is 50 to 90SOME CITY EXAMPLES\n6.100L Lecture 25"
+    },
+    {
+        "slide 68": "USE SAME Y RANGE FOR ALL PLOTS\n6.100L Lecture 25Fix the \ndisplay range for y axis"
+    },
+    {
+        "slide 69": "\uf0a7One reason to plot is to visualize data\n\uf0a7Can see that range of variation is quite different for Boston, \ncompared to Miami or San Diego\n\uf0a7Can also see that mean for Miami much closer to max than min. Different from Boston and San DiegoBETTER CITY COMPARISON\n6.100L Lecture 25"
+    },
+    {
+        "slide 70": "HOW MANY DAYS AT A TEMP in 1961?\n6.100L Lecture 25Count number of \ndays of a particular year for which a specific temperature was the daily average\nCreate a list of temperatures for a specific yearSet up a list of 100 elements, making a histogram -like structure.\n\u2022Index 0 stores how many days had a temp of 0\n\u2022Index 1 stores how many days had a temp of 1\n\u2026 \n\u2022Index 99 stores how many days had a temp of 99. "
+    },
+    {
+        "slide 71": "HOW MANY DAYS AT A TEMP IN 1961?\n6.100L Lecture 25"
+    },
+    {
+        "slide 72": "SAN DIEGO IS BORING?\n6.100L Lecture 25\nCould we fit a curve to parts of this data?\nUniform? Gaussian (aka bell)?"
+    },
+    {
+        "slide 73": "CHANGE OVER TIME?\n6.100L Lecture 25Plot two distributions, one for 1961 and one for 2015"
+    },
+    {
+        "slide 74": "OVERLAY BAR CHARTS\n6.100L Lecture 25"
+    },
+    {
+        "slide 75": "OR CAN PLOT SEPARATELY\n6.100L Lecture 25"
+    },
+    {
+        "slide 76": "CAN CONTROL LOTS OF OTHER THINGS\n\uf0a7Size of\n\uf0a7Markers\n\uf0a7Lines\n\uf0a7Title\n\uf0a7Labels\n\uf0a7x and y ticks\n\uf0a7Scales of both axes\n\uf0a7Subplots\n\uf0a7Text boxes\n\uf0a7Kind of plot\n\uf0a7Scatter plots\n\uf0a7Bar plots\n\uf0a7Histograms\n\uf0a7\u2026Scratch edthe surface today !\n6.100L Lecture 25"
+    }
+]
