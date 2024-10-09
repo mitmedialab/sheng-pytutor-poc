@@ -1,0 +1,64 @@
+
+Cluster1: 
+  Main_Topic: 
+    - Complexity Classes
+  Nodes:
+    - Theta notation
+    - Comparing algorithm classes
+    - Asymptotic notation principles
+    - Analyzing code for complexity
+    - Asymptotic complexity examples
+
+Cluster2: 
+  Main_Topic: 
+    - Constant Complexity
+  Nodes:
+    - Understanding constant time operations
+    - Python indexing and operations
+    - Examples of constant complexity functions
+    - Built-in operations as constant time
+
+Cluster3: 
+  Main_Topic: 
+    - Linear Complexity
+  Nodes:
+    - Linear growth operations
+    - Iterative algorithms
+    - Linear search functions
+    - Examples of linear complexity
+
+Cluster4: 
+  Main_Topic: 
+    - Polynomial Complexity
+  Nodes:
+    - Quadratic algorithms
+    - Nested loops
+    - Examples with quadratic growth
+    - Common cases of polynomial complexity
+
+Cluster5: 
+  Main_Topic: 
+    - Exponential Complexity
+  Nodes:
+    - Recursive functions with multiple calls
+    - Fibonacci algorithm complexity
+    - Subset generation example
+    - Understanding exponential growth
+
+Cluster6: 
+  Main_Topic: 
+    - Logarithmic Complexity
+  Nodes:
+    - Logarithmic time complexity
+    - Binary search principles
+    - Tricky log examples
+    - Complex search algorithms
+
+Cluster7: 
+  Main_Topic: 
+    - Searching Algorithms
+  Nodes:
+    - Linear search on lists
+    - Bisection search steps
+    - Recursive search implementation
+    - Comparing search complexities

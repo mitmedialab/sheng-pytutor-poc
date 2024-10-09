@@ -1,0 +1,49 @@
+
+Cluster1: 
+  Main_Topic: 
+    - Sorting Algorithms
+  Nodes:
+    - binary search
+    - amortized cost in sorting
+    - bogo sort
+    - complexity of bogo sort
+
+Cluster2: 
+  Main_Topic: 
+    - Bubble Sort
+  Nodes:
+    - pairwise comparison
+    - swapping elements
+    - pass through list
+    - stopping condition
+    - complexity of bubble sort
+
+Cluster3: 
+  Main_Topic: 
+    - Selection Sort
+  Nodes:
+    - extracting minimum element
+    - swapping minimum element
+    - maintaining sorted portion
+    - inner loop execution
+    - complexity of selection sort
+
+Cluster4: 
+  Main_Topic: 
+    - Merge Sort
+  Nodes:
+    - divide and conquer
+    - splitting list
+    - merging sublists
+    - recursive sorting
+    - complexity of merge sort
+
+Cluster5: 
+  Main_Topic: 
+    - Complexity Summary
+  Nodes:
+    - asymptotic order of growth
+    - worst case analysis
+    - different complexity classes
+    - a priori evaluation
+    - efficient algorithm design

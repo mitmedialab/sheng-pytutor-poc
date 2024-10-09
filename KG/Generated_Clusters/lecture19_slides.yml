@@ -1,0 +1,50 @@
+
+Cluster1: 
+  Main_Topic: 
+    - Object-Oriented Programming (OOP) Basics
+  Nodes:
+    - mimicking real life
+    - grouping objects
+    - data and procedural attributes
+    - class definition
+    - instance creation
+
+Cluster2: 
+  Main_Topic: 
+    - Data Encapsulation
+  Nodes:
+    - getter and setter methods
+    - instantiation and dot notation
+    - information hiding
+    - changing internal representation
+    - accessing attributes
+
+Cluster3: 
+  Main_Topic: 
+    - Using Classes
+  Nodes:
+    - creating dictionaries with objects
+    - creating lists of objects
+    - methods for custom classes
+    - iterating over objects
+    - handling multiple data structures
+
+Cluster4: 
+  Main_Topic: 
+    - Inheritance and Subclasses
+  Nodes:
+    - parent and child classes
+    - subclass implementation
+    - overriding methods
+    - attribute inheritance
+    - class hierarchies
+
+Cluster5: 
+  Main_Topic: 
+    - Advanced Topics in OOP
+  Nodes:
+    - class variables
+    - special methods
+    - operator overloading
+    - comparing objects
+    - OOP design principles

@@ -1,0 +1,29 @@
+Cluster1: 
+  Main_Topic: 
+    - Cloning, Aliasing, and Copying Lists
+  Nodes:
+    - cloning lists
+    - aliasing lists
+    - shallow copy
+    - deep copy
+    - copy vs alias
+
+Cluster2: 
+  Main_Topic: 
+    - List Mutation
+  Nodes:
+    - removing elements from lists
+    - mutation during iteration
+    - challenges with removal in loops
+    - mutation side effects
+    - correct removal methods
+
+Cluster3: 
+  Main_Topic: 
+    - Nested Lists
+  Nodes:
+    - nested list structure
+    - side effects of nested lists
+    - handling nested lists
+    - mutating nested lists
+    - aliasing in nested lists

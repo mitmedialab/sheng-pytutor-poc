@@ -1,0 +1,30 @@
+
+Cluster1:
+  Main_Topic:
+    - Branching
+  Nodes:
+    - if statement
+    - elif structure
+    - Indentation significance
+    - Condition evaluation
+    - Executing code blocks
+
+Cluster2:
+  Main_Topic:
+    - While Loops
+  Nodes:
+    - Looping with conditions
+    - Infinite loops
+    - Loop termination methods
+    - Using loops in programming examples
+    - Counter variables in loops
+
+Cluster3:
+  Main_Topic:
+    - For Loops
+  Nodes:
+    - Looping over ranges
+    - Loop variable assignment
+    - Range function usage
+    - Accumulating sums with loops
+    - Factorial calculation with loops

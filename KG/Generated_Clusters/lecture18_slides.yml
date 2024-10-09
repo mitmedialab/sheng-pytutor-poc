@@ -1,0 +1,50 @@
+
+Cluster1: 
+  Main_Topic: 
+    - Class Implementation and Usage
+  Nodes:
+    - defining classes
+    - data attributes
+    - methods and functions
+    - creating instances
+    - class vs instance
+
+Cluster2: 
+  Main_Topic: 
+    - Coordinate Class
+  Nodes:
+    - class definition
+    - __init__ method
+    - distance method
+    - to_origin method
+    - printing coordinates
+
+Cluster3: 
+  Main_Topic: 
+    - Circle Class
+  Nodes:
+    - class creation
+    - checking object types
+    - is_inside method
+    - functional equivalence
+    - subclassing with Coordinates
+
+Cluster4: 
+  Main_Topic: 
+    - Fraction Class
+  Nodes:
+    - class definition
+    - addition and subtraction
+    - multiplication and division
+    - inverse and reduction
+    - dunder methods
+  
+Cluster5: 
+  Main_Topic: 
+    - Object-Oriented Principles
+  Nodes:
+    - modularity and maintenance
+    - decomposition and abstraction
+    - bundling data and behavior
+    - custom print methods
+    - dunder method abstraction

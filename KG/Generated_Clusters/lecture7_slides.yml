@@ -1,0 +1,40 @@
+
+Cluster1: 
+  Main_Topic: 
+    - Abstraction and Decomposition
+  Nodes:
+    - definition of abstraction
+    - relationship between input and output
+    - suppressing details in programming
+    - using abstraction with functions
+    - decomposition into modules
+
+Cluster2: 
+  Main_Topic: 
+    - Functions
+  Nodes:
+    - defining functions
+    - calling functions
+    - function characteristics
+    - function parameters and return values
+    - writing a function (thinking process)
+
+Cluster3:
+  Main_Topic:
+    - Function Application
+  Nodes:
+    - example of is_even function
+    - program scope and functions
+    - inserting functions into code
+    - testing functions
+    - sum of odd numbers function
+
+Cluster4:
+  Main_Topic:
+    - Debugging and Testing
+  Nodes:
+    - debugging with print statements
+    - fixing loop errors
+    - using Python Tutor
+    - iterative testing while coding
+    - writing test cases

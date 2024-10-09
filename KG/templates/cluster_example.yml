@@ -1,0 +1,6 @@
+Cluster1: 
+Main_Topic: 
+    - Dictionaries
+Nodes:
+    - looping through dictionaries
+    - creating dictionaries

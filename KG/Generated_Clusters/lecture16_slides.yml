@@ -1,0 +1,49 @@
+
+Cluster1:
+  Main_Topic:
+    - Recursion and Fibonacci
+  Nodes:
+    - Fibonacci sequence overview
+    - Base cases in recursion
+    - Recursive Fibonacci code
+    - Inefficient vs efficient recursion
+    - Memoization in recursion
+
+Cluster2:
+  Main_Topic:
+    - Recursion in Practical Examples
+  Nodes:
+    - Basketball score recursion
+    - Base cases in practical examples
+    - Recursive steps in practical examples
+    - High-level recursive visualization
+
+Cluster3:
+  Main_Topic:
+    - Recursive Lists
+  Nodes:
+    - Recursive sum of list elements
+    - Recursive base cases for lists
+    - Recursive list concatenation
+    - Searching elements in lists
+    - Flattening lists with recursion
+
+Cluster4:
+  Main_Topic:
+    - Advanced Recursive Lists
+  Nodes:
+    - Reversing elements recursively
+    - Deep reversing lists
+    - Recursive base cases for nested lists
+    - Recursive step for nested elements
+    - Cleaning up recursive code
+
+Cluster5:
+  Main_Topic:
+    - Recursion Concepts and Takeaways
+  Nodes:
+    - When to use recursion
+    - Formulaic recursion approach
+    - Recursive problem-solving techniques
+    - Major recursion takeaways
+    - Recursive function practice

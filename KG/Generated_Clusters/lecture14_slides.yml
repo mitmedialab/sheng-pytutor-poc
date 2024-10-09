@@ -1,0 +1,47 @@
+
+Cluster1:
+  Main_Topic:
+    - Student Info Storage Alternatives
+  Nodes:
+    - storing student data in lists
+    - accessing student data from lists
+    - using lists of lists for student data
+    - challenges with list-based storage
+
+Cluster2:
+  Main_Topic:
+    - Dictionaries
+  Nodes:
+    - advantages of using dictionaries
+    - dictionary key-value concept
+    - creating a dictionary
+    - dictionary lookup
+    - dictionary operations
+
+Cluster3:
+  Main_Topic:
+    - Iterating and Operations on Dictionaries
+  Nodes:
+    - iterating over dictionary keys and values
+    - testing for key existence
+    - dictionary aliasing and copying
+    - dictionary mutability and order
+    - dictionary keys as immutable/hashable
+
+Cluster4:
+  Main_Topic:
+    - Nested Dictionaries for Student Grades
+  Nodes:
+    - mapping students to grade sub-dictionaries
+    - accessing nested dictionary values
+    - nested dictionary operations
+    - example of student grades dictionary
+
+Cluster5:
+  Main_Topic:
+    - Practical Uses of Dictionaries
+  Nodes:
+    - creating a frequency dictionary from text
+    - finding most frequent words
+    - deleting dictionary entries
+    - leveraging dictionary functions

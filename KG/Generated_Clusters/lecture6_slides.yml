@@ -1,0 +1,39 @@
+
+Cluster1: 
+  Main_Topic: 
+    - Approximation Methods
+  Nodes:
+    - floating point challenges
+    - error magnification
+    - square root finding approximation
+    - epsilon tolerance
+    - iterative guessing
+
+Cluster2: 
+  Main_Topic: 
+    - Bisection Search
+  Nodes:
+    - range reduction
+    - midpoint selection
+    - logarithmic efficiency
+    - applications for square root
+    - ordered search space
+
+Cluster3: 
+  Main_Topic: 
+    - Newton-Raphson Method
+  Nodes:
+    - polynomial roots
+    - derivation based improvement
+    - efficient root finding
+    - iterative refinement
+
+Cluster4: 
+  Main_Topic: 
+    - Programming Concepts
+  Nodes:
+    - decomposition
+    - abstraction
+    - iterative algorithms
+    - code maintainability
+    - code understanding

@@ -1,0 +1,30 @@
+
+Cluster1:
+  Main_Topic:
+    - Binary Representation of Numbers
+  Nodes:
+    - converting decimal to binary
+    - integer division in binary conversion
+    - handling negative numbers in binary
+    - binary representation of fractions
+    - challenges in representing decimal fractions
+
+Cluster2:
+  Main_Topic:
+    - Floating Point Numbers
+  Nodes:
+    - storing floating point numbers
+    - significant digits and precision
+    - error in floating point representation
+    - issues with using == to compare floats
+    - designing algorithms with floats
+
+Cluster3:
+  Main_Topic:
+    - Approximation Methods
+  Nodes:
+    - guess-and-check algorithm
+    - importance of epsilon in approximation
+    - setting increment values
+    - handling overshoots in approximation
+    - efficiency vs. accuracy trade-offs

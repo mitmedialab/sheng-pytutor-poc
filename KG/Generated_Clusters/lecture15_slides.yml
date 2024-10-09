@@ -1,0 +1,40 @@
+
+Cluster1:
+  Main_Topic: 
+    - Iterative Algorithms
+  Nodes:
+    - looping constructs
+    - state variables in loops
+    - iteration tracking
+    - loop termination
+    - result capture in iteration
+
+Cluster2:
+  Main_Topic: 
+    - Multiplication Techniques
+  Nodes:
+    - iterative multiplication
+    - recursive multiplication
+    - problem decomposition
+    - capturing computation state
+    - building results iteratively
+
+Cluster3:
+  Main_Topic: 
+    - Recursion
+  Nodes:
+    - recursive design
+    - base cases
+    - recursive case formulation
+    - recursive function calls
+    - scope in recursion
+
+Cluster4:
+  Main_Topic: 
+    - Applications and Comparisons
+  Nodes:
+    - real life examples of recursion
+    - recursion vs iteration
+    - efficiency in recursion
+    - when to use recursion
+    - recursive code intuition

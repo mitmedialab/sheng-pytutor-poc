@@ -1,0 +1,48 @@
+
+Cluster1:
+  Main_Topic:
+    - Object Oriented Programming
+  Nodes:
+    - classes and objects
+    - defining classes
+    - data attributes
+    - functional attributes
+
+Cluster2:
+  Main_Topic: 
+    - Class Methods and Attributes
+  Nodes:
+    - getter methods
+    - setter methods
+    - instance state
+    - class state
+    - class variables
+
+Cluster3:
+  Main_Topic: 
+    - Information Hiding
+  Nodes:
+    - interface simplicity
+    - getters vs direct access
+    - implementation changes
+    - access control
+
+Cluster4:
+  Main_Topic:
+    - Class Inheritance
+  Nodes:
+    - parent class
+    - child class
+    - overriding methods
+    - superclass
+    - subclass differentiation
+
+Cluster5:
+  Main_Topic:
+    - Object Oriented Design
+  Nodes:
+    - modularization
+    - class hierarchies
+    - user-oriented design
+    - equality testing
+    - control flow reasoning

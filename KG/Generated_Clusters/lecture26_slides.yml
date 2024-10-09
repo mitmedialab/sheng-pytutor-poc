@@ -1,0 +1,40 @@
+
+Cluster1: 
+  Main_Topic: 
+    - Lists
+  Nodes:
+    - list access time complexity
+    - append operation
+    - reverse operation
+    - constant time access for homogeneous lists
+    - constant time access for heterogeneous lists
+
+Cluster2: 
+  Main_Topic: 
+    - Dictionaries and Hashing
+  Nodes:
+    - naive implementation of dictionaries
+    - dictionary access time complexity
+    - hash function roles
+    - properties of a good hash function
+    - handling collisions in hash tables
+
+Cluster3: 
+  Main_Topic: 
+    - Simulations
+  Nodes:
+    - designing experiments with randomness
+    - rolling a dice simulation
+    - probability calculation via simulation
+    - modifying simulation code
+    - real-world simulation example (fill pool)
+
+Cluster4: 
+  Main_Topic: 
+    - Course Wrap-up and Future Directions
+  Nodes:
+    - topics covered (syntax, data structures)
+    - student experiences and reflections
+    - future course directions (6.100B topics)
+    - programming fundamentals overview (6.101, 6.102)
+    - future course format and learning enhancements

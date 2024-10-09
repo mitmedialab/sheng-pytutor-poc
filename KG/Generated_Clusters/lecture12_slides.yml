@@ -1,0 +1,18 @@
+
+Cluster1: 
+  Main_Topic: 
+    - List Comprehensions
+  Nodes:
+    - creating lists with functions
+    - applying functions to iterables
+    - filtering elements with conditions
+    - generalized list comprehension syntax
+
+Cluster2: 
+  Main_Topic: 
+    - Functions and Parameters
+  Nodes:
+    - default parameters
+    - keyword parameters
+    - functions returning functions 
+    - scope of returned functions

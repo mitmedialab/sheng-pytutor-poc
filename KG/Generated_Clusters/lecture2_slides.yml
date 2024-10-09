@@ -1,0 +1,30 @@
+
+Cluster1: 
+  Main_Topic: 
+    - Strings
+  Nodes:
+    - understanding string immutability
+    - string concatenation
+    - slicing strings
+    - single character indexing
+    - string operations (len)
+
+Cluster2: 
+  Main_Topic: 
+    - Input and Output
+  Nodes:
+    - using the input function
+    - casting input to numbers
+    - printing multiple objects
+    - concatenating strings in print
+    - using f-strings
+
+Cluster3: 
+  Main_Topic: 
+    - Branching and Conditions
+  Nodes:
+    - if-elif-else structure
+    - using comparison operators
+    - logical operators on Booleans
+    - indentation significance in Python
+    - writing conditional statements

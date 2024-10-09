@@ -1,0 +1,30 @@
+
+Cluster1: 
+  Main_Topic: 
+    - Loops
+  Nodes:
+    - while loops
+    - for loops
+    - break statement
+    - iterating over strings
+    - counting items in a list
+
+Cluster2: 
+  Main_Topic: 
+    - Guess and Check
+  Nodes:
+    - idea of guess and check
+    - finding square roots
+    - using while loop in guess and check
+    - cube root calculation
+    - solving word problems with guess and check
+
+Cluster3: 
+  Main_Topic: 
+    - Numbers and Representations
+  Nodes:
+    - integers in Python
+    - floats and their precision
+    - floating point representation
+    - binary numbers
+    - converting decimal to binary

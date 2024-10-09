@@ -1,0 +1,29 @@
+Cluster1: 
+  Main_Topic: 
+    - Exceptions
+  Nodes:
+    - unexpected conditions
+    - handling exceptions
+    - handling specific exceptions
+    - user input exceptions
+    - fail silently
+
+Cluster2: 
+  Main_Topic: 
+    - Assertions
+  Nodes:
+    - defensive programming
+    - conditions enforcement
+    - supplement to testing
+    - halt execution
+    - contract enforcement
+
+Cluster3: 
+  Main_Topic: 
+    - Exception Techniques
+  Nodes:
+    - try/except blocks
+    - else block usage
+    - finally block usage
+    - raising exceptions
+    - example code with exceptions and assertions

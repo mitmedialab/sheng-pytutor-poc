@@ -1,0 +1,30 @@
+
+Cluster1: 
+  Main_Topic: 
+    - Functions as Objects
+  Nodes:
+    - returning values without return keyword
+    - function vs print
+    - understanding modularity in functions
+    - writing functions with specific requirements
+    - using functions to demonstrate scope
+
+Cluster2: 
+  Main_Topic: 
+    - Function Scope and Environments
+  Nodes:
+    - understanding function calls
+    - global and local scope in functions
+    - variable scope and name bindings
+    - scopes during function execution
+    - interpreting variable behavior within scopes
+
+Cluster3: 
+  Main_Topic: 
+    - Higher Order Functions
+  Nodes:
+    - using functions as arguments
+    - first-class function objects
+    - functions within program scope
+    - executing and tracing higher order procedures
+    - defining and using function parameters

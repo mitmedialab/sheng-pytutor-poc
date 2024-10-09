@@ -1,0 +1,40 @@
+
+Cluster1:
+  Main_Topic:
+    - Object-Oriented Programming (OOP) in Python
+  Nodes:
+    - understanding objects
+    - object types and instances
+    - data abstraction and methods
+    - creating and using classes
+    - garbage collection
+
+Cluster2:
+  Main_Topic:
+    - Python Classes and Attributes
+  Nodes:
+    - class definition and attributes
+    - __init__ method
+    - instance creation and variables
+    - accessing attributes with dot notation
+    - self keyword
+
+Cluster3:
+  Main_Topic:
+    - Methods in Python Classes
+  Nodes:
+    - defining methods
+    - calling methods
+    - method invocation
+    - procedural attributes
+    - understanding the dot operator
+
+Cluster4:
+  Main_Topic:
+    - Advantages of OOP
+  Nodes:
+    - code reuse and modularity
+    - abstraction and encapsulation
+    - inheritance
+    - subclass behavior
+    - object-oriented design decisions

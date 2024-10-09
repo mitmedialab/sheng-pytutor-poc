@@ -1,0 +1,40 @@
+
+Cluster1: 
+  Main_Topic: 
+    - Timing Programs
+  Nodes:
+    - measuring execution time
+    - using timing tools (time module)
+    - effect of input size on timing
+    - variability in timing across machines
+    - analyzing function runtime
+    
+Cluster2: 
+  Main_Topic: 
+    - Counting Operations
+  Nodes:
+    - counting basic operations
+    - operation growth with input size
+    - comparing counting and timing
+    - impact of operation type on performance
+    - evaluating algorithm scalability
+    
+Cluster3: 
+  Main_Topic: 
+    - Search Algorithms
+  Nodes:
+    - linear search
+    - binary search
+    - built-in search performance
+    - operation count in search algorithms
+    - evaluating search efficiency
+
+Cluster4: 
+  Main_Topic: 
+    - Orders of Growth (Asymptotic Complexity)
+  Nodes:
+    - notation for growth patterns
+    - assessing algorithm efficiency
+    - explaining "order of" notations
+    - focusing on largest factors for growth
+    - generalized algorithm approximation

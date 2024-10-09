@@ -1,0 +1,58 @@
+
+Cluster1: 
+  Main_Topic: 
+    - Introduction to Plotting
+  Nodes:
+    - Importance of plotting
+    - Visualizing data with plotting
+    - Leveraging libraries for plotting
+
+Cluster2: 
+  Main_Topic: 
+    - Basics of Matplotlib
+  Nodes:
+    - Importing matplotlib
+    - Plotting basic graphs
+    - Scatter plots
+    - Generating multiple plots
+    - Changing plot display (inline vs new window)
+
+Cluster3: 
+  Main_Topic: 
+    - Plotting Techniques
+  Nodes:
+    - Order of plotting points
+    - Displaying multiple plots
+    - Adding grid lines
+    - Plotting multiple curves
+    - Examples of linear, quadratic, cubic functions
+
+Cluster4: 
+  Main_Topic: 
+    - Advanced Plot Controls
+  Nodes:
+    - Controlling color and style
+    - Using line, color, marker options
+    - Line width adjustments
+    - Creating subplots
+    - Customizing plot parameters
+
+Cluster5: 
+  Main_Topic: 
+    - Population Data Visualization
+  Nodes:
+    - Analyzing US population data
+    - Impact of historical events on population
+    - Changing scales in plots (log scale)
+    - Visualizing different data trends
+    - Examining population growth patterns
+
+Cluster6: 
+  Main_Topic: 
+    - Temperature Data Analysis
+  Nodes:
+    - Plotting temperatures over years
+    - Comparing temperature variation across cities
+    - Using consistent axis ranges for comparison
+    - Analyzing temperature distributions
+    - Examining changes over time

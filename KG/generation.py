@@ -27,56 +27,38 @@ class Cluster_Generator:
         self.cluster_yml_path = self.template_path / "cluster.yml"
         self.template_str = self.cluster_yml_path.read_text()
 
+        self.template_example_path = self.template_path / "cluster_example.yml"
+        self.example_str = self.template_example_path.read_text()
+
         self.cluster_folder_path: str = "./Generated_Clusters"
         self.cluster_folder_path: str = Path(
             self.cluster_folder_path).resolve()
 
         self.gpt_box = GPT_Box()
 
-        self.prompt = """
+        self.prompt = f"""
             You are a helpful assistant. You will be given a json that contains the entire lecture slides. In the format of: [slide_number: slide_info].
-            The json might contain multiple topics such as arrays and dictionaries but they also might just contain one topic. 
+            The json might contain multiple topics such as arrays and dictionaries but they also might just contain one topic.
 
             Your task is to cluster the slides into topics. You can use the slide number and the slide info to help you cluster the slides.
 
             The following template is provided to you to help you with the clustering. The template is in yaml format.
 
+            {self.template_str}
 
-            Cluster1: 
-                Main_Topic: 
-                    - Topic
-                Nodes:
-                    - Concept1
-                    - Concept2
+            For example, if the json contains topics of dictionaries and arrays, you can cluster the slides into two topics: dictionaries and arrays along with the relevant subtopics. DO NOT INCLUDE THE SLIDE NUMBER. Do not create no more than 5 subtopics / nodes for each topic.
 
-            Cluster2:
-                Main_Topic:
-                    - Topic
-                Nodes:
-                    - Concept1
-                    - Concept2
-                    - Concept3
+            Each subtopic should represent ONE SINGLE IDEA.
 
-            ...
-            
-            For example, if the json contains topics of dictionaries and arrays, you can cluster the slides into two topics: dictionaries and arrays along with the relevant subtopics. DO NOT INCLUDE THE SLIDE NUMBER. Do not create more than 5 subtopics / nodes for each topic.
-            Each subtopic should represent ONE SINGLE IDEA. 
-            
             DO NOT GIVE ME SUBTOPICS LIKE THIS: "List Operations (append, sort, reverse)" or "indices and ordering".
-            
-            INSTEAD GIVE ME: append, sort, reverse, indices, ordering. Each as its own subtopic.
 
-            And try to be as specific as you can. For example, if the slide is about "looping through dictionaries", you can say "looping through dictionaries" as a subtopic. 
+            INSTEAD GIVE ME: append, sort, reverse, indices. Each as its own subtopic.
+
+            And try to be as specific as you can. For example, instead of "looping", you can say "looping through dictionaries" as a subtopic.
 
             As an example of what you can return, the following is an example of a cluster.yml file:
 
-            Cluster1: 
-            Main_Topic: 
-                - Dictionaries
-            Nodes:
-                - looping through dictionaries
-                - creating dictionaries
-                ...
+            {self.example_str}
 
             Don't say anything like "Hello!" or "Certainly". I just want the YAML. Here is the given json:
         """
@@ -128,4 +110,5 @@ class Cluster_Generator:
 
 if __name__ == "__main__":
     test = Cluster_Generator()
-    test.generate_one_cluster(test.slide_box.full_slide_paths[0])
+    # for i in range(4, len(test.slide_box.full_slide_paths)):
+    #     test.generate_one_cluster(test.slide_box.full_slide_paths[i])

@@ -1,0 +1,49 @@
+
+Cluster1: 
+  Main_Topic: 
+    - Lambda Functions
+  Nodes:
+    - anonymous procedures
+    - lambda usage
+    - one-time use functions
+    - applying lambda in functions
+
+Cluster2: 
+  Main_Topic: 
+    - Functions
+  Nodes:
+    - function application
+    - higher-order functions
+    - defining functions
+    - variable number of arguments
+    - function return values
+
+Cluster3: 
+  Main_Topic: 
+    - Tuples
+  Nodes:
+    - immutable sequences
+    - indexing tuples
+    - slicing tuples
+    - tuple unpacking
+    - multiple return values
+
+Cluster4: 
+  Main_Topic: 
+    - Lists
+  Nodes:
+    - mutable sequences
+    - indexing lists
+    - list slicing
+    - iterating over lists
+    - list operations
+
+Cluster5: 
+  Main_Topic: 
+    - Python Concepts Summary
+  Nodes:
+    - lambda advantages
+    - tuple characteristics
+    - list characteristics
+    - indexing and slicing
+    - looping over sequences
