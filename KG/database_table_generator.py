@@ -3,7 +3,6 @@ import os
 import asyncpg
 import yaml
 import asyncio
-import re
 
 from dotenv import load_dotenv
 env_path = Path('..') / '.env'
