@@ -3,10 +3,10 @@ import os
 import asyncpg
 import yaml
 import asyncio
-import re
 
 from dotenv import load_dotenv
-env_path = Path('..') / '.env'
+
+env_path = Path("..") / ".env"
 load_dotenv(dotenv_path=env_path)
 
 
@@ -24,15 +24,14 @@ class Database_Table_Generator:
         """
         Connect to the database.
         """
-        self.connection = await asyncpg.connect(
-            user=self.user,
-            password=self.password,
-            database=self.dbname,
-            host=self.host,
-            port=self.port
-        )
-
-        if self.connection is not None:
+        if self.connection is None:
+            self.connection = await asyncpg.connect(
+                user=self.user,
+                password=self.password,
+                database=self.dbname,
+                host=self.host,
+                port=self.port,
+            )
             print("Connected to the database.")
         else:
             print("Failed to connect to the database.")
@@ -52,17 +51,21 @@ class Database_Table_Generator:
         Create a table in the database.
         """
 
-        if self.connection is None:
-            await self.connect_to_db()
+        await self.connect_to_db()
+
+        await self.connection.execute('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";')
 
         with open(self.all_concepts_path, "r") as file:
             all_concepts = yaml.safe_load(file)
             table_name = "Concepts"
-            query = f"CREATE TABLE IF NOT EXISTS {
-                table_name} (kerb VARCHAR(255) PRIMARY KEY,"
+            query = (
+                f"CREATE TABLE IF NOT EXISTS {
+                table_name}"
+                + "(id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),"
+            )
 
             for concept in all_concepts:
-                query += f"{concept} int,"
+                query += f"{concept} int DEFAULT 0 CHECK ({concept} <= 8),"
             query = query[:-1] + ");"
             await self.connection.execute(query)
             print(f"Table {table_name} created.")
@@ -71,6 +74,7 @@ class Database_Table_Generator:
 
 
 if __name__ == "__main__":
+
     async def main():
         db_table_generator = Database_Table_Generator()
         await db_table_generator.create_table()

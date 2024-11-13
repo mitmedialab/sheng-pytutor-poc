@@ -13,11 +13,11 @@ class YAML_Parser:
         Clean the column name to remove special characters and spaces.
         """
         # Replace invalid characters with underscores
-        cleaned_name = re.sub(r'[^a-zA-Z0-9_]', '_', column_name)
+        cleaned_name = re.sub(r"[^a-zA-Z0-9_]", "_", column_name)
 
         # Ensure the name starts with a letter or underscore
-        if not re.match(r'^[a-zA-Z_]', cleaned_name):
-            cleaned_name = '_' + cleaned_name
+        if not re.match(r"^[a-zA-Z_]", cleaned_name):
+            cleaned_name = "_" + cleaned_name
 
         # Truncate to 63 characters
         return cleaned_name[:63].lower()
@@ -29,7 +29,7 @@ class YAML_Parser:
         all_clusters = set()
         for file_path in self.folder_path.iterdir():
             if file_path.is_file():
-                with open(file_path, 'r', encoding='utf-8') as file:
+                with open(file_path, "r", encoding="utf-8") as file:
                     cluster = yaml.safe_load(file)
                     counter = 1
                     start = f"Cluster{counter}"
@@ -37,7 +37,7 @@ class YAML_Parser:
                     curr = []
 
                     while start in cluster:
-                        curr += (cluster[start]["Nodes"])
+                        curr += cluster[start]["Nodes"]
                         counter += 1
                         start = f"Cluster{counter}"
 
@@ -49,7 +49,7 @@ class YAML_Parser:
             res.add(self.clean_column_name(name))
 
         res = list(res)
-        with open(self.output_file_path, 'w', encoding='utf-8') as file:
+        with open(self.output_file_path, "w", encoding="utf-8") as file:
             yaml.dump(res, file)
 
         print(f"Clusters written to {self.output_file_path}.")

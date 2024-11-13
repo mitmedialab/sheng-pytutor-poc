@@ -31,8 +31,7 @@ class Cluster_Generator:
         self.example_str = self.template_example_path.read_text()
 
         self.cluster_folder_path: str = "./Generated_Clusters"
-        self.cluster_folder_path: str = Path(
-            self.cluster_folder_path).resolve()
+        self.cluster_folder_path: str = Path(self.cluster_folder_path).resolve()
 
         self.gpt_box = GPT_Box()
 
@@ -77,7 +76,7 @@ class Cluster_Generator:
             None
 
         """
-        slide_json_text: str = Path(slide_path).read_text(encoding='utf-8')
+        slide_json_text: str = Path(slide_path).read_text(encoding="utf-8")
         entire_prompt: str = self.prompt + slide_json_text
 
         print("Sending message to GPT-4o model...")
@@ -87,9 +86,12 @@ class Cluster_Generator:
 
         print(removed_delimiters)
         self.write_cluster_response_to_file(
-            removed_delimiters, Path(slide_path).name.replace(".json", ".yml"))
+            removed_delimiters, Path(slide_path).name.replace(".json", ".yml")
+        )
 
-    def write_cluster_response_to_file(self, generated_response: str, file_name: str) -> None:
+    def write_cluster_response_to_file(
+        self, generated_response: str, file_name: str
+    ) -> None:
         """
         Write the generated response to a file.
 
@@ -102,7 +104,7 @@ class Cluster_Generator:
 
         """
         file_path = self.cluster_folder_path / file_name
-        with open(file_path, 'w', encoding='utf-8') as file:
+        with open(file_path, "w", encoding="utf-8") as file:
             file.write(generated_response)
 
         print(f"Response written to {file_path}.")
